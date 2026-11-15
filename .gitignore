@@ -1,0 +1,12 @@
+# Generated build output: recreate with `npm run build`
+dist/
+
+# Dependencies and logs
+node_modules/
+npm-debug.log*
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
