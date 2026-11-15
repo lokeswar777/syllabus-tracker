@@ -1,0 +1,4200 @@
+{
+  "$schema": "../../schema/weightage.schema.json",
+  "examId": "ibps-rrb-clerk",
+  "syllabusCycle": "2026-27",
+  "lastUpdated": "2026-11-15",
+  "tracks": [
+    {
+      "trackId": "default",
+      "name": "Default",
+      "default": true,
+      "stageWeights": [
+        {
+          "stageId": "prelims",
+          "gate": false,
+          "weight": {
+            "default": 28.57,
+            "custom": null,
+            "basis": "official-marks",
+            "isOfficial": true,
+            "confidence": "high",
+            "justification": "80 of 280 marks across this track's scored stages.",
+            "evidence": [],
+            "lastUpdated": "2026-11-15"
+          }
+        },
+        {
+          "stageId": "mains",
+          "gate": false,
+          "weight": {
+            "default": 71.43,
+            "custom": null,
+            "basis": "official-marks",
+            "isOfficial": true,
+            "confidence": "high",
+            "justification": "200 of 280 marks across this track's scored stages.",
+            "evidence": [],
+            "lastUpdated": "2026-11-15"
+          }
+        }
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "stageId": "prelims",
+      "gate": false,
+      "sections": [
+        {
+          "sectionId": "reasoning",
+          "gate": false,
+          "weight": {
+            "default": 50,
+            "custom": null,
+            "basis": "official-marks",
+            "isOfficial": true,
+            "confidence": "high",
+            "justification": "40 of 80 stage marks.",
+            "evidence": [],
+            "lastUpdated": "2026-11-15"
+          },
+          "topics": [
+            {
+              "topicId": "reasoning.puzzles",
+              "weight": {
+                "default": 27.16,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "No RRB Clerk topic counts read; RRB PO prelims (same structure) blended with IBPS Clerk prelims (more coding/inequality, easier puzzles).",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 9,
+                "max": 13,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "floor", "default": 26.09, "custom": null },
+                { "slug": "box", "default": 21.74, "custom": null },
+                { "slug": "scheduling", "default": 26.09, "custom": null },
+                { "slug": "comparison", "default": 8.69, "custom": null },
+                { "slug": "categorised", "default": 17.39, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.seating-arrangement",
+              "weight": {
+                "default": 17.29,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "No RRB Clerk topic counts read; RRB PO prelims (same structure) blended with IBPS Clerk prelims (more coding/inequality, easier puzzles).",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 5,
+                "max": 9,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "linear-single", "default": 21.05, "custom": null },
+                { "slug": "linear-double", "default": 26.32, "custom": null },
+                { "slug": "circular", "default": 31.58, "custom": null },
+                { "slug": "square-rectangle", "default": 21.05, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.syllogism",
+              "weight": {
+                "default": 9.88,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "No RRB Clerk topic counts read; RRB PO prelims (same structure) blended with IBPS Clerk prelims (more coding/inequality, easier puzzles).",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 3,
+                "max": 5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "classic", "default": 29.41, "custom": null },
+                { "slug": "possibility", "default": 35.29, "custom": null },
+                { "slug": "only-a-few", "default": 17.65, "custom": null },
+                { "slug": "reverse", "default": 17.65, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.inequality",
+              "weight": {
+                "default": 8.64,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "No RRB Clerk topic counts read; RRB PO prelims (same structure) blended with IBPS Clerk prelims (more coding/inequality, easier puzzles).",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 2,
+                "max": 5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "direct", "default": 50, "custom": null },
+                { "slug": "coded", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.coding-decoding",
+              "weight": {
+                "default": 9.88,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "No RRB Clerk topic counts read; RRB PO prelims (same structure) blended with IBPS Clerk prelims (more coding/inequality, easier puzzles).",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 3,
+                "max": 5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "letter", "default": 13.33, "custom": null },
+                { "slug": "number", "default": 6.67, "custom": null },
+                { "slug": "word-sentence", "default": 53.33, "custom": null },
+                { "slug": "conditional", "default": 26.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.blood-relations",
+              "weight": {
+                "default": 6.17,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "No RRB Clerk topic counts read; RRB PO prelims (same structure) blended with IBPS Clerk prelims (more coding/inequality, easier puzzles).",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 2,
+                "max": 3,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "direct", "default": 33.33, "custom": null },
+                { "slug": "coded", "default": 25, "custom": null },
+                { "slug": "family-tree", "default": 41.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.direction-distance",
+              "weight": {
+                "default": 6.17,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "No RRB Clerk topic counts read; RRB PO prelims (same structure) blended with IBPS Clerk prelims (more coding/inequality, easier puzzles).",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 2,
+                "max": 3,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "basic", "default": 40, "custom": null },
+                { "slug": "shadow", "default": 10, "custom": null },
+                { "slug": "coded", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.order-ranking",
+              "weight": {
+                "default": 3.7,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "No RRB Clerk topic counts read; RRB PO prelims (same structure) blended with IBPS Clerk prelims (more coding/inequality, easier puzzles).",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 3,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "position", "default": 50, "custom": null },
+                { "slug": "comparison", "default": 33.33, "custom": null },
+                { "slug": "interchange", "default": 16.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.alphanumeric-series",
+              "weight": {
+                "default": 6.17,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "No RRB Clerk topic counts read; RRB PO prelims (same structure) blended with IBPS Clerk prelims (more coding/inequality, easier puzzles).",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "position-based", "default": 33.34, "custom": null },
+                { "slug": "conditional-counting", "default": 33.33, "custom": null },
+                { "slug": "word-letter-number", "default": 33.33, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.word-building",
+              "weight": {
+                "default": 3.7,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "No RRB Clerk topic counts read; RRB PO prelims (same structure) blended with IBPS Clerk prelims (more coding/inequality, easier puzzles).",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 2,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "formation", "default": 36.36, "custom": null },
+                { "slug": "dictionary-order", "default": 18.18, "custom": null },
+                { "slug": "letter-position", "default": 45.46, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.classification",
+              "weight": {
+                "default": 1.24,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "No RRB Clerk topic counts read; RRB PO prelims (same structure) blended with IBPS Clerk prelims (more coding/inequality, easier puzzles).",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "semantic", "default": 50, "custom": null },
+                { "slug": "letter", "default": 50, "custom": null }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionId": "quant",
+          "gate": false,
+          "weight": {
+            "default": 50,
+            "custom": null,
+            "basis": "official-marks",
+            "isOfficial": true,
+            "confidence": "high",
+            "justification": "40 of 80 stage marks.",
+            "evidence": [],
+            "lastUpdated": "2026-11-15"
+          },
+          "topics": [
+            {
+              "topicId": "quant.simplification",
+              "weight": {
+                "default": 32.26,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 10,
+                "max": 15,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "bodmas", "default": 22.64, "custom": null },
+                { "slug": "whole-numbers", "default": 11.32, "custom": null },
+                { "slug": "decimals", "default": 11.32, "custom": null },
+                { "slug": "fractions", "default": 11.32, "custom": null },
+                { "slug": "square-cube-roots", "default": 15.09, "custom": null },
+                { "slug": "approximation", "default": 26.42, "custom": null },
+                { "slug": "continued-fractions", "default": 1.89, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.number-series",
+              "weight": {
+                "default": 6.45,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "missing", "default": 40, "custom": null },
+                { "slug": "wrong", "default": 33.33, "custom": null },
+                { "slug": "patterns", "default": 26.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.quadratic-equations",
+              "weight": {
+                "default": 6.45,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "roots", "default": 30, "custom": null },
+                { "slug": "nature", "default": 10, "custom": null },
+                { "slug": "sum-product", "default": 10, "custom": null },
+                { "slug": "comparison", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.data-interpretation",
+              "weight": {
+                "default": 19.35,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 5,
+                "max": 10,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "tables", "default": 25, "custom": null },
+                { "slug": "bar", "default": 20.83, "custom": null },
+                { "slug": "line", "default": 16.67, "custom": null },
+                { "slug": "pie", "default": 16.67, "custom": null },
+                { "slug": "caselet", "default": 20.83, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.percentage",
+              "weight": {
+                "default": 2.79,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "basics", "default": 18.18, "custom": null },
+                { "slug": "percent-change", "default": 22.73, "custom": null },
+                { "slug": "successive-change", "default": 13.64, "custom": null },
+                { "slug": "product-constancy", "default": 9.09, "custom": null },
+                { "slug": "population-depreciation", "default": 9.09, "custom": null },
+                { "slug": "applications", "default": 27.27, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.ratio-proportion",
+              "weight": {
+                "default": 2.1,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "ratio-basics", "default": 31.58, "custom": null },
+                { "slug": "proportion", "default": 21.05, "custom": null },
+                { "slug": "variation", "default": 10.53, "custom": null },
+                { "slug": "income-expenditure", "default": 21.05, "custom": null },
+                { "slug": "coins-distribution", "default": 15.79, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.average",
+              "weight": {
+                "default": 2.1,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "simple", "default": 23.81, "custom": null },
+                { "slug": "weighted", "default": 19.05, "custom": null },
+                { "slug": "replacement", "default": 28.57, "custom": null },
+                { "slug": "consecutive", "default": 14.29, "custom": null },
+                { "slug": "age-runs", "default": 14.28, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.ages",
+              "weight": {
+                "default": 2.1,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "present-past-future", "default": 50, "custom": null },
+                { "slug": "ratio-based", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.partnership",
+              "weight": {
+                "default": 2.1,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "simple", "default": 33.33, "custom": null },
+                { "slug": "compound", "default": 44.45, "custom": null },
+                { "slug": "working-sleeping", "default": 22.22, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.profit-loss",
+              "weight": {
+                "default": 3.49,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 1.5,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "cp-sp", "default": 28.57, "custom": null },
+                { "slug": "marked-price", "default": 23.81, "custom": null },
+                { "slug": "dishonest-dealer", "default": 14.29, "custom": null },
+                { "slug": "successive-transactions", "default": 9.53, "custom": null },
+                { "slug": "same-sp", "default": 9.52, "custom": null },
+                { "slug": "offers", "default": 9.52, "custom": null },
+                { "slug": "overheads", "default": 4.76, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.discount",
+              "weight": {
+                "default": 1.4,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "single", "default": 23.53, "custom": null },
+                { "slug": "successive", "default": 35.29, "custom": null },
+                { "slug": "mp-cp-relation", "default": 41.18, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.simple-interest",
+              "weight": {
+                "default": 2.1,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "basics", "default": 44.45, "custom": null },
+                { "slug": "amount-doubling", "default": 22.22, "custom": null },
+                { "slug": "rate-time-change", "default": 22.22, "custom": null },
+                { "slug": "installments", "default": 11.11, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.compound-interest",
+              "weight": {
+                "default": 2.1,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "annual", "default": 28.57, "custom": null },
+                { "slug": "half-quarterly", "default": 19.05, "custom": null },
+                { "slug": "ci-si-difference", "default": 23.81, "custom": null },
+                { "slug": "installments", "default": 14.29, "custom": null },
+                { "slug": "effective-rate", "default": 9.52, "custom": null },
+                { "slug": "fractional-time", "default": 4.76, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.time-work",
+              "weight": {
+                "default": 2.1,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "efficiency", "default": 26.09, "custom": null },
+                { "slug": "group-work", "default": 21.74, "custom": null },
+                { "slug": "alternate-days", "default": 13.04, "custom": null },
+                { "slug": "joining-leaving", "default": 17.39, "custom": null },
+                { "slug": "man-days", "default": 13.04, "custom": null },
+                { "slug": "wages", "default": 8.7, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.pipes-cisterns",
+              "weight": {
+                "default": 1.4,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "inlet-outlet", "default": 46.15, "custom": null },
+                { "slug": "leaks", "default": 30.77, "custom": null },
+                { "slug": "alternate", "default": 23.08, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.time-distance",
+              "weight": {
+                "default": 2.1,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "basics", "default": 27.78, "custom": null },
+                { "slug": "average-speed", "default": 22.22, "custom": null },
+                { "slug": "relative-speed", "default": 27.78, "custom": null },
+                { "slug": "meeting-overtaking", "default": 22.22, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.trains",
+              "weight": {
+                "default": 2.1,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "crossing-pole", "default": 28.57, "custom": null },
+                { "slug": "crossing-platform", "default": 28.57, "custom": null },
+                { "slug": "two-trains", "default": 42.86, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.boats-streams",
+              "weight": {
+                "default": 2.1,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "upstream-downstream", "default": 60, "custom": null },
+                { "slug": "round-trip", "default": 40, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.mixture-alligation",
+              "weight": {
+                "default": 2.09,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "rule", "default": 28.57, "custom": null },
+                { "slug": "mean-price", "default": 19.05, "custom": null },
+                { "slug": "replacement", "default": 23.81, "custom": null },
+                { "slug": "multi-mixtures", "default": 9.52, "custom": null },
+                { "slug": "applications", "default": 19.05, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.mensuration-2d",
+              "weight": {
+                "default": 1.4,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "triangle", "default": 26.67, "custom": null },
+                { "slug": "quadrilaterals", "default": 33.33, "custom": null },
+                { "slug": "circle", "default": 40, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.mensuration-3d",
+              "weight": {
+                "default": 0.64,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 0.5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "cube-cuboid", "default": 25, "custom": null },
+                { "slug": "cylinder", "default": 25, "custom": null },
+                { "slug": "cone", "default": 25, "custom": null },
+                { "slug": "sphere-hemisphere", "default": 25, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.probability",
+              "weight": {
+                "default": 0.64,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 0.5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "basics", "default": 30.77, "custom": null },
+                { "slug": "coins-dice", "default": 30.77, "custom": null },
+                { "slug": "balls-bags", "default": 38.46, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.permutation-combination",
+              "weight": {
+                "default": 0.64,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy blend: simplification 10–15 (clerk level), arithmetic 12–15, DI 5–10, number series 0–5, quadratic 0–5.",
+                "evidence": [
+                  "ev-mahendras-rrb-po",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 0.5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "counting-principle", "default": 14.28, "custom": null },
+                { "slug": "arrangements", "default": 42.86, "custom": null },
+                { "slug": "selections", "default": 42.86, "custom": null }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stageId": "mains",
+      "gate": false,
+      "sections": [
+        {
+          "sectionId": "reasoning",
+          "gate": false,
+          "weight": {
+            "default": 25,
+            "custom": null,
+            "basis": "official-marks",
+            "isOfficial": true,
+            "confidence": "high",
+            "justification": "50 of 200 stage marks.",
+            "evidence": [],
+            "lastUpdated": "2026-11-15"
+          },
+          "topics": [
+            {
+              "topicId": "reasoning.puzzles",
+              "weight": {
+                "default": 39.76,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains 2024–25 (puzzles 20, seating 10, coding 5, logical 5), shifted toward simpler puzzles and miscellaneous topics for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 15,
+                "max": 18,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "floor", "default": 20.69, "custom": null },
+                { "slug": "box", "default": 17.24, "custom": null },
+                { "slug": "scheduling", "default": 20.69, "custom": null },
+                { "slug": "comparison", "default": 6.9, "custom": null },
+                { "slug": "categorised", "default": 13.79, "custom": null },
+                { "slug": "designation-age", "default": 13.79, "custom": null },
+                { "slug": "uncertain", "default": 6.9, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.seating-arrangement",
+              "weight": {
+                "default": 21.69,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains 2024–25 (puzzles 20, seating 10, coding 5, logical 5), shifted toward simpler puzzles and miscellaneous topics for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 8,
+                "max": 10,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "linear-single", "default": 18.18, "custom": null },
+                { "slug": "linear-double", "default": 22.73, "custom": null },
+                { "slug": "circular", "default": 27.27, "custom": null },
+                { "slug": "square-rectangle", "default": 18.18, "custom": null },
+                { "slug": "uncertain", "default": 13.64, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.syllogism",
+              "weight": {
+                "default": 4.82,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains 2024–25 (puzzles 20, seating 10, coding 5, logical 5), shifted toward simpler puzzles and miscellaneous topics for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 3,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "classic", "default": 29.41, "custom": null },
+                { "slug": "possibility", "default": 35.29, "custom": null },
+                { "slug": "only-a-few", "default": 17.65, "custom": null },
+                { "slug": "reverse", "default": 17.65, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.inequality",
+              "weight": {
+                "default": 4.82,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains 2024–25 (puzzles 20, seating 10, coding 5, logical 5), shifted toward simpler puzzles and miscellaneous topics for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 3,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "direct", "default": 40, "custom": null },
+                { "slug": "coded", "default": 40, "custom": null },
+                { "slug": "conditional", "default": 20, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.coding-decoding",
+              "weight": {
+                "default": 10.84,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains 2024–25 (puzzles 20, seating 10, coding 5, logical 5), shifted toward simpler puzzles and miscellaneous topics for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 4,
+                "max": 5,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "letter", "default": 13.33, "custom": null },
+                { "slug": "number", "default": 6.67, "custom": null },
+                { "slug": "word-sentence", "default": 53.33, "custom": null },
+                { "slug": "conditional", "default": 26.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.blood-relations",
+              "weight": {
+                "default": 2.41,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains 2024–25 (puzzles 20, seating 10, coding 5, logical 5), shifted toward simpler puzzles and miscellaneous topics for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 2,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "direct", "default": 33.33, "custom": null },
+                { "slug": "coded", "default": 25, "custom": null },
+                { "slug": "family-tree", "default": 41.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.direction-distance",
+              "weight": {
+                "default": 2.41,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains 2024–25 (puzzles 20, seating 10, coding 5, logical 5), shifted toward simpler puzzles and miscellaneous topics for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 2,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "basic", "default": 40, "custom": null },
+                { "slug": "shadow", "default": 10, "custom": null },
+                { "slug": "coded", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.order-ranking",
+              "weight": {
+                "default": 1.2,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains 2024–25 (puzzles 20, seating 10, coding 5, logical 5), shifted toward simpler puzzles and miscellaneous topics for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "position", "default": 50, "custom": null },
+                { "slug": "comparison", "default": 33.33, "custom": null },
+                { "slug": "interchange", "default": 16.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.alphanumeric-series",
+              "weight": {
+                "default": 2.41,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains 2024–25 (puzzles 20, seating 10, coding 5, logical 5), shifted toward simpler puzzles and miscellaneous topics for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 2,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "position-based", "default": 33.34, "custom": null },
+                { "slug": "conditional-counting", "default": 33.33, "custom": null },
+                { "slug": "word-letter-number", "default": 33.33, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.input-output",
+              "weight": {
+                "default": 2.41,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains 2024–25 (puzzles 20, seating 10, coding 5, logical 5), shifted toward simpler puzzles and miscellaneous topics for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 2,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "shifting", "default": 50, "custom": null },
+                { "slug": "step-based", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.data-sufficiency",
+              "weight": {
+                "default": 2.41,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains 2024–25 (puzzles 20, seating 10, coding 5, logical 5), shifted toward simpler puzzles and miscellaneous topics for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 2,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "two-statement", "default": 60, "custom": null },
+                { "slug": "three-statement", "default": 40, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.critical-reasoning",
+              "weight": {
+                "default": 4.82,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains 2024–25 (puzzles 20, seating 10, coding 5, logical 5), shifted toward simpler puzzles and miscellaneous topics for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 3,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "statement-conclusion", "default": 20, "custom": null },
+                { "slug": "assumptions", "default": 30, "custom": null },
+                { "slug": "course-action", "default": 20, "custom": null },
+                { "slug": "cause-effect", "default": 30, "custom": null }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionId": "computer",
+          "gate": false,
+          "weight": {
+            "default": 10,
+            "custom": null,
+            "basis": "official-marks",
+            "isOfficial": true,
+            "confidence": "high",
+            "justification": "20 of 200 stage marks.",
+            "evidence": [],
+            "lastUpdated": "2026-11-15"
+          },
+          "topics": [
+            {
+              "topicId": "computer.fundamentals",
+              "weight": {
+                "default": 13.48,
+                "custom": null,
+                "basis": "editorial-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No topic-wise data; same editorial distribution as RRB PO but tilted toward fundamentals/MS Office for clerk level.",
+                "evidence": [],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 5,
+                "max": 7,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "generations", "default": 12.5, "custom": null },
+                { "slug": "organization", "default": 25, "custom": null },
+                { "slug": "cpu", "default": 25, "custom": null },
+                { "slug": "io-devices", "default": 25, "custom": null },
+                { "slug": "types", "default": 12.5, "custom": null }
+              ]
+            },
+            {
+              "topicId": "computer.memory",
+              "weight": {
+                "default": 8.99,
+                "custom": null,
+                "basis": "editorial-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No topic-wise data; same editorial distribution as RRB PO but tilted toward fundamentals/MS Office for clerk level.",
+                "evidence": [],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 3,
+                "max": 5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "primary", "default": 25, "custom": null },
+                { "slug": "cache", "default": 12.5, "custom": null },
+                { "slug": "secondary", "default": 18.75, "custom": null },
+                { "slug": "units", "default": 18.75, "custom": null },
+                { "slug": "organization", "default": 12.5, "custom": null },
+                { "slug": "backup", "default": 12.5, "custom": null }
+              ]
+            },
+            {
+              "topicId": "computer.hardware-ports",
+              "weight": {
+                "default": 4.5,
+                "custom": null,
+                "basis": "editorial-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No topic-wise data; same editorial distribution as RRB PO but tilted toward fundamentals/MS Office for clerk level.",
+                "evidence": [],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 3,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "ports", "default": 66.67, "custom": null },
+                { "slug": "buses-motherboard", "default": 33.33, "custom": null }
+              ]
+            },
+            {
+              "topicId": "computer.software-os",
+              "weight": {
+                "default": 11.24,
+                "custom": null,
+                "basis": "editorial-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No topic-wise data; same editorial distribution as RRB PO but tilted toward fundamentals/MS Office for clerk level.",
+                "evidence": [],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 4,
+                "max": 6,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "system-application", "default": 15.79, "custom": null },
+                { "slug": "os-functions", "default": 15.79, "custom": null },
+                { "slug": "windows-os", "default": 15.79, "custom": null },
+                { "slug": "windows-explorer", "default": 15.79, "custom": null },
+                { "slug": "shortcuts", "default": 26.31, "custom": null },
+                { "slug": "utilities-boot", "default": 10.53, "custom": null }
+              ]
+            },
+            {
+              "topicId": "computer.ms-office",
+              "weight": {
+                "default": 19.1,
+                "custom": null,
+                "basis": "editorial-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No topic-wise data; same editorial distribution as RRB PO but tilted toward fundamentals/MS Office for clerk level.",
+                "evidence": [],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 7,
+                "max": 10,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "word", "default": 31.25, "custom": null },
+                { "slug": "excel", "default": 31.25, "custom": null },
+                { "slug": "powerpoint", "default": 18.75, "custom": null },
+                { "slug": "access", "default": 18.75, "custom": null }
+              ]
+            },
+            {
+              "topicId": "computer.internet-email",
+              "weight": {
+                "default": 8.99,
+                "custom": null,
+                "basis": "editorial-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No topic-wise data; same editorial distribution as RRB PO but tilted toward fundamentals/MS Office for clerk level.",
+                "evidence": [],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 3,
+                "max": 5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "web-basics", "default": 28.57, "custom": null },
+                { "slug": "browsing-searching", "default": 14.29, "custom": null },
+                { "slug": "download-upload", "default": 14.29, "custom": null },
+                { "slug": "email", "default": 28.57, "custom": null },
+                { "slug": "e-banking", "default": 14.28, "custom": null }
+              ]
+            },
+            {
+              "topicId": "computer.networking",
+              "weight": {
+                "default": 11.24,
+                "custom": null,
+                "basis": "editorial-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No topic-wise data; same editorial distribution as RRB PO but tilted toward fundamentals/MS Office for clerk level.",
+                "evidence": [],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 4,
+                "max": 6,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "types", "default": 14.29, "custom": null },
+                { "slug": "topologies", "default": 14.29, "custom": null },
+                { "slug": "devices", "default": 19.05, "custom": null },
+                { "slug": "protocols", "default": 19.05, "custom": null },
+                { "slug": "osi", "default": 14.28, "custom": null },
+                { "slug": "ip-addressing", "default": 9.52, "custom": null },
+                { "slug": "wireless", "default": 9.52, "custom": null }
+              ]
+            },
+            {
+              "topicId": "computer.security",
+              "weight": {
+                "default": 8.99,
+                "custom": null,
+                "basis": "editorial-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No topic-wise data; same editorial distribution as RRB PO but tilted toward fundamentals/MS Office for clerk level.",
+                "evidence": [],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 3,
+                "max": 5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "threats", "default": 50, "custom": null },
+                { "slug": "prevention", "default": 33.33, "custom": null },
+                { "slug": "cyber-law", "default": 16.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "computer.number-systems-logic",
+              "weight": {
+                "default": 4.49,
+                "custom": null,
+                "basis": "editorial-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No topic-wise data; same editorial distribution as RRB PO but tilted toward fundamentals/MS Office for clerk level.",
+                "evidence": [],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 3,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "conversions", "default": 44.45, "custom": null },
+                { "slug": "logic-gates", "default": 33.33, "custom": null },
+                { "slug": "codes", "default": 22.22, "custom": null }
+              ]
+            },
+            {
+              "topicId": "computer.programming-dbms",
+              "weight": {
+                "default": 4.49,
+                "custom": null,
+                "basis": "editorial-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No topic-wise data; same editorial distribution as RRB PO but tilted toward fundamentals/MS Office for clerk level.",
+                "evidence": [],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 3,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "languages", "default": 30, "custom": null },
+                { "slug": "translators", "default": 30, "custom": null },
+                { "slug": "dbms", "default": 40, "custom": null }
+              ]
+            },
+            {
+              "topicId": "computer.emerging-tech",
+              "weight": {
+                "default": 4.49,
+                "custom": null,
+                "basis": "editorial-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No topic-wise data; same editorial distribution as RRB PO but tilted toward fundamentals/MS Office for clerk level.",
+                "evidence": [],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 3,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "cloud", "default": 18.18, "custom": null },
+                { "slug": "ai-ml", "default": 18.18, "custom": null },
+                { "slug": "iot", "default": 18.18, "custom": null },
+                { "slug": "blockchain", "default": 9.09, "custom": null },
+                { "slug": "abbreviations", "default": 36.37, "custom": null }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionId": "general-awareness",
+          "gate": false,
+          "weight": {
+            "default": 20,
+            "custom": null,
+            "basis": "official-marks",
+            "isOfficial": true,
+            "confidence": "high",
+            "justification": "40 of 200 stage marks.",
+            "evidence": [],
+            "lastUpdated": "2026-11-15"
+          },
+          "topics": [
+            {
+              "topicId": "ga.current-affairs",
+              "weight": {
+                "default": 41.67,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: RRB PO Mains GA 2024–25 (CA 25–26, banking 6–7, economy 5, static 3) with a little more static GK.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 16,
+                "max": 19,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "national", "default": 12.5, "custom": null },
+                { "slug": "international", "default": 10, "custom": null },
+                { "slug": "economy-business", "default": 12.5, "custom": null },
+                { "slug": "science-tech", "default": 5, "custom": null },
+                { "slug": "sports", "default": 7.5, "custom": null },
+                { "slug": "awards-honours", "default": 7.5, "custom": null },
+                { "slug": "appointments", "default": 10, "custom": null },
+                { "slug": "summits", "default": 7.5, "custom": null },
+                { "slug": "schemes-policies", "default": 10, "custom": null },
+                { "slug": "defence", "default": 5, "custom": null },
+                { "slug": "rankings-indices", "default": 10, "custom": null },
+                { "slug": "obituaries", "default": 2.5, "custom": null }
+              ]
+            },
+            {
+              "topicId": "fin.rural-agri-finance",
+              "weight": {
+                "default": 5.36,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: RRB PO Mains GA 2024–25 (CA 25–26, banking 6–7, economy 5, static 3) with a little more static GK.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1.5,
+                "max": 3,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "rrb", "default": 26.67, "custom": null },
+                { "slug": "nabard", "default": 26.67, "custom": null },
+                { "slug": "kcc", "default": 20, "custom": null },
+                { "slug": "crop-insurance", "default": 13.33, "custom": null },
+                { "slug": "shg-linkage", "default": 13.33, "custom": null }
+              ]
+            },
+            {
+              "topicId": "fin.banking-current-affairs",
+              "weight": {
+                "default": 5.36,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: RRB PO Mains GA 2024–25 (CA 25–26, banking 6–7, economy 5, static 3) with a little more static GK.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1.5,
+                "max": 3,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "appointments", "default": 23.08, "custom": null },
+                { "slug": "mergers-licences-penalties", "default": 30.77, "custom": null },
+                { "slug": "products-partnerships", "default": 23.08, "custom": null },
+                { "slug": "reports-rankings", "default": 23.07, "custom": null }
+              ]
+            },
+            {
+              "topicId": "fin.banking-structure",
+              "weight": {
+                "default": 2.38,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: RRB PO Mains GA 2024–25 (CA 25–26, banking 6–7, economy 5, static 3) with a little more static GK.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "history", "default": 11.11, "custom": null },
+                { "slug": "nationalisation", "default": 11.11, "custom": null },
+                { "slug": "types-of-banks", "default": 22.22, "custom": null },
+                { "slug": "psb-mergers", "default": 16.67, "custom": null },
+                { "slug": "nbfc", "default": 16.67, "custom": null },
+                { "slug": "hq-taglines", "default": 22.22, "custom": null }
+              ]
+            },
+            {
+              "topicId": "fin.rbi",
+              "weight": {
+                "default": 3.57,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: RRB PO Mains GA 2024–25 (CA 25–26, banking 6–7, economy 5, static 3) with a little more static GK.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 2,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "history-functions", "default": 10.53, "custom": null },
+                { "slug": "monetary-tools", "default": 31.58, "custom": null },
+                { "slug": "mpc", "default": 15.79, "custom": null },
+                { "slug": "rbi-circulars", "default": 31.58, "custom": null },
+                { "slug": "leadership", "default": 10.52, "custom": null }
+              ]
+            },
+            {
+              "topicId": "fin.banking-terms",
+              "weight": {
+                "default": 3.57,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: RRB PO Mains GA 2024–25 (CA 25–26, banking 6–7, economy 5, static 3) with a little more static GK.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 2,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "accounts-deposits", "default": 13.64, "custom": null },
+                { "slug": "kyc-aml", "default": 9.09, "custom": null },
+                { "slug": "negotiable-instruments", "default": 9.09, "custom": null },
+                { "slug": "loans-npa", "default": 18.18, "custom": null },
+                { "slug": "capital-basel", "default": 13.64, "custom": null },
+                { "slug": "priority-sector", "default": 9.09, "custom": null },
+                { "slug": "recovery-laws", "default": 9.09, "custom": null },
+                { "slug": "terms", "default": 18.18, "custom": null }
+              ]
+            },
+            {
+              "topicId": "fin.digital-payments",
+              "weight": {
+                "default": 2.38,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: RRB PO Mains GA 2024–25 (CA 25–26, banking 6–7, economy 5, static 3) with a little more static GK.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "payment-systems", "default": 20, "custom": null },
+                { "slug": "upi-npci", "default": 30, "custom": null },
+                { "slug": "cards-atm", "default": 10, "custom": null },
+                { "slug": "cbdc", "default": 15, "custom": null },
+                { "slug": "fintech", "default": 10, "custom": null },
+                { "slug": "cyber-fraud", "default": 15, "custom": null }
+              ]
+            },
+            {
+              "topicId": "fin.financial-inclusion",
+              "weight": {
+                "default": 2.38,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: RRB PO Mains GA 2024–25 (CA 25–26, banking 6–7, economy 5, static 3) with a little more static GK.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "schemes", "default": 46.15, "custom": null },
+                { "slug": "lead-bank", "default": 15.39, "custom": null },
+                { "slug": "shg-mfi", "default": 23.08, "custom": null },
+                { "slug": "literacy", "default": 15.38, "custom": null }
+              ]
+            },
+            {
+              "topicId": "fin.regulators-institutions",
+              "weight": {
+                "default": 1.79,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: RRB PO Mains GA 2024–25 (CA 25–26, banking 6–7, economy 5, static 3) with a little more static GK.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "regulators", "default": 30.77, "custom": null },
+                { "slug": "dfis", "default": 30.77, "custom": null },
+                { "slug": "dicgc", "default": 15.38, "custom": null },
+                { "slug": "global", "default": 23.08, "custom": null }
+              ]
+            },
+            {
+              "topicId": "fin.insurance-pension",
+              "weight": {
+                "default": 1.79,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: RRB PO Mains GA 2024–25 (CA 25–26, banking 6–7, economy 5, static 3) with a little more static GK.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "insurance-basics", "default": 33.34, "custom": null },
+                { "slug": "insurers", "default": 33.33, "custom": null },
+                { "slug": "pension", "default": 33.33, "custom": null }
+              ]
+            },
+            {
+              "topicId": "fin.budget-economic-survey",
+              "weight": {
+                "default": 2.38,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: RRB PO Mains GA 2024–25 (CA 25–26, banking 6–7, economy 5, static 3) with a little more static GK.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "budget-highlights", "default": 66.67, "custom": null },
+                { "slug": "economic-survey", "default": 33.33, "custom": null }
+              ]
+            },
+            {
+              "topicId": "ga.economy-agriculture",
+              "weight": {
+                "default": 3.57,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: RRB PO Mains GA 2024–25 (CA 25–26, banking 6–7, economy 5, static 3) with a little more static GK.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 2,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "green-revolution", "default": 25, "custom": null },
+                { "slug": "msp-procurement", "default": 37.5, "custom": null },
+                { "slug": "agri-schemes", "default": 37.5, "custom": null }
+              ]
+            },
+            {
+              "topicId": "ga.economy-basics",
+              "weight": {
+                "default": 1.79,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: RRB PO Mains GA 2024–25 (CA 25–26, banking 6–7, economy 5, static 3) with a little more static GK.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "concepts", "default": 42.86, "custom": null },
+                { "slug": "national-income", "default": 57.14, "custom": null }
+              ]
+            },
+            {
+              "topicId": "ga.economy-inflation",
+              "weight": {
+                "default": 1.79,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: RRB PO Mains GA 2024–25 (CA 25–26, banking 6–7, economy 5, static 3) with a little more static GK.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "types-causes", "default": 50, "custom": null },
+                { "slug": "indices", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "ga.govt-schemes",
+              "weight": {
+                "default": 5.36,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: RRB PO Mains GA 2024–25 (CA 25–26, banking 6–7, economy 5, static 3) with a little more static GK.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1.5,
+                "max": 3,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "social-welfare", "default": 28.57, "custom": null },
+                { "slug": "employment-rural", "default": 21.43, "custom": null },
+                { "slug": "health-education", "default": 21.43, "custom": null },
+                { "slug": "flagship-missions", "default": 28.57, "custom": null }
+              ]
+            },
+            {
+              "topicId": "ga.international-organisations",
+              "weight": {
+                "default": 1.78,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: RRB PO Mains GA 2024–25 (CA 25–26, banking 6–7, economy 5, static 3) with a little more static GK.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "un", "default": 25, "custom": null },
+                { "slug": "bretton-woods", "default": 25, "custom": null },
+                { "slug": "regional", "default": 25, "custom": null },
+                { "slug": "hq-heads", "default": 25, "custom": null }
+              ]
+            },
+            {
+              "topicId": "ga.static-gk",
+              "weight": {
+                "default": 4.76,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: RRB PO Mains GA 2024–25 (CA 25–26, banking 6–7, economy 5, static 3) with a little more static GK.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1.5,
+                "max": 2.5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "books-authors", "default": 23.08, "custom": null },
+                { "slug": "awards", "default": 30.77, "custom": null },
+                { "slug": "important-days", "default": 23.08, "custom": null },
+                { "slug": "world-capitals-currencies", "default": 23.07, "custom": null }
+              ]
+            },
+            {
+              "topicId": "ga.sports",
+              "weight": {
+                "default": 2.38,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: RRB PO Mains GA 2024–25 (CA 25–26, banking 6–7, economy 5, static 3) with a little more static GK.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "trophies", "default": 42.86, "custom": null },
+                { "slug": "events", "default": 57.14, "custom": null }
+              ]
+            },
+            {
+              "topicId": "ga.geography-india",
+              "weight": {
+                "default": 2.38,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: RRB PO Mains GA 2024–25 (CA 25–26, banking 6–7, economy 5, static 3) with a little more static GK.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "protected-areas", "default": 33.33, "custom": null },
+                { "slug": "agriculture-crops", "default": 25, "custom": null },
+                { "slug": "dams-projects", "default": 25, "custom": null },
+                { "slug": "states-capitals", "default": 16.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "ga.art-culture",
+              "weight": {
+                "default": 1.78,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: RRB PO Mains GA 2024–25 (CA 25–26, banking 6–7, economy 5, static 3) with a little more static GK.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "dances", "default": 55.56, "custom": null },
+                { "slug": "festivals-fairs", "default": 44.44, "custom": null }
+              ]
+            },
+            {
+              "topicId": "ga.science-technology",
+              "weight": {
+                "default": 1.78,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: RRB PO Mains GA 2024–25 (CA 25–26, banking 6–7, economy 5, static 3) with a little more static GK.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "space", "default": 50, "custom": null },
+                { "slug": "defence", "default": 50, "custom": null }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionId": "english",
+          "gate": false,
+          "choiceGroup": "language",
+          "weight": {
+            "default": 20,
+            "custom": null,
+            "basis": "official-marks",
+            "isOfficial": true,
+            "confidence": "high",
+            "justification": "40 of 200 stage marks (choice group 'language': candidate takes one alternative).",
+            "evidence": [],
+            "lastUpdated": "2026-11-15"
+          },
+          "topics": [
+            {
+              "topicId": "english.reading-comprehension",
+              "weight": {
+                "default": 27.33,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No RRB English breakdown; IBPS Clerk Prelims/Mains English used as proxy (more vocabulary-style questions).",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 10,
+                "max": 12,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "factual", "default": 25, "custom": null },
+                { "slug": "inference", "default": 35, "custom": null },
+                { "slug": "vocab-in-context", "default": 20, "custom": null },
+                { "slug": "tone-title", "default": 15, "custom": null },
+                { "slug": "passage-types", "default": 5, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.cloze-test",
+              "weight": {
+                "default": 13.67,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No RRB English breakdown; IBPS Clerk Prelims/Mains English used as proxy (more vocabulary-style questions).",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 5,
+                "max": 6,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "standard", "default": 66.67, "custom": null },
+                { "slug": "replacement", "default": 33.33, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.error-detection",
+              "weight": {
+                "default": 12.42,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No RRB English breakdown; IBPS Clerk Prelims/Mains English used as proxy (more vocabulary-style questions).",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 4,
+                "max": 6,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "spot-error", "default": 50, "custom": null },
+                { "slug": "correct-sentence", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.fill-blanks",
+              "weight": {
+                "default": 9.94,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No RRB English breakdown; IBPS Clerk Prelims/Mains English used as proxy (more vocabulary-style questions).",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 3,
+                "max": 5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "single", "default": 14.29, "custom": null },
+                { "slug": "multiple", "default": 42.86, "custom": null },
+                { "slug": "grammar-based", "default": 14.28, "custom": null },
+                { "slug": "vocab-based", "default": 28.57, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.para-jumbles",
+              "weight": {
+                "default": 9.94,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No RRB English breakdown; IBPS Clerk Prelims/Mains English used as proxy (more vocabulary-style questions).",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 3,
+                "max": 5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "passage-sentences", "default": 60, "custom": null },
+                { "slug": "odd-sentence", "default": 20, "custom": null },
+                { "slug": "first-last-fixed", "default": 20, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.sentence-improvement",
+              "weight": {
+                "default": 7.45,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No RRB English breakdown; IBPS Clerk Prelims/Mains English used as proxy (more vocabulary-style questions).",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 2,
+                "max": 4,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "phrase-replacement", "default": 80, "custom": null },
+                { "slug": "no-improvement", "default": 20, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.word-usage",
+              "weight": {
+                "default": 7.45,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No RRB English breakdown; IBPS Clerk Prelims/Mains English used as proxy (more vocabulary-style questions).",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 2,
+                "max": 4,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "word-swap", "default": 33.34, "custom": null },
+                { "slug": "word-usage", "default": 33.33, "custom": null },
+                { "slug": "phrase-rearrangement", "default": 33.33, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.sentence-completion",
+              "weight": {
+                "default": 3.73,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No RRB English breakdown; IBPS Clerk Prelims/Mains English used as proxy (more vocabulary-style questions).",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 2,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "connectors", "default": 100, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.grammar-rules",
+              "weight": {
+                "default": 1.86,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No RRB English breakdown; IBPS Clerk Prelims/Mains English used as proxy (more vocabulary-style questions).",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "parts-of-speech", "default": 5.56, "custom": null },
+                { "slug": "nouns-pronouns", "default": 8.33, "custom": null },
+                { "slug": "articles", "default": 8.33, "custom": null },
+                { "slug": "verbs-tenses", "default": 13.89, "custom": null },
+                { "slug": "subject-verb", "default": 13.89, "custom": null },
+                { "slug": "modals", "default": 5.56, "custom": null },
+                { "slug": "adjectives-adverbs", "default": 8.33, "custom": null },
+                { "slug": "prepositions", "default": 11.11, "custom": null },
+                { "slug": "conjunctions", "default": 8.33, "custom": null },
+                { "slug": "conditionals", "default": 5.56, "custom": null },
+                { "slug": "parallelism-redundancy", "default": 5.56, "custom": null },
+                { "slug": "misc-rules", "default": 5.55, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.synonyms-antonyms",
+              "weight": {
+                "default": 4.97,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No RRB English breakdown; IBPS Clerk Prelims/Mains English used as proxy (more vocabulary-style questions).",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 3,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "synonyms", "default": 25, "custom": null },
+                { "slug": "antonyms", "default": 25, "custom": null },
+                { "slug": "usage", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.idioms-phrases",
+              "weight": {
+                "default": 1.24,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No RRB English breakdown; IBPS Clerk Prelims/Mains English used as proxy (more vocabulary-style questions).",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "idioms", "default": 60, "custom": null },
+                { "slug": "phrasal-verbs", "default": 40, "custom": null }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionId": "hindi",
+          "gate": false,
+          "choiceGroup": "language",
+          "weight": {
+            "default": 20,
+            "custom": null,
+            "basis": "official-marks",
+            "isOfficial": true,
+            "confidence": "high",
+            "justification": "40 of 200 stage marks (choice group 'language': candidate takes one alternative).",
+            "evidence": [],
+            "lastUpdated": "2026-11-15"
+          },
+          "topics": [
+            {
+              "topicId": "hindi.comprehension",
+              "weight": {
+                "default": 19.51,
+                "custom": null,
+                "basis": "editorial-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No Hindi-section data; same editorial mix as RRB PO Hindi with more vocabulary/grammar for clerk level.",
+                "evidence": [],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 7,
+                "max": 9,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "nominal",
+                "justification": "Single subtopic or pass/fail component.",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "apathit", "default": 100, "custom": null }
+              ]
+            },
+            {
+              "topicId": "hindi.cloze-test",
+              "weight": {
+                "default": 13.41,
+                "custom": null,
+                "basis": "editorial-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No Hindi-section data; same editorial mix as RRB PO Hindi with more vocabulary/grammar for clerk level.",
+                "evidence": [],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 5,
+                "max": 6,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "nominal",
+                "justification": "Single subtopic or pass/fail component.",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "cloze", "default": 100, "custom": null }
+              ]
+            },
+            {
+              "topicId": "hindi.sentence-correction",
+              "weight": {
+                "default": 13.41,
+                "custom": null,
+                "basis": "editorial-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No Hindi-section data; same editorial mix as RRB PO Hindi with more vocabulary/grammar for clerk level.",
+                "evidence": [],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 5,
+                "max": 6,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "error", "default": 50, "custom": null },
+                { "slug": "correction", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "hindi.fill-blanks",
+              "weight": {
+                "default": 12.2,
+                "custom": null,
+                "basis": "editorial-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No Hindi-section data; same editorial mix as RRB PO Hindi with more vocabulary/grammar for clerk level.",
+                "evidence": [],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 4,
+                "max": 6,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "nominal",
+                "justification": "Single subtopic or pass/fail component.",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "fill-blanks", "default": 100, "custom": null }
+              ]
+            },
+            {
+              "topicId": "hindi.para-jumbles",
+              "weight": {
+                "default": 8.54,
+                "custom": null,
+                "basis": "editorial-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No Hindi-section data; same editorial mix as RRB PO Hindi with more vocabulary/grammar for clerk level.",
+                "evidence": [],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 3,
+                "max": 4,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "nominal",
+                "justification": "Single subtopic or pass/fail component.",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "rearrangement", "default": 100, "custom": null }
+              ]
+            },
+            {
+              "topicId": "hindi.vocabulary",
+              "weight": {
+                "default": 14.63,
+                "custom": null,
+                "basis": "editorial-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No Hindi-section data; same editorial mix as RRB PO Hindi with more vocabulary/grammar for clerk level.",
+                "evidence": [],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 5,
+                "max": 7,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "paryayvachi", "default": 25, "custom": null },
+                { "slug": "vilom", "default": 25, "custom": null },
+                { "slug": "one-word", "default": 18.75, "custom": null },
+                { "slug": "tatsam-tadbhav", "default": 12.5, "custom": null },
+                { "slug": "vartani", "default": 18.75, "custom": null }
+              ]
+            },
+            {
+              "topicId": "hindi.idioms",
+              "weight": {
+                "default": 6.1,
+                "custom": null,
+                "basis": "editorial-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No Hindi-section data; same editorial mix as RRB PO Hindi with more vocabulary/grammar for clerk level.",
+                "evidence": [],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 2,
+                "max": 3,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "muhavare", "default": 66.67, "custom": null },
+                { "slug": "lokoktiyan", "default": 33.33, "custom": null }
+              ]
+            },
+            {
+              "topicId": "hindi.grammar",
+              "weight": {
+                "default": 12.2,
+                "custom": null,
+                "basis": "editorial-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "No Hindi-section data; same editorial mix as RRB PO Hindi with more vocabulary/grammar for clerk level.",
+                "evidence": [],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 4,
+                "max": 6,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "parts-of-speech", "default": 14.29, "custom": null },
+                { "slug": "sandhi", "default": 19.05, "custom": null },
+                { "slug": "samas", "default": 19.05, "custom": null },
+                { "slug": "upsarg-pratyay", "default": 14.29, "custom": null },
+                { "slug": "ling-vachan", "default": 14.28, "custom": null },
+                { "slug": "karak", "default": 9.52, "custom": null },
+                { "slug": "kaal-vachya", "default": 9.52, "custom": null }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionId": "quant",
+          "gate": false,
+          "weight": {
+            "default": 25,
+            "custom": null,
+            "basis": "official-marks",
+            "isOfficial": true,
+            "confidence": "high",
+            "justification": "50 of 200 stage marks.",
+            "evidence": [],
+            "lastUpdated": "2026-11-15"
+          },
+          "topics": [
+            {
+              "topicId": "quant.data-interpretation",
+              "weight": {
+                "default": 33.88,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 14,
+                "max": 17,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "tables", "default": 17.65, "custom": null },
+                { "slug": "bar", "default": 14.71, "custom": null },
+                { "slug": "line", "default": 11.77, "custom": null },
+                { "slug": "pie", "default": 11.76, "custom": null },
+                { "slug": "histogram", "default": 1.47, "custom": null },
+                { "slug": "frequency-polygon", "default": 1.47, "custom": null },
+                { "slug": "mixed", "default": 11.76, "custom": null },
+                { "slug": "caselet", "default": 14.71, "custom": null },
+                { "slug": "missing", "default": 8.82, "custom": null },
+                { "slug": "new-pattern", "default": 5.88, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.simplification",
+              "weight": {
+                "default": 13.11,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 5,
+                "max": 7,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "bodmas", "default": 22.64, "custom": null },
+                { "slug": "whole-numbers", "default": 11.32, "custom": null },
+                { "slug": "decimals", "default": 11.32, "custom": null },
+                { "slug": "fractions", "default": 11.32, "custom": null },
+                { "slug": "square-cube-roots", "default": 15.09, "custom": null },
+                { "slug": "approximation", "default": 26.42, "custom": null },
+                { "slug": "continued-fractions", "default": 1.89, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.number-series",
+              "weight": {
+                "default": 9.84,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 4,
+                "max": 5,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "missing", "default": 40, "custom": null },
+                { "slug": "wrong", "default": 33.33, "custom": null },
+                { "slug": "patterns", "default": 26.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.quadratic-equations",
+              "weight": {
+                "default": 3.28,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 3,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "roots", "default": 30, "custom": null },
+                { "slug": "nature", "default": 10, "custom": null },
+                { "slug": "sum-product", "default": 10, "custom": null },
+                { "slug": "comparison", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.quantity-comparison",
+              "weight": {
+                "default": 2.19,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 2,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "quantity-i-ii", "default": 60, "custom": null },
+                { "slug": "arithmetic-based", "default": 40, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.data-sufficiency",
+              "weight": {
+                "default": 2.19,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 2,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "two-statement", "default": 50, "custom": null },
+                { "slug": "three-statement", "default": 33.33, "custom": null },
+                { "slug": "not-necessary", "default": 16.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.percentage",
+              "weight": {
+                "default": 2.91,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 2,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "basics", "default": 18.18, "custom": null },
+                { "slug": "percent-change", "default": 22.73, "custom": null },
+                { "slug": "successive-change", "default": 13.64, "custom": null },
+                { "slug": "product-constancy", "default": 9.09, "custom": null },
+                { "slug": "population-depreciation", "default": 9.09, "custom": null },
+                { "slug": "applications", "default": 27.27, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.ratio-proportion",
+              "weight": {
+                "default": 2.18,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "ratio-basics", "default": 31.58, "custom": null },
+                { "slug": "proportion", "default": 21.05, "custom": null },
+                { "slug": "variation", "default": 10.53, "custom": null },
+                { "slug": "income-expenditure", "default": 21.05, "custom": null },
+                { "slug": "coins-distribution", "default": 15.79, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.average",
+              "weight": {
+                "default": 2.18,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "simple", "default": 23.81, "custom": null },
+                { "slug": "weighted", "default": 19.05, "custom": null },
+                { "slug": "replacement", "default": 28.57, "custom": null },
+                { "slug": "consecutive", "default": 14.29, "custom": null },
+                { "slug": "age-runs", "default": 14.28, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.ages",
+              "weight": {
+                "default": 1.46,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "present-past-future", "default": 50, "custom": null },
+                { "slug": "ratio-based", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.partnership",
+              "weight": {
+                "default": 1.46,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "simple", "default": 33.33, "custom": null },
+                { "slug": "compound", "default": 44.45, "custom": null },
+                { "slug": "working-sleeping", "default": 22.22, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.profit-loss",
+              "weight": {
+                "default": 2.91,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 2,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "cp-sp", "default": 28.57, "custom": null },
+                { "slug": "marked-price", "default": 23.81, "custom": null },
+                { "slug": "dishonest-dealer", "default": 14.29, "custom": null },
+                { "slug": "successive-transactions", "default": 9.53, "custom": null },
+                { "slug": "same-sp", "default": 9.52, "custom": null },
+                { "slug": "offers", "default": 9.52, "custom": null },
+                { "slug": "overheads", "default": 4.76, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.discount",
+              "weight": {
+                "default": 1.46,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "single", "default": 23.53, "custom": null },
+                { "slug": "successive", "default": 35.29, "custom": null },
+                { "slug": "mp-cp-relation", "default": 41.18, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.simple-interest",
+              "weight": {
+                "default": 1.46,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "basics", "default": 44.45, "custom": null },
+                { "slug": "amount-doubling", "default": 22.22, "custom": null },
+                { "slug": "rate-time-change", "default": 22.22, "custom": null },
+                { "slug": "installments", "default": 11.11, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.compound-interest",
+              "weight": {
+                "default": 1.46,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "annual", "default": 28.57, "custom": null },
+                { "slug": "half-quarterly", "default": 19.05, "custom": null },
+                { "slug": "ci-si-difference", "default": 23.81, "custom": null },
+                { "slug": "installments", "default": 14.29, "custom": null },
+                { "slug": "effective-rate", "default": 9.52, "custom": null },
+                { "slug": "fractional-time", "default": 4.76, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.time-work",
+              "weight": {
+                "default": 2.18,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "efficiency", "default": 26.09, "custom": null },
+                { "slug": "group-work", "default": 21.74, "custom": null },
+                { "slug": "alternate-days", "default": 13.04, "custom": null },
+                { "slug": "joining-leaving", "default": 17.39, "custom": null },
+                { "slug": "man-days", "default": 13.04, "custom": null },
+                { "slug": "wages", "default": 8.7, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.pipes-cisterns",
+              "weight": {
+                "default": 1.46,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "inlet-outlet", "default": 46.15, "custom": null },
+                { "slug": "leaks", "default": 30.77, "custom": null },
+                { "slug": "alternate", "default": 23.08, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.time-distance",
+              "weight": {
+                "default": 2.18,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "basics", "default": 27.78, "custom": null },
+                { "slug": "average-speed", "default": 22.22, "custom": null },
+                { "slug": "relative-speed", "default": 27.78, "custom": null },
+                { "slug": "meeting-overtaking", "default": 22.22, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.trains",
+              "weight": {
+                "default": 1.82,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "crossing-pole", "default": 28.57, "custom": null },
+                { "slug": "crossing-platform", "default": 28.57, "custom": null },
+                { "slug": "two-trains", "default": 42.86, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.boats-streams",
+              "weight": {
+                "default": 1.46,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "upstream-downstream", "default": 60, "custom": null },
+                { "slug": "round-trip", "default": 40, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.mixture-alligation",
+              "weight": {
+                "default": 1.82,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "rule", "default": 28.57, "custom": null },
+                { "slug": "mean-price", "default": 19.05, "custom": null },
+                { "slug": "replacement", "default": 23.81, "custom": null },
+                { "slug": "multi-mixtures", "default": 9.52, "custom": null },
+                { "slug": "applications", "default": 19.05, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.mensuration-2d",
+              "weight": {
+                "default": 1.46,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "triangle", "default": 26.67, "custom": null },
+                { "slug": "quadrilaterals", "default": 33.33, "custom": null },
+                { "slug": "circle", "default": 40, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.mensuration-3d",
+              "weight": {
+                "default": 1.46,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "cube-cuboid", "default": 25, "custom": null },
+                { "slug": "cylinder", "default": 25, "custom": null },
+                { "slug": "cone", "default": 25, "custom": null },
+                { "slug": "sphere-hemisphere", "default": 25, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.probability",
+              "weight": {
+                "default": 3.64,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 2.5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "basics", "default": 25, "custom": null },
+                { "slug": "coins-dice", "default": 25, "custom": null },
+                { "slug": "cards", "default": 18.75, "custom": null },
+                { "slug": "balls-bags", "default": 31.25, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.permutation-combination",
+              "weight": {
+                "default": 0.55,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "very-low",
+                "justification": "Proxy: RRB PO Mains quant (DI 20, arithmetic 10, series 5, approximation 5) with more simplification and less DI for clerk level.",
+                "evidence": [
+                  "ev-mahendras-rrb-po"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 0.5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "counting-principle", "default": 12.5, "custom": null },
+                { "slug": "arrangements", "default": 37.5, "custom": null },
+                { "slug": "selections", "default": 37.5, "custom": null },
+                { "slug": "circular", "default": 12.5, "custom": null }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
