@@ -1,0 +1,26 @@
+{
+  "$comment": "Entry point for the app and the build script. To add an exam: create data/exams/<id>.json and append one entry below. Categories drive the 'cross-category' overlap classification. Add a new category (e.g. railways) the same way.",
+  "schemaVersion": "1.0.0",
+  "dataVersion": "2026.11.15",
+  "statusLegend": {
+    "official": "Named in the official notification syllabus text (verbatim or near-verbatim).",
+    "official-umbrella": "Not named itself, but clearly covered by an official heading or section name (e.g. 'Modern History' under SSC's 'History'; 'RBI' under a 'Banking Awareness' section).",
+    "pyq-derived": "Not in any official syllabus; included because it appears regularly in previous-year papers. Editorial.",
+    "unverified": "Uncertain or low-frequency; may or may not be asked. Verify against recent papers before investing heavily."
+  },
+  "categories": [
+    { "id": "ssc", "name": "Staff Selection Commission (SSC)" },
+    { "id": "banking", "name": "Banking (SBI & IBPS)" }
+  ],
+  "exams": [
+    { "id": "ssc-cgl", "category": "ssc", "file": "exams/ssc-cgl.json" },
+    { "id": "ssc-chsl", "category": "ssc", "file": "exams/ssc-chsl.json" },
+    { "id": "ssc-cpo", "category": "ssc", "file": "exams/ssc-cpo.json" },
+    { "id": "sbi-po", "category": "banking", "file": "exams/sbi-po.json" },
+    { "id": "sbi-clerk", "category": "banking", "file": "exams/sbi-clerk.json" },
+    { "id": "ibps-po", "category": "banking", "file": "exams/ibps-po.json" },
+    { "id": "ibps-clerk", "category": "banking", "file": "exams/ibps-clerk.json" },
+    { "id": "ibps-rrb-po", "category": "banking", "file": "exams/ibps-rrb-po.json" },
+    { "id": "ibps-rrb-clerk", "category": "banking", "file": "exams/ibps-rrb-clerk.json" }
+  ]
+}

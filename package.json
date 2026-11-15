@@ -1,0 +1,14 @@
+{
+  "name": "syllabus-tracker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Competitive exam syllabus tracker: Phase 1 syllabus database (SSC & Banking).",
+  "scripts": {
+    "build:data": "node scripts/build.mjs",
+    "check:data": "node scripts/build.mjs --check"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

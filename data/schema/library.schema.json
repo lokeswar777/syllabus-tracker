@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "library.schema.json",
+  "title": "Canonical topic library",
+  "description": "Single source of truth for every topic/subtopic. Full subtopic id = <topic.id>.<subtopic.id>.",
+  "type": "object",
+  "required": ["version", "subjects", "topics"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "string" },
+    "description": { "type": "string" },
+    "subjects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "name": { "type": "string" },
+          "aliases": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": false
+      }
+    },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "subject", "name", "subtopics"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+\\.[a-z0-9-]+$", "description": "<subject>.<topic-slug>" },
+          "subject": { "type": "string" },
+          "group": { "type": "string", "description": "UI grouping inside a subject, e.g. 'Arithmetic', 'Geometry'" },
+          "name": { "type": "string" },
+          "aliases": { "type": "array", "items": { "type": "string" }, "description": "Alternative official wordings used by different exams" },
+          "related": { "type": "array", "items": { "type": "string" }, "description": "Conceptually linked topics in other subjects (not counted as overlap)" },
+          "subtopics": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["id", "name"],
+              "properties": {
+                "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+                "name": { "type": "string" }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

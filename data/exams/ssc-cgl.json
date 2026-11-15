@@ -1,0 +1,404 @@
+{
+  "$schema": "../schema/exam.schema.json",
+  "id": "ssc-cgl",
+  "name": "Combined Graduate Level Examination",
+  "shortName": "SSC CGL",
+  "conductingBody": "Staff Selection Commission (SSC)",
+  "category": "ssc",
+  "cycle": "2026",
+  "eligibilityLevel": "Graduation",
+  "lastVerified": "2026-11-15",
+  "sources": ["ssc-cgl-2026-notice"],
+  "posts": ["Group 'B' & 'C' posts incl. Assistant Section Officer, Inspector (CGST/Income Tax/Preventive Officer/Examiner), Assistant Audit Officer, Assistant Accounts Officer, Junior Statistical Officer, Statistical Investigator Gr-II, Auditor, Accountant, UDC, Tax Assistant, Postal/Sorting Assistant and others"],
+  "selectionSummary": "Tier-I (screening) → Tier-II Paper-I (all posts) + Paper-II (JSO/SI-II only) + Paper-III (AAO only) → Document verification",
+  "finalMerit": "Tier-II only (Para 16.10). Aggregate of Paper-I Sections I & II for all posts; + Paper-II for JSO/SI-II; + Paper-III for AAO. Paper-I Sections III (CKT) & IV (DEST) are qualifying, with higher standards for posts needing Computer Proficiency or DEST.",
+  "notes": [
+    "2026 change: sectional timers in Tier-I (15 min/section) and Tier-II Paper-I (30/30 min in Section I; 40/20 min in Section II).",
+    "2026 change: Paper-III (General Studies – Finance & Economics) for Assistant Audit Officer / Assistant Accounts Officer is part of the scheme, with Part A (80 marks) and Part B (120 marks).",
+    "Normalisation of multi-shift scores per SSC notice dated 02-06-2025."
+  ],
+  "stages": [
+    {
+      "id": "tier1",
+      "name": "Tier-I",
+      "order": 1,
+      "mode": "cbt",
+      "nature": "qualifying",
+      "natureNote": "Screening for Tier-II; Tier-I marks are not used in the final merit.",
+      "pattern": {
+        "questions": 100, "marks": 200, "durationMinutes": 60,
+        "negativeMarking": { "type": "absolute", "value": 0.5 },
+        "sectionalTiming": "15 minutes per section (20 minutes for scribe-eligible candidates)",
+        "medium": "English & Hindi (English Comprehension in English only)"
+      },
+      "source": { "id": "ssc-cgl-2026-notice", "locator": "Para 13.8, 13.10" },
+      "sections": [
+        {
+          "id": "reasoning", "name": "General Intelligence and Reasoning", "questions": 25, "marks": 50, "durationMinutes": 15, "officialLevel": "Graduation",
+          "officialSyllabus": "Verbal and non-verbal: analogies, similarities and differences, space visualization, spatial orientation, problem solving, analysis, judgment, decision making, visual memory, discrimination, observation, relationship concepts, arithmetical reasoning and figural classification, arithmetic number series, non-verbal series, coding and decoding, statement conclusion, syllogistic reasoning. Topics: Semantic/Symbolic/Number/Figural Analogy, Semantic/Symbolic/Number/Figural Classification, Semantic/Number/Figural Series, Problem Solving, Word Building, Coding & de-coding, Numerical & Symbolic Operations, Trends, Space Orientation, Space Visualization, Venn Diagrams, Drawing inferences, Punched hole/pattern-folding & un-folding, Figural Pattern-folding and completion, Indexing, Address matching, Date & city matching, Classification of centre codes/roll numbers, Small & Capital letters/numbers coding, decoding and classification, Embedded Figures, Critical thinking, Emotional Intelligence, Social Intelligence.",
+          "topics": [
+            { "topic": "reasoning.analogy", "status": "official", "verbatim": ["semantic", "symbolic-number", "figural"] },
+            { "topic": "reasoning.classification", "status": "official", "verbatim": ["semantic", "symbolic-number", "figural"] },
+            { "topic": "reasoning.series", "status": "official", "verbatim": ["number", "semantic", "figural"] },
+            { "topic": "reasoning.coding-decoding", "status": "official", "only": ["letter", "number", "symbolic"] },
+            { "topic": "reasoning.mathematical-operations", "status": "official", "verbatim": ["numerical", "symbolic"] },
+            { "topic": "reasoning.word-building", "status": "official", "verbatim": ["formation"] },
+            { "topic": "reasoning.venn-diagrams", "status": "official" },
+            { "topic": "reasoning.syllogism", "status": "official", "only": ["classic", "possibility"], "verbatim": ["classic"], "officialLabel": "syllogistic reasoning" },
+            { "topic": "reasoning.critical-reasoning", "status": "official", "only": ["statement-conclusion", "inferences", "decision-making", "assumptions"], "verbatim": ["statement-conclusion", "inferences", "decision-making"], "officialLabel": "statement conclusion, drawing inferences, critical thinking, decision making" },
+            { "topic": "reasoning.emotional-social-intelligence", "status": "official" },
+            { "topic": "reasoning.arithmetic-reasoning", "status": "official" },
+            { "topic": "reasoning.clerical-aptitude", "status": "official", "note": "Named in CGL Tier-I and CPO, but not in CHSL or CGL Tier-II." },
+            { "topic": "reasoning.paper-folding-cutting", "status": "official" },
+            { "topic": "reasoning.figure-completion", "status": "official", "verbatim": ["completion"] },
+            { "topic": "reasoning.embedded-figures", "status": "official" },
+            { "topic": "reasoning.cubes-dice", "status": "official", "verbatim": ["space-visualization", "rotation"], "officialLabel": "Space Visualization, Space Orientation" },
+            { "topic": "reasoning.mirror-water-images", "status": "official-umbrella", "officialLabel": "visual memory, discrimination, observation" },
+            { "topic": "reasoning.counting-figures", "status": "official-umbrella", "officialLabel": "observation, figural reasoning" },
+            { "topic": "reasoning.blood-relations", "status": "official-umbrella", "only": ["direct", "coded"], "officialLabel": "relationship concepts" },
+            { "topic": "reasoning.direction-distance", "status": "official-umbrella", "only": ["basic", "shadow"], "officialLabel": "spatial orientation" },
+            { "topic": "reasoning.order-ranking", "status": "official-umbrella", "only": ["position", "comparison"], "officialLabel": "problem solving" },
+            { "topic": "reasoning.seating-arrangement", "status": "official-umbrella", "only": ["linear-single", "circular"], "officialLabel": "problem solving", "note": "Small, direct arrangements only, not bank-style puzzles." },
+            { "topic": "reasoning.calendar-clock", "status": "pyq-derived" }
+          ]
+        },
+        {
+          "id": "ga", "name": "General Awareness", "questions": 25, "marks": 50, "durationMinutes": 15, "officialLevel": "Graduation",
+          "officialSyllabus": "General awareness of the environment around and its application to society; current events; everyday observations and experience in their scientific aspect; India and its neighbouring countries especially History, Culture, Geography, Economic Scene, General Policy & Scientific Research.",
+          "topics": [
+            { "topic": "ga.current-affairs", "status": "official", "officialLabel": "current events" },
+            { "topic": "ga.history-ancient", "status": "official", "officialLabel": "History" },
+            { "topic": "ga.history-medieval", "status": "official", "officialLabel": "History" },
+            { "topic": "ga.history-modern", "status": "official", "officialLabel": "History" },
+            { "topic": "ga.art-culture", "status": "official", "officialLabel": "Culture" },
+            { "topic": "ga.geography-physical", "status": "official", "officialLabel": "Geography" },
+            { "topic": "ga.geography-india", "status": "official", "officialLabel": "Geography" },
+            { "topic": "ga.india-neighbours", "status": "official", "officialLabel": "India and its neighbouring countries" },
+            { "topic": "ga.polity", "status": "official-umbrella", "officialLabel": "General Policy", "note": "The CGL text says 'General Policy'. Polity is asked consistently in PYQs (CPO's syllabus explicitly says 'General Polity, Indian Constitution')." },
+            { "topic": "ga.economy-basics", "status": "official-umbrella", "officialLabel": "Economic Scene" },
+            { "topic": "ga.economy-planning", "status": "official-umbrella", "officialLabel": "Economic Scene" },
+            { "topic": "ga.economy-fiscal", "status": "official-umbrella", "officialLabel": "Economic Scene" },
+            { "topic": "ga.economy-inflation", "status": "official-umbrella", "officialLabel": "Economic Scene" },
+            { "topic": "ga.economy-social", "status": "official-umbrella", "officialLabel": "Economic Scene" },
+            { "topic": "ga.economy-reforms", "status": "official-umbrella", "officialLabel": "Economic Scene" },
+            { "topic": "ga.economy-external", "status": "official-umbrella", "officialLabel": "Economic Scene" },
+            { "topic": "ga.economy-agriculture", "status": "official-umbrella", "officialLabel": "Economic Scene" },
+            { "topic": "ga.govt-schemes", "status": "official-umbrella", "officialLabel": "General Policy" },
+            { "topic": "fin.rbi", "status": "pyq-derived", "only": ["history-functions", "monetary-tools"], "note": "Basic RBI/monetary questions appear under Economy." },
+            { "topic": "fin.banking-structure", "status": "pyq-derived", "only": ["history", "nationalisation", "types-of-banks"] },
+            { "topic": "ga.science-physics", "status": "official-umbrella", "officialLabel": "everyday observations ... in their scientific aspect" },
+            { "topic": "ga.science-chemistry", "status": "official-umbrella", "officialLabel": "everyday observations ... in their scientific aspect" },
+            { "topic": "ga.science-biology", "status": "official-umbrella", "officialLabel": "everyday observations ... in their scientific aspect" },
+            { "topic": "ga.science-technology", "status": "official", "officialLabel": "Scientific Research" },
+            { "topic": "ga.environment", "status": "official-umbrella", "officialLabel": "environment around him and its application to society" },
+            { "topic": "ga.static-gk", "status": "pyq-derived" },
+            { "topic": "ga.sports", "status": "pyq-derived" },
+            { "topic": "ga.international-organisations", "status": "pyq-derived" }
+          ]
+        },
+        {
+          "id": "quant", "name": "Quantitative Aptitude", "questions": 25, "marks": 50, "durationMinutes": 15, "officialLevel": "10th standard",
+          "officialSyllabus": "Computation of whole numbers, decimals, fractions and relationships between numbers, Percentage, Ratio & Proportion, Square roots, Averages, Interest, Profit and Loss, Discount, Partnership Business, Mixture and Alligation, Time and distance, Time & Work, Basic algebraic identities of School Algebra & Elementary surds, Graphs of Linear Equations, Triangle and its various kinds of centres, Congruence and similarity of triangles, Circle and its chords, tangents, angles subtended by chords of a circle, common tangents to two or more circles, Triangle, Quadrilaterals, Regular Polygons, Circle, Right Prism, Right Circular Cone, Right Circular Cylinder, Sphere, Hemispheres, Rectangular Parallelepiped, Regular Right Pyramid with triangular or square base, Trigonometric ratio, Degree and Radian Measures, Standard Identities, Complementary angles, Heights and Distances, Histogram, Frequency polygon, Bar diagram & Pie chart.",
+          "topics": [
+            { "topic": "quant.number-system", "status": "official", "verbatim": ["relationships"], "officialLabel": "relationships between numbers" },
+            { "topic": "quant.hcf-lcm", "status": "official-umbrella", "officialLabel": "computation of whole numbers" },
+            { "topic": "quant.simplification", "status": "official", "verbatim": ["whole-numbers", "decimals", "fractions", "square-cube-roots"] },
+            { "topic": "quant.surds-indices", "status": "official", "verbatim": ["surds-operations"], "officialLabel": "Elementary surds" },
+            { "topic": "quant.percentage", "status": "official" },
+            { "topic": "quant.ratio-proportion", "status": "official" },
+            { "topic": "quant.average", "status": "official" },
+            { "topic": "quant.simple-interest", "status": "official", "officialLabel": "Interest" },
+            { "topic": "quant.compound-interest", "status": "official", "officialLabel": "Interest" },
+            { "topic": "quant.profit-loss", "status": "official" },
+            { "topic": "quant.discount", "status": "official", "override": { "true-bankers-discount": { "status": "unverified", "note": "Rarely asked in recent papers." } } },
+            { "topic": "quant.partnership", "status": "official" },
+            { "topic": "quant.mixture-alligation", "status": "official" },
+            { "topic": "quant.time-distance", "status": "official" },
+            { "topic": "quant.trains", "status": "official-umbrella", "officialLabel": "Time and distance" },
+            { "topic": "quant.boats-streams", "status": "official-umbrella", "officialLabel": "Time and distance" },
+            { "topic": "quant.time-work", "status": "official" },
+            { "topic": "quant.pipes-cisterns", "status": "official-umbrella", "officialLabel": "Time & Work" },
+            { "topic": "quant.ages", "status": "pyq-derived" },
+            { "topic": "quant.algebra-identities", "status": "official", "verbatim": ["identities"] },
+            { "topic": "quant.linear-equations", "status": "official-umbrella", "only": ["one-variable", "two-variables", "consistency"], "officialLabel": "Graphs of Linear Equations" },
+            { "topic": "quant.coordinate-geometry", "status": "official", "only": ["graphs-linear", "slope-intercept", "area-by-lines"], "verbatim": ["graphs-linear"] },
+            { "topic": "quant.geometry-lines-angles", "status": "official-umbrella" },
+            { "topic": "quant.geometry-triangles", "status": "official", "verbatim": ["centres", "congruence", "similarity"] },
+            { "topic": "quant.geometry-circles", "status": "official", "verbatim": ["chords", "tangents", "angles-subtended", "common-tangents"] },
+            { "topic": "quant.geometry-quadrilaterals-polygons", "status": "official-umbrella", "officialLabel": "Quadrilaterals, Regular Polygons" },
+            { "topic": "quant.mensuration-2d", "status": "official", "verbatim": ["triangle", "quadrilaterals", "regular-polygons", "circle"] },
+            { "topic": "quant.mensuration-3d", "status": "official", "verbatim": ["cube-cuboid", "cylinder", "cone", "sphere-hemisphere", "prism", "pyramid"], "override": { "frustum": { "status": "unverified", "note": "Not named in the syllabus." } } },
+            { "topic": "quant.trigonometry", "status": "official", "verbatim": ["ratios", "degree-radian", "identities", "complementary"] },
+            { "topic": "quant.heights-distances", "status": "official" },
+            { "topic": "quant.data-interpretation", "status": "official", "only": ["tables", "bar", "line", "pie", "histogram", "frequency-polygon"], "verbatim": ["bar", "pie", "histogram", "frequency-polygon"] }
+          ]
+        },
+        {
+          "id": "english", "name": "English Comprehension", "questions": 25, "marks": 50, "durationMinutes": 15, "officialLevel": "Graduation",
+          "officialSyllabus": "Candidates' ability to understand correct English, his basic comprehension and writing ability, etc. would be tested.",
+          "topics": [
+            { "topic": "english.grammar-rules", "status": "official-umbrella" },
+            { "topic": "english.reading-comprehension", "status": "official-umbrella", "officialLabel": "basic comprehension" },
+            { "topic": "english.cloze-test", "status": "official-umbrella", "only": ["standard"] },
+            { "topic": "english.error-detection", "status": "official-umbrella", "officialLabel": "understand correct English" },
+            { "topic": "english.sentence-improvement", "status": "official-umbrella" },
+            { "topic": "english.fill-blanks", "status": "official-umbrella", "only": ["single", "grammar-based", "vocab-based"] },
+            { "topic": "english.synonyms-antonyms", "status": "official-umbrella" },
+            { "topic": "english.spelling", "status": "official-umbrella" },
+            { "topic": "english.idioms-phrases", "status": "official-umbrella" },
+            { "topic": "english.one-word-substitution", "status": "official-umbrella" },
+            { "topic": "english.voice", "status": "official-umbrella" },
+            { "topic": "english.narration", "status": "official-umbrella" },
+            { "topic": "english.para-jumbles", "status": "official-umbrella", "only": ["sentence-parts", "passage-sentences"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tier2-paper1",
+      "name": "Tier-II Paper-I (compulsory for all posts)",
+      "order": 2,
+      "mode": "cbt",
+      "nature": "merit",
+      "natureNote": "Sections I & II count for merit; Sections III (CKT) and IV (DEST) are mandatory but qualifying. Each section must be qualified separately.",
+      "pattern": {
+        "questions": 150, "marks": 450, "durationMinutes": 150,
+        "negativeMarking": { "type": "absolute", "value": 1, "appliesTo": "Sections I, II and III" },
+        "sectionalTiming": "Session-I (2h15m): Section I 60 min (30+30), Section II 60 min (40+20), Section III 15 min. Session-II: DEST 15 min.",
+        "medium": "English & Hindi (except English Language & Comprehension)",
+        "notes": ["3 marks per question in Sections I–III.", "Merit marks = 390 (Sections I + II); CKT 60 marks are qualifying."]
+      },
+      "source": { "id": "ssc-cgl-2026-notice", "locator": "Para 13.9, 13.11.1–13.11.5, 16.5–16.14" },
+      "sections": [
+        {
+          "id": "maths", "name": "Section-I Part A: Mathematical Abilities", "questions": 30, "marks": 90, "durationMinutes": 30, "nature": "merit", "officialLevel": "Matriculation",
+          "officialSyllabus": "Number Systems (whole number, decimal & fractions, relationship between numbers); Fundamental arithmetical operations (Percentages, Ratio and Proportion, Square roots, Averages, Interest (Simple and Compound), Profit and Loss, Discount, Partnership Business, Mixture and Alligation, Time and distance, Time and work); Algebra (basic identities, elementary surds, graphs of linear equations); Geometry (triangle centres, congruence & similarity, circle chords/tangents/angles, common tangents); Mensuration (triangle, quadrilaterals, regular polygons, circle, right prism, cone, cylinder, sphere, hemisphere, rectangular parallelepiped, regular right pyramid); Trigonometry (ratios, complementary angles, heights & distances (simple), standard identities); Statistics and probability (tables & graphs: histogram, frequency polygon, bar-diagram, pie-chart; mean, median, mode, standard deviation; simple probabilities).",
+          "topics": [
+            { "topic": "quant.number-system", "status": "official", "verbatim": ["relationships"] },
+            { "topic": "quant.hcf-lcm", "status": "official-umbrella", "officialLabel": "Number Systems" },
+            { "topic": "quant.simplification", "status": "official", "verbatim": ["whole-numbers", "decimals", "fractions", "square-cube-roots"] },
+            { "topic": "quant.surds-indices", "status": "official", "verbatim": ["surds-operations"] },
+            { "topic": "quant.percentage", "status": "official" },
+            { "topic": "quant.ratio-proportion", "status": "official" },
+            { "topic": "quant.average", "status": "official" },
+            { "topic": "quant.simple-interest", "status": "official" },
+            { "topic": "quant.compound-interest", "status": "official" },
+            { "topic": "quant.profit-loss", "status": "official" },
+            { "topic": "quant.discount", "status": "official", "override": { "true-bankers-discount": { "status": "unverified" } } },
+            { "topic": "quant.partnership", "status": "official" },
+            { "topic": "quant.mixture-alligation", "status": "official" },
+            { "topic": "quant.time-distance", "status": "official" },
+            { "topic": "quant.trains", "status": "official-umbrella" },
+            { "topic": "quant.boats-streams", "status": "official-umbrella" },
+            { "topic": "quant.time-work", "status": "official" },
+            { "topic": "quant.pipes-cisterns", "status": "official-umbrella" },
+            { "topic": "quant.algebra-identities", "status": "official", "verbatim": ["identities"] },
+            { "topic": "quant.linear-equations", "status": "official-umbrella", "only": ["one-variable", "two-variables", "consistency"] },
+            { "topic": "quant.coordinate-geometry", "status": "official", "only": ["graphs-linear", "slope-intercept", "area-by-lines"], "verbatim": ["graphs-linear"] },
+            { "topic": "quant.geometry-lines-angles", "status": "official-umbrella" },
+            { "topic": "quant.geometry-triangles", "status": "official", "verbatim": ["centres", "congruence", "similarity"] },
+            { "topic": "quant.geometry-circles", "status": "official", "verbatim": ["chords", "tangents", "angles-subtended", "common-tangents"] },
+            { "topic": "quant.geometry-quadrilaterals-polygons", "status": "official-umbrella" },
+            { "topic": "quant.mensuration-2d", "status": "official", "verbatim": ["triangle", "quadrilaterals", "regular-polygons", "circle"] },
+            { "topic": "quant.mensuration-3d", "status": "official", "verbatim": ["cube-cuboid", "cylinder", "cone", "sphere-hemisphere", "prism", "pyramid"], "override": { "frustum": { "status": "unverified" } } },
+            { "topic": "quant.trigonometry", "status": "official", "verbatim": ["ratios", "identities", "complementary"], "override": { "degree-radian": { "status": "unverified", "note": "Named in Tier-I but not in the Tier-II text." } } },
+            { "topic": "quant.heights-distances", "status": "official", "note": "Simple problems only." },
+            { "topic": "quant.statistics", "status": "official", "verbatim": ["mean-median-mode", "sd-variance"] },
+            { "topic": "quant.probability", "status": "official", "only": ["basics", "coins-dice", "cards", "balls-bags"], "officialLabel": "calculation of simple probabilities" },
+            { "topic": "quant.data-interpretation", "status": "official", "only": ["tables", "bar", "line", "pie", "histogram", "frequency-polygon"], "verbatim": ["tables", "bar", "pie", "histogram", "frequency-polygon"] }
+          ]
+        },
+        {
+          "id": "reasoning", "name": "Section-I Part B: Reasoning and General Intelligence", "questions": 30, "marks": 90, "durationMinutes": 30, "nature": "merit",
+          "officialSyllabus": "Verbal and non-verbal: Semantic Analogy, Symbolic operations, Symbolic/Number Analogy, Trends, Figural Analogy, Space Orientation, Semantic Classification, Venn Diagrams, Symbolic/Number Classification, Drawing inferences, Figural Classification, Punched hole/pattern-folding & unfolding, Semantic Series, Figural Pattern-folding and completion, Number Series, Embedded figures, Figural Series, Critical Thinking, Problem Solving, Emotional Intelligence, Word Building, Social Intelligence, Coding and de-coding, Numerical operations, Other sub-topics, if any.",
+          "topics": [
+            { "topic": "reasoning.analogy", "status": "official", "verbatim": ["semantic", "symbolic-number", "figural"] },
+            { "topic": "reasoning.classification", "status": "official", "verbatim": ["semantic", "symbolic-number", "figural"] },
+            { "topic": "reasoning.series", "status": "official", "verbatim": ["number", "semantic", "figural"] },
+            { "topic": "reasoning.coding-decoding", "status": "official", "only": ["letter", "number", "symbolic"] },
+            { "topic": "reasoning.mathematical-operations", "status": "official", "verbatim": ["numerical", "symbolic"] },
+            { "topic": "reasoning.word-building", "status": "official", "verbatim": ["formation"] },
+            { "topic": "reasoning.venn-diagrams", "status": "official" },
+            { "topic": "reasoning.critical-reasoning", "status": "official", "only": ["statement-conclusion", "inferences", "assumptions"], "verbatim": ["inferences"], "officialLabel": "Drawing inferences, Critical Thinking" },
+            { "topic": "reasoning.syllogism", "status": "official-umbrella", "only": ["classic", "possibility"], "officialLabel": "Drawing inferences" },
+            { "topic": "reasoning.emotional-social-intelligence", "status": "official" },
+            { "topic": "reasoning.arithmetic-reasoning", "status": "official", "only": ["problem-solving", "arithmetic-reasoning"], "verbatim": ["problem-solving"] },
+            { "topic": "reasoning.paper-folding-cutting", "status": "official" },
+            { "topic": "reasoning.figure-completion", "status": "official", "verbatim": ["completion"] },
+            { "topic": "reasoning.embedded-figures", "status": "official" },
+            { "topic": "reasoning.cubes-dice", "status": "official", "verbatim": ["rotation"], "officialLabel": "Space Orientation" },
+            { "topic": "reasoning.mirror-water-images", "status": "official-umbrella" },
+            { "topic": "reasoning.counting-figures", "status": "official-umbrella" },
+            { "topic": "reasoning.blood-relations", "status": "official-umbrella", "only": ["direct", "coded"], "officialLabel": "Other sub-topics" },
+            { "topic": "reasoning.direction-distance", "status": "official-umbrella", "only": ["basic", "shadow"], "officialLabel": "Space Orientation" },
+            { "topic": "reasoning.order-ranking", "status": "official-umbrella", "only": ["position", "comparison"], "officialLabel": "Problem Solving" },
+            { "topic": "reasoning.seating-arrangement", "status": "official-umbrella", "only": ["linear-single", "circular"], "officialLabel": "Problem Solving" },
+            { "topic": "reasoning.calendar-clock", "status": "pyq-derived" }
+          ]
+        },
+        {
+          "id": "english", "name": "Section-II Part A: English Language and Comprehension", "questions": 45, "marks": 135, "durationMinutes": 40, "nature": "merit", "officialLevel": "10+2",
+          "officialSyllabus": "Vocabulary, grammar, sentence structure, synonyms, antonyms and their correct usage; Spot the Error, Fill in the Blanks, Synonyms/Homonyms, Antonyms, Spellings/Detecting mis-spelt words, Idioms & Phrases, One word substitution, Improvement of Sentences, Active/Passive Voice of Verbs, Conversion into Direct/Indirect narration, Shuffling of Sentence parts, Shuffling of Sentences in a passage, Cloze Passage, Comprehension Passage (three or more paragraphs: at least one simple book/story-based, the other two on current affairs, based on a report or an editorial).",
+          "topics": [
+            { "topic": "english.grammar-rules", "status": "official", "officialLabel": "grammar, sentence structure" },
+            { "topic": "english.reading-comprehension", "status": "official", "verbatim": ["passage-types"] },
+            { "topic": "english.cloze-test", "status": "official", "only": ["standard"], "verbatim": ["standard"] },
+            { "topic": "english.error-detection", "status": "official", "verbatim": ["spot-error"] },
+            { "topic": "english.sentence-improvement", "status": "official", "verbatim": ["phrase-replacement"] },
+            { "topic": "english.fill-blanks", "status": "official", "only": ["single", "grammar-based", "vocab-based"] },
+            { "topic": "english.synonyms-antonyms", "status": "official", "verbatim": ["synonyms", "antonyms", "homonyms", "usage"] },
+            { "topic": "english.spelling", "status": "official", "verbatim": ["misspelt"] },
+            { "topic": "english.idioms-phrases", "status": "official", "verbatim": ["idioms"] },
+            { "topic": "english.one-word-substitution", "status": "official" },
+            { "topic": "english.voice", "status": "official" },
+            { "topic": "english.narration", "status": "official" },
+            { "topic": "english.para-jumbles", "status": "official", "only": ["sentence-parts", "passage-sentences"], "verbatim": ["sentence-parts", "passage-sentences"] }
+          ]
+        },
+        {
+          "id": "ga", "name": "Section-II Part B: General Awareness", "questions": 25, "marks": 75, "durationMinutes": 20, "nature": "merit",
+          "officialSyllabus": "General awareness of the environment and its application to society; current events; everyday observation and experience in their scientific aspect; India and its neighbouring countries especially History, Culture, Geography, Economic Scene, General policy and scientific research.",
+          "topics": [
+            { "topic": "ga.current-affairs", "status": "official" },
+            { "topic": "ga.history-ancient", "status": "official" },
+            { "topic": "ga.history-medieval", "status": "official" },
+            { "topic": "ga.history-modern", "status": "official" },
+            { "topic": "ga.art-culture", "status": "official" },
+            { "topic": "ga.geography-physical", "status": "official" },
+            { "topic": "ga.geography-india", "status": "official" },
+            { "topic": "ga.india-neighbours", "status": "official" },
+            { "topic": "ga.polity", "status": "official-umbrella", "officialLabel": "General policy" },
+            { "topic": "ga.economy-basics", "status": "official-umbrella" },
+            { "topic": "ga.economy-planning", "status": "official-umbrella" },
+            { "topic": "ga.economy-fiscal", "status": "official-umbrella" },
+            { "topic": "ga.economy-inflation", "status": "official-umbrella" },
+            { "topic": "ga.economy-social", "status": "official-umbrella" },
+            { "topic": "ga.economy-reforms", "status": "official-umbrella" },
+            { "topic": "ga.economy-external", "status": "official-umbrella" },
+            { "topic": "ga.economy-agriculture", "status": "official-umbrella" },
+            { "topic": "ga.govt-schemes", "status": "official-umbrella" },
+            { "topic": "fin.rbi", "status": "pyq-derived", "only": ["history-functions", "monetary-tools"] },
+            { "topic": "fin.banking-structure", "status": "pyq-derived", "only": ["history", "nationalisation", "types-of-banks"] },
+            { "topic": "ga.science-physics", "status": "official-umbrella" },
+            { "topic": "ga.science-chemistry", "status": "official-umbrella" },
+            { "topic": "ga.science-biology", "status": "official-umbrella" },
+            { "topic": "ga.science-technology", "status": "official" },
+            { "topic": "ga.environment", "status": "official-umbrella" },
+            { "topic": "ga.static-gk", "status": "pyq-derived" },
+            { "topic": "ga.sports", "status": "pyq-derived" },
+            { "topic": "ga.international-organisations", "status": "pyq-derived" }
+          ]
+        },
+        {
+          "id": "computer", "name": "Section-III: Computer Knowledge Test", "questions": 20, "marks": 60, "durationMinutes": 15, "nature": "qualifying",
+          "natureNote": "Higher cut-off for posts requiring Computer Proficiency (ASO in CSS/MEA/AFHQ, Inspectors in CBIC, Postal/Sorting Assistant etc.).",
+          "officialSyllabus": "Computer Basics (organization of a computer, CPU, input/output devices, computer memory, memory organization, back-up devices, PORTs, Windows Explorer, keyboard shortcuts); Software (Windows OS including basics of MS Word, MS Excel, PowerPoint); Working with Internet and e-mails (web browsing & searching, downloading & uploading, managing an e-mail account, e-Banking); Basics of networking and cyber security (networking devices and protocols, network and information security threats like hacking, virus, worms, Trojan, and preventive measures).",
+          "topics": [
+            { "topic": "computer.fundamentals", "status": "official", "only": ["organization", "cpu", "io-devices", "types", "generations"], "verbatim": ["organization", "cpu", "io-devices"] },
+            { "topic": "computer.memory", "status": "official", "verbatim": ["organization", "backup"] },
+            { "topic": "computer.hardware-ports", "status": "official", "only": ["ports"], "verbatim": ["ports"] },
+            { "topic": "computer.software-os", "status": "official", "verbatim": ["windows-os", "windows-explorer", "shortcuts"] },
+            { "topic": "computer.ms-office", "status": "official", "only": ["word", "excel", "powerpoint"], "verbatim": ["word", "excel", "powerpoint"] },
+            { "topic": "computer.internet-email", "status": "official", "verbatim": ["browsing-searching", "download-upload", "email", "e-banking"] },
+            { "topic": "computer.networking", "status": "official", "verbatim": ["devices", "protocols"] },
+            { "topic": "computer.security", "status": "official", "only": ["threats", "prevention"], "verbatim": ["threats", "prevention"] }
+          ]
+        },
+        {
+          "id": "dest", "name": "Section-IV: Data Entry Speed Test (Session-II)", "questions": null, "marks": null, "durationMinutes": 15, "nature": "qualifying",
+          "natureNote": "Mandatory for all posts. Higher standard for Tax Assistant (CBIC/CBDT), UDC/SSA (CBN) and Computer-Proficiency posts.",
+          "officialSyllabus": "Data Entry Speed Test on a passage of about 2000 key depressions in 15 minutes.",
+          "topics": [
+            { "topic": "skill.dest", "status": "official" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tier2-paper2",
+      "name": "Tier-II Paper-II: Statistics",
+      "order": 3,
+      "mode": "cbt",
+      "nature": "merit",
+      "applicableTo": ["Junior Statistical Officer (MoSPI)", "Statistical Investigator Grade-II (RGI)"],
+      "pattern": {
+        "questions": 100, "marks": 200, "durationMinutes": 120,
+        "negativeMarking": { "type": "absolute", "value": 0.5 },
+        "sectionalTiming": "None",
+        "medium": "English & Hindi"
+      },
+      "source": { "id": "ssc-cgl-2026-notice", "locator": "Para 13.9, 13.11.6" },
+      "sections": [
+        {
+          "id": "statistics", "name": "Statistics", "questions": 100, "marks": 200, "durationMinutes": 120, "officialLevel": "Graduation",
+          "officialSyllabus": "12 units: Collection, Classification and Presentation of Statistical Data; Measures of Central Tendency; Measures of Dispersion; Moments, Skewness and Kurtosis; Correlation and Regression; Probability Theory; Random Variable and Probability Distributions; Sampling Theory; Statistical Inference; Analysis of Variance; Time Series Analysis; Index Numbers.",
+          "topics": [
+            { "topic": "stats.data-presentation", "status": "official", "verbatim": ["primary-secondary", "collection-methods", "tabulation", "graphs-charts", "frequency-distributions", "diagrammatic"] },
+            { "topic": "stats.central-tendency", "status": "official", "verbatim": ["mean-median-mode", "partition-values"] },
+            { "topic": "stats.dispersion", "status": "official", "verbatim": ["absolute", "relative"] },
+            { "topic": "stats.moments", "status": "official", "verbatim": ["moments", "skewness-kurtosis", "measures"] },
+            { "topic": "stats.correlation-regression", "status": "official", "verbatim": ["scatter", "correlation", "regression-lines", "spearman", "attributes", "multiple-regression", "multiple-partial"] },
+            { "topic": "stats.probability-theory", "status": "official", "verbatim": ["definitions", "conditional", "compound", "independent", "bayes"] },
+            { "topic": "stats.random-variables", "status": "official", "verbatim": ["random-variable", "expectation-variance", "higher-moments", "distributions", "joint"] },
+            { "topic": "stats.sampling", "status": "official", "verbatim": ["population-sample", "errors", "techniques", "sampling-distribution", "sample-size"] },
+            { "topic": "stats.inference", "status": "official", "verbatim": ["estimation", "estimator-properties", "estimation-methods", "hypothesis-testing", "tests", "confidence-intervals"] },
+            { "topic": "stats.anova", "status": "official", "verbatim": ["one-way", "two-way"] },
+            { "topic": "stats.time-series", "status": "official", "verbatim": ["components", "trend", "seasonal"] },
+            { "topic": "stats.index-numbers", "status": "official", "verbatim": ["meaning-construction", "types-formulae", "base-shifting", "cost-of-living", "uses"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tier2-paper3",
+      "name": "Tier-II Paper-III: General Studies (Finance and Economics)",
+      "order": 4,
+      "mode": "cbt",
+      "nature": "merit",
+      "applicableTo": ["Assistant Audit Officer", "Assistant Accounts Officer"],
+      "pattern": {
+        "questions": 100, "marks": 200, "durationMinutes": 120,
+        "negativeMarking": { "type": "absolute", "value": 0.5 },
+        "sectionalTiming": "None",
+        "medium": "English & Hindi",
+        "notes": ["Part A = 80 marks, Part B = 120 marks; at 2 marks per question this implies 40 + 60 questions (derived, not stated)."]
+      },
+      "source": { "id": "ssc-cgl-2026-notice", "locator": "Para 13.9, 13.11.7" },
+      "sections": [
+        {
+          "id": "finance-accounts", "name": "Part A: Finance and Accounts", "questions": 40, "questionsDerived": true, "marks": 80, "durationMinutes": null, "officialLevel": "Graduation",
+          "officialSyllabus": "Fundamental principles and basic concept of Accounting: Financial Accounting (nature and scope, limitations, basic concepts and conventions, GAAP); Basic concepts of accounting (single and double entry, books of original entry, bank reconciliation, journal, ledgers, trial balance, rectification of errors, manufacturing, trading, profit & loss appropriation accounts, balance sheet, capital vs revenue expenditure, depreciation accounting, valuation of inventories, non-profit organisations accounts, receipts and payments and income & expenditure accounts, bills of exchange, self-balancing ledgers).",
+          "topics": [
+            { "topic": "accounts.fundamentals", "status": "official", "verbatim": ["nature-scope", "limitations", "concepts-conventions", "gaap"] },
+            { "topic": "accounts.process", "status": "official", "verbatim": ["single-double-entry", "books-original-entry", "journal-ledger", "trial-balance", "bank-reconciliation", "rectification", "self-balancing"] },
+            { "topic": "accounts.final-accounts", "status": "official", "verbatim": ["manufacturing-trading", "pl-appropriation", "balance-sheet", "capital-revenue"] },
+            { "topic": "accounts.depreciation-inventory", "status": "official", "verbatim": ["depreciation", "inventory"] },
+            { "topic": "accounts.npo", "status": "official", "verbatim": ["npo", "receipts-payments", "income-expenditure"] },
+            { "topic": "accounts.bills-of-exchange", "status": "official", "verbatim": ["bills"] }
+          ]
+        },
+        {
+          "id": "economics-governance", "name": "Part B: Economics and Governance", "questions": 60, "questionsDerived": true, "marks": 120, "durationMinutes": null, "officialLevel": "Graduation",
+          "officialSyllabus": "CAG (constitutional provisions, role and responsibility); Finance Commission (role and functions); Basic concepts of Economics & introduction to Micro Economics; Theory of Demand and Supply; Theory of Production and cost; Forms of Market and price determination; Indian Economy (nature, role of sectors, national income, population, poverty and unemployment, infrastructure); Economic Reforms since 1991 (LPG and disinvestment); Money and Banking (monetary/fiscal policy, role and functions of RBI, functions of commercial banks/RRB/payment banks; budget and fiscal deficits and balance of payments; FRBM Act 2003); Role of Information Technology in Governance.",
+          "topics": [
+            { "topic": "econ.cag", "status": "official" },
+            { "topic": "econ.finance-commission", "status": "official" },
+            { "topic": "econ.micro-basics", "status": "official", "verbatim": ["definition-scope", "methods", "central-problems-ppc"] },
+            { "topic": "econ.demand-supply", "status": "official", "verbatim": ["demand", "elasticity-demand", "consumer-behaviour", "supply", "elasticity-supply"] },
+            { "topic": "econ.production-cost", "status": "official", "verbatim": ["factors", "variable-proportions", "returns-to-scale"] },
+            { "topic": "econ.market-forms", "status": "official", "verbatim": ["perfect-competition", "monopoly", "monopolistic", "oligopoly"] },
+            { "topic": "ga.economy-basics", "status": "official", "only": ["nature-indian-economy", "sectors", "national-income"], "verbatim": ["nature-indian-economy", "sectors", "national-income"] },
+            { "topic": "ga.economy-social", "status": "official", "only": ["population", "poverty", "unemployment"], "verbatim": ["population", "poverty", "unemployment"] },
+            { "topic": "ga.economy-infrastructure", "status": "official", "verbatim": ["energy", "transport", "communication"] },
+            { "topic": "ga.economy-reforms", "status": "official", "only": ["lpg-1991", "disinvestment"], "verbatim": ["lpg-1991", "disinvestment"] },
+            { "topic": "fin.rbi", "status": "official", "only": ["history-functions", "monetary-tools"], "verbatim": ["history-functions"], "officialLabel": "Monetary/Fiscal policy – Role and functions of RBI" },
+            { "topic": "fin.banking-structure", "status": "official", "only": ["types-of-banks"], "verbatim": ["types-of-banks"], "officialLabel": "functions of commercial Banks/RRB/Payment Banks" },
+            { "topic": "ga.economy-fiscal", "status": "official", "only": ["budget", "deficits", "frbm"], "verbatim": ["budget", "deficits", "frbm"] },
+            { "topic": "ga.economy-external", "status": "official", "only": ["bop"], "verbatim": ["bop"] },
+            { "topic": "ga.e-governance", "status": "official", "officialLabel": "Role of Information Technology in Governance" }
+          ]
+        }
+      ]
+    }
+  ]
+}
