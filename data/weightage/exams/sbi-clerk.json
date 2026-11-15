@@ -1,0 +1,4493 @@
+{
+  "$schema": "../../schema/weightage.schema.json",
+  "examId": "sbi-clerk",
+  "syllabusCycle": "2026-27",
+  "lastUpdated": "2026-11-15",
+  "tracks": [
+    {
+      "trackId": "default",
+      "name": "Default",
+      "default": true,
+      "stageWeights": [
+        {
+          "stageId": "prelims",
+          "gate": false,
+          "weight": {
+            "default": 33.33,
+            "custom": null,
+            "basis": "official-marks",
+            "isOfficial": true,
+            "confidence": "high",
+            "justification": "100 of 300 marks across this track's scored stages.",
+            "evidence": [],
+            "lastUpdated": "2026-11-15"
+          }
+        },
+        {
+          "stageId": "mains",
+          "gate": false,
+          "weight": {
+            "default": 66.67,
+            "custom": null,
+            "basis": "official-marks",
+            "isOfficial": true,
+            "confidence": "high",
+            "justification": "200 of 300 marks across this track's scored stages.",
+            "evidence": [],
+            "lastUpdated": "2026-11-15"
+          }
+        },
+        {
+          "stageId": "llpt",
+          "gate": true,
+          "weight": {
+            "default": 0,
+            "custom": null,
+            "basis": "nominal",
+            "isOfficial": false,
+            "confidence": "high",
+            "justification": "Pass/fail stage: no merit marks (gate).",
+            "evidence": [],
+            "lastUpdated": "2026-11-15"
+          }
+        }
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "stageId": "prelims",
+      "gate": false,
+      "sections": [
+        {
+          "sectionId": "english",
+          "gate": false,
+          "weight": {
+            "default": 30,
+            "custom": null,
+            "basis": "official-marks",
+            "isOfficial": true,
+            "confidence": "high",
+            "justification": "30 of 100 stage marks.",
+            "evidence": [],
+            "lastUpdated": "2026-11-15"
+          },
+          "topics": [
+            {
+              "topicId": "english.reading-comprehension",
+              "weight": {
+                "default": 28.36,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "27-Sep-2026 S1: RC 10, cloze 6, error 5, word swap 4, rearrangement 4, word usage 1; consistent with IBPS Clerk prelims 2024.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 9,
+                "max": 10,
+                "perPaper": 30
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "factual", "default": 25, "custom": null },
+                { "slug": "inference", "default": 35, "custom": null },
+                { "slug": "vocab-in-context", "default": 20, "custom": null },
+                { "slug": "tone-title", "default": 15, "custom": null },
+                { "slug": "passage-types", "default": 5, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.cloze-test",
+              "weight": {
+                "default": 16.42,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "27-Sep-2026 S1: RC 10, cloze 6, error 5, word swap 4, rearrangement 4, word usage 1; consistent with IBPS Clerk prelims 2024.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 5,
+                "max": 6,
+                "perPaper": 30
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "standard", "default": 66.67, "custom": null },
+                { "slug": "replacement", "default": 33.33, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.error-detection",
+              "weight": {
+                "default": 13.43,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "27-Sep-2026 S1: RC 10, cloze 6, error 5, word swap 4, rearrangement 4, word usage 1; consistent with IBPS Clerk prelims 2024.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 4,
+                "max": 5,
+                "perPaper": 30
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "spot-error", "default": 50, "custom": null },
+                { "slug": "correct-sentence", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.fill-blanks",
+              "weight": {
+                "default": 2.99,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "27-Sep-2026 S1: RC 10, cloze 6, error 5, word swap 4, rearrangement 4, word usage 1; consistent with IBPS Clerk prelims 2024.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 2,
+                "perPaper": 30
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "single", "default": 14.29, "custom": null },
+                { "slug": "multiple", "default": 42.86, "custom": null },
+                { "slug": "grammar-based", "default": 14.28, "custom": null },
+                { "slug": "vocab-based", "default": 28.57, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.para-jumbles",
+              "weight": {
+                "default": 11.94,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "27-Sep-2026 S1: RC 10, cloze 6, error 5, word swap 4, rearrangement 4, word usage 1; consistent with IBPS Clerk prelims 2024.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 3,
+                "max": 5,
+                "perPaper": 30
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "passage-sentences", "default": 60, "custom": null },
+                { "slug": "odd-sentence", "default": 20, "custom": null },
+                { "slug": "first-last-fixed", "default": 20, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.sentence-improvement",
+              "weight": {
+                "default": 2.98,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "27-Sep-2026 S1: RC 10, cloze 6, error 5, word swap 4, rearrangement 4, word usage 1; consistent with IBPS Clerk prelims 2024.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 2,
+                "perPaper": 30
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "phrase-replacement", "default": 80, "custom": null },
+                { "slug": "no-improvement", "default": 20, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.word-usage",
+              "weight": {
+                "default": 14.93,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "27-Sep-2026 S1: RC 10, cloze 6, error 5, word swap 4, rearrangement 4, word usage 1; consistent with IBPS Clerk prelims 2024.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 4,
+                "max": 6,
+                "perPaper": 30
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "word-swap", "default": 33.34, "custom": null },
+                { "slug": "word-usage", "default": 33.33, "custom": null },
+                { "slug": "phrase-rearrangement", "default": 33.33, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.sentence-completion",
+              "weight": {
+                "default": 1.49,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "27-Sep-2026 S1: RC 10, cloze 6, error 5, word swap 4, rearrangement 4, word usage 1; consistent with IBPS Clerk prelims 2024.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 1,
+                "perPaper": 30
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "connectors", "default": 100, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.grammar-rules",
+              "weight": {
+                "default": 2.24,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "27-Sep-2026 S1: RC 10, cloze 6, error 5, word swap 4, rearrangement 4, word usage 1; consistent with IBPS Clerk prelims 2024.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 30
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "parts-of-speech", "default": 5.56, "custom": null },
+                { "slug": "nouns-pronouns", "default": 8.33, "custom": null },
+                { "slug": "articles", "default": 8.33, "custom": null },
+                { "slug": "verbs-tenses", "default": 13.89, "custom": null },
+                { "slug": "subject-verb", "default": 13.89, "custom": null },
+                { "slug": "modals", "default": 5.56, "custom": null },
+                { "slug": "adjectives-adverbs", "default": 8.33, "custom": null },
+                { "slug": "prepositions", "default": 11.11, "custom": null },
+                { "slug": "conjunctions", "default": 8.33, "custom": null },
+                { "slug": "conditionals", "default": 5.56, "custom": null },
+                { "slug": "parallelism-redundancy", "default": 5.56, "custom": null },
+                { "slug": "misc-rules", "default": 5.55, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.synonyms-antonyms",
+              "weight": {
+                "default": 2.98,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "27-Sep-2026 S1: RC 10, cloze 6, error 5, word swap 4, rearrangement 4, word usage 1; consistent with IBPS Clerk prelims 2024.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 2,
+                "perPaper": 30
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "synonyms", "default": 25, "custom": null },
+                { "slug": "antonyms", "default": 25, "custom": null },
+                { "slug": "usage", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.spelling",
+              "weight": {
+                "default": 1.49,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "27-Sep-2026 S1: RC 10, cloze 6, error 5, word swap 4, rearrangement 4, word usage 1; consistent with IBPS Clerk prelims 2024.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 1,
+                "perPaper": 30
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "misspelt", "default": 100, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.idioms-phrases",
+              "weight": {
+                "default": 0.75,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "27-Sep-2026 S1: RC 10, cloze 6, error 5, word swap 4, rearrangement 4, word usage 1; consistent with IBPS Clerk prelims 2024.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 0.5,
+                "perPaper": 30
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "idioms", "default": 60, "custom": null },
+                { "slug": "phrasal-verbs", "default": 40, "custom": null }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionId": "quant",
+          "gate": false,
+          "weight": {
+            "default": 35,
+            "custom": null,
+            "basis": "official-marks",
+            "isOfficial": true,
+            "confidence": "high",
+            "justification": "35 of 100 stage marks.",
+            "evidence": [],
+            "lastUpdated": "2026-11-15"
+          },
+          "topics": [
+            {
+              "topicId": "quant.simplification",
+              "weight": {
+                "default": 26.75,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 9,
+                "max": 12,
+                "perPaper": 35
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "bodmas", "default": 22.64, "custom": null },
+                { "slug": "whole-numbers", "default": 11.32, "custom": null },
+                { "slug": "decimals", "default": 11.32, "custom": null },
+                { "slug": "fractions", "default": 11.32, "custom": null },
+                { "slug": "square-cube-roots", "default": 15.09, "custom": null },
+                { "slug": "approximation", "default": 26.42, "custom": null },
+                { "slug": "continued-fractions", "default": 1.89, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.number-series",
+              "weight": {
+                "default": 3.82,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 3,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "missing", "default": 40, "custom": null },
+                { "slug": "wrong", "default": 33.33, "custom": null },
+                { "slug": "patterns", "default": 26.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.quadratic-equations",
+              "weight": {
+                "default": 3.82,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 3,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "roots", "default": 30, "custom": null },
+                { "slug": "nature", "default": 10, "custom": null },
+                { "slug": "sum-product", "default": 10, "custom": null },
+                { "slug": "comparison", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.data-interpretation",
+              "weight": {
+                "default": 31.85,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 10,
+                "max": 15,
+                "perPaper": 35
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "tables", "default": 25, "custom": null },
+                { "slug": "bar", "default": 20.83, "custom": null },
+                { "slug": "line", "default": 16.67, "custom": null },
+                { "slug": "pie", "default": 16.67, "custom": null },
+                { "slug": "caselet", "default": 20.83, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.percentage",
+              "weight": {
+                "default": 2.55,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "basics", "default": 18.18, "custom": null },
+                { "slug": "percent-change", "default": 22.73, "custom": null },
+                { "slug": "successive-change", "default": 13.64, "custom": null },
+                { "slug": "product-constancy", "default": 9.09, "custom": null },
+                { "slug": "population-depreciation", "default": 9.09, "custom": null },
+                { "slug": "applications", "default": 27.27, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.ratio-proportion",
+              "weight": {
+                "default": 1.91,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "ratio-basics", "default": 31.58, "custom": null },
+                { "slug": "proportion", "default": 21.05, "custom": null },
+                { "slug": "variation", "default": 10.53, "custom": null },
+                { "slug": "income-expenditure", "default": 21.05, "custom": null },
+                { "slug": "coins-distribution", "default": 15.79, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.average",
+              "weight": {
+                "default": 1.91,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "simple", "default": 23.81, "custom": null },
+                { "slug": "weighted", "default": 19.05, "custom": null },
+                { "slug": "replacement", "default": 28.57, "custom": null },
+                { "slug": "consecutive", "default": 14.29, "custom": null },
+                { "slug": "age-runs", "default": 14.28, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.ages",
+              "weight": {
+                "default": 1.91,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "present-past-future", "default": 50, "custom": null },
+                { "slug": "ratio-based", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.partnership",
+              "weight": {
+                "default": 1.91,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "simple", "default": 33.33, "custom": null },
+                { "slug": "compound", "default": 44.45, "custom": null },
+                { "slug": "working-sleeping", "default": 22.22, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.profit-loss",
+              "weight": {
+                "default": 3.19,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 1.5,
+                "perPaper": 35
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "cp-sp", "default": 28.57, "custom": null },
+                { "slug": "marked-price", "default": 23.81, "custom": null },
+                { "slug": "dishonest-dealer", "default": 14.29, "custom": null },
+                { "slug": "successive-transactions", "default": 9.53, "custom": null },
+                { "slug": "same-sp", "default": 9.52, "custom": null },
+                { "slug": "offers", "default": 9.52, "custom": null },
+                { "slug": "overheads", "default": 4.76, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.discount",
+              "weight": {
+                "default": 1.28,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 1,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "single", "default": 23.53, "custom": null },
+                { "slug": "successive", "default": 35.29, "custom": null },
+                { "slug": "mp-cp-relation", "default": 41.18, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.simple-interest",
+              "weight": {
+                "default": 1.91,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "basics", "default": 44.45, "custom": null },
+                { "slug": "amount-doubling", "default": 22.22, "custom": null },
+                { "slug": "rate-time-change", "default": 22.22, "custom": null },
+                { "slug": "installments", "default": 11.11, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.compound-interest",
+              "weight": {
+                "default": 1.91,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "annual", "default": 28.57, "custom": null },
+                { "slug": "half-quarterly", "default": 19.05, "custom": null },
+                { "slug": "ci-si-difference", "default": 23.81, "custom": null },
+                { "slug": "installments", "default": 14.29, "custom": null },
+                { "slug": "effective-rate", "default": 9.52, "custom": null },
+                { "slug": "fractional-time", "default": 4.76, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.time-work",
+              "weight": {
+                "default": 1.91,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "efficiency", "default": 26.09, "custom": null },
+                { "slug": "group-work", "default": 21.74, "custom": null },
+                { "slug": "alternate-days", "default": 13.04, "custom": null },
+                { "slug": "joining-leaving", "default": 17.39, "custom": null },
+                { "slug": "man-days", "default": 13.04, "custom": null },
+                { "slug": "wages", "default": 8.7, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.pipes-cisterns",
+              "weight": {
+                "default": 1.27,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 1,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "inlet-outlet", "default": 46.15, "custom": null },
+                { "slug": "leaks", "default": 30.77, "custom": null },
+                { "slug": "alternate", "default": 23.08, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.time-distance",
+              "weight": {
+                "default": 1.91,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "basics", "default": 27.78, "custom": null },
+                { "slug": "average-speed", "default": 22.22, "custom": null },
+                { "slug": "relative-speed", "default": 27.78, "custom": null },
+                { "slug": "meeting-overtaking", "default": 22.22, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.trains",
+              "weight": {
+                "default": 1.91,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "crossing-pole", "default": 28.57, "custom": null },
+                { "slug": "crossing-platform", "default": 28.57, "custom": null },
+                { "slug": "two-trains", "default": 42.86, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.boats-streams",
+              "weight": {
+                "default": 1.91,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "upstream-downstream", "default": 60, "custom": null },
+                { "slug": "round-trip", "default": 40, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.mixture-alligation",
+              "weight": {
+                "default": 1.91,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "rule", "default": 28.57, "custom": null },
+                { "slug": "mean-price", "default": 19.05, "custom": null },
+                { "slug": "replacement", "default": 23.81, "custom": null },
+                { "slug": "multi-mixtures", "default": 9.52, "custom": null },
+                { "slug": "applications", "default": 19.05, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.mensuration-2d",
+              "weight": {
+                "default": 1.27,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 1,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "triangle", "default": 26.67, "custom": null },
+                { "slug": "quadrilaterals", "default": 33.33, "custom": null },
+                { "slug": "circle", "default": 40, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.mensuration-3d",
+              "weight": {
+                "default": 0.64,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 0.5,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "cube-cuboid", "default": 25, "custom": null },
+                { "slug": "cylinder", "default": 25, "custom": null },
+                { "slug": "cone", "default": 25, "custom": null },
+                { "slug": "sphere-hemisphere", "default": 25, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.probability",
+              "weight": {
+                "default": 0.64,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 0.5,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "basics", "default": 30.77, "custom": null },
+                { "slug": "coins-dice", "default": 30.77, "custom": null },
+                { "slug": "balls-bags", "default": 38.46, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.permutation-combination",
+              "weight": {
+                "default": 0.64,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 0.5,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "counting-principle", "default": 14.28, "custom": null },
+                { "slug": "arrangements", "default": 42.86, "custom": null },
+                { "slug": "selections", "default": 42.86, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.quantity-comparison",
+              "weight": {
+                "default": 1.27,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: simplification 9–10, table+bar DI 10, caselet 3–5, arithmetic 10–12; quadratic/series occasional.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 1,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "quantity-i-ii", "default": 60, "custom": null },
+                { "slug": "arithmetic-based", "default": 40, "custom": null }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionId": "reasoning",
+          "gate": false,
+          "weight": {
+            "default": 35,
+            "custom": null,
+            "basis": "official-marks",
+            "isOfficial": true,
+            "confidence": "high",
+            "justification": "35 of 100 stage marks.",
+            "evidence": [],
+            "lastUpdated": "2026-11-15"
+          },
+          "topics": [
+            {
+              "topicId": "reasoning.puzzles",
+              "weight": {
+                "default": 31.5,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: puzzles + seating 18–19, alphanumeric 5, Chinese coding 4, syllogism 3, blood relation 3, odd one 1.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 10,
+                "max": 13,
+                "perPaper": 35
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "floor", "default": 26.09, "custom": null },
+                { "slug": "box", "default": 21.74, "custom": null },
+                { "slug": "scheduling", "default": 26.09, "custom": null },
+                { "slug": "comparison", "default": 8.69, "custom": null },
+                { "slug": "categorised", "default": 17.39, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.seating-arrangement",
+              "weight": {
+                "default": 17.81,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: puzzles + seating 18–19, alphanumeric 5, Chinese coding 4, syllogism 3, blood relation 3, odd one 1.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 5,
+                "max": 8,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "linear-single", "default": 21.05, "custom": null },
+                { "slug": "linear-double", "default": 26.32, "custom": null },
+                { "slug": "circular", "default": 31.58, "custom": null },
+                { "slug": "square-rectangle", "default": 21.05, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.syllogism",
+              "weight": {
+                "default": 8.22,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: puzzles + seating 18–19, alphanumeric 5, Chinese coding 4, syllogism 3, blood relation 3, odd one 1.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 3,
+                "max": 3,
+                "perPaper": 35
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "classic", "default": 29.41, "custom": null },
+                { "slug": "possibility", "default": 35.29, "custom": null },
+                { "slug": "only-a-few", "default": 17.65, "custom": null },
+                { "slug": "reverse", "default": 17.65, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.inequality",
+              "weight": {
+                "default": 4.11,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: puzzles + seating 18–19, alphanumeric 5, Chinese coding 4, syllogism 3, blood relation 3, odd one 1.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 3,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "direct", "default": 50, "custom": null },
+                { "slug": "coded", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.coding-decoding",
+              "weight": {
+                "default": 10.96,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: puzzles + seating 18–19, alphanumeric 5, Chinese coding 4, syllogism 3, blood relation 3, odd one 1.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 3,
+                "max": 5,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "letter", "default": 13.33, "custom": null },
+                { "slug": "number", "default": 6.67, "custom": null },
+                { "slug": "word-sentence", "default": 53.33, "custom": null },
+                { "slug": "conditional", "default": 26.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.blood-relations",
+              "weight": {
+                "default": 4.11,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: puzzles + seating 18–19, alphanumeric 5, Chinese coding 4, syllogism 3, blood relation 3, odd one 1.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 3,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "direct", "default": 33.33, "custom": null },
+                { "slug": "coded", "default": 25, "custom": null },
+                { "slug": "family-tree", "default": 41.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.direction-distance",
+              "weight": {
+                "default": 4.11,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: puzzles + seating 18–19, alphanumeric 5, Chinese coding 4, syllogism 3, blood relation 3, odd one 1.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 3,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "basic", "default": 40, "custom": null },
+                { "slug": "shadow", "default": 10, "custom": null },
+                { "slug": "coded", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.order-ranking",
+              "weight": {
+                "default": 2.74,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: puzzles + seating 18–19, alphanumeric 5, Chinese coding 4, syllogism 3, blood relation 3, odd one 1.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 2,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "position", "default": 50, "custom": null },
+                { "slug": "comparison", "default": 33.33, "custom": null },
+                { "slug": "interchange", "default": 16.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.alphanumeric-series",
+              "weight": {
+                "default": 10.96,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: puzzles + seating 18–19, alphanumeric 5, Chinese coding 4, syllogism 3, blood relation 3, odd one 1.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 3,
+                "max": 5,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "position-based", "default": 33.34, "custom": null },
+                { "slug": "conditional-counting", "default": 33.33, "custom": null },
+                { "slug": "word-letter-number", "default": 33.33, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.word-building",
+              "weight": {
+                "default": 4.11,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: puzzles + seating 18–19, alphanumeric 5, Chinese coding 4, syllogism 3, blood relation 3, odd one 1.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 2,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "formation", "default": 36.36, "custom": null },
+                { "slug": "dictionary-order", "default": 18.18, "custom": null },
+                { "slug": "letter-position", "default": 45.46, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.classification",
+              "weight": {
+                "default": 1.37,
+                "custom": null,
+                "basis": "pyq-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "2026: puzzles + seating 18–19, alphanumeric 5, Chinese coding 4, syllogism 3, blood relation 3, odd one 1.",
+                "evidence": [
+                  "ev-bankersadda-sbi-clerk-2026",
+                  "ev-pw-sbi-clerk-2026"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 1,
+                "perPaper": 35
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "semantic", "default": 50, "custom": null },
+                { "slug": "letter", "default": 50, "custom": null }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stageId": "mains",
+      "gate": false,
+      "sections": [
+        {
+          "sectionId": "general-financial-awareness",
+          "gate": false,
+          "weight": {
+            "default": 25,
+            "custom": null,
+            "basis": "official-marks",
+            "isOfficial": true,
+            "confidence": "high",
+            "justification": "50 of 200 stage marks.",
+            "evidence": [],
+            "lastUpdated": "2026-11-15"
+          },
+          "topics": [
+            {
+              "topicId": "ga.current-affairs",
+              "weight": {
+                "default": 33.98,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 15,
+                "max": 20,
+                "perPaper": 50
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "national", "default": 12.5, "custom": null },
+                { "slug": "international", "default": 10, "custom": null },
+                { "slug": "economy-business", "default": 12.5, "custom": null },
+                { "slug": "science-tech", "default": 5, "custom": null },
+                { "slug": "sports", "default": 7.5, "custom": null },
+                { "slug": "awards-honours", "default": 7.5, "custom": null },
+                { "slug": "appointments", "default": 10, "custom": null },
+                { "slug": "summits", "default": 7.5, "custom": null },
+                { "slug": "schemes-policies", "default": 10, "custom": null },
+                { "slug": "defence", "default": 5, "custom": null },
+                { "slug": "rankings-indices", "default": 10, "custom": null },
+                { "slug": "obituaries", "default": 2.5, "custom": null }
+              ]
+            },
+            {
+              "topicId": "fin.banking-current-affairs",
+              "weight": {
+                "default": 7.77,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 3,
+                "max": 5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "appointments", "default": 23.08, "custom": null },
+                { "slug": "mergers-licences-penalties", "default": 30.77, "custom": null },
+                { "slug": "products-partnerships", "default": 23.08, "custom": null },
+                { "slug": "reports-rankings", "default": 23.07, "custom": null }
+              ]
+            },
+            {
+              "topicId": "fin.banking-structure",
+              "weight": {
+                "default": 2.91,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 2,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "history", "default": 11.11, "custom": null },
+                { "slug": "nationalisation", "default": 11.11, "custom": null },
+                { "slug": "types-of-banks", "default": 22.22, "custom": null },
+                { "slug": "psb-mergers", "default": 16.67, "custom": null },
+                { "slug": "nbfc", "default": 16.67, "custom": null },
+                { "slug": "hq-taglines", "default": 22.22, "custom": null }
+              ]
+            },
+            {
+              "topicId": "fin.rbi",
+              "weight": {
+                "default": 4.86,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 2,
+                "max": 3,
+                "perPaper": 50
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "history-functions", "default": 10.53, "custom": null },
+                { "slug": "monetary-tools", "default": 31.58, "custom": null },
+                { "slug": "mpc", "default": 15.79, "custom": null },
+                { "slug": "rbi-circulars", "default": 31.58, "custom": null },
+                { "slug": "leadership", "default": 10.52, "custom": null }
+              ]
+            },
+            {
+              "topicId": "fin.banking-terms",
+              "weight": {
+                "default": 4.86,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 2,
+                "max": 3,
+                "perPaper": 50
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "accounts-deposits", "default": 13.64, "custom": null },
+                { "slug": "kyc-aml", "default": 9.09, "custom": null },
+                { "slug": "negotiable-instruments", "default": 9.09, "custom": null },
+                { "slug": "loans-npa", "default": 18.18, "custom": null },
+                { "slug": "capital-basel", "default": 13.64, "custom": null },
+                { "slug": "priority-sector", "default": 9.09, "custom": null },
+                { "slug": "recovery-laws", "default": 9.09, "custom": null },
+                { "slug": "terms", "default": 18.18, "custom": null }
+              ]
+            },
+            {
+              "topicId": "fin.digital-payments",
+              "weight": {
+                "default": 2.91,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 2,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "payment-systems", "default": 20, "custom": null },
+                { "slug": "upi-npci", "default": 30, "custom": null },
+                { "slug": "cards-atm", "default": 10, "custom": null },
+                { "slug": "cbdc", "default": 15, "custom": null },
+                { "slug": "fintech", "default": 10, "custom": null },
+                { "slug": "cyber-fraud", "default": 15, "custom": null }
+              ]
+            },
+            {
+              "topicId": "fin.financial-markets",
+              "weight": {
+                "default": 1.46,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "money-market", "default": 30.77, "custom": null },
+                { "slug": "capital-market", "default": 23.08, "custom": null },
+                { "slug": "stock-exchanges", "default": 23.08, "custom": null },
+                { "slug": "sebi", "default": 23.07, "custom": null }
+              ]
+            },
+            {
+              "topicId": "fin.financial-inclusion",
+              "weight": {
+                "default": 2.91,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 2,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "schemes", "default": 46.15, "custom": null },
+                { "slug": "lead-bank", "default": 15.39, "custom": null },
+                { "slug": "shg-mfi", "default": 23.08, "custom": null },
+                { "slug": "literacy", "default": 15.38, "custom": null }
+              ]
+            },
+            {
+              "topicId": "fin.regulators-institutions",
+              "weight": {
+                "default": 1.94,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "regulators", "default": 30.77, "custom": null },
+                { "slug": "dfis", "default": 30.77, "custom": null },
+                { "slug": "dicgc", "default": 15.38, "custom": null },
+                { "slug": "global", "default": 23.08, "custom": null }
+              ]
+            },
+            {
+              "topicId": "fin.insurance-pension",
+              "weight": {
+                "default": 1.46,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "insurance-basics", "default": 33.34, "custom": null },
+                { "slug": "insurers", "default": 33.33, "custom": null },
+                { "slug": "pension", "default": 33.33, "custom": null }
+              ]
+            },
+            {
+              "topicId": "fin.rural-agri-finance",
+              "weight": {
+                "default": 0.97,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 1,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "rrb", "default": 36.37, "custom": null },
+                { "slug": "nabard", "default": 36.36, "custom": null },
+                { "slug": "kcc", "default": 27.27, "custom": null }
+              ]
+            },
+            {
+              "topicId": "fin.budget-economic-survey",
+              "weight": {
+                "default": 2.91,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 2,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "budget-highlights", "default": 66.67, "custom": null },
+                { "slug": "economic-survey", "default": 33.33, "custom": null }
+              ]
+            },
+            {
+              "topicId": "ga.economy-basics",
+              "weight": {
+                "default": 2.91,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 2,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "concepts", "default": 42.86, "custom": null },
+                { "slug": "national-income", "default": 57.14, "custom": null }
+              ]
+            },
+            {
+              "topicId": "ga.economy-fiscal",
+              "weight": {
+                "default": 2.91,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 2,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "budget", "default": 50, "custom": null },
+                { "slug": "taxation-gst", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "ga.economy-inflation",
+              "weight": {
+                "default": 1.46,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "types-causes", "default": 50, "custom": null },
+                { "slug": "indices", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "ga.govt-schemes",
+              "weight": {
+                "default": 5.83,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 2,
+                "max": 4,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "social-welfare", "default": 28.57, "custom": null },
+                { "slug": "employment-rural", "default": 21.43, "custom": null },
+                { "slug": "health-education", "default": 21.43, "custom": null },
+                { "slug": "flagship-missions", "default": 28.57, "custom": null }
+              ]
+            },
+            {
+              "topicId": "ga.international-organisations",
+              "weight": {
+                "default": 2.91,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 2,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "un", "default": 25, "custom": null },
+                { "slug": "bretton-woods", "default": 25, "custom": null },
+                { "slug": "regional", "default": 25, "custom": null },
+                { "slug": "hq-heads", "default": 25, "custom": null }
+              ]
+            },
+            {
+              "topicId": "ga.static-gk",
+              "weight": {
+                "default": 4.85,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 2,
+                "max": 3,
+                "perPaper": 50
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "books-authors", "default": 23.08, "custom": null },
+                { "slug": "awards", "default": 30.77, "custom": null },
+                { "slug": "important-days", "default": 23.08, "custom": null },
+                { "slug": "world-capitals-currencies", "default": 23.07, "custom": null }
+              ]
+            },
+            {
+              "topicId": "ga.sports",
+              "weight": {
+                "default": 2.91,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 2,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "trophies", "default": 42.86, "custom": null },
+                { "slug": "events", "default": 57.14, "custom": null }
+              ]
+            },
+            {
+              "topicId": "ga.geography-india",
+              "weight": {
+                "default": 2.91,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 2,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "protected-areas", "default": 44.45, "custom": null },
+                { "slug": "dams-projects", "default": 33.33, "custom": null },
+                { "slug": "states-capitals", "default": 22.22, "custom": null }
+              ]
+            },
+            {
+              "topicId": "ga.art-culture",
+              "weight": {
+                "default": 1.46,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "dances", "default": 55.56, "custom": null },
+                { "slug": "festivals-fairs", "default": 44.44, "custom": null }
+              ]
+            },
+            {
+              "topicId": "ga.science-technology",
+              "weight": {
+                "default": 2.91,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (same 50-Q GA): current affairs 30, banking 10, static 5, economy 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 2,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "space", "default": 50, "custom": null },
+                { "slug": "defence", "default": 50, "custom": null }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionId": "english",
+          "gate": false,
+          "weight": {
+            "default": 20,
+            "custom": null,
+            "basis": "official-marks",
+            "isOfficial": true,
+            "confidence": "high",
+            "justification": "40 of 200 stage marks.",
+            "evidence": [],
+            "lastUpdated": "2026-11-15"
+          },
+          "topics": [
+            {
+              "topicId": "english.reading-comprehension",
+              "weight": {
+                "default": 33.94,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (40 Q): RC 15, cloze 5, error 5, sentence correction 5, vocabulary 5, para jumble 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 13,
+                "max": 15,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "factual", "default": 25, "custom": null },
+                { "slug": "inference", "default": 35, "custom": null },
+                { "slug": "vocab-in-context", "default": 20, "custom": null },
+                { "slug": "tone-title", "default": 15, "custom": null },
+                { "slug": "passage-types", "default": 5, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.cloze-test",
+              "weight": {
+                "default": 12.12,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (40 Q): RC 15, cloze 5, error 5, sentence correction 5, vocabulary 5, para jumble 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 5,
+                "max": 5,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "standard", "default": 66.67, "custom": null },
+                { "slug": "replacement", "default": 33.33, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.error-detection",
+              "weight": {
+                "default": 10.91,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (40 Q): RC 15, cloze 5, error 5, sentence correction 5, vocabulary 5, para jumble 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 4,
+                "max": 5,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "spot-error", "default": 50, "custom": null },
+                { "slug": "correct-sentence", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.fill-blanks",
+              "weight": {
+                "default": 4.85,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (40 Q): RC 15, cloze 5, error 5, sentence correction 5, vocabulary 5, para jumble 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 3,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "single", "default": 14.29, "custom": null },
+                { "slug": "multiple", "default": 42.86, "custom": null },
+                { "slug": "grammar-based", "default": 14.28, "custom": null },
+                { "slug": "vocab-based", "default": 28.57, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.para-jumbles",
+              "weight": {
+                "default": 10.91,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (40 Q): RC 15, cloze 5, error 5, sentence correction 5, vocabulary 5, para jumble 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 4,
+                "max": 5,
+                "perPaper": 40
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "passage-sentences", "default": 46.15, "custom": null },
+                { "slug": "odd-sentence", "default": 15.39, "custom": null },
+                { "slug": "first-last-fixed", "default": 15.38, "custom": null },
+                { "slug": "para-completion", "default": 23.08, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.sentence-improvement",
+              "weight": {
+                "default": 9.7,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (40 Q): RC 15, cloze 5, error 5, sentence correction 5, vocabulary 5, para jumble 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 3,
+                "max": 5,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "phrase-replacement", "default": 80, "custom": null },
+                { "slug": "no-improvement", "default": 20, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.word-usage",
+              "weight": {
+                "default": 7.27,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (40 Q): RC 15, cloze 5, error 5, sentence correction 5, vocabulary 5, para jumble 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 2,
+                "max": 4,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "word-swap", "default": 26.67, "custom": null },
+                { "slug": "word-usage", "default": 26.67, "custom": null },
+                { "slug": "phrase-rearrangement", "default": 26.66, "custom": null },
+                { "slug": "column-match", "default": 20, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.sentence-completion",
+              "weight": {
+                "default": 2.42,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (40 Q): RC 15, cloze 5, error 5, sentence correction 5, vocabulary 5, para jumble 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 2,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "completion", "default": 33.33, "custom": null },
+                { "slug": "connectors", "default": 66.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.grammar-rules",
+              "weight": {
+                "default": 1.82,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (40 Q): RC 15, cloze 5, error 5, sentence correction 5, vocabulary 5, para jumble 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "parts-of-speech", "default": 5.56, "custom": null },
+                { "slug": "nouns-pronouns", "default": 8.33, "custom": null },
+                { "slug": "articles", "default": 8.33, "custom": null },
+                { "slug": "verbs-tenses", "default": 13.89, "custom": null },
+                { "slug": "subject-verb", "default": 13.89, "custom": null },
+                { "slug": "modals", "default": 5.56, "custom": null },
+                { "slug": "adjectives-adverbs", "default": 8.33, "custom": null },
+                { "slug": "prepositions", "default": 11.11, "custom": null },
+                { "slug": "conjunctions", "default": 8.33, "custom": null },
+                { "slug": "conditionals", "default": 5.56, "custom": null },
+                { "slug": "parallelism-redundancy", "default": 5.56, "custom": null },
+                { "slug": "misc-rules", "default": 5.55, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.synonyms-antonyms",
+              "weight": {
+                "default": 4.85,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (40 Q): RC 15, cloze 5, error 5, sentence correction 5, vocabulary 5, para jumble 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 3,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "synonyms", "default": 25, "custom": null },
+                { "slug": "antonyms", "default": 25, "custom": null },
+                { "slug": "usage", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "english.spelling",
+              "weight": {
+                "default": 1.21,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (40 Q): RC 15, cloze 5, error 5, sentence correction 5, vocabulary 5, para jumble 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 1,
+                "perPaper": 40
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "misspelt", "default": 100, "custom": null }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionId": "quant",
+          "gate": false,
+          "weight": {
+            "default": 25,
+            "custom": null,
+            "basis": "official-marks",
+            "isOfficial": true,
+            "confidence": "high",
+            "justification": "50 of 200 stage marks.",
+            "evidence": [],
+            "lastUpdated": "2026-11-15"
+          },
+          "topics": [
+            {
+              "topicId": "quant.data-interpretation",
+              "weight": {
+                "default": 37.49,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 18,
+                "max": 20,
+                "perPaper": 50
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "tables", "default": 17.65, "custom": null },
+                { "slug": "bar", "default": 14.71, "custom": null },
+                { "slug": "line", "default": 11.77, "custom": null },
+                { "slug": "pie", "default": 11.76, "custom": null },
+                { "slug": "histogram", "default": 1.47, "custom": null },
+                { "slug": "frequency-polygon", "default": 1.47, "custom": null },
+                { "slug": "mixed", "default": 11.76, "custom": null },
+                { "slug": "caselet", "default": 14.71, "custom": null },
+                { "slug": "missing", "default": 8.82, "custom": null },
+                { "slug": "new-pattern", "default": 5.88, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.simplification",
+              "weight": {
+                "default": 8.88,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 4,
+                "max": 5,
+                "perPaper": 50
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "bodmas", "default": 22.64, "custom": null },
+                { "slug": "whole-numbers", "default": 11.32, "custom": null },
+                { "slug": "decimals", "default": 11.32, "custom": null },
+                { "slug": "fractions", "default": 11.32, "custom": null },
+                { "slug": "square-cube-roots", "default": 15.09, "custom": null },
+                { "slug": "approximation", "default": 26.42, "custom": null },
+                { "slug": "continued-fractions", "default": 1.89, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.number-series",
+              "weight": {
+                "default": 8.88,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 4,
+                "max": 5,
+                "perPaper": 50
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "missing", "default": 40, "custom": null },
+                { "slug": "wrong", "default": 33.33, "custom": null },
+                { "slug": "patterns", "default": 26.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.quadratic-equations",
+              "weight": {
+                "default": 2.96,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 3,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "roots", "default": 30, "custom": null },
+                { "slug": "nature", "default": 10, "custom": null },
+                { "slug": "sum-product", "default": 10, "custom": null },
+                { "slug": "comparison", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.quantity-comparison",
+              "weight": {
+                "default": 2.96,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 3,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "quantity-i-ii", "default": 60, "custom": null },
+                { "slug": "arithmetic-based", "default": 40, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.data-sufficiency",
+              "weight": {
+                "default": 4.93,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "two-statement", "default": 50, "custom": null },
+                { "slug": "three-statement", "default": 33.33, "custom": null },
+                { "slug": "not-necessary", "default": 16.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.percentage",
+              "weight": {
+                "default": 2.47,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 2,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "basics", "default": 18.18, "custom": null },
+                { "slug": "percent-change", "default": 22.73, "custom": null },
+                { "slug": "successive-change", "default": 13.64, "custom": null },
+                { "slug": "product-constancy", "default": 9.09, "custom": null },
+                { "slug": "population-depreciation", "default": 9.09, "custom": null },
+                { "slug": "applications", "default": 27.27, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.ratio-proportion",
+              "weight": {
+                "default": 1.85,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "ratio-basics", "default": 31.58, "custom": null },
+                { "slug": "proportion", "default": 21.05, "custom": null },
+                { "slug": "variation", "default": 10.53, "custom": null },
+                { "slug": "income-expenditure", "default": 21.05, "custom": null },
+                { "slug": "coins-distribution", "default": 15.79, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.average",
+              "weight": {
+                "default": 1.85,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "simple", "default": 23.81, "custom": null },
+                { "slug": "weighted", "default": 19.05, "custom": null },
+                { "slug": "replacement", "default": 28.57, "custom": null },
+                { "slug": "consecutive", "default": 14.29, "custom": null },
+                { "slug": "age-runs", "default": 14.28, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.ages",
+              "weight": {
+                "default": 1.85,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "present-past-future", "default": 50, "custom": null },
+                { "slug": "ratio-based", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.partnership",
+              "weight": {
+                "default": 1.85,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "simple", "default": 33.33, "custom": null },
+                { "slug": "compound", "default": 44.45, "custom": null },
+                { "slug": "working-sleeping", "default": 22.22, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.profit-loss",
+              "weight": {
+                "default": 3.08,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1.5,
+                "max": 2,
+                "perPaper": 50
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "cp-sp", "default": 28.57, "custom": null },
+                { "slug": "marked-price", "default": 23.81, "custom": null },
+                { "slug": "dishonest-dealer", "default": 14.29, "custom": null },
+                { "slug": "successive-transactions", "default": 9.53, "custom": null },
+                { "slug": "same-sp", "default": 9.52, "custom": null },
+                { "slug": "offers", "default": 9.52, "custom": null },
+                { "slug": "overheads", "default": 4.76, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.discount",
+              "weight": {
+                "default": 1.23,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 1.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "single", "default": 23.53, "custom": null },
+                { "slug": "successive", "default": 35.29, "custom": null },
+                { "slug": "mp-cp-relation", "default": 41.18, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.simple-interest",
+              "weight": {
+                "default": 1.85,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "basics", "default": 44.45, "custom": null },
+                { "slug": "amount-doubling", "default": 22.22, "custom": null },
+                { "slug": "rate-time-change", "default": 22.22, "custom": null },
+                { "slug": "installments", "default": 11.11, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.compound-interest",
+              "weight": {
+                "default": 1.85,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "annual", "default": 28.57, "custom": null },
+                { "slug": "half-quarterly", "default": 19.05, "custom": null },
+                { "slug": "ci-si-difference", "default": 23.81, "custom": null },
+                { "slug": "installments", "default": 14.29, "custom": null },
+                { "slug": "effective-rate", "default": 9.52, "custom": null },
+                { "slug": "fractional-time", "default": 4.76, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.time-work",
+              "weight": {
+                "default": 1.85,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "efficiency", "default": 26.09, "custom": null },
+                { "slug": "group-work", "default": 21.74, "custom": null },
+                { "slug": "alternate-days", "default": 13.04, "custom": null },
+                { "slug": "joining-leaving", "default": 17.39, "custom": null },
+                { "slug": "man-days", "default": 13.04, "custom": null },
+                { "slug": "wages", "default": 8.7, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.pipes-cisterns",
+              "weight": {
+                "default": 1.23,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 1.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "inlet-outlet", "default": 46.15, "custom": null },
+                { "slug": "leaks", "default": 30.77, "custom": null },
+                { "slug": "alternate", "default": 23.08, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.time-distance",
+              "weight": {
+                "default": 1.85,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "basics", "default": 27.78, "custom": null },
+                { "slug": "average-speed", "default": 22.22, "custom": null },
+                { "slug": "relative-speed", "default": 27.78, "custom": null },
+                { "slug": "meeting-overtaking", "default": 22.22, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.trains",
+              "weight": {
+                "default": 1.85,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "crossing-pole", "default": 28.57, "custom": null },
+                { "slug": "crossing-platform", "default": 28.57, "custom": null },
+                { "slug": "two-trains", "default": 42.86, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.boats-streams",
+              "weight": {
+                "default": 1.85,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "upstream-downstream", "default": 60, "custom": null },
+                { "slug": "round-trip", "default": 40, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.mixture-alligation",
+              "weight": {
+                "default": 1.85,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "rule", "default": 28.57, "custom": null },
+                { "slug": "mean-price", "default": 19.05, "custom": null },
+                { "slug": "replacement", "default": 23.81, "custom": null },
+                { "slug": "multi-mixtures", "default": 9.52, "custom": null },
+                { "slug": "applications", "default": 19.05, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.mensuration-2d",
+              "weight": {
+                "default": 1.23,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 1.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "triangle", "default": 26.67, "custom": null },
+                { "slug": "quadrilaterals", "default": 33.33, "custom": null },
+                { "slug": "circle", "default": 40, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.mensuration-3d",
+              "weight": {
+                "default": 1.23,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 1.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "cube-cuboid", "default": 25, "custom": null },
+                { "slug": "cylinder", "default": 25, "custom": null },
+                { "slug": "cone", "default": 25, "custom": null },
+                { "slug": "sphere-hemisphere", "default": 25, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.probability",
+              "weight": {
+                "default": 1.85,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "basics", "default": 25, "custom": null },
+                { "slug": "coins-dice", "default": 25, "custom": null },
+                { "slug": "cards", "default": 18.75, "custom": null },
+                { "slug": "balls-bags", "default": 31.25, "custom": null }
+              ]
+            },
+            {
+              "topicId": "quant.permutation-combination",
+              "weight": {
+                "default": 1.23,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q): DI 20, arithmetic 15, approximation 5, series 5, DS 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 1.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "counting-principle", "default": 12.5, "custom": null },
+                { "slug": "arrangements", "default": 37.5, "custom": null },
+                { "slug": "selections", "default": 37.5, "custom": null },
+                { "slug": "circular", "default": 12.5, "custom": null }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionId": "reasoning-computer",
+          "gate": false,
+          "weight": {
+            "default": 30,
+            "custom": null,
+            "basis": "official-marks",
+            "isOfficial": true,
+            "confidence": "high",
+            "justification": "60 of 200 stage marks.",
+            "evidence": [],
+            "lastUpdated": "2026-11-15"
+          },
+          "topics": [
+            {
+              "topicId": "reasoning.puzzles",
+              "weight": {
+                "default": 36.85,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 18,
+                "max": 20,
+                "perPaper": 50
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "floor", "default": 20.69, "custom": null },
+                { "slug": "box", "default": 17.24, "custom": null },
+                { "slug": "scheduling", "default": 20.69, "custom": null },
+                { "slug": "comparison", "default": 6.9, "custom": null },
+                { "slug": "categorised", "default": 13.79, "custom": null },
+                { "slug": "designation-age", "default": 13.79, "custom": null },
+                { "slug": "uncertain", "default": 6.9, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.seating-arrangement",
+              "weight": {
+                "default": 17.45,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 8,
+                "max": 10,
+                "perPaper": 50
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "linear-single", "default": 18.18, "custom": null },
+                { "slug": "linear-double", "default": 22.73, "custom": null },
+                { "slug": "circular", "default": 27.27, "custom": null },
+                { "slug": "square-rectangle", "default": 18.18, "custom": null },
+                { "slug": "uncertain", "default": 13.64, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.syllogism",
+              "weight": {
+                "default": 3.88,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 3,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "classic", "default": 29.41, "custom": null },
+                { "slug": "possibility", "default": 35.29, "custom": null },
+                { "slug": "only-a-few", "default": 17.65, "custom": null },
+                { "slug": "reverse", "default": 17.65, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.inequality",
+              "weight": {
+                "default": 3.88,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 3,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "direct", "default": 40, "custom": null },
+                { "slug": "coded", "default": 40, "custom": null },
+                { "slug": "conditional", "default": 20, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.coding-decoding",
+              "weight": {
+                "default": 8.73,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 4,
+                "max": 5,
+                "perPaper": 50
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "letter", "default": 13.33, "custom": null },
+                { "slug": "number", "default": 6.67, "custom": null },
+                { "slug": "word-sentence", "default": 53.33, "custom": null },
+                { "slug": "conditional", "default": 26.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.blood-relations",
+              "weight": {
+                "default": 1.94,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 2,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "direct", "default": 33.33, "custom": null },
+                { "slug": "coded", "default": 25, "custom": null },
+                { "slug": "family-tree", "default": 41.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.direction-distance",
+              "weight": {
+                "default": 1.94,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 2,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "pyq-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "basic", "default": 40, "custom": null },
+                { "slug": "shadow", "default": 10, "custom": null },
+                { "slug": "coded", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.order-ranking",
+              "weight": {
+                "default": 0.97,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 1,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "position", "default": 50, "custom": null },
+                { "slug": "comparison", "default": 33.33, "custom": null },
+                { "slug": "interchange", "default": 16.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.alphanumeric-series",
+              "weight": {
+                "default": 1.94,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 2,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "position-based", "default": 33.34, "custom": null },
+                { "slug": "conditional-counting", "default": 33.33, "custom": null },
+                { "slug": "word-letter-number", "default": 33.33, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.input-output",
+              "weight": {
+                "default": 7.76,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 3,
+                "max": 5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "shifting", "default": 50, "custom": null },
+                { "slug": "step-based", "default": 50, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.data-sufficiency",
+              "weight": {
+                "default": 1.94,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 2,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "two-statement", "default": 60, "custom": null },
+                { "slug": "three-statement", "default": 40, "custom": null }
+              ]
+            },
+            {
+              "topicId": "reasoning.critical-reasoning",
+              "weight": {
+                "default": 1.94,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 2,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "statement-conclusion", "default": 20, "custom": null },
+                { "slug": "assumptions", "default": 30, "custom": null },
+                { "slug": "course-action", "default": 20, "custom": null },
+                { "slug": "cause-effect", "default": 30, "custom": null }
+              ]
+            },
+            {
+              "topicId": "computer.fundamentals",
+              "weight": {
+                "default": 1.21,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 50
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "generations", "default": 12.5, "custom": null },
+                { "slug": "organization", "default": 25, "custom": null },
+                { "slug": "cpu", "default": 25, "custom": null },
+                { "slug": "io-devices", "default": 25, "custom": null },
+                { "slug": "types", "default": 12.5, "custom": null }
+              ]
+            },
+            {
+              "topicId": "computer.memory",
+              "weight": {
+                "default": 0.97,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 0.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "primary", "default": 25, "custom": null },
+                { "slug": "cache", "default": 12.5, "custom": null },
+                { "slug": "secondary", "default": 18.75, "custom": null },
+                { "slug": "units", "default": 18.75, "custom": null },
+                { "slug": "organization", "default": 12.5, "custom": null },
+                { "slug": "backup", "default": 12.5, "custom": null }
+              ]
+            },
+            {
+              "topicId": "computer.hardware-ports",
+              "weight": {
+                "default": 0.48,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 0.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "ports", "default": 66.67, "custom": null },
+                { "slug": "buses-motherboard", "default": 33.33, "custom": null }
+              ]
+            },
+            {
+              "topicId": "computer.software-os",
+              "weight": {
+                "default": 1.21,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 50
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "system-application", "default": 15.79, "custom": null },
+                { "slug": "os-functions", "default": 15.79, "custom": null },
+                { "slug": "windows-os", "default": 15.79, "custom": null },
+                { "slug": "windows-explorer", "default": 15.79, "custom": null },
+                { "slug": "shortcuts", "default": 26.31, "custom": null },
+                { "slug": "utilities-boot", "default": 10.53, "custom": null }
+              ]
+            },
+            {
+              "topicId": "computer.ms-office",
+              "weight": {
+                "default": 1.82,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 1,
+                "max": 1,
+                "perPaper": 50
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "word", "default": 31.25, "custom": null },
+                { "slug": "excel", "default": 31.25, "custom": null },
+                { "slug": "powerpoint", "default": 18.75, "custom": null },
+                { "slug": "access", "default": 18.75, "custom": null }
+              ]
+            },
+            {
+              "topicId": "computer.internet-email",
+              "weight": {
+                "default": 0.97,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 0.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "web-basics", "default": 28.57, "custom": null },
+                { "slug": "browsing-searching", "default": 14.29, "custom": null },
+                { "slug": "download-upload", "default": 14.29, "custom": null },
+                { "slug": "email", "default": 28.57, "custom": null },
+                { "slug": "e-banking", "default": 14.28, "custom": null }
+              ]
+            },
+            {
+              "topicId": "computer.networking",
+              "weight": {
+                "default": 1.21,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 1,
+                "perPaper": 50
+              },
+              "trend": "consistent",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "types", "default": 14.29, "custom": null },
+                { "slug": "topologies", "default": 14.29, "custom": null },
+                { "slug": "devices", "default": 19.05, "custom": null },
+                { "slug": "protocols", "default": 19.05, "custom": null },
+                { "slug": "osi", "default": 14.28, "custom": null },
+                { "slug": "ip-addressing", "default": 9.52, "custom": null },
+                { "slug": "wireless", "default": 9.52, "custom": null }
+              ]
+            },
+            {
+              "topicId": "computer.security",
+              "weight": {
+                "default": 0.97,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 0.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "threats", "default": 50, "custom": null },
+                { "slug": "prevention", "default": 33.33, "custom": null },
+                { "slug": "cyber-law", "default": 16.67, "custom": null }
+              ]
+            },
+            {
+              "topicId": "computer.number-systems-logic",
+              "weight": {
+                "default": 0.48,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0,
+                "max": 0.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "conversions", "default": 44.45, "custom": null },
+                { "slug": "logic-gates", "default": 33.33, "custom": null },
+                { "slug": "codes", "default": 22.22, "custom": null }
+              ]
+            },
+            {
+              "topicId": "computer.programming-dbms",
+              "weight": {
+                "default": 0.73,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 0.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "languages", "default": 30, "custom": null },
+                { "slug": "translators", "default": 30, "custom": null },
+                { "slug": "dbms", "default": 40, "custom": null }
+              ]
+            },
+            {
+              "topicId": "computer.emerging-tech",
+              "weight": {
+                "default": 0.73,
+                "custom": null,
+                "basis": "proxy-estimate",
+                "isOfficial": false,
+                "confidence": "low",
+                "justification": "Proxy: IBPS Clerk Mains 2024–25 (50 Q R&CA): puzzles 20, seating 10, coding 5, input-output 5, logical 5, computer 5.",
+                "evidence": [
+                  "ev-mahendras-ibps-clerk"
+                ],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": {
+                "min": 0.5,
+                "max": 0.5,
+                "perPaper": 50
+              },
+              "trend": "fluctuating",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "editorial-estimate",
+                "justification": "Relative importance profile (no source reports subtopic-level frequencies).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "cloud", "default": 18.18, "custom": null },
+                { "slug": "ai-ml", "default": 18.18, "custom": null },
+                { "slug": "iot", "default": 18.18, "custom": null },
+                { "slug": "blockchain", "default": 9.09, "custom": null },
+                { "slug": "abbreviations", "default": 36.37, "custom": null }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stageId": "llpt",
+      "gate": true,
+      "sections": [
+        {
+          "sectionId": "llpt",
+          "gate": false,
+          "weight": {
+            "default": 100,
+            "custom": null,
+            "basis": "official-marks",
+            "isOfficial": true,
+            "confidence": "high",
+            "justification": "50 of 50 stage marks.",
+            "evidence": [],
+            "lastUpdated": "2026-11-15"
+          },
+          "topics": [
+            {
+              "topicId": "language-test.local-language",
+              "weight": {
+                "default": 100,
+                "custom": null,
+                "basis": "nominal",
+                "isOfficial": false,
+                "confidence": "high",
+                "justification": "Single topic; subtopics follow official marks (15/15/20).",
+                "evidence": [],
+                "lastUpdated": "2026-11-15"
+              },
+              "expectedQuestions": null,
+              "trend": "not-applicable",
+              "customPriority": null,
+              "subtopicWeighting": {
+                "basis": "official-marks",
+                "justification": "Official LLPT marks: non-verbal objective 15, non-verbal subjective 15, verbal 20 (total 50).",
+                "lastUpdated": "2026-11-15"
+              },
+              "subtopics": [
+                { "slug": "non-verbal-objective", "default": 30, "custom": null },
+                { "slug": "non-verbal-subjective", "default": 30, "custom": null },
+                { "slug": "verbal", "default": 40, "custom": null }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

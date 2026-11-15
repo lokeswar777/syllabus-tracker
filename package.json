@@ -1,12 +1,17 @@
 {
   "name": "syllabus-tracker",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
-  "description": "Competitive exam syllabus tracker: Phase 1 syllabus database (SSC & Banking).",
+  "description": "Competitive exam syllabus tracker: syllabus database (Phase 1) and exam-wise weightage database (Phase 2) for SSC & Banking.",
   "scripts": {
     "build:data": "node scripts/build.mjs",
-    "check:data": "node scripts/build.mjs --check"
+    "check:data": "node scripts/build.mjs --check",
+    "seed:weightage": "node scripts/build.mjs && node scripts/seed-weightage.mjs",
+    "build:weightage": "node scripts/build-weightage.mjs",
+    "check:weightage": "node scripts/build.mjs && node scripts/build-weightage.mjs --check",
+    "build": "node scripts/build.mjs && node scripts/build-weightage.mjs",
+    "check": "node scripts/build.mjs && node scripts/build-weightage.mjs --check"
   },
   "engines": {
     "node": ">=18"

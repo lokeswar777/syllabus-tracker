@@ -1,7 +1,9 @@
-# Competitive Exam Syllabus Tracker: Phase 1 (Syllabus Database)
+# Competitive Exam Syllabus Tracker
 
-Structured syllabus data for **SSC CGL, SSC CHSL, SSC CPO, SBI PO, SBI Clerk, IBPS PO, IBPS Clerk, IBPS RRB PO and IBPS RRB Clerk**, built from the **2026 official notifications**. There is no UI yet.
+Structured syllabus and weightage data for **SSC CGL, SSC CHSL, SSC CPO, SBI PO, SBI Clerk, IBPS PO, IBPS Clerk, IBPS RRB PO and IBPS RRB Clerk**, built from the **2026 official notifications**. There is no UI yet.
 
+- **Phase 1:** syllabus database (sections 1–4)
+- **Phase 2:** exam-wise weightage database (section 5)
 
 ```
 data/                         ← SOURCE OF TRUTH (hand-edited)
@@ -107,11 +109,50 @@ Scope is computed per **subtopic** too. For example, `quant.time-distance` is un
 
 Full URLs are in `data/sources.json`.
 
-## 5. Maintenance
+## 5. Phase 2: Weightage database
+
+The weightage layer sits **beside** the syllabus. It references syllabus IDs and never changes them.
+
+```
+data/weightage/
+  config.json            rules: weighting methods, legends, priority thresholds, merit ratios, validation tolerance
+  evidence.json          historical question-trend sources + reported topic counts + known data gaps
+  exams/<exam-id>.json   EDITABLE weights: tracks → stages → sections → topics → subtopics
+scripts/weightage/estimates.mjs   authoring tables (expected-question ranges, subtopic profiles)
+scripts/seed-weightage.mjs        estimates → exams/*.json (keeps existing `custom` values)
+scripts/build-weightage.mjs       validation + effective weights + priorities → dist/weightage.json, dist/WEIGHTAGE_REPORT.md
+data/schema/weightage.schema.json
+```
+
+**Hierarchy and rules.** Every level is relative to its parent and totals 100%:
+- **Track:** stage weights. Optional post-specific papers (CGL Paper-II/III) get their own tracks.
+- **Stage:** section weights.
+- **Section:** topic weights.
+- **Topic:** subtopic weights.
+
+`overall % = stage% × section% × topic% (× subtopic%)`.
+
+| Level | How the default is set | Official? |
+|---|---|---|
+| Stage | Marks share of the track's scored stages. Where the notice gives a merit ratio (IBPS PO / RRB PO 80:20, SBI PO 75:25), that ratio is used. Pass/fail stages are gates (0). | `official-marks` |
+| Section | Section marks ÷ stage marks. Choice groups (RRB English/Hindi) count once. Sections without marks are gates (0). | `official-marks` |
+| Topic | Expected questions per paper `[min, max]` → midpoint share. Informed by `evidence.json`. | **estimate** (`pyq-` / `proxy-` / `editorial-estimate`) |
+| Subtopic | Relative importance profile (SSC or banking variant). | **estimate** (SBI LLPT uses official marks) |
+
+Every weight object stores `default`, `custom`, `basis`, `isOfficial`, `confidence`, `justification`, `evidence` and `lastUpdated` (plus an optional `customNote`). Topics also carry `expectedQuestions`, a `trend` (`consistent`, `fluctuating`, `emerging` or `declining`) and `customPriority`.
+
+**Editing.** Set `custom` (and `customNote`) and keep siblings at 100. Then run `npm run check:weightage`. It reports the exact entry whose siblings no longer total 100. Re-running `npm run seed:weightage` after changing the estimates keeps all custom values.
+
+**Priority** (Very High / High / Medium / Low) is computed per exam from overall weight by cumulative share. The topics forming the top 40% of exam weight are Very High, up to 70% High, and up to 90% Medium. Pass/fail-only topics (PET, DEST, LLPT) are High. `customPriority` overrides the computed value.
+
+## 6. Maintenance
 
 ```bash
-npm run check:data   # validate only (exit 1 on any broken reference)
-npm run build:data   # validate + regenerate dist/
+npm run check:data       # syllabus: validate only (exit 1 on any broken reference)
+npm run build:data       # syllabus: validate + regenerate dist/syllabus.json, overlap files
+npm run check:weightage  # weightage: validate against the syllabus (sums, coverage, orphans, duplicates)
+npm run build            # both layers → dist/ (weightage.json, WEIGHTAGE_REPORT.md included)
+npm run seed:weightage   # regenerate weightage defaults from scripts/weightage/estimates.mjs (keeps custom values)
 ```
 
 - **New exam** (e.g. RRB NTPC): add a category in `registry.json` if needed, create `data/exams/<id>.json` reusing library IDs, add new topics to the library only when nothing existing fits, then run the build. Overlap with all existing exams appears automatically.

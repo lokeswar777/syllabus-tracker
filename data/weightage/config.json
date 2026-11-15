@@ -1,0 +1,65 @@
+{
+  "$comment": "Global rules for the weightage layer. Weightage never modifies the syllabus: it references syllabus IDs (exam/stage/section/topic/subtopic).",
+  "schemaVersion": "1.0.0",
+  "lastUpdated": "2026-11-15",
+  "basisLegend": {
+    "official-marks": "Derived arithmetically from official marks in the notification (e.g. section marks ÷ stage marks). The only basis with isOfficial = true.",
+    "pyq-estimate": "Estimate informed by secondary previous-year question analyses listed in evidence.json (candidate-recall based, not official).",
+    "proxy-estimate": "No PYQ data for this exam/section; borrowed from a structurally similar exam's PYQ data (named in the justification).",
+    "editorial-estimate": "No PYQ data found; judgement based on syllabus scope and typical question styles. Lowest reliability.",
+    "nominal": "No marks attached (qualifying/pass-fail test) or single-topic section; weight assigned only so the hierarchy is complete.",
+    "custom": "Set by the user via the `custom` field; overrides `default`."
+  },
+  "confidenceLegend": {
+    "high": "Official figure.",
+    "medium": "Multiple shifts/years of secondary topic-wise analysis agree.",
+    "low": "Single source, single shift, or aggregator ranges without stated basis.",
+    "very-low": "Proxy or editorial estimate; no direct historical data."
+  },
+  "stageWeighting": {
+    "method": "marks",
+    "rule": "Within a track, each scored stage's weight = its maximum marks ÷ total maximum marks of the track's scored stages. Pass/fail stages (PST/PET, medical, personality test, local-language test) are gates with weight 0.",
+    "note": "Prelims are weighted even though their marks are not added to final merit, because they must be cleared competitively (cut-offs).",
+    "meritRatios": {
+      "$comment": "Where the notification states how merit stages combine, the marks share of those stages is split by the official ratio instead of raw marks.",
+      "ibps-po": { "ratio": { "mains": 80, "interview": 20 }, "source": "ibps-po-xvi-2026-notice, J. Interview: 'relative weightage of Online Main Exam and interview will be 80:20'" },
+      "ibps-rrb-po": { "ratio": { "mains": 80, "interview": 20 }, "source": "ibps-rrb-xv-2026-notice, J. Interview: 'weightage of Online Examination and Interview will be 80:20'" },
+      "sbi-po": { "ratio": { "mains": 75, "phase3": 25 }, "source": "sbi-po-2026-advt, Final Selection: Main 230 → 75, GE & Interview 50 → 25" }
+    }
+  },
+  "nonAcademicSubjects": {
+    "subjects": ["personality", "physical", "skill", "language-test"],
+    "note": "Interview, psychometric, physical and skill/language tests are weighted and prioritised like any topic, but listed separately from academic top-10 tables."
+  },
+  "sectionWeighting": {
+    "method": "marks",
+    "rule": "Section weight = section marks ÷ stage marks. Sections in the same choiceGroup are alternatives: each gets the full group weight, and the group is counted once in the 100% total. Sections with no marks are gates (weight 0). If no section in a stage has marks, weights are split equally (nominal)."
+  },
+  "topicWeighting": {
+    "method": "expected-questions",
+    "rule": "Each topic has an expected question range [min, max] per paper. Default weight = midpoint ÷ sum of midpoints × 100, rounded to 2 decimals (largest-remainder, so the section totals exactly 100.00).",
+    "trendRule": "consistent if min > 0 and (max − min) ≤ 0.34 × max; fluctuating if min = 0 or the spread is larger; explicit trend tags (emerging/declining/new-pattern) override."
+  },
+  "subtopicWeighting": {
+    "method": "relative-profile",
+    "rule": "Relative importance profile per topic (SSC or banking variant), renormalised over the subtopics the exam includes, rounded to 2 decimals summing to 100.00."
+  },
+  "priority": {
+    "method": "cumulative-share",
+    "rule": "Within an exam track, topics are sorted by effective overall weight (descending). Topics whose cumulative share reaches the threshold fall in that band; the topic that crosses a threshold stays in the higher band.",
+    "thresholds": { "Very High": 40, "High": 70, "Medium": 90, "Low": 100 },
+    "gatePriority": "High",
+    "gateRule": "Topics that only appear in pass/fail gates (weight 0) get 'High': failing them eliminates the candidate regardless of marks."
+  },
+  "validation": {
+    "tolerance": 0.01,
+    "rules": [
+      "Every track's stage weights total 100 (gate stages are 0).",
+      "Every stage's section weights total 100 (choice groups counted once; alternatives must carry equal weight).",
+      "Every section's topic weights total 100.",
+      "Every topic's subtopic weights total 100.",
+      "Every syllabus stage, section, topic and subtopic has exactly one weightage entry; no orphans, no duplicates.",
+      "Weights are within 0–100; basis, confidence and priority values are from the legends; lastUpdated is an ISO date."
+    ]
+  }
+}
