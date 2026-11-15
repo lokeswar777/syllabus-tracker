@@ -1,0 +1,230 @@
+{
+  "$schema": "../schema/exam.schema.json",
+  "id": "ibps-clerk",
+  "name": "IBPS Common Recruitment Process for Customer Service Associates (CRP CSA-XVI)",
+  "shortName": "IBPS Clerk",
+  "conductingBody": "Institute of Banking Personnel Selection (IBPS)",
+  "category": "banking",
+  "cycle": "2026-27",
+  "eligibilityLevel": "Graduation",
+  "lastVerified": "2026-11-15",
+  "sources": ["ibps-csa-xvi-2026-notice", "editorial-pyq"],
+  "posts": ["Customer Service Associate (Clerk) in participating public sector banks"],
+  "selectionSummary": "Online Preliminary (qualifying) → Online Main → Local Language Proficiency Test (if applicable) → Provisional allotment",
+  "finalMerit": "Main examination score only. No interview.",
+  "notes": [
+    "IBPS publishes only section names. All topic lists are editorial unless a section name explicitly names the subject.",
+    "2026 structure: Mains is 160 Q / 200 marks / 125 min. 'Reasoning Ability' stands alone; Computer Aptitude, combined with it in earlier cycles, is not listed.",
+    "A corrigendum dated 29.09.2026 was not reviewed for this database. Check it for structure changes."
+  ],
+  "stages": [
+    {
+      "id": "prelims",
+      "name": "Online Preliminary Examination",
+      "order": 1,
+      "mode": "cbt",
+      "nature": "qualifying",
+      "natureNote": "Candidates must clear the cut-off in each of the three tests.",
+      "pattern": {
+        "questions": 100, "marks": 100, "durationMinutes": 60,
+        "negativeMarking": { "type": "fraction-of-question", "value": 0.25 },
+        "sectionalTiming": "20 minutes per test (separately timed)"
+      },
+      "source": { "id": "ibps-csa-xvi-2026-notice", "locator": "D(a) Preliminary Examination; E. Penalty" },
+      "sections": [
+        {
+          "id": "english", "name": "English Language", "questions": 30, "marks": 30, "durationMinutes": 20,
+          "officialSyllabus": null,
+          "topics": [
+            { "topic": "english.reading-comprehension", "status": "pyq-derived" },
+            { "topic": "english.cloze-test", "status": "pyq-derived" },
+            { "topic": "english.error-detection", "status": "pyq-derived" },
+            { "topic": "english.fill-blanks", "status": "pyq-derived" },
+            { "topic": "english.para-jumbles", "status": "pyq-derived", "only": ["passage-sentences", "odd-sentence", "first-last-fixed"] },
+            { "topic": "english.sentence-improvement", "status": "pyq-derived" },
+            { "topic": "english.word-usage", "status": "pyq-derived", "only": ["word-swap", "word-usage", "phrase-rearrangement"] },
+            { "topic": "english.sentence-completion", "status": "pyq-derived", "only": ["connectors"] },
+            { "topic": "english.grammar-rules", "status": "pyq-derived" },
+            { "topic": "english.synonyms-antonyms", "status": "pyq-derived", "only": ["synonyms", "antonyms", "usage"] },
+            { "topic": "english.spelling", "status": "unverified", "only": ["misspelt"] },
+            { "topic": "english.idioms-phrases", "status": "unverified", "only": ["idioms", "phrasal-verbs"] }
+          ]
+        },
+        {
+          "id": "quant", "name": "Numerical Ability", "questions": 35, "marks": 35, "durationMinutes": 20,
+          "officialSyllabus": null,
+          "topics": [
+            { "topic": "quant.simplification", "status": "pyq-derived", "note": "Highest-weightage topic in clerk prelims." },
+            { "topic": "quant.number-series", "status": "pyq-derived" },
+            { "topic": "quant.quadratic-equations", "status": "pyq-derived" },
+            { "topic": "quant.data-interpretation", "status": "pyq-derived", "only": ["tables", "bar", "line", "pie", "caselet"] },
+            { "topic": "quant.percentage", "status": "pyq-derived" },
+            { "topic": "quant.ratio-proportion", "status": "pyq-derived" },
+            { "topic": "quant.average", "status": "pyq-derived" },
+            { "topic": "quant.ages", "status": "pyq-derived" },
+            { "topic": "quant.partnership", "status": "pyq-derived" },
+            { "topic": "quant.profit-loss", "status": "pyq-derived" },
+            { "topic": "quant.discount", "status": "pyq-derived", "only": ["single", "successive", "mp-cp-relation"] },
+            { "topic": "quant.simple-interest", "status": "pyq-derived" },
+            { "topic": "quant.compound-interest", "status": "pyq-derived" },
+            { "topic": "quant.time-work", "status": "pyq-derived" },
+            { "topic": "quant.pipes-cisterns", "status": "pyq-derived" },
+            { "topic": "quant.time-distance", "status": "pyq-derived", "only": ["basics", "average-speed", "relative-speed", "meeting-overtaking"] },
+            { "topic": "quant.trains", "status": "pyq-derived" },
+            { "topic": "quant.boats-streams", "status": "pyq-derived" },
+            { "topic": "quant.mixture-alligation", "status": "pyq-derived" },
+            { "topic": "quant.mensuration-2d", "status": "pyq-derived", "only": ["triangle", "quadrilaterals", "circle"] },
+            { "topic": "quant.mensuration-3d", "status": "unverified", "only": ["cube-cuboid", "cylinder", "cone", "sphere-hemisphere"] },
+            { "topic": "quant.probability", "status": "unverified", "only": ["basics", "coins-dice", "balls-bags"] },
+            { "topic": "quant.permutation-combination", "status": "unverified", "only": ["counting-principle", "arrangements", "selections"] },
+            { "topic": "quant.quantity-comparison", "status": "unverified" }
+          ]
+        },
+        {
+          "id": "reasoning", "name": "Reasoning Ability", "questions": 35, "marks": 35, "durationMinutes": 20,
+          "officialSyllabus": null,
+          "topics": [
+            { "topic": "reasoning.puzzles", "status": "pyq-derived", "only": ["floor", "box", "scheduling", "comparison", "categorised"] },
+            { "topic": "reasoning.seating-arrangement", "status": "pyq-derived", "only": ["linear-single", "linear-double", "circular", "square-rectangle"] },
+            { "topic": "reasoning.syllogism", "status": "pyq-derived" },
+            { "topic": "reasoning.inequality", "status": "pyq-derived", "only": ["direct", "coded"] },
+            { "topic": "reasoning.coding-decoding", "status": "pyq-derived", "only": ["letter", "number", "word-sentence", "conditional"] },
+            { "topic": "reasoning.blood-relations", "status": "pyq-derived" },
+            { "topic": "reasoning.direction-distance", "status": "pyq-derived" },
+            { "topic": "reasoning.order-ranking", "status": "pyq-derived" },
+            { "topic": "reasoning.alphanumeric-series", "status": "pyq-derived" },
+            { "topic": "reasoning.word-building", "status": "pyq-derived", "only": ["letter-position", "formation", "dictionary-order"] },
+            { "topic": "reasoning.classification", "status": "unverified", "only": ["semantic", "letter"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mains",
+      "name": "Online Main Examination",
+      "order": 2,
+      "mode": "cbt",
+      "nature": "merit",
+      "pattern": {
+        "questions": 160, "marks": 200, "durationMinutes": 125,
+        "negativeMarking": { "type": "fraction-of-question", "value": 0.25 },
+        "sectionalTiming": "Separately timed: 20 / 35 / 35 / 35 minutes"
+      },
+      "source": { "id": "ibps-csa-xvi-2026-notice", "locator": "D(b) Main Examination" },
+      "sections": [
+        {
+          "id": "general-financial-awareness", "name": "General / Financial Awareness", "questions": 40, "marks": 50, "durationMinutes": 20,
+          "officialSyllabus": null,
+          "topics": [
+            { "topic": "ga.current-affairs", "status": "official-umbrella", "officialLabel": "General Awareness" },
+            { "topic": "fin.banking-current-affairs", "status": "official-umbrella", "officialLabel": "Financial Awareness" },
+            { "topic": "fin.banking-structure", "status": "official-umbrella", "officialLabel": "Financial Awareness" },
+            { "topic": "fin.rbi", "status": "official-umbrella", "officialLabel": "Financial Awareness" },
+            { "topic": "fin.banking-terms", "status": "official-umbrella", "officialLabel": "Financial Awareness" },
+            { "topic": "fin.digital-payments", "status": "official-umbrella", "officialLabel": "Financial Awareness" },
+            { "topic": "fin.financial-markets", "status": "official-umbrella", "only": ["money-market", "capital-market", "stock-exchanges", "sebi"], "officialLabel": "Financial Awareness" },
+            { "topic": "fin.financial-inclusion", "status": "official-umbrella", "officialLabel": "Financial Awareness" },
+            { "topic": "fin.regulators-institutions", "status": "official-umbrella", "officialLabel": "Financial Awareness" },
+            { "topic": "fin.insurance-pension", "status": "official-umbrella", "officialLabel": "Financial Awareness" },
+            { "topic": "fin.rural-agri-finance", "status": "pyq-derived", "only": ["rrb", "nabard", "kcc"] },
+            { "topic": "fin.budget-economic-survey", "status": "pyq-derived" },
+            { "topic": "ga.economy-basics", "status": "pyq-derived", "only": ["concepts", "national-income"] },
+            { "topic": "ga.economy-fiscal", "status": "pyq-derived", "only": ["budget", "taxation-gst"] },
+            { "topic": "ga.economy-inflation", "status": "pyq-derived", "only": ["types-causes", "indices"] },
+            { "topic": "ga.govt-schemes", "status": "pyq-derived" },
+            { "topic": "ga.international-organisations", "status": "pyq-derived" },
+            { "topic": "ga.static-gk", "status": "pyq-derived", "only": ["books-authors", "awards", "important-days", "world-capitals-currencies"] },
+            { "topic": "ga.sports", "status": "pyq-derived", "only": ["events", "trophies"] },
+            { "topic": "ga.geography-india", "status": "pyq-derived", "only": ["protected-areas", "dams-projects", "states-capitals"] },
+            { "topic": "ga.art-culture", "status": "pyq-derived", "only": ["dances", "festivals-fairs"] },
+            { "topic": "ga.science-technology", "status": "pyq-derived", "only": ["space", "defence"] }
+          ]
+        },
+        {
+          "id": "english", "name": "General English", "questions": 40, "marks": 40, "durationMinutes": 35,
+          "officialSyllabus": null,
+          "topics": [
+            { "topic": "english.reading-comprehension", "status": "pyq-derived" },
+            { "topic": "english.cloze-test", "status": "pyq-derived" },
+            { "topic": "english.error-detection", "status": "pyq-derived" },
+            { "topic": "english.fill-blanks", "status": "pyq-derived" },
+            { "topic": "english.para-jumbles", "status": "pyq-derived", "only": ["passage-sentences", "odd-sentence", "first-last-fixed", "para-completion"] },
+            { "topic": "english.sentence-improvement", "status": "pyq-derived" },
+            { "topic": "english.word-usage", "status": "pyq-derived" },
+            { "topic": "english.sentence-completion", "status": "pyq-derived" },
+            { "topic": "english.grammar-rules", "status": "pyq-derived" },
+            { "topic": "english.synonyms-antonyms", "status": "pyq-derived", "only": ["synonyms", "antonyms", "usage"] },
+            { "topic": "english.spelling", "status": "unverified", "only": ["misspelt"] }
+          ]
+        },
+        {
+          "id": "reasoning", "name": "Reasoning Ability", "questions": 40, "marks": 60, "durationMinutes": 35,
+          "officialSyllabus": null,
+          "topics": [
+            { "topic": "reasoning.puzzles", "status": "pyq-derived" },
+            { "topic": "reasoning.seating-arrangement", "status": "pyq-derived" },
+            { "topic": "reasoning.syllogism", "status": "pyq-derived" },
+            { "topic": "reasoning.inequality", "status": "pyq-derived" },
+            { "topic": "reasoning.coding-decoding", "status": "pyq-derived", "only": ["letter", "number", "word-sentence", "conditional"] },
+            { "topic": "reasoning.blood-relations", "status": "pyq-derived" },
+            { "topic": "reasoning.direction-distance", "status": "pyq-derived" },
+            { "topic": "reasoning.order-ranking", "status": "pyq-derived" },
+            { "topic": "reasoning.alphanumeric-series", "status": "pyq-derived" },
+            { "topic": "reasoning.input-output", "status": "pyq-derived" },
+            { "topic": "reasoning.data-sufficiency", "status": "pyq-derived" },
+            { "topic": "reasoning.critical-reasoning", "status": "unverified", "only": ["statement-conclusion", "assumptions", "course-action", "cause-effect"] }
+          ]
+        },
+        {
+          "id": "quant", "name": "Quantitative Aptitude", "questions": 40, "marks": 50, "durationMinutes": 35,
+          "officialSyllabus": null,
+          "topics": [
+            { "topic": "quant.data-interpretation", "status": "pyq-derived" },
+            { "topic": "quant.simplification", "status": "pyq-derived" },
+            { "topic": "quant.number-series", "status": "pyq-derived" },
+            { "topic": "quant.quadratic-equations", "status": "pyq-derived" },
+            { "topic": "quant.quantity-comparison", "status": "pyq-derived" },
+            { "topic": "quant.data-sufficiency", "status": "unverified" },
+            { "topic": "quant.percentage", "status": "pyq-derived" },
+            { "topic": "quant.ratio-proportion", "status": "pyq-derived" },
+            { "topic": "quant.average", "status": "pyq-derived" },
+            { "topic": "quant.ages", "status": "pyq-derived" },
+            { "topic": "quant.partnership", "status": "pyq-derived" },
+            { "topic": "quant.profit-loss", "status": "pyq-derived" },
+            { "topic": "quant.discount", "status": "pyq-derived", "only": ["single", "successive", "mp-cp-relation"] },
+            { "topic": "quant.simple-interest", "status": "pyq-derived" },
+            { "topic": "quant.compound-interest", "status": "pyq-derived" },
+            { "topic": "quant.time-work", "status": "pyq-derived" },
+            { "topic": "quant.pipes-cisterns", "status": "pyq-derived" },
+            { "topic": "quant.time-distance", "status": "pyq-derived", "only": ["basics", "average-speed", "relative-speed", "meeting-overtaking"] },
+            { "topic": "quant.trains", "status": "pyq-derived" },
+            { "topic": "quant.boats-streams", "status": "pyq-derived" },
+            { "topic": "quant.mixture-alligation", "status": "pyq-derived" },
+            { "topic": "quant.mensuration-2d", "status": "pyq-derived", "only": ["triangle", "quadrilaterals", "circle"] },
+            { "topic": "quant.mensuration-3d", "status": "pyq-derived", "only": ["cube-cuboid", "cylinder", "cone", "sphere-hemisphere"] },
+            { "topic": "quant.probability", "status": "pyq-derived", "only": ["basics", "coins-dice", "cards", "balls-bags"] },
+            { "topic": "quant.permutation-combination", "status": "pyq-derived" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "llpt",
+      "name": "Local Language Proficiency Test (LLPT)",
+      "order": 3,
+      "mode": "language-test",
+      "nature": "qualifying",
+      "natureNote": "Exempt if a Class 10 (or higher) mark sheet shows the opted local language was studied. Held after the Main exam / provisional allotment, before joining.",
+      "source": { "id": "ibps-csa-xvi-2026-notice", "locator": "H. Local Language Proficiency Test" },
+      "sections": [
+        {
+          "id": "llpt", "name": "Local Language Proficiency",
+          "officialSyllabus": "Proficiency in reading, writing, speaking and understanding the specified/opted local language of the State/UT applied for.",
+          "topics": [
+            { "topic": "language-test.local-language", "status": "official", "only": ["reading", "writing", "speaking-understanding"], "verbatim": ["reading", "writing", "speaking-understanding"] }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1161 @@
+{
+  "$schema": "../schema/library.schema.json",
+  "version": "1.0.0",
+  "description": "Canonical topic library. Every topic and subtopic is defined ONCE here with a stable ID. Exam files only reference these IDs, so overlap between exams is computed, never hand-maintained. Full subtopic ID = <topicId>.<subtopicSlug>.",
+  "subjects": [
+    { "id": "quant", "name": "Quantitative Aptitude", "aliases": ["Numerical Ability", "Mathematical Abilities", "Basic Arithmetic Skill", "Data Analysis & Interpretation"] },
+    { "id": "reasoning", "name": "Reasoning & General Intelligence", "aliases": ["Reasoning Ability", "General Intelligence", "General Intelligence and Reasoning"] },
+    { "id": "english", "name": "English Language", "aliases": ["English Comprehension", "General English", "English Language and Comprehension"] },
+    { "id": "hindi", "name": "Hindi Language", "aliases": ["हिंदी भाषा"] },
+    { "id": "ga", "name": "General Awareness & General Knowledge", "aliases": ["General Awareness", "General Knowledge", "General Studies"] },
+    { "id": "fin", "name": "Banking & Financial Awareness", "aliases": ["Financial Awareness", "Banking Awareness", "Banking Knowledge", "Economy/Banking Awareness"] },
+    { "id": "computer", "name": "Computer Knowledge", "aliases": ["Computer Aptitude", "Computer Knowledge Test", "Computer Proficiency"] },
+    { "id": "stats", "name": "Statistics (Graduate level)", "aliases": ["Paper-II Statistics"] },
+    { "id": "accounts", "name": "Finance & Accounts", "aliases": ["Accounting"] },
+    { "id": "econ", "name": "Economics & Governance", "aliases": ["Micro Economics", "Finance and Economics"] },
+    { "id": "descriptive", "name": "Descriptive Writing", "aliases": ["Descriptive Paper", "Communication Skills"] },
+    { "id": "skill", "name": "Skill & Typing Tests", "aliases": ["DEST", "Typing Test", "Skill Test"] },
+    { "id": "physical", "name": "Physical Standards & Endurance", "aliases": ["PST", "PET", "PE&MT"] },
+    { "id": "personality", "name": "Personality Assessment & Interview", "aliases": ["Psychometric Test", "Group Exercise", "Interview"] },
+    { "id": "language-test", "name": "Local Language Proficiency", "aliases": ["LLPT", "Test of specified local language"] }
+  ],
+  "topics": [
+    { "id": "quant.number-system", "subject": "quant", "group": "Number System", "name": "Number System", "related": ["quant.hcf-lcm", "quant.simplification"], "subtopics": [
+      { "id": "classification", "name": "Classification of numbers (natural, whole, integers, rational, irrational, real)" },
+      { "id": "place-face-value", "name": "Place value & face value" },
+      { "id": "divisibility", "name": "Divisibility rules" },
+      { "id": "unit-digit", "name": "Unit digit & cyclicity" },
+      { "id": "remainders", "name": "Remainder theorem & remainder problems" },
+      { "id": "factors", "name": "Factors: number, sum & product of factors" },
+      { "id": "primes", "name": "Prime, composite & co-prime numbers" },
+      { "id": "trailing-zeros", "name": "Factorials & number of trailing zeros" },
+      { "id": "recurring-decimals", "name": "Recurring decimals to fractions" },
+      { "id": "series-sums", "name": "Sum of natural numbers, squares, cubes; AP/GP basics" },
+      { "id": "relationships", "name": "Relationship between numbers (consecutive, odd/even, digit problems)" }
+    ]},
+    { "id": "quant.hcf-lcm", "subject": "quant", "group": "Number System", "name": "HCF & LCM", "subtopics": [
+      { "id": "basics", "name": "HCF & LCM of numbers (factorisation & division methods)" },
+      { "id": "fractions-decimals", "name": "HCF & LCM of fractions and decimals" },
+      { "id": "product-relation", "name": "HCF × LCM = product of two numbers" },
+      { "id": "word-problems", "name": "Word problems (bells, tiles, remainder-based)" }
+    ]},
+    { "id": "quant.simplification", "subject": "quant", "group": "Number System", "name": "Simplification & Approximation", "aliases": ["Computation of whole numbers, decimals and fractions"], "subtopics": [
+      { "id": "bodmas", "name": "BODMAS / VBODMAS" },
+      { "id": "whole-numbers", "name": "Computation of whole numbers" },
+      { "id": "decimals", "name": "Decimals: operations & conversions" },
+      { "id": "fractions", "name": "Fractions: operations, comparison & ordering" },
+      { "id": "square-cube-roots", "name": "Square roots & cube roots" },
+      { "id": "approximation", "name": "Approximation (nearest value)" },
+      { "id": "continued-fractions", "name": "Continued fractions" }
+    ]},
+    { "id": "quant.surds-indices", "subject": "quant", "group": "Algebra", "name": "Surds & Indices", "subtopics": [
+      { "id": "laws-of-indices", "name": "Laws of indices / exponents" },
+      { "id": "surds-operations", "name": "Elementary surds: operations" },
+      { "id": "rationalisation", "name": "Rationalisation of denominators" },
+      { "id": "comparison", "name": "Comparison of surds" },
+      { "id": "exponential-equations", "name": "Simple exponential equations" }
+    ]},
+    { "id": "quant.percentage", "subject": "quant", "group": "Arithmetic", "name": "Percentage", "aliases": ["Percentages"], "related": ["quant.profit-loss", "quant.compound-interest"], "subtopics": [
+      { "id": "basics", "name": "Percentage basics & fraction equivalents" },
+      { "id": "percent-change", "name": "Percentage increase / decrease" },
+      { "id": "successive-change", "name": "Successive percentage change (net effect)" },
+      { "id": "product-constancy", "name": "Price–consumption / expenditure (product constancy)" },
+      { "id": "population-depreciation", "name": "Population growth & depreciation" },
+      { "id": "applications", "name": "Applications: marks, elections, salary, alloys" }
+    ]},
+    { "id": "quant.ratio-proportion", "subject": "quant", "group": "Arithmetic", "name": "Ratio & Proportion", "related": ["quant.partnership", "quant.ages"], "subtopics": [
+      { "id": "ratio-basics", "name": "Ratio basics; compound, duplicate & triplicate ratios" },
+      { "id": "proportion", "name": "Proportion: mean, third & fourth proportional" },
+      { "id": "variation", "name": "Direct & inverse variation" },
+      { "id": "income-expenditure", "name": "Income–expenditure & savings problems" },
+      { "id": "coins-distribution", "name": "Coins/notes & distribution problems" }
+    ]},
+    { "id": "quant.partnership", "subject": "quant", "group": "Arithmetic", "name": "Partnership", "aliases": ["Partnership Business"], "subtopics": [
+      { "id": "simple", "name": "Simple partnership" },
+      { "id": "compound", "name": "Compound partnership (different time periods)" },
+      { "id": "working-sleeping", "name": "Working & sleeping partners; salary/commission" }
+    ]},
+    { "id": "quant.mixture-alligation", "subject": "quant", "group": "Arithmetic", "name": "Mixture & Alligation", "subtopics": [
+      { "id": "rule", "name": "Rule of alligation" },
+      { "id": "mean-price", "name": "Mean price of a mixture" },
+      { "id": "replacement", "name": "Replacement / repeated dilution" },
+      { "id": "multi-mixtures", "name": "Mixtures of more than two quantities" },
+      { "id": "applications", "name": "Applications: milk–water, alloys, profit/interest-based alligation" }
+    ]},
+    { "id": "quant.average", "subject": "quant", "group": "Arithmetic", "name": "Average", "aliases": ["Averages"], "related": ["quant.statistics"], "subtopics": [
+      { "id": "simple", "name": "Simple average" },
+      { "id": "weighted", "name": "Weighted average" },
+      { "id": "replacement", "name": "Inclusion, exclusion & replacement of members" },
+      { "id": "consecutive", "name": "Average of consecutive numbers / series" },
+      { "id": "age-runs", "name": "Age-based & cricket-score averages" }
+    ]},
+    { "id": "quant.simple-interest", "subject": "quant", "group": "Arithmetic", "name": "Simple Interest", "subtopics": [
+      { "id": "basics", "name": "SI formula: principal, rate, time" },
+      { "id": "amount-doubling", "name": "Amount & n-times / doubling problems" },
+      { "id": "rate-time-change", "name": "Change in rate / time problems" },
+      { "id": "installments", "name": "Installments under SI" }
+    ]},
+    { "id": "quant.compound-interest", "subject": "quant", "group": "Arithmetic", "name": "Compound Interest", "related": ["quant.percentage"], "subtopics": [
+      { "id": "annual", "name": "Annual compounding" },
+      { "id": "half-quarterly", "name": "Half-yearly & quarterly compounding" },
+      { "id": "ci-si-difference", "name": "Difference between CI & SI (2 and 3 years)" },
+      { "id": "installments", "name": "Installments under CI" },
+      { "id": "effective-rate", "name": "Effective rate; growth & depreciation" },
+      { "id": "fractional-time", "name": "Fractional time periods" }
+    ]},
+    { "id": "quant.profit-loss", "subject": "quant", "group": "Arithmetic", "name": "Profit & Loss", "related": ["quant.discount", "quant.percentage"], "subtopics": [
+      { "id": "cp-sp", "name": "CP, SP & profit/loss percentage" },
+      { "id": "marked-price", "name": "Marked price relations" },
+      { "id": "dishonest-dealer", "name": "Dishonest dealer / false weights" },
+      { "id": "successive-transactions", "name": "Successive selling (A → B → C)" },
+      { "id": "same-sp", "name": "Same SP with profit and loss" },
+      { "id": "offers", "name": "Buy x get y free & offers" },
+      { "id": "overheads", "name": "Overhead charges" }
+    ]},
+    { "id": "quant.discount", "subject": "quant", "group": "Arithmetic", "name": "Discount", "related": ["quant.profit-loss"], "subtopics": [
+      { "id": "single", "name": "Single discount" },
+      { "id": "successive", "name": "Successive & equivalent discounts" },
+      { "id": "mp-cp-relation", "name": "Marked price – discount – profit relations" },
+      { "id": "true-bankers-discount", "name": "True discount & banker's discount" }
+    ]},
+    { "id": "quant.time-work", "subject": "quant", "group": "Arithmetic", "name": "Time & Work", "related": ["quant.pipes-cisterns"], "subtopics": [
+      { "id": "efficiency", "name": "Work & efficiency (LCM method)" },
+      { "id": "group-work", "name": "Group / combined work" },
+      { "id": "alternate-days", "name": "Alternate-day work" },
+      { "id": "joining-leaving", "name": "Joining / leaving midway" },
+      { "id": "man-days", "name": "Man-days / chain rule" },
+      { "id": "wages", "name": "Work & wages" }
+    ]},
+    { "id": "quant.pipes-cisterns", "subject": "quant", "group": "Arithmetic", "name": "Pipes & Cisterns", "related": ["quant.time-work"], "subtopics": [
+      { "id": "inlet-outlet", "name": "Inlet & outlet pipes" },
+      { "id": "leaks", "name": "Leak problems" },
+      { "id": "alternate", "name": "Alternate / sequential opening" }
+    ]},
+    { "id": "quant.time-distance", "subject": "quant", "group": "Arithmetic", "name": "Speed, Time & Distance", "aliases": ["Time and distance"], "related": ["quant.trains", "quant.boats-streams"], "subtopics": [
+      { "id": "basics", "name": "Speed, time & distance basics; unit conversion" },
+      { "id": "average-speed", "name": "Average speed" },
+      { "id": "relative-speed", "name": "Relative speed" },
+      { "id": "meeting-overtaking", "name": "Meeting & overtaking problems" },
+      { "id": "races", "name": "Races & games (start, dead heat)" },
+      { "id": "circular-track", "name": "Circular track problems" },
+      { "id": "late-early", "name": "Late / early arrival problems" }
+    ]},
+    { "id": "quant.trains", "subject": "quant", "group": "Arithmetic", "name": "Problems on Trains", "related": ["quant.time-distance"], "subtopics": [
+      { "id": "crossing-pole", "name": "Train crossing a pole / man" },
+      { "id": "crossing-platform", "name": "Train crossing a platform / bridge" },
+      { "id": "two-trains", "name": "Two trains (same / opposite direction)" }
+    ]},
+    { "id": "quant.boats-streams", "subject": "quant", "group": "Arithmetic", "name": "Boats & Streams", "related": ["quant.time-distance"], "subtopics": [
+      { "id": "upstream-downstream", "name": "Upstream & downstream speeds" },
+      { "id": "round-trip", "name": "Round trip & average speed problems" }
+    ]},
+    { "id": "quant.ages", "subject": "quant", "group": "Arithmetic", "name": "Problems on Ages", "related": ["quant.ratio-proportion", "quant.linear-equations"], "subtopics": [
+      { "id": "present-past-future", "name": "Present / past / future age relations" },
+      { "id": "ratio-based", "name": "Ratio- and average-based age problems" }
+    ]},
+    { "id": "quant.algebra-identities", "subject": "quant", "group": "Algebra", "name": "Algebraic Identities & Expressions", "aliases": ["Basic algebraic identities of School Algebra"], "subtopics": [
+      { "id": "identities", "name": "Standard identities (squares, cubes, a³+b³+c³−3abc)" },
+      { "id": "reciprocal-type", "name": "x ± 1/x type problems" },
+      { "id": "factorization", "name": "Factorisation & polynomials" },
+      { "id": "conditional", "name": "Symmetric expressions & conditional identities (a+b+c=0 etc.)" },
+      { "id": "min-max", "name": "Maximum / minimum value of expressions" },
+      { "id": "componendo", "name": "Componendo–dividendo" }
+    ]},
+    { "id": "quant.linear-equations", "subject": "quant", "group": "Algebra", "name": "Linear Equations", "related": ["quant.coordinate-geometry"], "subtopics": [
+      { "id": "one-variable", "name": "Linear equations in one variable" },
+      { "id": "two-variables", "name": "Linear equations in two variables" },
+      { "id": "consistency", "name": "Consistency & number of solutions" },
+      { "id": "word-problems", "name": "Word problems on linear equations" }
+    ]},
+    { "id": "quant.coordinate-geometry", "subject": "quant", "group": "Algebra", "name": "Coordinate Geometry & Graphs", "aliases": ["Graphs of Linear Equations"], "subtopics": [
+      { "id": "graphs-linear", "name": "Graphs of linear equations" },
+      { "id": "slope-intercept", "name": "Slope & intercepts" },
+      { "id": "area-by-lines", "name": "Area enclosed by lines and axes" },
+      { "id": "distance-section", "name": "Distance & section formulae" },
+      { "id": "triangle-area", "name": "Area of a triangle from coordinates" }
+    ]},
+    { "id": "quant.quadratic-equations", "subject": "quant", "group": "Algebra", "name": "Quadratic Equations", "subtopics": [
+      { "id": "roots", "name": "Roots by factorisation / formula" },
+      { "id": "nature", "name": "Nature of roots" },
+      { "id": "sum-product", "name": "Sum & product of roots" },
+      { "id": "comparison", "name": "Comparing roots (x vs y relationship)" }
+    ]},
+    { "id": "quant.geometry-lines-angles", "subject": "quant", "group": "Geometry", "name": "Lines & Angles", "subtopics": [
+      { "id": "angles", "name": "Types of angles" },
+      { "id": "parallel-transversal", "name": "Parallel lines & transversals" }
+    ]},
+    { "id": "quant.geometry-triangles", "subject": "quant", "group": "Geometry", "name": "Triangles", "subtopics": [
+      { "id": "properties", "name": "Properties & types of triangles" },
+      { "id": "centres", "name": "Centres: centroid, incentre, circumcentre, orthocentre" },
+      { "id": "congruence", "name": "Congruence of triangles" },
+      { "id": "similarity", "name": "Similarity of triangles" },
+      { "id": "pythagoras", "name": "Pythagoras theorem & triplets" },
+      { "id": "theorems", "name": "Angle-bisector, mid-point, BPT & Apollonius theorems" },
+      { "id": "inequality", "name": "Triangle inequality & side relations" }
+    ]},
+    { "id": "quant.geometry-circles", "subject": "quant", "group": "Geometry", "name": "Circles", "subtopics": [
+      { "id": "chords", "name": "Chords & their properties" },
+      { "id": "tangents", "name": "Tangents & tangent–secant theorem" },
+      { "id": "angles-subtended", "name": "Angles subtended by chords / arcs" },
+      { "id": "cyclic-quadrilateral", "name": "Cyclic quadrilaterals" },
+      { "id": "common-tangents", "name": "Common tangents to two or more circles" },
+      { "id": "intersecting", "name": "Intersecting / touching circles" }
+    ]},
+    { "id": "quant.geometry-quadrilaterals-polygons", "subject": "quant", "group": "Geometry", "name": "Quadrilaterals & Polygons", "subtopics": [
+      { "id": "quadrilaterals", "name": "Parallelogram, rhombus, rectangle, trapezium properties" },
+      { "id": "regular-polygons", "name": "Regular polygons: interior/exterior angles, diagonals" }
+    ]},
+    { "id": "quant.mensuration-2d", "subject": "quant", "group": "Mensuration", "name": "Mensuration 2D", "subtopics": [
+      { "id": "triangle", "name": "Area & perimeter of triangles" },
+      { "id": "quadrilaterals", "name": "Area & perimeter of quadrilaterals" },
+      { "id": "regular-polygons", "name": "Regular polygons (hexagon etc.)" },
+      { "id": "circle", "name": "Circle, sector, segment & arc length" },
+      { "id": "paths-combined", "name": "Paths, borders & combined figures" }
+    ]},
+    { "id": "quant.mensuration-3d", "subject": "quant", "group": "Mensuration", "name": "Mensuration 3D", "subtopics": [
+      { "id": "cube-cuboid", "name": "Cube & cuboid (rectangular parallelepiped)" },
+      { "id": "cylinder", "name": "Right circular cylinder" },
+      { "id": "cone", "name": "Right circular cone" },
+      { "id": "sphere-hemisphere", "name": "Sphere & hemisphere" },
+      { "id": "prism", "name": "Right prism" },
+      { "id": "pyramid", "name": "Regular right pyramid (triangular / square base)" },
+      { "id": "frustum", "name": "Frustum of a cone" },
+      { "id": "recasting", "name": "Melting/recasting & % change in dimensions" }
+    ]},
+    { "id": "quant.trigonometry", "subject": "quant", "group": "Trigonometry", "name": "Trigonometry", "related": ["quant.heights-distances"], "subtopics": [
+      { "id": "ratios", "name": "Trigonometric ratios & standard-angle values" },
+      { "id": "degree-radian", "name": "Degree & radian measures" },
+      { "id": "identities", "name": "Standard identities (sin²θ + cos²θ = 1 etc.)" },
+      { "id": "complementary", "name": "Complementary angles" },
+      { "id": "min-max", "name": "Maximum / minimum of trigonometric expressions" },
+      { "id": "simplification", "name": "Simplification & proving expressions" }
+    ]},
+    { "id": "quant.heights-distances", "subject": "quant", "group": "Trigonometry", "name": "Heights & Distances", "subtopics": [
+      { "id": "elevation-depression", "name": "Angles of elevation & depression" },
+      { "id": "single-object", "name": "Single object / observer problems" },
+      { "id": "two-objects", "name": "Two objects / observers problems" }
+    ]},
+    { "id": "quant.statistics", "subject": "quant", "group": "Statistics & Data", "name": "Basic Statistics", "related": ["stats.central-tendency", "stats.dispersion", "quant.average"], "subtopics": [
+      { "id": "mean-median-mode", "name": "Mean, median & mode" },
+      { "id": "sd-variance", "name": "Standard deviation & variance" },
+      { "id": "range", "name": "Range & basic dispersion" },
+      { "id": "grouped-data", "name": "Measures for grouped data" }
+    ]},
+    { "id": "quant.probability", "subject": "quant", "group": "Statistics & Data", "name": "Probability", "related": ["stats.probability-theory", "quant.permutation-combination"], "subtopics": [
+      { "id": "basics", "name": "Classical probability" },
+      { "id": "coins-dice", "name": "Coins & dice" },
+      { "id": "cards", "name": "Playing cards" },
+      { "id": "balls-bags", "name": "Balls / bags selection" },
+      { "id": "events", "name": "Mutually exclusive & independent events" }
+    ]},
+    { "id": "quant.permutation-combination", "subject": "quant", "group": "Statistics & Data", "name": "Permutation & Combination", "subtopics": [
+      { "id": "counting-principle", "name": "Fundamental principle of counting" },
+      { "id": "arrangements", "name": "Permutations (words, digits, seating)" },
+      { "id": "selections", "name": "Combinations (committees, groups)" },
+      { "id": "circular", "name": "Circular permutations" }
+    ]},
+    { "id": "quant.data-interpretation", "subject": "quant", "group": "Statistics & Data", "name": "Data Interpretation", "aliases": ["Statistical Charts", "Use of Tables and Graphs", "Data Analysis & Interpretation"], "subtopics": [
+      { "id": "tables", "name": "Tabular DI" },
+      { "id": "bar", "name": "Bar graph / bar diagram" },
+      { "id": "line", "name": "Line graph" },
+      { "id": "pie", "name": "Pie chart" },
+      { "id": "histogram", "name": "Histogram" },
+      { "id": "frequency-polygon", "name": "Frequency polygon" },
+      { "id": "mixed", "name": "Mixed-graph DI" },
+      { "id": "caselet", "name": "Caselet (paragraph) DI" },
+      { "id": "missing", "name": "Missing-data / arithmetic DI" },
+      { "id": "new-pattern", "name": "Radar/web, funnel & other new-pattern charts" }
+    ]},
+    { "id": "quant.data-sufficiency", "subject": "quant", "group": "Banking Patterns", "name": "Data Sufficiency (Quant)", "related": ["reasoning.data-sufficiency"], "subtopics": [
+      { "id": "two-statement", "name": "Two-statement DS" },
+      { "id": "three-statement", "name": "Three-statement DS" },
+      { "id": "not-necessary", "name": "Which statement is not necessary" }
+    ]},
+    { "id": "quant.number-series", "subject": "quant", "group": "Banking Patterns", "name": "Number Series (Quant)", "related": ["reasoning.series"], "subtopics": [
+      { "id": "missing", "name": "Missing-number series" },
+      { "id": "wrong", "name": "Wrong-number series" },
+      { "id": "patterns", "name": "Pattern types (squares, cubes, differences, multiplicative, alternating)" }
+    ]},
+    { "id": "quant.quantity-comparison", "subject": "quant", "group": "Banking Patterns", "name": "Quantity Comparison", "subtopics": [
+      { "id": "quantity-i-ii", "name": "Quantity I vs Quantity II" },
+      { "id": "arithmetic-based", "name": "Arithmetic-based comparisons" }
+    ]},
+
+    { "id": "reasoning.analogy", "subject": "reasoning", "group": "Verbal & Analytical", "name": "Analogy", "subtopics": [
+      { "id": "semantic", "name": "Semantic (word / meaning) analogy" },
+      { "id": "symbolic-number", "name": "Symbolic / number analogy" },
+      { "id": "letter", "name": "Letter / alphabet analogy" },
+      { "id": "figural", "name": "Figural analogy" }
+    ]},
+    { "id": "reasoning.classification", "subject": "reasoning", "group": "Verbal & Analytical", "name": "Classification (Odd One Out)", "subtopics": [
+      { "id": "semantic", "name": "Semantic classification" },
+      { "id": "symbolic-number", "name": "Symbolic / number classification" },
+      { "id": "letter", "name": "Letter-cluster classification" },
+      { "id": "figural", "name": "Figural classification" }
+    ]},
+    { "id": "reasoning.series", "subject": "reasoning", "group": "Verbal & Analytical", "name": "Series", "related": ["quant.number-series"], "subtopics": [
+      { "id": "number", "name": "Number series (reasoning)" },
+      { "id": "alphabet", "name": "Alphabet / letter series" },
+      { "id": "alpha-numeric", "name": "Alpha-numeric series" },
+      { "id": "semantic", "name": "Semantic series / logical sequence of words" },
+      { "id": "figural", "name": "Figural series" },
+      { "id": "missing-in-figure", "name": "Missing number in figures / matrix (trends)" }
+    ]},
+    { "id": "reasoning.coding-decoding", "subject": "reasoning", "group": "Verbal & Analytical", "name": "Coding–Decoding", "subtopics": [
+      { "id": "letter", "name": "Letter coding" },
+      { "id": "number", "name": "Number coding" },
+      { "id": "symbolic", "name": "Symbol / substitution coding" },
+      { "id": "word-sentence", "name": "Word / sentence (Chinese) coding" },
+      { "id": "conditional", "name": "Conditional & new-pattern coding" }
+    ]},
+    { "id": "reasoning.mathematical-operations", "subject": "reasoning", "group": "Verbal & Analytical", "name": "Mathematical & Symbolic Operations", "subtopics": [
+      { "id": "numerical", "name": "Numerical operations" },
+      { "id": "symbolic", "name": "Symbolic operations & sign substitution" },
+      { "id": "interchange", "name": "Interchange of signs / numbers" },
+      { "id": "balancing", "name": "Balancing equations" }
+    ]},
+    { "id": "reasoning.word-building", "subject": "reasoning", "group": "Verbal & Analytical", "name": "Word Building & Alphabet Test", "subtopics": [
+      { "id": "formation", "name": "Word formation from given letters / word" },
+      { "id": "dictionary-order", "name": "Dictionary / alphabetical order of words" },
+      { "id": "letter-position", "name": "Letter position & alphabet test" }
+    ]},
+    { "id": "reasoning.blood-relations", "subject": "reasoning", "group": "Verbal & Analytical", "name": "Blood Relations", "subtopics": [
+      { "id": "direct", "name": "Direct relations" },
+      { "id": "coded", "name": "Coded (symbol-based) relations" },
+      { "id": "family-tree", "name": "Family-tree puzzles" }
+    ]},
+    { "id": "reasoning.direction-distance", "subject": "reasoning", "group": "Verbal & Analytical", "name": "Direction & Distance", "subtopics": [
+      { "id": "basic", "name": "Direction & distance" },
+      { "id": "shadow", "name": "Shadow-based direction" },
+      { "id": "coded", "name": "Coded / pointer-based direction (new pattern)" }
+    ]},
+    { "id": "reasoning.order-ranking", "subject": "reasoning", "group": "Verbal & Analytical", "name": "Order & Ranking", "subtopics": [
+      { "id": "position", "name": "Position from left / right / top" },
+      { "id": "comparison", "name": "Comparison (heights, weights, marks)" },
+      { "id": "interchange", "name": "Interchange of positions" }
+    ]},
+    { "id": "reasoning.venn-diagrams", "subject": "reasoning", "group": "Verbal & Analytical", "name": "Venn Diagrams", "subtopics": [
+      { "id": "logical", "name": "Logical Venn representation" },
+      { "id": "counting", "name": "Venn-based counting / region questions" }
+    ]},
+    { "id": "reasoning.syllogism", "subject": "reasoning", "group": "Logical Reasoning", "name": "Syllogism", "subtopics": [
+      { "id": "classic", "name": "Classic (all / some / no)" },
+      { "id": "possibility", "name": "Possibility cases" },
+      { "id": "only-a-few", "name": "'Only a few' & new-pattern" },
+      { "id": "reverse", "name": "Reverse syllogism (conclusion → statements)" }
+    ]},
+    { "id": "reasoning.critical-reasoning", "subject": "reasoning", "group": "Logical Reasoning", "name": "Statement-based & Critical Reasoning", "subtopics": [
+      { "id": "statement-conclusion", "name": "Statement & conclusions" },
+      { "id": "assumptions", "name": "Statement & assumptions" },
+      { "id": "arguments", "name": "Statement & arguments" },
+      { "id": "course-action", "name": "Course of action" },
+      { "id": "cause-effect", "name": "Cause & effect" },
+      { "id": "inferences", "name": "Inferences / drawing inferences" },
+      { "id": "strengthen-weaken", "name": "Strengthening / weakening arguments" },
+      { "id": "decision-making", "name": "Decision making" }
+    ]},
+    { "id": "reasoning.emotional-social-intelligence", "subject": "reasoning", "group": "Verbal & Analytical", "name": "Emotional & Social Intelligence", "subtopics": [
+      { "id": "emotional", "name": "Emotional intelligence" },
+      { "id": "social", "name": "Social intelligence" }
+    ]},
+    { "id": "reasoning.arithmetic-reasoning", "subject": "reasoning", "group": "Verbal & Analytical", "name": "Arithmetical Reasoning & Problem Solving", "subtopics": [
+      { "id": "arithmetic-reasoning", "name": "Arithmetical reasoning (counting, number puzzles)" },
+      { "id": "problem-solving", "name": "Problem solving & basic logical puzzles" },
+      { "id": "visual-memory", "name": "Visual memory, discrimination & observation" }
+    ]},
+    { "id": "reasoning.calendar-clock", "subject": "reasoning", "group": "Verbal & Analytical", "name": "Calendar & Clock", "subtopics": [
+      { "id": "calendar", "name": "Calendar (odd days, day of the week)" },
+      { "id": "clock", "name": "Clock (angles, gains/losses, coincidences)" }
+    ]},
+    { "id": "reasoning.mirror-water-images", "subject": "reasoning", "group": "Non-verbal", "name": "Mirror & Water Images", "subtopics": [
+      { "id": "mirror", "name": "Mirror images" },
+      { "id": "water", "name": "Water images" }
+    ]},
+    { "id": "reasoning.paper-folding-cutting", "subject": "reasoning", "group": "Non-verbal", "name": "Paper Folding & Cutting", "aliases": ["Punched hole / pattern-folding & unfolding"], "subtopics": [
+      { "id": "punched-hole", "name": "Punched hole / paper cutting" },
+      { "id": "folding-unfolding", "name": "Pattern folding & unfolding" }
+    ]},
+    { "id": "reasoning.figure-completion", "subject": "reasoning", "group": "Non-verbal", "name": "Figure Completion & Formation", "subtopics": [
+      { "id": "completion", "name": "Figural pattern completion" },
+      { "id": "formation", "name": "Figure formation from pieces" }
+    ]},
+    { "id": "reasoning.embedded-figures", "subject": "reasoning", "group": "Non-verbal", "name": "Embedded Figures", "subtopics": [
+      { "id": "embedded", "name": "Embedded / hidden figures" }
+    ]},
+    { "id": "reasoning.counting-figures", "subject": "reasoning", "group": "Non-verbal", "name": "Counting of Figures", "subtopics": [
+      { "id": "triangles", "name": "Counting triangles" },
+      { "id": "squares-rectangles", "name": "Counting squares & rectangles" },
+      { "id": "lines-others", "name": "Counting lines & other shapes" }
+    ]},
+    { "id": "reasoning.cubes-dice", "subject": "reasoning", "group": "Non-verbal", "name": "Cubes, Dice & Spatial Ability", "subtopics": [
+      { "id": "dice", "name": "Dice (standard, open & closed)" },
+      { "id": "cube-cutting", "name": "Cube painting & cutting" },
+      { "id": "space-visualization", "name": "Space visualization & 3D figures" },
+      { "id": "rotation", "name": "Spatial orientation & figure rotation" }
+    ]},
+    { "id": "reasoning.clerical-aptitude", "subject": "reasoning", "group": "Verbal & Analytical", "name": "Clerical Aptitude", "subtopics": [
+      { "id": "indexing", "name": "Indexing" },
+      { "id": "address-matching", "name": "Address matching" },
+      { "id": "date-city-matching", "name": "Date & city matching" },
+      { "id": "centre-codes", "name": "Classification of centre codes / roll numbers" },
+      { "id": "case-coding", "name": "Small & capital letters / numbers coding, decoding & classification" }
+    ]},
+    { "id": "reasoning.seating-arrangement", "subject": "reasoning", "group": "Puzzles & Arrangements", "name": "Seating Arrangement", "subtopics": [
+      { "id": "linear-single", "name": "Linear: single row" },
+      { "id": "linear-double", "name": "Linear: double / parallel rows" },
+      { "id": "circular", "name": "Circular (inside / outside facing)" },
+      { "id": "square-rectangle", "name": "Square / rectangular tables" },
+      { "id": "uncertain", "name": "Uncertain number of persons" }
+    ]},
+    { "id": "reasoning.puzzles", "subject": "reasoning", "group": "Puzzles & Arrangements", "name": "Puzzles", "subtopics": [
+      { "id": "floor", "name": "Floor / flat-based puzzles" },
+      { "id": "box", "name": "Box / stack puzzles" },
+      { "id": "scheduling", "name": "Scheduling (day / month / year)" },
+      { "id": "comparison", "name": "Comparison puzzles" },
+      { "id": "categorised", "name": "Categorised / distribution puzzles" },
+      { "id": "designation-age", "name": "Designation / age / blood-relation based" },
+      { "id": "uncertain", "name": "Uncertain-number puzzles" }
+    ]},
+    { "id": "reasoning.inequality", "subject": "reasoning", "group": "Logical Reasoning", "name": "Inequality", "subtopics": [
+      { "id": "direct", "name": "Direct inequality" },
+      { "id": "coded", "name": "Coded inequality" },
+      { "id": "conditional", "name": "Conditional / either-or inequality" }
+    ]},
+    { "id": "reasoning.input-output", "subject": "reasoning", "group": "Puzzles & Arrangements", "name": "Input–Output (Machine)", "subtopics": [
+      { "id": "shifting", "name": "Word / number shifting" },
+      { "id": "step-based", "name": "Step-based arrangement & calculations" }
+    ]},
+    { "id": "reasoning.data-sufficiency", "subject": "reasoning", "group": "Logical Reasoning", "name": "Data Sufficiency (Reasoning)", "related": ["quant.data-sufficiency"], "subtopics": [
+      { "id": "two-statement", "name": "Two-statement DS" },
+      { "id": "three-statement", "name": "Three-statement DS" }
+    ]},
+    { "id": "reasoning.alphanumeric-series", "subject": "reasoning", "group": "Puzzles & Arrangements", "name": "Alphanumeric / Symbol Series", "subtopics": [
+      { "id": "position-based", "name": "Position-based questions" },
+      { "id": "conditional-counting", "name": "Condition-based counting" },
+      { "id": "word-letter-number", "name": "Word / letter / number-based questions (meaningful words, letter pairs)" }
+    ]},
+
+    { "id": "english.grammar-rules", "subject": "english", "group": "Grammar", "name": "Grammar Fundamentals", "aliases": ["Grammar", "Sentence structure"], "subtopics": [
+      { "id": "parts-of-speech", "name": "Parts of speech" },
+      { "id": "nouns-pronouns", "name": "Nouns & pronouns" },
+      { "id": "articles", "name": "Articles & determiners" },
+      { "id": "verbs-tenses", "name": "Verbs & tenses" },
+      { "id": "subject-verb", "name": "Subject–verb agreement" },
+      { "id": "modals", "name": "Modals" },
+      { "id": "adjectives-adverbs", "name": "Adjectives & adverbs (degrees of comparison)" },
+      { "id": "prepositions", "name": "Prepositions" },
+      { "id": "conjunctions", "name": "Conjunctions" },
+      { "id": "conditionals", "name": "Conditionals" },
+      { "id": "parallelism-redundancy", "name": "Parallelism & redundancy" },
+      { "id": "misc-rules", "name": "Question tags, inversion & other rules" }
+    ]},
+    { "id": "english.reading-comprehension", "subject": "english", "group": "Comprehension", "name": "Reading Comprehension", "aliases": ["Comprehension Passage"], "subtopics": [
+      { "id": "factual", "name": "Factual / direct questions" },
+      { "id": "inference", "name": "Inference-based questions" },
+      { "id": "vocab-in-context", "name": "Vocabulary in context" },
+      { "id": "tone-title", "name": "Tone, title & main idea" },
+      { "id": "passage-types", "name": "Passage types (story/book-based, editorial, report)" }
+    ]},
+    { "id": "english.cloze-test", "subject": "english", "group": "Comprehension", "name": "Cloze Test", "aliases": ["Cloze Passage"], "subtopics": [
+      { "id": "standard", "name": "Standard cloze (fill all blanks)" },
+      { "id": "replacement", "name": "Replace / no-replacement new-pattern cloze" }
+    ]},
+    { "id": "english.error-detection", "subject": "english", "group": "Grammar", "name": "Error Detection", "aliases": ["Spot the Error", "Error recognition"], "related": ["english.grammar-rules"], "subtopics": [
+      { "id": "spot-error", "name": "Spot the error (part-based)" },
+      { "id": "correct-sentence", "name": "Grammatically correct / incorrect sentence" }
+    ]},
+    { "id": "english.sentence-improvement", "subject": "english", "group": "Grammar", "name": "Sentence Improvement", "aliases": ["Improvement of Sentences", "Phrase replacement"], "subtopics": [
+      { "id": "phrase-replacement", "name": "Phrase replacement / improvement" },
+      { "id": "no-improvement", "name": "No-improvement cases" }
+    ]},
+    { "id": "english.fill-blanks", "subject": "english", "group": "Vocabulary", "name": "Fill in the Blanks", "subtopics": [
+      { "id": "single", "name": "Single blank" },
+      { "id": "multiple", "name": "Double / triple blanks" },
+      { "id": "grammar-based", "name": "Grammar-based (verbs, prepositions, articles)" },
+      { "id": "vocab-based", "name": "Vocabulary-based" }
+    ]},
+    { "id": "english.synonyms-antonyms", "subject": "english", "group": "Vocabulary", "name": "Synonyms, Antonyms & Homonyms", "aliases": ["Vocabulary"], "subtopics": [
+      { "id": "synonyms", "name": "Synonyms" },
+      { "id": "antonyms", "name": "Antonyms" },
+      { "id": "homonyms", "name": "Homonyms / homophones" },
+      { "id": "usage", "name": "Correct usage in context" }
+    ]},
+    { "id": "english.spelling", "subject": "english", "group": "Vocabulary", "name": "Spellings", "subtopics": [
+      { "id": "misspelt", "name": "Detecting misspelt words" },
+      { "id": "correct-spelling", "name": "Choosing the correctly spelt word" }
+    ]},
+    { "id": "english.idioms-phrases", "subject": "english", "group": "Vocabulary", "name": "Idioms & Phrases", "subtopics": [
+      { "id": "idioms", "name": "Idioms" },
+      { "id": "phrasal-verbs", "name": "Phrasal verbs" },
+      { "id": "idiomatic-usage", "name": "Idiomatic use of words in sentences" }
+    ]},
+    { "id": "english.one-word-substitution", "subject": "english", "group": "Vocabulary", "name": "One-Word Substitution", "subtopics": [
+      { "id": "ows", "name": "One-word substitutes" }
+    ]},
+    { "id": "english.voice", "subject": "english", "group": "Grammar", "name": "Active & Passive Voice", "subtopics": [
+      { "id": "active-passive", "name": "Active / passive voice conversion" }
+    ]},
+    { "id": "english.narration", "subject": "english", "group": "Grammar", "name": "Direct & Indirect Narration", "subtopics": [
+      { "id": "direct-indirect", "name": "Direct / indirect speech conversion" }
+    ]},
+    { "id": "english.para-jumbles", "subject": "english", "group": "Comprehension", "name": "Para Jumbles & Sentence Rearrangement", "aliases": ["Shuffling of Sentence parts", "Shuffling of Sentences in a passage"], "subtopics": [
+      { "id": "sentence-parts", "name": "Shuffling of sentence parts" },
+      { "id": "passage-sentences", "name": "Shuffling of sentences in a passage" },
+      { "id": "odd-sentence", "name": "Odd sentence out" },
+      { "id": "first-last-fixed", "name": "Fixed first / last sentence" },
+      { "id": "para-completion", "name": "Paragraph completion" }
+    ]},
+    { "id": "english.sentence-completion", "subject": "english", "group": "Comprehension", "name": "Sentence Completion & Connectors", "subtopics": [
+      { "id": "completion", "name": "Sentence completion" },
+      { "id": "connectors", "name": "Sentence connectors / starters" }
+    ]},
+    { "id": "english.word-usage", "subject": "english", "group": "Vocabulary", "name": "New-pattern Vocabulary & Usage", "subtopics": [
+      { "id": "word-swap", "name": "Word swap" },
+      { "id": "word-usage", "name": "Word usage across sentences" },
+      { "id": "phrase-rearrangement", "name": "Phrase / word rearrangement" },
+      { "id": "column-match", "name": "Column-based sentence matching" }
+    ]},
+
+    { "id": "hindi.grammar", "subject": "hindi", "group": "व्याकरण", "name": "Hindi Grammar (व्याकरण)", "subtopics": [
+      { "id": "parts-of-speech", "name": "Sangya, Sarvanam, Visheshan, Kriya (संज्ञा, सर्वनाम, विशेषण, क्रिया)" },
+      { "id": "sandhi", "name": "Sandhi (संधि)" },
+      { "id": "samas", "name": "Samas (समास)" },
+      { "id": "upsarg-pratyay", "name": "Upsarg & Pratyay (उपसर्ग-प्रत्यय)" },
+      { "id": "ling-vachan", "name": "Ling & Vachan (लिंग-वचन)" },
+      { "id": "karak", "name": "Karak (कारक)" },
+      { "id": "kaal-vachya", "name": "Kaal & Vachya (काल-वाच्य)" }
+    ]},
+    { "id": "hindi.vocabulary", "subject": "hindi", "group": "शब्द भंडार", "name": "Hindi Vocabulary (शब्द भंडार)", "subtopics": [
+      { "id": "paryayvachi", "name": "Synonyms (पर्यायवाची)" },
+      { "id": "vilom", "name": "Antonyms (विलोम)" },
+      { "id": "one-word", "name": "One-word substitution (अनेक शब्दों के लिए एक शब्द)" },
+      { "id": "tatsam-tadbhav", "name": "Tatsam–Tadbhav (तत्सम-तद्भव)" },
+      { "id": "vartani", "name": "Spelling (वर्तनी)" }
+    ]},
+    { "id": "hindi.idioms", "subject": "hindi", "group": "शब्द भंडार", "name": "Muhavare & Lokoktiyan (मुहावरे-लोकोक्तियाँ)", "subtopics": [
+      { "id": "muhavare", "name": "Muhavare (मुहावरे)" },
+      { "id": "lokoktiyan", "name": "Lokoktiyan (लोकोक्तियाँ)" }
+    ]},
+    { "id": "hindi.sentence-correction", "subject": "hindi", "group": "व्याकरण", "name": "Error Detection & Sentence Correction (वाक्य शुद्धि)", "subtopics": [
+      { "id": "error", "name": "Error detection (त्रुटि पहचान)" },
+      { "id": "correction", "name": "Sentence correction (वाक्य शुद्धि)" }
+    ]},
+    { "id": "hindi.fill-blanks", "subject": "hindi", "group": "शब्द भंडार", "name": "Fill in the Blanks (रिक्त स्थान)", "subtopics": [
+      { "id": "fill-blanks", "name": "Fill in the blanks" }
+    ]},
+    { "id": "hindi.comprehension", "subject": "hindi", "group": "बोध", "name": "Unseen Passage (अपठित गद्यांश)", "subtopics": [
+      { "id": "apathit", "name": "Reading comprehension" }
+    ]},
+    { "id": "hindi.cloze-test", "subject": "hindi", "group": "बोध", "name": "Cloze Test (रिक्त स्थान गद्यांश)", "subtopics": [
+      { "id": "cloze", "name": "Cloze passage" }
+    ]},
+    { "id": "hindi.para-jumbles", "subject": "hindi", "group": "बोध", "name": "Sentence Rearrangement (वाक्य व्यवस्थित)", "subtopics": [
+      { "id": "rearrangement", "name": "Sentence rearrangement" }
+    ]},
+
+    { "id": "ga.history-ancient", "subject": "ga", "group": "History", "name": "Ancient Indian History", "subtopics": [
+      { "id": "prehistoric", "name": "Prehistoric period" },
+      { "id": "indus-valley", "name": "Indus Valley Civilisation" },
+      { "id": "vedic", "name": "Vedic period" },
+      { "id": "mahajanapadas", "name": "Mahajanapadas & rise of Magadha" },
+      { "id": "buddhism-jainism", "name": "Buddhism & Jainism" },
+      { "id": "mauryan", "name": "Mauryan Empire" },
+      { "id": "post-mauryan", "name": "Post-Mauryan period (Kushanas, Satavahanas)" },
+      { "id": "gupta", "name": "Gupta Empire" },
+      { "id": "post-gupta", "name": "Post-Gupta period & Harshavardhana" },
+      { "id": "south-indian", "name": "Sangam age & South Indian kingdoms (Chalukya, Pallava, Chola)" }
+    ]},
+    { "id": "ga.history-medieval", "subject": "ga", "group": "History", "name": "Medieval Indian History", "subtopics": [
+      { "id": "early-medieval", "name": "Rajputs & early medieval kingdoms" },
+      { "id": "delhi-sultanate", "name": "Delhi Sultanate" },
+      { "id": "vijayanagara-bahmani", "name": "Vijayanagara & Bahmani kingdoms" },
+      { "id": "mughals", "name": "Mughal Empire" },
+      { "id": "marathas", "name": "Marathas" },
+      { "id": "bhakti-sufi", "name": "Bhakti & Sufi movements" },
+      { "id": "architecture", "name": "Medieval art & architecture" }
+    ]},
+    { "id": "ga.history-modern", "subject": "ga", "group": "History", "name": "Modern Indian History & Freedom Struggle", "subtopics": [
+      { "id": "europeans", "name": "Advent of Europeans" },
+      { "id": "british-expansion", "name": "British expansion (Plassey, Buxar, Anglo wars)" },
+      { "id": "governor-generals", "name": "Governor-Generals & Viceroys" },
+      { "id": "revolt-1857", "name": "Revolt of 1857" },
+      { "id": "reform-movements", "name": "Socio-religious reform movements" },
+      { "id": "inc-early", "name": "INC: moderates, extremists & important sessions" },
+      { "id": "gandhian", "name": "Gandhian era movements" },
+      { "id": "revolutionary", "name": "Revolutionary movements" },
+      { "id": "constitutional-development", "name": "Constitutional developments (Acts 1773–1947)" },
+      { "id": "independence", "name": "Partition & independence" },
+      { "id": "personalities", "name": "Freedom fighters & personalities" }
+    ]},
+    { "id": "ga.art-culture", "subject": "ga", "group": "Culture", "name": "Art & Culture", "subtopics": [
+      { "id": "dances", "name": "Classical & folk dances" },
+      { "id": "music", "name": "Music: forms, instruments & artists" },
+      { "id": "painting", "name": "Painting traditions" },
+      { "id": "architecture-monuments", "name": "Architecture & monuments" },
+      { "id": "unesco", "name": "UNESCO World Heritage Sites in India" },
+      { "id": "festivals-fairs", "name": "Festivals & fairs" },
+      { "id": "literature-languages", "name": "Languages, literature & scriptures" },
+      { "id": "religion-philosophy", "name": "Religions & philosophies" },
+      { "id": "theatre-puppetry", "name": "Theatre & puppetry" }
+    ]},
+    { "id": "ga.geography-physical", "subject": "ga", "group": "Geography", "name": "Physical & World Geography", "subtopics": [
+      { "id": "universe-solar", "name": "Universe & solar system" },
+      { "id": "earth-structure", "name": "Earth's structure & motions" },
+      { "id": "lat-long-time", "name": "Latitudes, longitudes & time zones" },
+      { "id": "rocks-landforms", "name": "Rocks & landforms" },
+      { "id": "volcano-earthquake", "name": "Volcanoes & earthquakes" },
+      { "id": "atmosphere", "name": "Atmosphere: layers & composition" },
+      { "id": "climate-winds", "name": "Climate, pressure belts & winds" },
+      { "id": "oceans", "name": "Oceans, currents & tides" },
+      { "id": "world-geography", "name": "World: continents, rivers, mountains, deserts, straits" }
+    ]},
+    { "id": "ga.geography-india", "subject": "ga", "group": "Geography", "name": "Indian Geography", "subtopics": [
+      { "id": "physiography", "name": "Physiography" },
+      { "id": "rivers-drainage", "name": "Rivers & drainage" },
+      { "id": "climate-monsoon", "name": "Climate & monsoon" },
+      { "id": "soils", "name": "Soils" },
+      { "id": "vegetation-forests", "name": "Natural vegetation & forests" },
+      { "id": "protected-areas", "name": "National parks, wildlife sanctuaries & biosphere reserves" },
+      { "id": "minerals-energy", "name": "Minerals & energy resources" },
+      { "id": "agriculture-crops", "name": "Agriculture & crops" },
+      { "id": "industries", "name": "Industries" },
+      { "id": "transport", "name": "Transport: rail, road, ports, airports" },
+      { "id": "population-census", "name": "Population & census" },
+      { "id": "dams-projects", "name": "Dams & multipurpose projects" },
+      { "id": "states-capitals", "name": "States, UTs, capitals & boundaries" }
+    ]},
+    { "id": "ga.india-neighbours", "subject": "ga", "group": "Geography", "name": "India & Neighbouring Countries", "subtopics": [
+      { "id": "borders", "name": "International boundaries (Radcliffe, McMahon, Durand lines)" },
+      { "id": "capitals-currencies", "name": "Neighbours' capitals, currencies & heads" },
+      { "id": "shared-rivers", "name": "Shared rivers & water treaties" },
+      { "id": "relations", "name": "Bilateral relations & agreements" }
+    ]},
+    { "id": "ga.polity", "subject": "ga", "group": "Polity", "name": "Indian Polity & Constitution", "aliases": ["General Polity", "Indian Constitution"], "related": ["econ.cag", "econ.finance-commission"], "subtopics": [
+      { "id": "making-sources", "name": "Constitution making & sources" },
+      { "id": "preamble-features", "name": "Preamble, salient features & schedules" },
+      { "id": "fundamental-rights", "name": "Fundamental Rights" },
+      { "id": "dpsp", "name": "Directive Principles of State Policy" },
+      { "id": "fundamental-duties", "name": "Fundamental Duties" },
+      { "id": "union-executive", "name": "Union executive: President, VP, PM & Council of Ministers" },
+      { "id": "parliament", "name": "Parliament" },
+      { "id": "judiciary", "name": "Supreme Court & High Courts" },
+      { "id": "state-government", "name": "State executive & legislature" },
+      { "id": "local-government", "name": "Panchayati Raj & municipalities (73rd/74th amendments)" },
+      { "id": "constitutional-bodies", "name": "Constitutional bodies (ECI, CAG, UPSC, Finance Commission)" },
+      { "id": "non-constitutional-bodies", "name": "Statutory & non-constitutional bodies (NITI Aayog, NHRC, CVC, CIC, Lokpal)" },
+      { "id": "emergency", "name": "Emergency provisions" },
+      { "id": "amendments", "name": "Amendment procedure & important amendments" },
+      { "id": "centre-state", "name": "Centre–state relations" },
+      { "id": "citizenship", "name": "Citizenship" },
+      { "id": "elections", "name": "Elections & anti-defection law" },
+      { "id": "articles-schedules", "name": "Important articles & schedules" }
+    ]},
+    { "id": "ga.economy-basics", "subject": "ga", "group": "Economy", "name": "Economy: Basic Concepts & National Income", "subtopics": [
+      { "id": "concepts", "name": "Basic economic concepts" },
+      { "id": "national-income", "name": "National income concepts & measurement (GDP, GNP, NNP)" },
+      { "id": "sectors", "name": "Role of agriculture, industry & services" },
+      { "id": "nature-indian-economy", "name": "Nature of the Indian economy" }
+    ]},
+    { "id": "ga.economy-planning", "subject": "ga", "group": "Economy", "name": "Economic Planning", "subtopics": [
+      { "id": "five-year-plans", "name": "Five-Year Plans" },
+      { "id": "niti-aayog", "name": "NITI Aayog" }
+    ]},
+    { "id": "ga.economy-fiscal", "subject": "ga", "group": "Economy", "name": "Public Finance & Budget", "related": ["fin.budget-economic-survey"], "subtopics": [
+      { "id": "budget", "name": "Union budget: components & receipts/expenditure" },
+      { "id": "deficits", "name": "Fiscal, revenue & primary deficits" },
+      { "id": "taxation-gst", "name": "Taxation & GST" },
+      { "id": "frbm", "name": "Fiscal Responsibility & Budget Management Act, 2003" }
+    ]},
+    { "id": "ga.economy-inflation", "subject": "ga", "group": "Economy", "name": "Inflation & Price Indices", "subtopics": [
+      { "id": "types-causes", "name": "Inflation: types & causes" },
+      { "id": "indices", "name": "CPI, WPI & other indices" },
+      { "id": "control", "name": "Inflation control measures" }
+    ]},
+    { "id": "ga.economy-social", "subject": "ga", "group": "Economy", "name": "Poverty, Unemployment & Population", "subtopics": [
+      { "id": "poverty", "name": "Poverty: absolute & relative; measurement" },
+      { "id": "unemployment", "name": "Unemployment: types, causes & incidence" },
+      { "id": "population", "name": "Population: size, growth & implications for growth" },
+      { "id": "hdi", "name": "HDI & social indicators" }
+    ]},
+    { "id": "ga.economy-reforms", "subject": "ga", "group": "Economy", "name": "Economic Reforms", "subtopics": [
+      { "id": "lpg-1991", "name": "Economic reforms since 1991 (liberalisation, privatisation, globalisation)" },
+      { "id": "disinvestment", "name": "Disinvestment" },
+      { "id": "demonetisation", "name": "Demonetisation" }
+    ]},
+    { "id": "ga.economy-external", "subject": "ga", "group": "Economy", "name": "External Sector", "subtopics": [
+      { "id": "bop", "name": "Balance of payments" },
+      { "id": "fdi-fpi", "name": "FDI & FPI" },
+      { "id": "exchange-rate", "name": "Exchange rate & convertibility" },
+      { "id": "trade-policy", "name": "Foreign trade policy & SEZs" }
+    ]},
+    { "id": "ga.economy-infrastructure", "subject": "ga", "group": "Economy", "name": "Infrastructure", "subtopics": [
+      { "id": "energy", "name": "Energy" },
+      { "id": "transport", "name": "Transportation" },
+      { "id": "communication", "name": "Communication" }
+    ]},
+    { "id": "ga.economy-agriculture", "subject": "ga", "group": "Economy", "name": "Agricultural Economy", "related": ["fin.rural-agri-finance"], "subtopics": [
+      { "id": "green-revolution", "name": "Green revolution & agricultural development" },
+      { "id": "msp-procurement", "name": "MSP & procurement" },
+      { "id": "agri-schemes", "name": "Agricultural schemes" }
+    ]},
+    { "id": "ga.international-organisations", "subject": "ga", "group": "Static GK", "name": "International Organisations & Groupings", "subtopics": [
+      { "id": "un", "name": "UN & its agencies" },
+      { "id": "bretton-woods", "name": "IMF, World Bank & WTO" },
+      { "id": "regional", "name": "Groupings (SAARC, ASEAN, BRICS, SCO, G20, QUAD)" },
+      { "id": "hq-heads", "name": "Headquarters & heads" }
+    ]},
+    { "id": "ga.govt-schemes", "subject": "ga", "group": "Economy", "name": "Government Schemes & Policies", "related": ["fin.financial-inclusion"], "subtopics": [
+      { "id": "social-welfare", "name": "Social welfare schemes" },
+      { "id": "employment-rural", "name": "Employment & rural development schemes" },
+      { "id": "health-education", "name": "Health & education schemes" },
+      { "id": "flagship-missions", "name": "Flagship missions (Digital India, Make in India, Swachh Bharat etc.)" }
+    ]},
+    { "id": "ga.e-governance", "subject": "ga", "group": "Economy", "name": "IT in Governance", "aliases": ["Role of Information Technology in Governance"], "subtopics": [
+      { "id": "digital-india", "name": "Digital India & e-governance initiatives" },
+      { "id": "dbt-jam", "name": "DBT & JAM trinity" },
+      { "id": "service-delivery", "name": "IT for service delivery & transparency" }
+    ]},
+    { "id": "ga.science-physics", "subject": "ga", "group": "General Science", "name": "Physics (Everyday Science)", "subtopics": [
+      { "id": "units", "name": "Units & measurements" },
+      { "id": "motion", "name": "Motion & laws of motion" },
+      { "id": "work-energy", "name": "Work, energy & power" },
+      { "id": "gravitation", "name": "Gravitation" },
+      { "id": "pressure-fluids", "name": "Pressure & fluids" },
+      { "id": "heat", "name": "Heat & thermodynamics" },
+      { "id": "sound", "name": "Sound" },
+      { "id": "light", "name": "Light & optics" },
+      { "id": "electricity-magnetism", "name": "Electricity & magnetism" },
+      { "id": "modern-physics", "name": "Modern physics basics" }
+    ]},
+    { "id": "ga.science-chemistry", "subject": "ga", "group": "General Science", "name": "Chemistry (Everyday Science)", "subtopics": [
+      { "id": "matter", "name": "Matter & its states" },
+      { "id": "atomic-structure", "name": "Atomic structure" },
+      { "id": "periodic-table", "name": "Periodic table" },
+      { "id": "bonding-reactions", "name": "Chemical bonding & reactions" },
+      { "id": "acids-bases-salts", "name": "Acids, bases & salts" },
+      { "id": "metals-nonmetals", "name": "Metals, non-metals, ores & alloys" },
+      { "id": "carbon-compounds", "name": "Carbon & its compounds" },
+      { "id": "everyday-chemistry", "name": "Everyday chemistry (polymers, fertilisers, soaps, cement, glass)" }
+    ]},
+    { "id": "ga.science-biology", "subject": "ga", "group": "General Science", "name": "Biology (Everyday Science)", "subtopics": [
+      { "id": "cell", "name": "Cell & tissues" },
+      { "id": "human-body", "name": "Human body systems" },
+      { "id": "nutrition", "name": "Nutrition: vitamins, minerals & deficiency diseases" },
+      { "id": "diseases", "name": "Diseases & pathogens" },
+      { "id": "plant-kingdom", "name": "Plant kingdom & plant physiology" },
+      { "id": "animal-kingdom", "name": "Animal kingdom & classification" },
+      { "id": "genetics", "name": "Genetics & heredity" },
+      { "id": "biotechnology", "name": "Biotechnology basics" }
+    ]},
+    { "id": "ga.science-technology", "subject": "ga", "group": "General Science", "name": "Science & Technology", "aliases": ["Scientific Research"], "subtopics": [
+      { "id": "space", "name": "Space: ISRO missions, satellites & launch vehicles" },
+      { "id": "defence", "name": "Defence: missiles, systems & exercises" },
+      { "id": "nuclear", "name": "Nuclear programme & energy" },
+      { "id": "it-emerging", "name": "IT & emerging technologies" },
+      { "id": "research", "name": "Recent scientific research & discoveries" },
+      { "id": "inventions", "name": "Inventions & inventors" }
+    ]},
+    { "id": "ga.environment", "subject": "ga", "group": "Environment", "name": "Environment & Ecology", "subtopics": [
+      { "id": "ecology", "name": "Ecology & ecosystems" },
+      { "id": "biodiversity", "name": "Biodiversity & conservation" },
+      { "id": "pollution", "name": "Pollution" },
+      { "id": "climate-change", "name": "Climate change & international conventions" },
+      { "id": "laws-organisations", "name": "Environmental laws & organisations" },
+      { "id": "wetlands", "name": "Wetlands & Ramsar sites" }
+    ]},
+    { "id": "ga.static-gk", "subject": "ga", "group": "Static GK", "name": "Static GK", "subtopics": [
+      { "id": "books-authors", "name": "Books & authors" },
+      { "id": "awards", "name": "Awards & honours" },
+      { "id": "important-days", "name": "Important days & themes" },
+      { "id": "national-symbols", "name": "National symbols" },
+      { "id": "firsts", "name": "Firsts in India & the world" },
+      { "id": "world-capitals-currencies", "name": "World capitals & currencies" },
+      { "id": "abbreviations", "name": "Abbreviations" }
+    ]},
+    { "id": "ga.sports", "subject": "ga", "group": "Static GK", "name": "Sports", "subtopics": [
+      { "id": "trophies", "name": "Trophies & cups" },
+      { "id": "terms", "name": "Sports terminology" },
+      { "id": "events", "name": "Olympics, Asian Games, CWG & world events" },
+      { "id": "players-records", "name": "Players & records" },
+      { "id": "sports-awards", "name": "Sports awards" }
+    ]},
+    { "id": "ga.current-affairs", "subject": "ga", "group": "Current Affairs", "name": "Current Affairs", "aliases": ["Current events"], "subtopics": [
+      { "id": "national", "name": "National" },
+      { "id": "international", "name": "International" },
+      { "id": "economy-business", "name": "Economy & business" },
+      { "id": "science-tech", "name": "Science & technology" },
+      { "id": "sports", "name": "Sports" },
+      { "id": "awards-honours", "name": "Awards & honours" },
+      { "id": "appointments", "name": "Appointments & resignations" },
+      { "id": "summits", "name": "Summits & conferences" },
+      { "id": "schemes-policies", "name": "New schemes & policies" },
+      { "id": "defence", "name": "Defence" },
+      { "id": "rankings-indices", "name": "Rankings & indices" },
+      { "id": "obituaries", "name": "Obituaries" }
+    ]},
+
+    { "id": "fin.banking-structure", "subject": "fin", "group": "Banking", "name": "Indian Banking: History & Structure", "subtopics": [
+      { "id": "history", "name": "History of banking in India" },
+      { "id": "nationalisation", "name": "Bank nationalisation" },
+      { "id": "types-of-banks", "name": "Types of banks (commercial, cooperative, RRB, SFB, payments banks)" },
+      { "id": "psb-mergers", "name": "PSB mergers & consolidation" },
+      { "id": "nbfc", "name": "NBFCs" },
+      { "id": "hq-taglines", "name": "Bank headquarters, taglines & heads" }
+    ]},
+    { "id": "fin.rbi", "subject": "fin", "group": "Banking", "name": "RBI & Monetary Policy", "subtopics": [
+      { "id": "history-functions", "name": "RBI: history & functions" },
+      { "id": "monetary-tools", "name": "Monetary policy tools (repo, reverse repo, SDF, MSF, CRR, SLR, bank rate, OMO, LAF)" },
+      { "id": "mpc", "name": "Monetary Policy Committee" },
+      { "id": "rbi-circulars", "name": "Recent RBI circulars & policy announcements" },
+      { "id": "leadership", "name": "Governors & leadership" }
+    ]},
+    { "id": "fin.banking-terms", "subject": "fin", "group": "Banking", "name": "Banking Terminology & Operations", "subtopics": [
+      { "id": "accounts-deposits", "name": "Types of accounts & deposits" },
+      { "id": "kyc-aml", "name": "KYC & AML" },
+      { "id": "negotiable-instruments", "name": "Cheques & negotiable instruments" },
+      { "id": "loans-npa", "name": "Loans, advances & NPAs" },
+      { "id": "capital-basel", "name": "Capital adequacy & Basel norms" },
+      { "id": "priority-sector", "name": "Priority sector lending" },
+      { "id": "recovery-laws", "name": "SARFAESI, DRT & IBC" },
+      { "id": "terms", "name": "Common banking terms & abbreviations" }
+    ]},
+    { "id": "fin.digital-payments", "subject": "fin", "group": "Banking", "name": "Digital Banking & Payments", "aliases": ["Digital Awareness"], "subtopics": [
+      { "id": "payment-systems", "name": "NEFT, RTGS, IMPS" },
+      { "id": "upi-npci", "name": "UPI & NPCI products (RuPay, BHIM, AePS, NACH, FASTag, BBPS)" },
+      { "id": "cards-atm", "name": "Cards & ATMs" },
+      { "id": "cbdc", "name": "CBDC / e-Rupee" },
+      { "id": "fintech", "name": "Fintech & digital lending" },
+      { "id": "cyber-fraud", "name": "Banking cyber-security & frauds" }
+    ]},
+    { "id": "fin.financial-markets", "subject": "fin", "group": "Finance", "name": "Financial Markets", "subtopics": [
+      { "id": "money-market", "name": "Money market instruments (T-bills, CP, CD, call money)" },
+      { "id": "capital-market", "name": "Capital market: primary & secondary" },
+      { "id": "stock-exchanges", "name": "Stock exchanges & indices" },
+      { "id": "sebi", "name": "SEBI" },
+      { "id": "mutual-funds-bonds", "name": "Mutual funds & bonds" }
+    ]},
+    { "id": "fin.financial-inclusion", "subject": "fin", "group": "Finance", "name": "Financial Inclusion", "related": ["ga.govt-schemes"], "subtopics": [
+      { "id": "schemes", "name": "PMJDY, PMSBY, PMJJBY, APY, MUDRA, Stand-Up India" },
+      { "id": "lead-bank", "name": "Lead bank scheme" },
+      { "id": "shg-mfi", "name": "SHGs & microfinance" },
+      { "id": "literacy", "name": "Financial literacy" }
+    ]},
+    { "id": "fin.regulators-institutions", "subject": "fin", "group": "Finance", "name": "Regulators & Financial Institutions", "subtopics": [
+      { "id": "regulators", "name": "Regulators (RBI, SEBI, IRDAI, PFRDA, IFSCA)" },
+      { "id": "dfis", "name": "DFIs & apex bodies (NABARD, SIDBI, NHB, EXIM Bank, NaBFID)" },
+      { "id": "dicgc", "name": "DICGC & deposit insurance" },
+      { "id": "global", "name": "BIS, NDB, AIIB & global financial bodies" }
+    ]},
+    { "id": "fin.insurance-pension", "subject": "fin", "group": "Finance", "name": "Insurance & Pension", "subtopics": [
+      { "id": "insurance-basics", "name": "Insurance basics & types" },
+      { "id": "insurers", "name": "Insurance companies & IRDAI" },
+      { "id": "pension", "name": "Pension schemes (NPS, APY)" }
+    ]},
+    { "id": "fin.rural-agri-finance", "subject": "fin", "group": "Banking", "name": "Rural Banking & Agricultural Finance", "related": ["ga.economy-agriculture"], "subtopics": [
+      { "id": "rrb", "name": "Regional Rural Banks (RRB Act 1976, sponsorship, amalgamation)" },
+      { "id": "nabard", "name": "NABARD & refinance" },
+      { "id": "kcc", "name": "Kisan Credit Card & agricultural credit" },
+      { "id": "crop-insurance", "name": "Crop insurance (PMFBY)" },
+      { "id": "shg-linkage", "name": "SHG–bank linkage & rural livelihoods" }
+    ]},
+    { "id": "fin.budget-economic-survey", "subject": "fin", "group": "Finance", "name": "Union Budget & Economic Survey (current)", "related": ["ga.economy-fiscal"], "subtopics": [
+      { "id": "budget-highlights", "name": "Latest Union Budget highlights" },
+      { "id": "economic-survey", "name": "Latest Economic Survey" }
+    ]},
+    { "id": "fin.banking-current-affairs", "subject": "fin", "group": "Banking", "name": "Banking & Financial Current Affairs", "related": ["ga.current-affairs"], "subtopics": [
+      { "id": "appointments", "name": "Banking & financial appointments" },
+      { "id": "mergers-licences-penalties", "name": "Mergers, licences & penalties" },
+      { "id": "products-partnerships", "name": "New products & partnerships" },
+      { "id": "reports-rankings", "name": "Reports, rankings & indices" }
+    ]},
+
+    { "id": "computer.fundamentals", "subject": "computer", "group": "Computer Basics", "name": "Computer Fundamentals", "subtopics": [
+      { "id": "generations", "name": "History & generations of computers" },
+      { "id": "organization", "name": "Organisation of a computer (block diagram)" },
+      { "id": "cpu", "name": "CPU: ALU, CU & registers" },
+      { "id": "io-devices", "name": "Input / output devices" },
+      { "id": "types", "name": "Types of computers" }
+    ]},
+    { "id": "computer.memory", "subject": "computer", "group": "Computer Basics", "name": "Computer Memory & Storage", "subtopics": [
+      { "id": "primary", "name": "Primary memory (RAM / ROM types)" },
+      { "id": "cache", "name": "Cache memory" },
+      { "id": "secondary", "name": "Secondary storage" },
+      { "id": "units", "name": "Memory units & measurement" },
+      { "id": "organization", "name": "Memory organisation & hierarchy" },
+      { "id": "backup", "name": "Back-up devices & media" }
+    ]},
+    { "id": "computer.hardware-ports", "subject": "computer", "group": "Computer Basics", "name": "Ports, Buses & Hardware", "subtopics": [
+      { "id": "ports", "name": "Ports (USB, HDMI, serial, parallel)" },
+      { "id": "buses-motherboard", "name": "Buses, motherboard & expansion cards" }
+    ]},
+    { "id": "computer.software-os", "subject": "computer", "group": "Software", "name": "Software & Operating Systems", "subtopics": [
+      { "id": "system-application", "name": "System vs application software" },
+      { "id": "os-functions", "name": "OS functions & types" },
+      { "id": "windows-os", "name": "Windows operating system" },
+      { "id": "windows-explorer", "name": "Windows Explorer & file management" },
+      { "id": "shortcuts", "name": "Keyboard shortcuts" },
+      { "id": "utilities-boot", "name": "Utilities, BIOS & booting" }
+    ]},
+    { "id": "computer.ms-office", "subject": "computer", "group": "Software", "name": "MS Office", "subtopics": [
+      { "id": "word", "name": "MS Word" },
+      { "id": "excel", "name": "MS Excel (formulas, functions, charts)" },
+      { "id": "powerpoint", "name": "MS PowerPoint" },
+      { "id": "access", "name": "MS Access basics" }
+    ]},
+    { "id": "computer.internet-email", "subject": "computer", "group": "Internet", "name": "Internet & E-mail", "subtopics": [
+      { "id": "web-basics", "name": "WWW, URL, HTTP/HTTPS, DNS & browsers" },
+      { "id": "browsing-searching", "name": "Web browsing & searching" },
+      { "id": "download-upload", "name": "Downloading & uploading" },
+      { "id": "email", "name": "Managing an e-mail account (CC/BCC, attachments)" },
+      { "id": "e-banking", "name": "e-Banking" }
+    ]},
+    { "id": "computer.networking", "subject": "computer", "group": "Networking & Security", "name": "Networking", "subtopics": [
+      { "id": "types", "name": "Network types (LAN, MAN, WAN, PAN)" },
+      { "id": "topologies", "name": "Network topologies" },
+      { "id": "devices", "name": "Networking devices (router, switch, hub, modem, gateway, bridge)" },
+      { "id": "protocols", "name": "Protocols (TCP/IP, HTTP, FTP, SMTP, POP3, IMAP)" },
+      { "id": "osi", "name": "OSI model" },
+      { "id": "ip-addressing", "name": "IP addressing & domains" },
+      { "id": "wireless", "name": "Wireless technologies (Wi-Fi, Bluetooth)" }
+    ]},
+    { "id": "computer.security", "subject": "computer", "group": "Networking & Security", "name": "Cyber Security", "subtopics": [
+      { "id": "threats", "name": "Threats: hacking, virus, worm, trojan, ransomware, phishing" },
+      { "id": "prevention", "name": "Preventive measures: antivirus, firewall, encryption, authentication" },
+      { "id": "cyber-law", "name": "Cyber law basics (IT Act)" }
+    ]},
+    { "id": "computer.number-systems-logic", "subject": "computer", "group": "Computer Basics", "name": "Number Systems & Logic Gates", "subtopics": [
+      { "id": "conversions", "name": "Binary, octal & hexadecimal conversions" },
+      { "id": "logic-gates", "name": "Logic gates & Boolean basics" },
+      { "id": "codes", "name": "ASCII / Unicode & data representation" }
+    ]},
+    { "id": "computer.programming-dbms", "subject": "computer", "group": "Software", "name": "Programming & DBMS Basics", "subtopics": [
+      { "id": "languages", "name": "Programming language generations & types" },
+      { "id": "translators", "name": "Compiler, interpreter & assembler" },
+      { "id": "dbms", "name": "DBMS basics, keys & SQL" }
+    ]},
+    { "id": "computer.emerging-tech", "subject": "computer", "group": "Internet", "name": "Emerging Technologies & Abbreviations", "subtopics": [
+      { "id": "cloud", "name": "Cloud computing" },
+      { "id": "ai-ml", "name": "AI & machine learning basics" },
+      { "id": "iot", "name": "Internet of Things" },
+      { "id": "blockchain", "name": "Blockchain" },
+      { "id": "abbreviations", "name": "Computer abbreviations" }
+    ]},
+
+    { "id": "stats.data-presentation", "subject": "stats", "name": "Collection, Classification & Presentation of Statistical Data", "subtopics": [
+      { "id": "primary-secondary", "name": "Primary & secondary data" },
+      { "id": "collection-methods", "name": "Methods of data collection" },
+      { "id": "tabulation", "name": "Tabulation of data" },
+      { "id": "graphs-charts", "name": "Graphs & charts" },
+      { "id": "frequency-distributions", "name": "Frequency distributions" },
+      { "id": "diagrammatic", "name": "Diagrammatic presentation of frequency distributions" }
+    ]},
+    { "id": "stats.central-tendency", "subject": "stats", "name": "Measures of Central Tendency", "related": ["quant.statistics"], "subtopics": [
+      { "id": "mean-median-mode", "name": "Mean, median & mode" },
+      { "id": "partition-values", "name": "Partition values: quartiles, deciles, percentiles" }
+    ]},
+    { "id": "stats.dispersion", "subject": "stats", "name": "Measures of Dispersion", "related": ["quant.statistics"], "subtopics": [
+      { "id": "absolute", "name": "Range, quartile deviation, mean deviation & standard deviation" },
+      { "id": "relative", "name": "Measures of relative dispersion" }
+    ]},
+    { "id": "stats.moments", "subject": "stats", "name": "Moments, Skewness & Kurtosis", "subtopics": [
+      { "id": "moments", "name": "Types of moments & their relationship" },
+      { "id": "skewness-kurtosis", "name": "Meaning of skewness & kurtosis" },
+      { "id": "measures", "name": "Measures of skewness & kurtosis" }
+    ]},
+    { "id": "stats.correlation-regression", "subject": "stats", "name": "Correlation & Regression", "subtopics": [
+      { "id": "scatter", "name": "Scatter diagram" },
+      { "id": "correlation", "name": "Simple correlation coefficient" },
+      { "id": "regression-lines", "name": "Simple regression lines" },
+      { "id": "spearman", "name": "Spearman's rank correlation" },
+      { "id": "attributes", "name": "Measures of association of attributes" },
+      { "id": "multiple-regression", "name": "Multiple regression" },
+      { "id": "multiple-partial", "name": "Multiple & partial correlation (three variables)" }
+    ]},
+    { "id": "stats.probability-theory", "subject": "stats", "name": "Probability Theory", "related": ["quant.probability"], "subtopics": [
+      { "id": "definitions", "name": "Meaning & definitions of probability" },
+      { "id": "conditional", "name": "Conditional probability" },
+      { "id": "compound", "name": "Compound probability" },
+      { "id": "independent", "name": "Independent events" },
+      { "id": "bayes", "name": "Bayes' theorem" }
+    ]},
+    { "id": "stats.random-variables", "subject": "stats", "name": "Random Variables & Probability Distributions", "subtopics": [
+      { "id": "random-variable", "name": "Random variable & probability functions" },
+      { "id": "expectation-variance", "name": "Expectation & variance" },
+      { "id": "higher-moments", "name": "Higher moments of a random variable" },
+      { "id": "distributions", "name": "Binomial, Poisson, Normal & Exponential distributions" },
+      { "id": "joint", "name": "Joint distribution of two discrete random variables" }
+    ]},
+    { "id": "stats.sampling", "subject": "stats", "name": "Sampling Theory", "subtopics": [
+      { "id": "population-sample", "name": "Population & sample; parameter & statistic" },
+      { "id": "errors", "name": "Sampling & non-sampling errors" },
+      { "id": "techniques", "name": "Probability & non-probability sampling techniques" },
+      { "id": "sampling-distribution", "name": "Sampling distribution (statement only)" },
+      { "id": "sample-size", "name": "Sample size decisions" }
+    ]},
+    { "id": "stats.inference", "subject": "stats", "name": "Statistical Inference", "subtopics": [
+      { "id": "estimation", "name": "Point & interval estimation" },
+      { "id": "estimator-properties", "name": "Properties of a good estimator" },
+      { "id": "estimation-methods", "name": "Methods: moments, maximum likelihood, least squares" },
+      { "id": "hypothesis-testing", "name": "Testing of hypothesis: basic concepts" },
+      { "id": "tests", "name": "Small & large sample tests (Z, t, Chi-square, F)" },
+      { "id": "confidence-intervals", "name": "Confidence intervals" }
+    ]},
+    { "id": "stats.anova", "subject": "stats", "name": "Analysis of Variance", "subtopics": [
+      { "id": "one-way", "name": "One-way classified data" },
+      { "id": "two-way", "name": "Two-way classified data" }
+    ]},
+    { "id": "stats.time-series", "subject": "stats", "name": "Time Series Analysis", "subtopics": [
+      { "id": "components", "name": "Components of time series" },
+      { "id": "trend", "name": "Determination of trend component" },
+      { "id": "seasonal", "name": "Measurement of seasonal variation" }
+    ]},
+    { "id": "stats.index-numbers", "subject": "stats", "name": "Index Numbers", "related": ["ga.economy-inflation"], "subtopics": [
+      { "id": "meaning-construction", "name": "Meaning & problems in construction" },
+      { "id": "types-formulae", "name": "Types of index numbers & formulae" },
+      { "id": "base-shifting", "name": "Base shifting & splicing" },
+      { "id": "cost-of-living", "name": "Cost of living index numbers" },
+      { "id": "uses", "name": "Uses of index numbers" }
+    ]},
+
+    { "id": "accounts.fundamentals", "subject": "accounts", "name": "Financial Accounting Fundamentals", "subtopics": [
+      { "id": "nature-scope", "name": "Nature & scope of financial accounting" },
+      { "id": "limitations", "name": "Limitations of financial accounting" },
+      { "id": "concepts-conventions", "name": "Basic concepts & conventions" },
+      { "id": "gaap", "name": "Generally Accepted Accounting Principles" }
+    ]},
+    { "id": "accounts.process", "subject": "accounts", "name": "Accounting Process & Books", "subtopics": [
+      { "id": "single-double-entry", "name": "Single & double entry" },
+      { "id": "books-original-entry", "name": "Books of original entry" },
+      { "id": "journal-ledger", "name": "Journal & ledgers" },
+      { "id": "trial-balance", "name": "Trial balance" },
+      { "id": "bank-reconciliation", "name": "Bank reconciliation" },
+      { "id": "rectification", "name": "Rectification of errors" },
+      { "id": "self-balancing", "name": "Self-balancing ledgers" }
+    ]},
+    { "id": "accounts.final-accounts", "subject": "accounts", "name": "Final Accounts", "subtopics": [
+      { "id": "manufacturing-trading", "name": "Manufacturing & trading accounts" },
+      { "id": "pl-appropriation", "name": "Profit & loss and P&L appropriation accounts" },
+      { "id": "balance-sheet", "name": "Balance sheet" },
+      { "id": "capital-revenue", "name": "Capital vs revenue expenditure" }
+    ]},
+    { "id": "accounts.depreciation-inventory", "subject": "accounts", "name": "Depreciation & Inventory Valuation", "subtopics": [
+      { "id": "depreciation", "name": "Depreciation accounting" },
+      { "id": "inventory", "name": "Valuation of inventories" }
+    ]},
+    { "id": "accounts.npo", "subject": "accounts", "name": "Non-Profit Organisation Accounts", "subtopics": [
+      { "id": "npo", "name": "Accounts of non-profit organisations" },
+      { "id": "receipts-payments", "name": "Receipts & payments account" },
+      { "id": "income-expenditure", "name": "Income & expenditure account" }
+    ]},
+    { "id": "accounts.bills-of-exchange", "subject": "accounts", "name": "Bills of Exchange", "subtopics": [
+      { "id": "bills", "name": "Bills of exchange" }
+    ]},
+
+    { "id": "econ.cag", "subject": "econ", "name": "Comptroller & Auditor General of India", "related": ["ga.polity"], "subtopics": [
+      { "id": "constitutional-provisions", "name": "Constitutional provisions" },
+      { "id": "role", "name": "Role & responsibility" }
+    ]},
+    { "id": "econ.finance-commission", "subject": "econ", "name": "Finance Commission", "related": ["ga.polity"], "subtopics": [
+      { "id": "role-functions", "name": "Role & functions" }
+    ]},
+    { "id": "econ.micro-basics", "subject": "econ", "name": "Basic Concepts & Introduction to Micro Economics", "subtopics": [
+      { "id": "definition-scope", "name": "Definition, scope & nature of economics" },
+      { "id": "methods", "name": "Methods of economic study" },
+      { "id": "central-problems-ppc", "name": "Central problems of an economy & production possibilities curve" }
+    ]},
+    { "id": "econ.demand-supply", "subject": "econ", "name": "Theory of Demand & Supply", "subtopics": [
+      { "id": "demand", "name": "Meaning & determinants of demand; law of demand" },
+      { "id": "elasticity-demand", "name": "Elasticity of demand: price, income & cross" },
+      { "id": "consumer-behaviour", "name": "Consumer behaviour: Marshallian & indifference-curve approaches" },
+      { "id": "supply", "name": "Meaning & determinants of supply; law of supply" },
+      { "id": "elasticity-supply", "name": "Elasticity of supply" }
+    ]},
+    { "id": "econ.production-cost", "subject": "econ", "name": "Theory of Production & Cost", "subtopics": [
+      { "id": "factors", "name": "Meaning & factors of production" },
+      { "id": "variable-proportions", "name": "Law of variable proportions" },
+      { "id": "returns-to-scale", "name": "Laws of returns to scale" },
+      { "id": "cost-concepts", "name": "Cost concepts & cost curves" }
+    ]},
+    { "id": "econ.market-forms", "subject": "econ", "name": "Forms of Market & Price Determination", "subtopics": [
+      { "id": "perfect-competition", "name": "Perfect competition" },
+      { "id": "monopoly", "name": "Monopoly" },
+      { "id": "monopolistic", "name": "Monopolistic competition" },
+      { "id": "oligopoly", "name": "Oligopoly" }
+    ]},
+
+    { "id": "descriptive.essay", "subject": "descriptive", "name": "Essay Writing", "subtopics": [
+      { "id": "economic-social", "name": "Economic & social issues" },
+      { "id": "banking-tech", "name": "Emerging trends in banking & technology" },
+      { "id": "current-ethics", "name": "Current events & ethics" }
+    ]},
+    { "id": "descriptive.comprehension-writing", "subject": "descriptive", "name": "Comprehension (Written Answers)", "subtopics": [
+      { "id": "comprehension", "name": "Comprehension-based written answers" }
+    ]},
+    { "id": "descriptive.email-writing", "subject": "descriptive", "name": "E-mail Writing", "subtopics": [
+      { "id": "formal", "name": "Formal / official e-mails" }
+    ]},
+    { "id": "descriptive.situation-analysis", "subject": "descriptive", "name": "Situation Analysis", "subtopics": [
+      { "id": "situation", "name": "Analysing a workplace situation & responding" }
+    ]},
+    { "id": "descriptive.report-writing", "subject": "descriptive", "name": "Report Writing", "subtopics": [
+      { "id": "report", "name": "Report writing" }
+    ]},
+    { "id": "descriptive.precis-writing", "subject": "descriptive", "name": "Précis Writing", "subtopics": [
+      { "id": "precis", "name": "Précis writing" }
+    ]},
+
+    { "id": "skill.dest", "subject": "skill", "name": "Data Entry Speed Test (DEST)", "subtopics": [
+      { "id": "dest", "name": "Passage of ~2,000 key depressions in 15 minutes" }
+    ]},
+    { "id": "skill.deo-skill-test", "subject": "skill", "name": "Skill Test for Data Entry Operators", "subtopics": [
+      { "id": "part-a", "name": "Part A: 15,000 key depressions/hour (~3,700–4,000 KD in 15 min)" },
+      { "id": "part-b", "name": "Part B: 8,000 key depressions/hour (~2,000–2,200 KD in 15 min)" }
+    ]},
+    { "id": "skill.typing-test", "subject": "skill", "name": "Typing Test (LDC/JSA)", "subtopics": [
+      { "id": "english", "name": "English: 35 wpm (~10,500 KDPH) in 10 minutes" },
+      { "id": "hindi", "name": "Hindi: 30 wpm (~9,000 KDPH) in 10 minutes, Mangal font only" }
+    ]},
+
+    { "id": "physical.pst", "subject": "physical", "name": "Physical Standard Test (PST)", "subtopics": [
+      { "id": "height", "name": "Height standards (category-wise)" },
+      { "id": "chest", "name": "Chest standards (male candidates)" },
+      { "id": "weight", "name": "Weight proportionate to height" }
+    ]},
+    { "id": "physical.pet-male", "subject": "physical", "name": "Physical Endurance Test: Male", "subtopics": [
+      { "id": "sprint-100m", "name": "100 m race in 16 seconds" },
+      { "id": "run-1600m", "name": "1.6 km race in 6.5 minutes" },
+      { "id": "long-jump", "name": "Long jump: 3.65 m in 3 chances" },
+      { "id": "high-jump", "name": "High jump: 1.2 m in 3 chances" },
+      { "id": "shot-put", "name": "Shot put (16 lbs): 4.5 m in 3 chances" }
+    ]},
+    { "id": "physical.pet-female", "subject": "physical", "name": "Physical Endurance Test: Female", "subtopics": [
+      { "id": "sprint-100m", "name": "100 m race in 18 seconds" },
+      { "id": "run-800m", "name": "800 m race in 4 minutes" },
+      { "id": "long-jump", "name": "Long jump: 2.7 m in 3 chances" },
+      { "id": "high-jump", "name": "High jump: 0.9 m in 3 chances" }
+    ]},
+
+    { "id": "personality.psychometric-test", "subject": "personality", "name": "Psychometric / Personality Test", "subtopics": [
+      { "id": "profiling", "name": "Personality profiling (self-report)" }
+    ]},
+    { "id": "personality.group-exercise", "subject": "personality", "name": "Group Exercise", "subtopics": [
+      { "id": "group-exercise", "name": "Group discussion / exercise skills" }
+    ]},
+    { "id": "personality.interview", "subject": "personality", "name": "Personal Interview", "subtopics": [
+      { "id": "self-intro", "name": "Self-introduction & bio-data" },
+      { "id": "banking-economy", "name": "Banking & economy questions" },
+      { "id": "current-affairs", "name": "Current affairs" },
+      { "id": "situational-hr", "name": "Situational & HR questions" },
+      { "id": "academics-state", "name": "Graduation subject & home-state questions" }
+    ]},
+
+    { "id": "language-test.local-language", "subject": "language-test", "name": "Local Language Proficiency", "subtopics": [
+      { "id": "reading", "name": "Reading" },
+      { "id": "writing", "name": "Writing" },
+      { "id": "speaking-understanding", "name": "Speaking & understanding" },
+      { "id": "non-verbal-objective", "name": "Non-verbal objective test (3 passages, 15 Q, 15 marks)" },
+      { "id": "non-verbal-subjective", "name": "Non-verbal subjective test (3 passages, 15 Q, 15 marks)" },
+      { "id": "verbal", "name": "Verbal test (20 marks)" }
+    ]}
+  ]
+}

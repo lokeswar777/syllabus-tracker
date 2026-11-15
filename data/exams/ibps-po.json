@@ -1,0 +1,251 @@
+{
+  "$schema": "../schema/exam.schema.json",
+  "id": "ibps-po",
+  "name": "IBPS Common Recruitment Process for Probationary Officers / Management Trainees (CRP PO/MT-XVI)",
+  "shortName": "IBPS PO",
+  "conductingBody": "Institute of Banking Personnel Selection (IBPS)",
+  "category": "banking",
+  "cycle": "2026-27",
+  "eligibilityLevel": "Graduation",
+  "lastVerified": "2026-11-15",
+  "sources": ["ibps-po-xvi-2026-notice", "editorial-pyq"],
+  "posts": ["Probationary Officer / Management Trainee in participating public sector banks"],
+  "selectionSummary": "Online Preliminary (qualifying) → Online Main (objective + descriptive) → Personality Test (mandatory, non-qualifying) → Common Interview → Provisional allotment",
+  "finalMerit": "Main examination and interview, weighted 80:20. Interview is out of 100; minimum 40% (35% for SC/ST/OBC/PwBD).",
+  "notes": [
+    "IBPS publishes only section names. All topic lists are editorial unless a section name explicitly names the subject.",
+    "2026 structure: Mains test 1 is 'Reasoning' only. Computer Aptitude, combined with Reasoning in earlier cycles, is not listed. Prelims marks are unequal per question: Quant 35 Q = 30 marks, Reasoning 35 Q = 40 marks.",
+    "Descriptive paper may be scored by an automated writing-proficiency mechanism."
+  ],
+  "stages": [
+    {
+      "id": "prelims",
+      "name": "Online Preliminary Examination",
+      "order": 1,
+      "mode": "cbt",
+      "nature": "qualifying",
+      "natureNote": "Candidates must clear the cut-off in each of the three tests.",
+      "pattern": {
+        "questions": 100, "marks": 100, "durationMinutes": 60,
+        "negativeMarking": { "type": "fraction-of-question", "value": 0.25 },
+        "sectionalTiming": "20 minutes per test (separately timed)"
+      },
+      "source": { "id": "ibps-po-xvi-2026-notice", "locator": "D(a) Preliminary Examination; E. Penalty" },
+      "sections": [
+        {
+          "id": "english", "name": "English Language", "questions": 30, "marks": 30, "durationMinutes": 20,
+          "officialSyllabus": null,
+          "topics": [
+            { "topic": "english.reading-comprehension", "status": "pyq-derived" },
+            { "topic": "english.cloze-test", "status": "pyq-derived" },
+            { "topic": "english.error-detection", "status": "pyq-derived" },
+            { "topic": "english.fill-blanks", "status": "pyq-derived" },
+            { "topic": "english.para-jumbles", "status": "pyq-derived", "only": ["passage-sentences", "odd-sentence", "first-last-fixed"] },
+            { "topic": "english.sentence-improvement", "status": "pyq-derived" },
+            { "topic": "english.word-usage", "status": "pyq-derived" },
+            { "topic": "english.sentence-completion", "status": "pyq-derived", "only": ["connectors"] },
+            { "topic": "english.grammar-rules", "status": "pyq-derived" },
+            { "topic": "english.synonyms-antonyms", "status": "pyq-derived", "only": ["synonyms", "antonyms", "usage"] },
+            { "topic": "english.spelling", "status": "unverified", "only": ["misspelt"] },
+            { "topic": "english.idioms-phrases", "status": "unverified", "only": ["idioms", "phrasal-verbs"] }
+          ]
+        },
+        {
+          "id": "quant", "name": "Quantitative Aptitude", "questions": 35, "marks": 30, "durationMinutes": 20,
+          "officialSyllabus": null,
+          "topics": [
+            { "topic": "quant.data-interpretation", "status": "pyq-derived", "only": ["tables", "bar", "line", "pie", "mixed", "caselet", "missing"] },
+            { "topic": "quant.number-series", "status": "pyq-derived" },
+            { "topic": "quant.quadratic-equations", "status": "pyq-derived" },
+            { "topic": "quant.quantity-comparison", "status": "pyq-derived" },
+            { "topic": "quant.simplification", "status": "pyq-derived", "only": ["bodmas", "decimals", "fractions", "square-cube-roots", "approximation"] },
+            { "topic": "quant.percentage", "status": "pyq-derived" },
+            { "topic": "quant.ratio-proportion", "status": "pyq-derived" },
+            { "topic": "quant.average", "status": "pyq-derived" },
+            { "topic": "quant.ages", "status": "pyq-derived" },
+            { "topic": "quant.partnership", "status": "pyq-derived" },
+            { "topic": "quant.profit-loss", "status": "pyq-derived" },
+            { "topic": "quant.discount", "status": "pyq-derived", "only": ["single", "successive", "mp-cp-relation"] },
+            { "topic": "quant.simple-interest", "status": "pyq-derived" },
+            { "topic": "quant.compound-interest", "status": "pyq-derived" },
+            { "topic": "quant.time-work", "status": "pyq-derived" },
+            { "topic": "quant.pipes-cisterns", "status": "pyq-derived" },
+            { "topic": "quant.time-distance", "status": "pyq-derived", "only": ["basics", "average-speed", "relative-speed", "meeting-overtaking"] },
+            { "topic": "quant.trains", "status": "pyq-derived" },
+            { "topic": "quant.boats-streams", "status": "pyq-derived" },
+            { "topic": "quant.mixture-alligation", "status": "pyq-derived" },
+            { "topic": "quant.mensuration-2d", "status": "pyq-derived", "only": ["triangle", "quadrilaterals", "circle"] },
+            { "topic": "quant.mensuration-3d", "status": "pyq-derived", "only": ["cube-cuboid", "cylinder", "cone", "sphere-hemisphere"] },
+            { "topic": "quant.probability", "status": "pyq-derived", "only": ["basics", "coins-dice", "cards", "balls-bags"] },
+            { "topic": "quant.permutation-combination", "status": "pyq-derived" }
+          ]
+        },
+        {
+          "id": "reasoning", "name": "Reasoning Ability", "questions": 35, "marks": 40, "durationMinutes": 20,
+          "officialSyllabus": null,
+          "topics": [
+            { "topic": "reasoning.puzzles", "status": "pyq-derived", "only": ["floor", "box", "scheduling", "comparison", "categorised", "designation-age"] },
+            { "topic": "reasoning.seating-arrangement", "status": "pyq-derived" },
+            { "topic": "reasoning.syllogism", "status": "pyq-derived" },
+            { "topic": "reasoning.inequality", "status": "pyq-derived", "only": ["direct", "coded"] },
+            { "topic": "reasoning.coding-decoding", "status": "pyq-derived", "only": ["letter", "number", "word-sentence", "conditional"] },
+            { "topic": "reasoning.blood-relations", "status": "pyq-derived" },
+            { "topic": "reasoning.direction-distance", "status": "pyq-derived" },
+            { "topic": "reasoning.order-ranking", "status": "pyq-derived" },
+            { "topic": "reasoning.alphanumeric-series", "status": "pyq-derived" },
+            { "topic": "reasoning.word-building", "status": "pyq-derived", "only": ["letter-position", "formation", "dictionary-order"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mains",
+      "name": "Online Main Examination (Objective + Descriptive)",
+      "order": 2,
+      "mode": "cbt",
+      "nature": "merit",
+      "natureNote": "80% weight in the final merit.",
+      "pattern": {
+        "questions": 172, "marks": 225, "durationMinutes": 190,
+        "negativeMarking": { "type": "fraction-of-question", "value": 0.25, "appliesTo": "Objective tests" },
+        "sectionalTiming": "Separately timed: 45 / 35 / 35 / 45 minutes + 30 minutes descriptive",
+        "notes": ["Objective: 170 Q / 200 marks / 160 min. Descriptive: 2 Q / 25 marks / 30 min."]
+      },
+      "source": { "id": "ibps-po-xvi-2026-notice", "locator": "D(b) Main Examination" },
+      "sections": [
+        {
+          "id": "reasoning", "name": "Reasoning", "questions": 40, "marks": 60, "durationMinutes": 45,
+          "officialSyllabus": null,
+          "topics": [
+            { "topic": "reasoning.puzzles", "status": "pyq-derived" },
+            { "topic": "reasoning.seating-arrangement", "status": "pyq-derived" },
+            { "topic": "reasoning.critical-reasoning", "status": "pyq-derived" },
+            { "topic": "reasoning.data-sufficiency", "status": "pyq-derived" },
+            { "topic": "reasoning.input-output", "status": "pyq-derived" },
+            { "topic": "reasoning.syllogism", "status": "pyq-derived" },
+            { "topic": "reasoning.inequality", "status": "pyq-derived" },
+            { "topic": "reasoning.coding-decoding", "status": "pyq-derived", "only": ["letter", "number", "word-sentence", "conditional"] },
+            { "topic": "reasoning.blood-relations", "status": "pyq-derived" },
+            { "topic": "reasoning.direction-distance", "status": "pyq-derived" },
+            { "topic": "reasoning.order-ranking", "status": "pyq-derived" },
+            { "topic": "reasoning.alphanumeric-series", "status": "pyq-derived" }
+          ]
+        },
+        {
+          "id": "general-awareness", "name": "General / Economy / Banking Awareness / Digital / Financial Awareness (including RBI circulars)", "questions": 50, "marks": 60, "durationMinutes": 35,
+          "officialSyllabus": "Section name only: General/Economy/Banking Awareness/Digital/Financial Awareness including RBI circulars.",
+          "topics": [
+            { "topic": "ga.current-affairs", "status": "official-umbrella", "officialLabel": "General Awareness" },
+            { "topic": "fin.rbi", "status": "official-umbrella", "verbatim": ["rbi-circulars"], "officialLabel": "including RBI circulars" },
+            { "topic": "fin.digital-payments", "status": "official-umbrella", "officialLabel": "Digital Awareness" },
+            { "topic": "fin.banking-current-affairs", "status": "official-umbrella", "officialLabel": "Banking Awareness" },
+            { "topic": "fin.banking-structure", "status": "official-umbrella", "officialLabel": "Banking Awareness" },
+            { "topic": "fin.banking-terms", "status": "official-umbrella", "officialLabel": "Banking Awareness" },
+            { "topic": "fin.financial-markets", "status": "official-umbrella", "officialLabel": "Financial Awareness" },
+            { "topic": "fin.financial-inclusion", "status": "official-umbrella", "officialLabel": "Financial Awareness" },
+            { "topic": "fin.regulators-institutions", "status": "official-umbrella", "officialLabel": "Financial Awareness" },
+            { "topic": "fin.insurance-pension", "status": "official-umbrella", "officialLabel": "Financial Awareness" },
+            { "topic": "fin.rural-agri-finance", "status": "official-umbrella", "only": ["rrb", "nabard", "kcc"], "officialLabel": "Banking Awareness" },
+            { "topic": "fin.budget-economic-survey", "status": "official-umbrella", "officialLabel": "Economy" },
+            { "topic": "ga.economy-basics", "status": "official-umbrella", "officialLabel": "Economy" },
+            { "topic": "ga.economy-planning", "status": "official-umbrella", "only": ["niti-aayog"], "officialLabel": "Economy" },
+            { "topic": "ga.economy-fiscal", "status": "official-umbrella", "officialLabel": "Economy" },
+            { "topic": "ga.economy-inflation", "status": "official-umbrella", "officialLabel": "Economy" },
+            { "topic": "ga.economy-social", "status": "official-umbrella", "officialLabel": "Economy" },
+            { "topic": "ga.economy-reforms", "status": "official-umbrella", "officialLabel": "Economy" },
+            { "topic": "ga.economy-external", "status": "official-umbrella", "officialLabel": "Economy" },
+            { "topic": "ga.economy-agriculture", "status": "official-umbrella", "officialLabel": "Economy" },
+            { "topic": "ga.govt-schemes", "status": "pyq-derived" },
+            { "topic": "ga.international-organisations", "status": "pyq-derived" },
+            { "topic": "ga.static-gk", "status": "pyq-derived", "only": ["books-authors", "awards", "important-days", "world-capitals-currencies"] },
+            { "topic": "ga.sports", "status": "pyq-derived", "only": ["events", "trophies"] },
+            { "topic": "ga.geography-india", "status": "pyq-derived", "only": ["protected-areas", "dams-projects", "states-capitals"] },
+            { "topic": "ga.art-culture", "status": "pyq-derived", "only": ["dances", "festivals-fairs"] },
+            { "topic": "ga.science-technology", "status": "pyq-derived", "only": ["space", "defence"] }
+          ]
+        },
+        {
+          "id": "english", "name": "English Language", "questions": 40, "marks": 20, "durationMinutes": 35,
+          "officialSyllabus": null,
+          "topics": [
+            { "topic": "english.reading-comprehension", "status": "pyq-derived" },
+            { "topic": "english.cloze-test", "status": "pyq-derived" },
+            { "topic": "english.error-detection", "status": "pyq-derived" },
+            { "topic": "english.fill-blanks", "status": "pyq-derived" },
+            { "topic": "english.para-jumbles", "status": "pyq-derived", "only": ["passage-sentences", "odd-sentence", "first-last-fixed", "para-completion"] },
+            { "topic": "english.sentence-improvement", "status": "pyq-derived" },
+            { "topic": "english.word-usage", "status": "pyq-derived" },
+            { "topic": "english.sentence-completion", "status": "pyq-derived" },
+            { "topic": "english.grammar-rules", "status": "pyq-derived" },
+            { "topic": "english.synonyms-antonyms", "status": "pyq-derived", "only": ["synonyms", "antonyms", "usage"] }
+          ]
+        },
+        {
+          "id": "data-analysis", "name": "Data Analysis & Interpretation", "questions": 40, "marks": 60, "durationMinutes": 45,
+          "officialSyllabus": null,
+          "topics": [
+            { "topic": "quant.data-interpretation", "status": "official-umbrella", "officialLabel": "Data Analysis & Interpretation" },
+            { "topic": "quant.data-sufficiency", "status": "pyq-derived" },
+            { "topic": "quant.quantity-comparison", "status": "pyq-derived" },
+            { "topic": "quant.number-series", "status": "pyq-derived" },
+            { "topic": "quant.quadratic-equations", "status": "pyq-derived" },
+            { "topic": "quant.probability", "status": "pyq-derived" },
+            { "topic": "quant.permutation-combination", "status": "pyq-derived" },
+            { "topic": "quant.percentage", "status": "pyq-derived" },
+            { "topic": "quant.ratio-proportion", "status": "pyq-derived" },
+            { "topic": "quant.average", "status": "pyq-derived" },
+            { "topic": "quant.profit-loss", "status": "pyq-derived" },
+            { "topic": "quant.simple-interest", "status": "pyq-derived" },
+            { "topic": "quant.compound-interest", "status": "pyq-derived" },
+            { "topic": "quant.time-work", "status": "pyq-derived" },
+            { "topic": "quant.time-distance", "status": "pyq-derived", "only": ["basics", "average-speed", "relative-speed", "meeting-overtaking"] },
+            { "topic": "quant.boats-streams", "status": "pyq-derived" },
+            { "topic": "quant.mixture-alligation", "status": "pyq-derived" },
+            { "topic": "quant.partnership", "status": "pyq-derived" },
+            { "topic": "quant.mensuration-2d", "status": "pyq-derived", "only": ["triangle", "quadrilaterals", "circle"] },
+            { "topic": "quant.mensuration-3d", "status": "pyq-derived", "only": ["cube-cuboid", "cylinder", "cone", "sphere-hemisphere"] }
+          ]
+        },
+        {
+          "id": "descriptive", "name": "Descriptive Paper (Essay & Comprehension)", "questions": 2, "marks": 25, "durationMinutes": 30,
+          "officialSyllabus": "Essay and Comprehension; may be broadly based on Economic and Social issues, emerging trends in Banking and Technology, Current events, Ethics etc.",
+          "topics": [
+            { "topic": "descriptive.essay", "status": "official", "verbatim": ["economic-social", "banking-tech", "current-ethics"] },
+            { "topic": "descriptive.comprehension-writing", "status": "official" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "personality-test",
+      "name": "Personality Test (self-report)",
+      "order": 3,
+      "mode": "assessment",
+      "nature": "mandatory-unscored",
+      "natureNote": "Non-qualifying, but must be taken to be eligible for interview; the profile goes to the interview panel.",
+      "source": { "id": "ibps-po-xvi-2026-notice", "locator": "D(c) Personality Test" },
+      "sections": [
+        {
+          "id": "personality", "name": "Personality Test",
+          "topics": [ { "topic": "personality.psychometric-test", "status": "official" } ]
+        }
+      ]
+    },
+    {
+      "id": "interview",
+      "name": "Common Interview",
+      "order": 4,
+      "mode": "interview",
+      "nature": "merit",
+      "natureNote": "100 marks; minimum 40% (35% SC/ST/OBC/PwBD); 20% weight in the final merit.",
+      "pattern": { "questions": null, "marks": 100, "durationMinutes": null },
+      "source": { "id": "ibps-po-xvi-2026-notice", "locator": "J. Interview" },
+      "sections": [
+        {
+          "id": "interview", "name": "Personal Interview", "marks": 100,
+          "topics": [ { "topic": "personality.interview", "status": "official", "subtopicStatus": "pyq-derived" } ]
+        }
+      ]
+    }
+  ]
+}

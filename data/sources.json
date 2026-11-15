@@ -1,0 +1,106 @@
+{
+  "$comment": "Every pattern/syllabus claim in an exam file points to a source ID listed here. type: official-notification = text extracted from the official notice PDF; editorial = topic expansion compiled for this database (NOT official). accessed = date the document was read for this database.",
+  "sources": [
+    {
+      "id": "ssc-cgl-2026-notice",
+      "type": "official-notification",
+      "publisher": "Staff Selection Commission",
+      "title": "Notice: Combined Graduate Level Examination, 2026",
+      "published": "2026-05-21",
+      "url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_cgl_2026.pdf",
+      "retrievedFrom": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_cgl_2026.pdf",
+      "accessed": "2026-11-15",
+      "keySections": ["13.8 Scheme of Tier-I", "13.9 Scheme of Tier-II", "13.10 Indicative Syllabus (Tier-I)", "13.11 Indicative Syllabus (Tier-II)", "16.10–16.14 Merit"]
+    },
+    {
+      "id": "ssc-chsl-2026-notice",
+      "type": "official-notification",
+      "publisher": "Staff Selection Commission",
+      "title": "Notice: Combined Higher Secondary (10+2) Level Examination, 2026",
+      "published": "2026-09-07",
+      "url": "https://ssc.gov.in",
+      "retrievedFrom": "https://www.adda247.com/jobs/wp-content/uploads/sites/22/2026/09/07213851/Notice_of_adv_chsl_2026.pdf",
+      "accessed": "2026-11-15",
+      "notes": "Mirror copy of the official 88-page notice; its header reads 'To be uploaded on the website of the Commission i.e. https://ssc.gov.in on 07-09-2026'.",
+      "keySections": ["13.8 Scheme of Tier-I", "13.9 Scheme of Tier-II", "13.10 Indicative Syllabus (Tier-I)", "13.11 Indicative Syllabus (Tier-II)", "17.9 Merit"]
+    },
+    {
+      "id": "ssc-cpo-2026-notice",
+      "type": "official-notification",
+      "publisher": "Staff Selection Commission",
+      "title": "Notice: Sub-Inspector in Delhi Police and Central Armed Police Forces Examination, 2026",
+      "published": "2026-09-10",
+      "url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_capf_2026.pdf",
+      "retrievedFrom": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_capf_2026.pdf",
+      "accessed": "2026-11-15",
+      "keySections": ["12.1 Scheme of Examination", "12.2 Negative marking", "12.6 NCC bonus", "12.9 Indicative syllabus", "12.10 PST/PET", "16.8 Final selection"]
+    },
+    {
+      "id": "sbi-po-2026-advt",
+      "type": "official-notification",
+      "publisher": "State Bank of India",
+      "title": "Recruitment of Probationary Officers, Advt. No. CRPD/PO/2026-27/09",
+      "published": "2026-06-18",
+      "url": "https://sbi.bank.in/web/careers",
+      "retrievedFrom": "https://www.bankersadda.com/wp-content/uploads/multisite/2026/06/18111842/18062026_1_Detailed_Adv.2026.pdf",
+      "accessed": "2026-11-15",
+      "notes": "Mirror copy of the official advertisement (advertisement number printed inside the PDF). SBI does not publish a topic-level syllabus, only section names.",
+      "keySections": ["8. Selection Procedure (Phase-I, II, III)", "Penalty for wrong answers", "Final selection"]
+    },
+    {
+      "id": "sbi-ja-2026-advt",
+      "type": "official-notification",
+      "publisher": "State Bank of India",
+      "title": "Recruitment of Junior Associates (Customer Support & Sales), Advt. No. CRPD/CR/2026-27/17",
+      "published": "2026-08-11",
+      "url": "https://sbi.bank.in/webfiles/uploads/files_2627/08/JA_2026_Detailed_Advt_Eng.pdf",
+      "retrievedFrom": "https://sbi.bank.in/webfiles/uploads/files_2627/08/JA_2026_Detailed_Advt_Eng.pdf",
+      "accessed": "2026-11-15",
+      "notes": "SBI does not publish a topic-level syllabus, only section names.",
+      "keySections": ["4. Selection Procedure (Phase-I, II, III LLPT)"]
+    },
+    {
+      "id": "ibps-po-xvi-2026-notice",
+      "type": "official-notification",
+      "publisher": "Institute of Banking Personnel Selection",
+      "title": "Detailed Notification: CRP PO/MT-XVI (Probationary Officers / Management Trainees)",
+      "published": "2026-06-30",
+      "url": "https://www.ibps.in",
+      "retrievedFrom": "https://www.adda247.com/jobs/wp-content/uploads/2026/06/30234657/Detailed-Notification_CRP-PO-XVI_Final_V1_30.06.2026.pdf",
+      "accessed": "2026-11-15",
+      "notes": "Mirror copy (54 pages) of the official IBPS notification. IBPS does not publish a topic-level syllabus, only section names.",
+      "keySections": ["D. Structure of Examination", "E. Penalty for Wrong Answers", "J. Interview"]
+    },
+    {
+      "id": "ibps-csa-xvi-2026-notice",
+      "type": "official-notification",
+      "publisher": "Institute of Banking Personnel Selection",
+      "title": "Detailed Notification: CRP CSA-XVI (Customer Service Associates)",
+      "published": "2026-07-31",
+      "url": "https://www.ibps.in/wp-content/uploads/Notification_CRP_CSA_XVI-Final.pdf",
+      "retrievedFrom": "https://www.adda247.com/jobs/wp-content/uploads/sites/22/2026/07/31232919/Notification_CRP_CSA_XVI-Final.pdf",
+      "accessed": "2026-11-15",
+      "notes": "Mirror copy (74 pages); the ibps.in URL failed with an SSL error at access time. A corrigendum dated 29.09.2026 exists and was NOT reviewed. Check whether it changes the exam structure.",
+      "keySections": ["D. Structure of Examination", "E. Penalty for Wrong Answers", "H. Local Language Proficiency Test"]
+    },
+    {
+      "id": "ibps-rrb-xv-2026-notice",
+      "type": "official-notification",
+      "publisher": "Institute of Banking Personnel Selection",
+      "title": "Detailed Notification: CRP RRBs-XV (Officers Scale I, II, III & Office Assistants (Multipurpose))",
+      "published": "2026-09-01",
+      "url": "https://www.ibps.in/wp-content/uploads/CRP-RRBs-XV-notification.pdf",
+      "retrievedFrom": "https://www.ibps.in/wp-content/uploads/CRP-RRBs-XV-notification.pdf",
+      "accessed": "2026-11-15",
+      "notes": "Published date = start of online registration (01.09.2026–21.09.2026). IBPS does not publish a topic-level syllabus, only section names.",
+      "keySections": ["D. Online Examination Structure", "E. Penalty for Wrong Answers", "J. Interview"]
+    },
+    {
+      "id": "editorial-pyq",
+      "type": "editorial",
+      "publisher": "This database",
+      "title": "Editorial topic expansion based on previous-year question trends",
+      "notes": "Topics/subtopics carrying status 'pyq-derived' or 'unverified' are NOT from any official syllabus. Banks (SBI, IBPS) publish only section names, so every banking topic list is editorial. Re-validate each cycle against the latest papers."
+    }
+  ]
+}
