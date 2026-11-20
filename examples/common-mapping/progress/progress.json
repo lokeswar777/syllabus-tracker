@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 2,
+  "kind": "progress",
+  "updatedAt": "2026-11-20T09:00:00.000Z",
+  "settings": {
+    "activeExamId": "sbi-po",
+    "sharedLearning": true
+  },
+  "exams": {
+    "ssc-cgl": {
+      "examId": "ssc-cgl",
+      "trackId": null,
+      "stageId": null,
+      "choices": {},
+      "createdAt": "2026-11-20T09:00:00.000Z",
+      "updatedAt": "2026-11-20T09:00:00.000Z",
+      "topics": {
+        "quant.percentage": {
+          "status": "practicing",
+          "completionOverride": null,
+          "masteryOverride": null,
+          "difficulty": null,
+          "notes": "",
+          "startDate": "2026-11-20",
+          "completionDate": null,
+          "lastUpdated": "2026-11-20T09:00:00.000Z",
+          "shareLearning": true,
+          "revisions": [],
+          "manualStats": null,
+          "targets": null
+        }
+      },
+      "subtopics": {}
+    },
+    "sbi-po": {
+      "examId": "sbi-po",
+      "trackId": null,
+      "stageId": null,
+      "choices": {},
+      "createdAt": "2026-11-20T09:00:00.000Z",
+      "updatedAt": "2026-11-20T09:00:00.000Z",
+      "topics": {},
+      "subtopics": {}
+    }
+  }
+}

@@ -10,6 +10,7 @@ import { buildExamModel, weightKey } from './model.js';
 import { calculateProgress } from './calculate.js';
 import * as P from './progress-db.js';
 import { loadDb, saveCollections } from './storage.js';
+import { buildSharedTopicDashboard, buildCrossExamInsights } from '../mapping/insights.js';
 
 let counter = 0;
 const defaultId = () => (globalThis.crypto?.randomUUID?.() ?? `ps-${Date.now().toString(36)}-${(counter++).toString(36)}`);
@@ -23,8 +24,10 @@ export class ProgressEngine {
    * @param {() => Date} [o.clock] injectable clock (tests)
    * @param {() => string} [o.idGenerator]
    */
-  constructor({ loader, storage, config, clock = () => new Date(), idGenerator = defaultId }) {
+  constructor({ loader, storage, config, clock = () => new Date(), idGenerator = defaultId, mapping = null }) {
     this.loader = loader;
+    this.mapping = mapping; // Phase 4: { masterTopics, crossExamMapping }; loaded from loader.loadMapping() when omitted
+    this.masterIndex = null;
     this.storage = storage;
     this.config = config;
     this.cfg = compileConfig(config);
@@ -44,6 +47,8 @@ export class ProgressEngine {
     const { db, issues } = await loadDb(this.storage, this.clock());
     this.db = db;
     this.loadIssues = issues;
+    if (!this.mapping && typeof this.loader.loadMapping === 'function') this.mapping = await this.loader.loadMapping();
+    if (this.mapping) this.masterIndex = new Map(this.mapping.masterTopics.masters.map((m) => [m.masterTopicId, m]));
     const last = db.progress.settings.activeExamId;
     if (last) {
       try { await this.switchExam(last); } catch (e) { this.loadIssues.push(`could not reopen last exam '${last}': ${e.message}`); }
@@ -93,9 +98,123 @@ export class ProgressEngine {
     const key = `${examId}|${scope}|${this.version}`;
     if (!this.cache.has(key)) {
       this.cache.clear();
-      this.cache.set(key, calculateProgress({ model: this.getModel(), db: this.db, config: this.config, now: this.clock(), stageId: scope }));
+      this.cache.set(key, this.#calculate(examId, this.getModel(), scope));
     }
     return this.cache.get(key);
+  }
+
+  #calculate(examId, model, stageId) {
+    return calculateProgress({
+      model, db: this.db, config: this.config, now: this.clock(), stageId,
+      sync: this.mapping ? this.syncResolver(examId) : null,
+      requirements: this.mapping?.crossExamMapping.byExam[examId] ?? null,
+    });
+  }
+
+  // ───────────── Phase 4: mapping & synchronization ─────────────
+  /** Master topic for a library topic ID or master ID (null when the topic is not mapped). */
+  getMasterTopic(id) {
+    if (!this.masterIndex) return null;
+    return this.masterIndex.get(id) ?? this.masterIndex.get(`mt.${id}`) ?? null;
+  }
+  /**
+   * Effective sync mode of a topic in an exam:
+   *   global sync off → independent; topic not mapped in this exam (single-exam / excluded) → independent;
+   *   mapping rejected → independent; otherwise the user's per-topic choice, else the mapping default.
+   */
+  syncModeFor(examId, topicId) {
+    if (!this.mapping) return 'full'; // Phase 3 behaviour
+    if (this.db.syncSettings.enabled === false || this.db.progress.settings.sharedLearning === false) return 'independent';
+    const mid = this.mapping.crossExamMapping.byExam[examId]?.[topicId]?.masterTopicId;
+    if (!mid) return 'independent';
+    const m = this.masterIndex.get(mid);
+    if (!m || m.verification.status === 'rejected') return 'independent';
+    return this.db.syncSettings.modes[mid] ?? m.defaultSyncMode;
+  }
+  syncResolver(examId) {
+    const byExam = this.mapping?.crossExamMapping.byExam[examId] ?? {};
+    return { modeFor: (topicId) => this.syncModeFor(examId, topicId), masterOf: (topicId) => byExam[topicId]?.masterTopicId ?? null };
+  }
+  /** Set the sync mode of a master topic for all linked exams ('full' | 'partial' | 'independent'); null = mapping default. */
+  setSyncMode(masterOrTopicId, mode) {
+    const m = this.#requireMaster(masterOrTopicId);
+    this.#commit(P.setSyncMode(this.db, { masterTopicId: m.masterTopicId, mode, now: this.clock() }), ['syncSettings']);
+    return this.active ? this.getReport() : null;
+  }
+  setSyncEnabled(enabled) {
+    this.#requireDb();
+    this.#commit(P.setSyncEnabled(this.db, { enabled, now: this.clock() }), ['syncSettings']);
+    return this.active ? this.getReport() : null;
+  }
+
+  /** Shared concept learning (status, conceptCompletion, notes, learningDate) for a mapped master topic. */
+  updateConcept(masterOrTopicId, patch) {
+    const m = this.#requireMaster(masterOrTopicId);
+    this.#commit(P.updateConcept(this.db, { topicId: m.libraryTopicId, patch, cfg: this.cfg, now: this.clock(), examId: this.active?.examId ?? null }), ['sharedLearning']);
+    return this.getConcept(m.masterTopicId);
+  }
+  addConceptResource(masterOrTopicId, resource) {
+    const m = this.#requireMaster(masterOrTopicId);
+    this.#commit(P.addConceptResource(this.db, { topicId: m.libraryTopicId, resource, newId: this.newId, now: this.clock() }), ['sharedLearning']);
+    return this.getConcept(m.masterTopicId);
+  }
+  removeConceptResource(masterOrTopicId, resourceId) {
+    const m = this.#requireMaster(masterOrTopicId);
+    this.#commit(P.removeConceptResource(this.db, { topicId: m.libraryTopicId, resourceId, now: this.clock() }), ['sharedLearning']);
+    return this.getConcept(m.masterTopicId);
+  }
+  addConceptRevision(masterOrTopicId, { date, note } = {}) {
+    const m = this.#requireMaster(masterOrTopicId);
+    this.#commit(P.addConceptRevision(this.db, { topicId: m.libraryTopicId, date, note, now: this.clock() }), ['sharedLearning']);
+    return this.getConcept(m.masterTopicId);
+  }
+  /** Shared concept record + how it applies to each linked exam (without switching the active exam). */
+  getConcept(masterOrTopicId) {
+    const m = this.#requireMaster(masterOrTopicId);
+    const rec = this.db.sharedLearning.topics[m.libraryTopicId] ?? {};
+    return {
+      masterTopicId: m.masterTopicId, libraryTopicId: m.libraryTopicId, name: m.name,
+      status: rec.status ?? 'not-started', conceptCompletion: P.conceptPctOf(rec, this.cfg),
+      notes: rec.notes ?? '', learningDates: rec.learningDates ?? [], resources: rec.resources ?? [],
+      conceptRevisionCount: (rec.revisions ?? []).length, revisions: rec.revisions ?? [], updatedAt: rec.updatedAt ?? null,
+      verification: m.verification, similarity: m.similarity, defaultSyncMode: m.defaultSyncMode,
+      linkedExams: m.exams.map((examId) => ({ examId, syncMode: this.syncModeFor(examId, m.libraryTopicId) })),
+    };
+  }
+
+  /** Reports for several exams (each with its own settings and progress) without changing the active exam. */
+  async getCrossExamReports(examIds) {
+    this.#requireDb();
+    const out = {};
+    for (const examId of examIds) {
+      if (!this.examData.has(examId)) this.examData.set(examId, await this.loader.loadExam(examId));
+      const ep = this.db.progress.exams[examId];
+      const { syllabusExam, weightageExam } = this.examData.get(examId);
+      const model = examId === this.active?.examId ? this.getModel() : buildExamModel({
+        syllabusExam, weightageExam, trackId: ep?.trackId ?? undefined, choices: ep?.choices ?? {}, weightOverrides: this.db.weightOverrides.exams[examId] ?? {},
+      });
+      out[examId] = this.#calculate(examId, model, null);
+    }
+    return out;
+  }
+
+  async getSharedTopicDashboard(examIds) {
+    return buildSharedTopicDashboard({ reports: await this.getCrossExamReports(examIds), examIds, mapping: this.#requireMapping() });
+  }
+  async getCrossExamInsights(examIds) {
+    return buildCrossExamInsights({ reports: await this.getCrossExamReports(examIds), examIds, mapping: this.#requireMapping(), thresholds: { examCompleted: this.cfg.classification.completedAtOrAbove } });
+  }
+  #requireMapping() {
+    if (!this.mapping) throw new Error('no cross-exam mapping loaded');
+    return this.mapping;
+  }
+
+  #requireMaster(id) {
+    this.#requireDb();
+    if (!this.mapping) throw new Error('no cross-exam mapping loaded (loader.loadMapping or the `mapping` option)');
+    const m = this.getMasterTopic(id);
+    if (!m) throw new RangeError(`'${id}' is not a mapped common topic: unmapped (single-exam) topics stay independent`);
+    return m;
   }
 
   // ───────────── progress updates (active exam) ─────────────
@@ -109,9 +228,21 @@ export class ProgressEngine {
     this.#commit(P.addRevision(this.db, { examId, nodeId, date, note, now: this.clock() }), ['progress']);
     return this.getReport();
   }
+  /**
+   * Log a practice session for the active exam. Phase 4: the session is tagged with
+   *   level   = the exam's category (SSC-level vs banking-level practice)
+   *   stageId = the given stage, else the only stage the topic appears in, else the selected stage if it contains the topic
+   */
   recordPractice(nodeId, session) {
     const examId = this.#requireNode(nodeId);
-    this.#commit(P.recordPractice(this.db, { examId, nodeId, session, newId: this.newId, now: this.clock() }), ['practice', 'progress']);
+    const m = this.getModel();
+    const topicId = nodeId.split('.').slice(0, 2).join('.');
+    const stages = [...new Set((m.topics[topicId]?.occurrences ?? []).map((o) => o.stageId))];
+    const selected = this.db.progress.exams[examId]?.stageId;
+    if (session.stageId != null && !stages.includes(session.stageId)) throw new RangeError(`'${nodeId}' is not part of stage '${session.stageId}' (stages: ${stages.join(', ')})`);
+    const stageId = session.stageId ?? (stages.length === 1 ? stages[0] : stages.includes(selected) ? selected : null);
+    const tagged = { ...session, stageId, level: session.level ?? m.category ?? null };
+    this.#commit(P.recordPractice(this.db, { examId, nodeId, session: tagged, newId: this.newId, now: this.clock() }), ['practice', 'progress']);
     return this.getReport();
   }
   deletePractice(sessionId) {
@@ -173,7 +304,8 @@ export class ProgressEngine {
   }
   #updateNode(nodeId, patch, expectKind) {
     const examId = this.#requireNode(nodeId, expectKind);
-    this.#commit(P.updateNode(this.db, { examId, nodeId, patch, cfg: this.cfg, now: this.clock() }), ['progress', 'sharedLearning']);
+    const syncModeFor = (topicId) => this.syncModeFor(examId, topicId);
+    this.#commit(P.updateNode(this.db, { examId, nodeId, patch, cfg: this.cfg, now: this.clock(), syncModeFor }), ['progress', 'sharedLearning']);
     return this.getReport();
   }
   #commit(db, keys) {

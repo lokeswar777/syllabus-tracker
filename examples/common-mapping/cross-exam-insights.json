@@ -1,0 +1,967 @@
+{
+  "selectedExams": [
+    "ssc-cgl",
+    "ssc-chsl",
+    "sbi-po",
+    "ibps-po",
+    "sbi-clerk"
+  ],
+  "sharedConceptsCompleted": [
+    {
+      "masterTopicId": "mt.quant.percentage",
+      "name": "Percentage",
+      "exams": [
+        "ssc-cgl",
+        "ssc-chsl",
+        "sbi-po",
+        "ibps-po",
+        "sbi-clerk"
+      ]
+    }
+  ],
+  "conceptReuse": {
+    "conceptsCompleted": 1,
+    "repetitionsAvoided": 4,
+    "note": "Each completed shared concept is learned once instead of once per linked exam. No hours are estimated (no reliable data)."
+  },
+  "remainingExamSpecific": {
+    "ssc-cgl": {
+      "topics": 1,
+      "remainingWeight": 0.25,
+      "list": [
+        {
+          "masterTopicId": "mt.quant.percentage",
+          "name": "Percentage",
+          "completion": 65,
+          "effectiveWeight": 0.7,
+          "gaps": [
+            {
+              "target": "questions",
+              "have": 40,
+              "need": 60
+            },
+            {
+              "target": "speed",
+              "have": 37.5,
+              "need": 36
+            }
+          ]
+        }
+      ]
+    },
+    "ssc-chsl": {
+      "topics": 1,
+      "remainingWeight": 0.5,
+      "list": [
+        {
+          "masterTopicId": "mt.quant.percentage",
+          "name": "Percentage",
+          "completion": 50,
+          "effectiveWeight": 0.99,
+          "gaps": [
+            {
+              "target": "questions",
+              "have": 0,
+              "need": 60
+            },
+            {
+              "target": "accuracy",
+              "have": null,
+              "need": 85
+            },
+            {
+              "target": "speed",
+              "have": null,
+              "need": 36
+            }
+          ]
+        }
+      ]
+    },
+    "sbi-po": {
+      "topics": 1,
+      "remainingWeight": 0.35,
+      "list": [
+        {
+          "masterTopicId": "mt.quant.percentage",
+          "name": "Percentage",
+          "completion": 50,
+          "effectiveWeight": 0.7,
+          "gaps": [
+            {
+              "target": "questions",
+              "have": 30,
+              "need": 60
+            },
+            {
+              "target": "accuracy",
+              "have": 73.33,
+              "need": 80
+            },
+            {
+              "target": "speed",
+              "have": 46,
+              "need": 40
+            }
+          ]
+        }
+      ]
+    },
+    "ibps-po": {
+      "topics": 1,
+      "remainingWeight": 0.29,
+      "list": [
+        {
+          "masterTopicId": "mt.quant.percentage",
+          "name": "Percentage",
+          "completion": 50,
+          "effectiveWeight": 0.58,
+          "gaps": [
+            {
+              "target": "questions",
+              "have": 0,
+              "need": 60
+            },
+            {
+              "target": "accuracy",
+              "have": null,
+              "need": 80
+            },
+            {
+              "target": "speed",
+              "have": null,
+              "need": 34.3
+            }
+          ]
+        }
+      ]
+    },
+    "sbi-clerk": {
+      "topics": 1,
+      "remainingWeight": 0.36,
+      "list": [
+        {
+          "masterTopicId": "mt.quant.percentage",
+          "name": "Percentage",
+          "completion": 50,
+          "effectiveWeight": 0.71,
+          "gaps": [
+            {
+              "target": "questions",
+              "have": 0,
+              "need": 60
+            },
+            {
+              "target": "accuracy",
+              "have": null,
+              "need": 85
+            },
+            {
+              "target": "speed",
+              "have": null,
+              "need": 34.3
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "examsBenefiting": [
+    {
+      "examId": "ssc-chsl",
+      "shortName": "SSC CHSL",
+      "sharedLearningUplift": 0.77,
+      "topicsUsingShared": 2
+    },
+    {
+      "examId": "sbi-po",
+      "shortName": "SBI PO",
+      "sharedLearningUplift": 0.51,
+      "topicsUsingShared": 2
+    },
+    {
+      "examId": "sbi-clerk",
+      "shortName": "SBI Clerk",
+      "sharedLearningUplift": 0.51,
+      "topicsUsingShared": 2
+    },
+    {
+      "examId": "ibps-po",
+      "shortName": "IBPS PO",
+      "sharedLearningUplift": 0.42,
+      "topicsUsingShared": 2
+    },
+    {
+      "examId": "ssc-cgl",
+      "shortName": "SSC CGL",
+      "sharedLearningUplift": 0.19,
+      "topicsUsingShared": 1
+    }
+  ],
+  "commonHighWeightage": [
+    {
+      "masterTopicId": "mt.quant.data-interpretation",
+      "name": "Data Interpretation",
+      "highIn": [
+        "ssc-cgl",
+        "ssc-chsl",
+        "sbi-po",
+        "ibps-po",
+        "sbi-clerk"
+      ],
+      "combinedWeight": 34.57,
+      "conceptCompletion": 0,
+      "exams": {
+        "ssc-cgl": {
+          "priority": "Very High",
+          "effectiveWeight": 2.32,
+          "completion": 0
+        },
+        "ssc-chsl": {
+          "priority": "High",
+          "effectiveWeight": 1.57,
+          "completion": 0
+        },
+        "sbi-po": {
+          "priority": "Very High",
+          "effectiveWeight": 9.94,
+          "completion": 0
+        },
+        "ibps-po": {
+          "priority": "Very High",
+          "effectiveWeight": 10.78,
+          "completion": 0
+        },
+        "sbi-clerk": {
+          "priority": "Very High",
+          "effectiveWeight": 9.96,
+          "completion": 0
+        }
+      }
+    },
+    {
+      "masterTopicId": "mt.english.reading-comprehension",
+      "name": "Reading Comprehension",
+      "highIn": [
+        "ssc-cgl",
+        "ssc-chsl",
+        "sbi-po",
+        "ibps-po",
+        "sbi-clerk"
+      ],
+      "combinedWeight": 27.22,
+      "conceptCompletion": 0,
+      "exams": {
+        "ssc-cgl": {
+          "priority": "Very High",
+          "effectiveWeight": 5.91,
+          "completion": 0
+        },
+        "ssc-chsl": {
+          "priority": "Very High",
+          "effectiveWeight": 5.3,
+          "completion": 0
+        },
+        "sbi-po": {
+          "priority": "Very High",
+          "effectiveWeight": 4.55,
+          "completion": 0
+        },
+        "ibps-po": {
+          "priority": "High",
+          "effectiveWeight": 4.1,
+          "completion": 0
+        },
+        "sbi-clerk": {
+          "priority": "Very High",
+          "effectiveWeight": 7.36,
+          "completion": 0
+        }
+      }
+    },
+    {
+      "masterTopicId": "mt.ga.current-affairs",
+      "name": "Current Affairs",
+      "highIn": [
+        "ssc-cgl",
+        "ssc-chsl",
+        "sbi-po",
+        "ibps-po",
+        "sbi-clerk"
+      ],
+      "combinedWeight": 19.85,
+      "conceptCompletion": 0,
+      "exams": {
+        "ssc-cgl": {
+          "priority": "Very High",
+          "effectiveWeight": 2.84,
+          "completion": 0
+        },
+        "ssc-chsl": {
+          "priority": "Very High",
+          "effectiveWeight": 2.19,
+          "completion": 0
+        },
+        "sbi-po": {
+          "priority": "High",
+          "effectiveWeight": 4.35,
+          "completion": 0
+        },
+        "ibps-po": {
+          "priority": "Very High",
+          "effectiveWeight": 4.81,
+          "completion": 0
+        },
+        "sbi-clerk": {
+          "priority": "Very High",
+          "effectiveWeight": 5.66,
+          "completion": 0
+        }
+      }
+    },
+    {
+      "masterTopicId": "mt.english.cloze-test",
+      "name": "Cloze Test",
+      "highIn": [
+        "ssc-cgl",
+        "ssc-chsl",
+        "sbi-po",
+        "ibps-po",
+        "sbi-clerk"
+      ],
+      "combinedWeight": 14.26,
+      "conceptCompletion": 0,
+      "exams": {
+        "ssc-cgl": {
+          "priority": "Very High",
+          "effectiveWeight": 3.79,
+          "completion": 0
+        },
+        "ssc-chsl": {
+          "priority": "Very High",
+          "effectiveWeight": 3.87,
+          "completion": 0
+        },
+        "sbi-po": {
+          "priority": "High",
+          "effectiveWeight": 1.88,
+          "completion": 0
+        },
+        "ibps-po": {
+          "priority": "High",
+          "effectiveWeight": 1.46,
+          "completion": 0
+        },
+        "sbi-clerk": {
+          "priority": "High",
+          "effectiveWeight": 3.26,
+          "completion": 0
+        }
+      }
+    },
+    {
+      "masterTopicId": "mt.english.error-detection",
+      "name": "Error Detection",
+      "highIn": [
+        "ssc-cgl",
+        "ssc-chsl",
+        "sbi-po",
+        "ibps-po",
+        "sbi-clerk"
+      ],
+      "combinedWeight": 11.04,
+      "conceptCompletion": 0,
+      "exams": {
+        "ssc-cgl": {
+          "priority": "Very High",
+          "effectiveWeight": 3.08,
+          "completion": 0
+        },
+        "ssc-chsl": {
+          "priority": "Very High",
+          "effectiveWeight": 2.67,
+          "completion": 0
+        },
+        "sbi-po": {
+          "priority": "High",
+          "effectiveWeight": 1.1,
+          "completion": 0
+        },
+        "ibps-po": {
+          "priority": "High",
+          "effectiveWeight": 1.39,
+          "completion": 0
+        },
+        "sbi-clerk": {
+          "priority": "High",
+          "effectiveWeight": 2.8,
+          "completion": 0
+        }
+      }
+    },
+    {
+      "masterTopicId": "mt.english.para-jumbles",
+      "name": "Para Jumbles & Sentence Rearrangement",
+      "highIn": [
+        "ssc-cgl",
+        "ssc-chsl",
+        "sbi-po",
+        "ibps-po",
+        "sbi-clerk"
+      ],
+      "combinedWeight": 10.64,
+      "conceptCompletion": 0,
+      "exams": {
+        "ssc-cgl": {
+          "priority": "Very High",
+          "effectiveWeight": 1.97,
+          "completion": 0
+        },
+        "ssc-chsl": {
+          "priority": "Very High",
+          "effectiveWeight": 1.94,
+          "completion": 0
+        },
+        "sbi-po": {
+          "priority": "High",
+          "effectiveWeight": 2.58,
+          "completion": 0
+        },
+        "ibps-po": {
+          "priority": "High",
+          "effectiveWeight": 1.5,
+          "completion": 0
+        },
+        "sbi-clerk": {
+          "priority": "High",
+          "effectiveWeight": 2.65,
+          "completion": 0
+        }
+      }
+    },
+    {
+      "masterTopicId": "mt.reasoning.puzzles",
+      "name": "Puzzles",
+      "highIn": [
+        "sbi-po",
+        "ibps-po",
+        "sbi-clerk"
+      ],
+      "combinedWeight": 26.84,
+      "conceptCompletion": 0,
+      "exams": {
+        "sbi-po": {
+          "priority": "Very High",
+          "effectiveWeight": 7.88,
+          "completion": 0
+        },
+        "ibps-po": {
+          "priority": "Very High",
+          "effectiveWeight": 7.91,
+          "completion": 0
+        },
+        "sbi-clerk": {
+          "priority": "Very High",
+          "effectiveWeight": 11.05,
+          "completion": 0
+        }
+      }
+    },
+    {
+      "masterTopicId": "mt.reasoning.seating-arrangement",
+      "name": "Seating Arrangement",
+      "highIn": [
+        "sbi-po",
+        "ibps-po",
+        "sbi-clerk"
+      ],
+      "combinedWeight": 16.11,
+      "conceptCompletion": 0,
+      "exams": {
+        "ssc-cgl": {
+          "priority": "Medium",
+          "effectiveWeight": 0.83,
+          "completion": 0
+        },
+        "ssc-chsl": {
+          "priority": "Medium",
+          "effectiveWeight": 0.56,
+          "completion": 0
+        },
+        "sbi-po": {
+          "priority": "High",
+          "effectiveWeight": 4.4,
+          "completion": 0
+        },
+        "ibps-po": {
+          "priority": "Very High",
+          "effectiveWeight": 4.75,
+          "completion": 0
+        },
+        "sbi-clerk": {
+          "priority": "Very High",
+          "effectiveWeight": 5.57,
+          "completion": 0
+        }
+      }
+    },
+    {
+      "masterTopicId": "mt.reasoning.coding-decoding",
+      "name": "Coding–Decoding",
+      "highIn": [
+        "ssc-cgl",
+        "ssc-chsl",
+        "sbi-clerk"
+      ],
+      "combinedWeight": 9.05,
+      "conceptCompletion": 0,
+      "exams": {
+        "ssc-cgl": {
+          "priority": "Very High",
+          "effectiveWeight": 2.4,
+          "completion": 0
+        },
+        "ssc-chsl": {
+          "priority": "Very High",
+          "effectiveWeight": 1.83,
+          "completion": 0
+        },
+        "sbi-po": {
+          "priority": "Medium",
+          "effectiveWeight": 0.59,
+          "completion": 0
+        },
+        "ibps-po": {
+          "priority": "Medium",
+          "effectiveWeight": 1.21,
+          "completion": 0
+        },
+        "sbi-clerk": {
+          "priority": "High",
+          "effectiveWeight": 3.02,
+          "completion": 0
+        }
+      }
+    },
+    {
+      "masterTopicId": "mt.english.sentence-improvement",
+      "name": "Sentence Improvement",
+      "highIn": [
+        "ssc-cgl",
+        "ssc-chsl",
+        "sbi-clerk"
+      ],
+      "combinedWeight": 7.64,
+      "conceptCompletion": 0,
+      "exams": {
+        "ssc-cgl": {
+          "priority": "Very High",
+          "effectiveWeight": 2.13,
+          "completion": 0
+        },
+        "ssc-chsl": {
+          "priority": "Very High",
+          "effectiveWeight": 2.11,
+          "completion": 0
+        },
+        "sbi-po": {
+          "priority": "Medium",
+          "effectiveWeight": 1.04,
+          "completion": 0
+        },
+        "ibps-po": {
+          "priority": "Medium",
+          "effectiveWeight": 0.77,
+          "completion": 0
+        },
+        "sbi-clerk": {
+          "priority": "High",
+          "effectiveWeight": 1.59,
+          "completion": 0
+        }
+      }
+    }
+  ],
+  "recommendations": [
+    {
+      "type": "practice-exam-pattern",
+      "masterTopicId": "mt.quant.percentage",
+      "topicId": "quant.percentage",
+      "examId": "ssc-chsl",
+      "stageId": "tier1",
+      "stageClass": "prelims",
+      "priority": "High",
+      "effectiveWeight": 0.99,
+      "message": "Percentage: concept already completed, so skip basic concept learning for SSC CHSL prelims. Practise standard to advanced arithmetic problems: successive change, product constancy, applications (40 more questions (target 40); accuracy –% → 85%; speed – s → ≤ 36 s per question).",
+      "requirement": {
+        "stageClass": "prelims",
+        "depth": "standard",
+        "depthDescription": "Standard to advanced arithmetic problems: successive change, product constancy, applications.",
+        "difficulty": "medium",
+        "questionTarget": 40,
+        "accuracyTarget": 85,
+        "speedTargetSec": 36,
+        "speedBasis": "official-section-pace",
+        "source": "manual-override"
+      },
+      "gaps": [
+        {
+          "target": "questions",
+          "have": 0,
+          "need": 40
+        },
+        {
+          "target": "accuracy",
+          "have": null,
+          "need": 85
+        },
+        {
+          "target": "speed",
+          "have": null,
+          "need": 36
+        }
+      ]
+    },
+    {
+      "type": "practice-exam-pattern",
+      "masterTopicId": "mt.quant.percentage",
+      "topicId": "quant.percentage",
+      "examId": "ssc-chsl",
+      "stageId": "tier2",
+      "stageClass": "mains",
+      "priority": "High",
+      "effectiveWeight": 0.99,
+      "message": "Percentage: concept already completed, so skip basic concept learning for SSC CHSL mains. Practise standard to advanced arithmetic problems: successive change, product constancy, applications (60 more questions (target 60); accuracy –% → 85%; speed – s → ≤ 60 s per question).",
+      "requirement": {
+        "stageClass": "mains",
+        "depth": "advanced",
+        "depthDescription": "Standard to advanced arithmetic problems: successive change, product constancy, applications.",
+        "difficulty": "hard",
+        "questionTarget": 60,
+        "accuracyTarget": 85,
+        "speedTargetSec": 60,
+        "speedBasis": "official-section-pace",
+        "source": "manual-override"
+      },
+      "gaps": [
+        {
+          "target": "questions",
+          "have": 0,
+          "need": 60
+        },
+        {
+          "target": "accuracy",
+          "have": null,
+          "need": 85
+        },
+        {
+          "target": "speed",
+          "have": null,
+          "need": 60
+        }
+      ]
+    },
+    {
+      "type": "practice-exam-pattern",
+      "masterTopicId": "mt.quant.percentage",
+      "topicId": "quant.percentage",
+      "examId": "sbi-clerk",
+      "stageId": "prelims",
+      "stageClass": "prelims",
+      "priority": "Medium",
+      "effectiveWeight": 0.71,
+      "message": "Percentage: concept already completed, so skip basic concept learning for SBI Clerk prelims. Practise speed-based calculations: percentage–fraction equivalents, quick approximation, one-step word problems (60 more questions (target 60); accuracy –% → 85%; speed – s → ≤ 34.3 s per question).",
+      "requirement": {
+        "stageClass": "prelims",
+        "depth": "speed",
+        "depthDescription": "Speed-based calculations: percentage–fraction equivalents, quick approximation, one-step word problems.",
+        "difficulty": "easy",
+        "questionTarget": 60,
+        "accuracyTarget": 85,
+        "speedTargetSec": 34.3,
+        "speedBasis": "official-section-pace",
+        "source": "manual-override"
+      },
+      "gaps": [
+        {
+          "target": "questions",
+          "have": 0,
+          "need": 60
+        },
+        {
+          "target": "accuracy",
+          "have": null,
+          "need": 85
+        },
+        {
+          "target": "speed",
+          "have": null,
+          "need": 34.3
+        }
+      ]
+    },
+    {
+      "type": "practice-exam-pattern",
+      "masterTopicId": "mt.quant.percentage",
+      "topicId": "quant.percentage",
+      "examId": "sbi-clerk",
+      "stageId": "mains",
+      "stageClass": "mains",
+      "priority": "Medium",
+      "effectiveWeight": 0.71,
+      "message": "Percentage: concept already completed, so skip basic concept learning for SBI Clerk mains. Practise complex applications and DI-related percentage calculations (caselets, multi-chart DI) (50 more questions (target 50); accuracy –% → 75%; speed – s → ≤ 54 s per question).",
+      "requirement": {
+        "stageClass": "mains",
+        "depth": "applied",
+        "depthDescription": "Complex applications and DI-related percentage calculations (caselets, multi-chart DI).",
+        "difficulty": "medium",
+        "questionTarget": 50,
+        "accuracyTarget": 75,
+        "speedTargetSec": 54,
+        "speedBasis": "official-section-pace",
+        "source": "manual-override"
+      },
+      "gaps": [
+        {
+          "target": "questions",
+          "have": 0,
+          "need": 50
+        },
+        {
+          "target": "accuracy",
+          "have": null,
+          "need": 75
+        },
+        {
+          "target": "speed",
+          "have": null,
+          "need": 54
+        }
+      ]
+    },
+    {
+      "type": "practice-exam-pattern",
+      "masterTopicId": "mt.quant.percentage",
+      "topicId": "quant.percentage",
+      "examId": "ssc-cgl",
+      "stageId": "tier1",
+      "stageClass": "prelims",
+      "priority": "Medium",
+      "effectiveWeight": 0.7,
+      "message": "Percentage: concept already completed, so skip basic concept learning for SSC CGL prelims. Practise standard to advanced arithmetic problems: successive change, product constancy, applications (speed 37.5 s → ≤ 36 s per question).",
+      "requirement": {
+        "stageClass": "prelims",
+        "depth": "standard",
+        "depthDescription": "Standard to advanced arithmetic problems: successive change, product constancy, applications.",
+        "difficulty": "medium",
+        "questionTarget": 40,
+        "accuracyTarget": 85,
+        "speedTargetSec": 36,
+        "speedBasis": "official-section-pace",
+        "source": "manual-override"
+      },
+      "gaps": [
+        {
+          "target": "speed",
+          "have": 37.5,
+          "need": 36
+        }
+      ]
+    },
+    {
+      "type": "practice-exam-pattern",
+      "masterTopicId": "mt.quant.percentage",
+      "topicId": "quant.percentage",
+      "examId": "ssc-cgl",
+      "stageId": "tier2-paper1",
+      "stageClass": "mains",
+      "priority": "Medium",
+      "effectiveWeight": 0.7,
+      "message": "Percentage: concept already completed, so skip basic concept learning for SSC CGL mains. Practise advanced multi-step percentage problems (Tier-II Mathematical Abilities) (60 more questions (target 60); accuracy –% → 85%; speed – s → ≤ 60 s per question).",
+      "requirement": {
+        "stageClass": "mains",
+        "depth": "advanced",
+        "depthDescription": "Advanced multi-step percentage problems (Tier-II Mathematical Abilities).",
+        "difficulty": "hard",
+        "questionTarget": 60,
+        "accuracyTarget": 85,
+        "speedTargetSec": 60,
+        "speedBasis": "official-section-pace",
+        "source": "manual-override"
+      },
+      "gaps": [
+        {
+          "target": "questions",
+          "have": 0,
+          "need": 60
+        },
+        {
+          "target": "accuracy",
+          "have": null,
+          "need": 85
+        },
+        {
+          "target": "speed",
+          "have": null,
+          "need": 60
+        }
+      ]
+    },
+    {
+      "type": "practice-exam-pattern",
+      "masterTopicId": "mt.quant.percentage",
+      "topicId": "quant.percentage",
+      "examId": "sbi-po",
+      "stageId": "prelims",
+      "stageClass": "prelims",
+      "priority": "Medium",
+      "effectiveWeight": 0.7,
+      "message": "Percentage: concept already completed, so skip basic concept learning for SBI PO prelims. Practise speed-based calculations: percentage–fraction equivalents, quick approximation, one-step word problems (30 more questions (target 60); accuracy 73.33% → 80%; speed 46 s → ≤ 40 s per question).",
+      "requirement": {
+        "stageClass": "prelims",
+        "depth": "speed",
+        "depthDescription": "Speed-based calculations: percentage–fraction equivalents, quick approximation, one-step word problems.",
+        "difficulty": "medium",
+        "questionTarget": 60,
+        "accuracyTarget": 80,
+        "speedTargetSec": 40,
+        "speedBasis": "official-section-pace",
+        "source": "manual-override"
+      },
+      "gaps": [
+        {
+          "target": "questions",
+          "have": 30,
+          "need": 60
+        },
+        {
+          "target": "accuracy",
+          "have": 73.33,
+          "need": 80
+        },
+        {
+          "target": "speed",
+          "have": 46,
+          "need": 40
+        }
+      ]
+    },
+    {
+      "type": "practice-exam-pattern",
+      "masterTopicId": "mt.quant.percentage",
+      "topicId": "quant.percentage",
+      "examId": "sbi-po",
+      "stageId": "mains",
+      "stageClass": "mains",
+      "priority": "Medium",
+      "effectiveWeight": 0.7,
+      "message": "Percentage: concept already completed, so skip basic concept learning for SBI PO mains. Practise complex applications and DI-related percentage calculations (caselets, multi-chart DI) (50 more questions (target 50); accuracy –% → 70%; speed – s → ≤ 90 s per question).",
+      "requirement": {
+        "stageClass": "mains",
+        "depth": "applied",
+        "depthDescription": "Complex applications and DI-related percentage calculations (caselets, multi-chart DI).",
+        "difficulty": "hard",
+        "questionTarget": 50,
+        "accuracyTarget": 70,
+        "speedTargetSec": 90,
+        "speedBasis": "official-section-pace",
+        "source": "manual-override"
+      },
+      "gaps": [
+        {
+          "target": "questions",
+          "have": 0,
+          "need": 50
+        },
+        {
+          "target": "accuracy",
+          "have": null,
+          "need": 70
+        },
+        {
+          "target": "speed",
+          "have": null,
+          "need": 90
+        }
+      ]
+    },
+    {
+      "type": "practice-exam-pattern",
+      "masterTopicId": "mt.quant.percentage",
+      "topicId": "quant.percentage",
+      "examId": "ibps-po",
+      "stageId": "prelims",
+      "stageClass": "prelims",
+      "priority": "Medium",
+      "effectiveWeight": 0.58,
+      "message": "Percentage: concept already completed, so skip basic concept learning for IBPS PO prelims. Practise speed-based calculations: percentage–fraction equivalents, quick approximation, one-step word problems (60 more questions (target 60); accuracy –% → 80%; speed – s → ≤ 34.3 s per question).",
+      "requirement": {
+        "stageClass": "prelims",
+        "depth": "speed",
+        "depthDescription": "Speed-based calculations: percentage–fraction equivalents, quick approximation, one-step word problems.",
+        "difficulty": "medium",
+        "questionTarget": 60,
+        "accuracyTarget": 80,
+        "speedTargetSec": 34.3,
+        "speedBasis": "official-section-pace",
+        "source": "manual-override"
+      },
+      "gaps": [
+        {
+          "target": "questions",
+          "have": 0,
+          "need": 60
+        },
+        {
+          "target": "accuracy",
+          "have": null,
+          "need": 80
+        },
+        {
+          "target": "speed",
+          "have": null,
+          "need": 34.3
+        }
+      ]
+    },
+    {
+      "type": "practice-exam-pattern",
+      "masterTopicId": "mt.quant.percentage",
+      "topicId": "quant.percentage",
+      "examId": "ibps-po",
+      "stageId": "mains",
+      "stageClass": "mains",
+      "priority": "Medium",
+      "effectiveWeight": 0.58,
+      "message": "Percentage: concept already completed, so skip basic concept learning for IBPS PO mains. Practise complex applications and DI-related percentage calculations (caselets, multi-chart DI) (50 more questions (target 50); accuracy –% → 70%; speed – s → ≤ 67.5 s per question).",
+      "requirement": {
+        "stageClass": "mains",
+        "depth": "applied",
+        "depthDescription": "Complex applications and DI-related percentage calculations (caselets, multi-chart DI).",
+        "difficulty": "hard",
+        "questionTarget": 50,
+        "accuracyTarget": 70,
+        "speedTargetSec": 67.5,
+        "speedBasis": "official-section-pace",
+        "source": "manual-override"
+      },
+      "gaps": [
+        {
+          "target": "questions",
+          "have": 0,
+          "need": 50
+        },
+        {
+          "target": "accuracy",
+          "have": null,
+          "need": 70
+        },
+        {
+          "target": "speed",
+          "have": null,
+          "need": 67.5
+        }
+      ]
+    }
+  ]
+}

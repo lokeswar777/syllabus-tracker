@@ -1,0 +1,56 @@
+{
+  "$comment": "Rules for generating the master topic database and cross-exam mapping (scripts/build-mapping.mjs). Manual corrections belong in overrides.json, not here.",
+  "schemaVersion": 1,
+  "masterIdPrefix": "mt.",
+  "minExamsForMaster": 2,
+  "similarity": {
+    "method": "Minimum pairwise Jaccard overlap of the subtopic sets that each exam includes for the topic (Phase 1 only/exclude). Identical library IDs guarantee the same concept; the overlap measures how much of it each exam covers.",
+    "thresholds": { "identical": 1, "high": 0.6, "partial": 0.3 }
+  },
+  "verificationByLevel": { "identical": "verified", "high": "verified", "partial": "needs-review", "low": "needs-review" },
+  "defaultSyncModeByLevel": { "identical": "full", "high": "full", "partial": "partial", "low": "independent" },
+  "syncModes": {
+    "full": "Fully shared: shared concept learning updates every linked exam, and conceptual progress recorded in any linked exam is written back to the shared record.",
+    "partial": "Partially shared: concept completion is shared (it raises linked exams' completion), but each exam's topic status stays its own and exam status changes are not written back.",
+    "independent": "Independent: no synchronization in either direction."
+  },
+  "stageClasses": {
+    "prelims": ["prelims", "tier1", "paper1"],
+    "mains": ["mains", "tier2", "tier2-paper1", "tier2-paper2", "tier2-paper3", "paper2"],
+    "qualifying": ["pst-pet", "dme", "llpt", "personality-test"],
+    "interview": ["interview", "phase3"]
+  },
+  "stageClassRank": { "qualifying": 0, "interview": 1, "other": 1, "prelims": 2, "mains": 3 },
+  "examLevels": {
+    "ssc-cgl": "graduate", "ssc-cpo": "graduate", "ssc-chsl": "higher-secondary",
+    "sbi-po": "officer", "ibps-po": "officer", "ibps-rrb-po": "officer",
+    "sbi-clerk": "clerical", "ibps-clerk": "clerical", "ibps-rrb-clerk": "clerical"
+  },
+  "nonMcqSubjects": ["descriptive", "skill", "physical", "personality", "language-test"],
+  "nonMcqDepth": {
+    "descriptive": { "depth": "writing", "depthDescription": "Typed descriptive writing to the exam's format and word limits." },
+    "skill": { "depth": "skill", "depthDescription": "Keyboard skill test: reach the qualifying speed and accuracy standard." },
+    "physical": { "depth": "physical", "depthDescription": "Physical standards / endurance: meet every qualifying standard." },
+    "personality": { "depth": "interview", "depthDescription": "Interview, group exercise or personality assessment preparation." },
+    "language-test": { "depth": "language", "depthDescription": "Read, write, speak and understand the opted local language." }
+  },
+  "difficultyOrder": ["easy", "medium", "hard"],
+  "requirementProfiles": [
+    { "match": { "stageClass": "qualifying" }, "depth": "qualifying", "depthDescription": "Pass/fail standard; prepare to the qualifying level.", "difficulty": null, "questionTarget": null, "accuracyTarget": null },
+    { "match": { "stageClass": "interview" }, "depth": "interview", "depthDescription": "Interview / personality assessment preparation.", "difficulty": null, "questionTarget": null, "accuracyTarget": null },
+    { "match": { "category": "ssc", "stageClass": "prelims" }, "depth": "standard", "depthDescription": "Standard SSC-level questions; accuracy under negative marking.", "difficulty": "medium", "questionTarget": 40, "accuracyTarget": 85 },
+    { "match": { "category": "ssc", "stageClass": "mains" }, "depth": "advanced", "depthDescription": "Advanced, multi-step SSC Tier-II / Paper-II level problems.", "difficulty": "hard", "questionTarget": 60, "accuracyTarget": 85 },
+    { "match": { "category": "banking", "stageClass": "prelims", "examLevel": "clerical" }, "depth": "speed", "depthDescription": "Speed-based calculation and pattern recognition at clerk level.", "difficulty": "easy", "questionTarget": 60, "accuracyTarget": 85 },
+    { "match": { "category": "banking", "stageClass": "prelims", "examLevel": "officer" }, "depth": "speed", "depthDescription": "Speed-based questions at PO prelims level (puzzles, DI, arithmetic under a 20-minute section timer).", "difficulty": "medium", "questionTarget": 60, "accuracyTarget": 80 },
+    { "match": { "category": "banking", "stageClass": "mains", "examLevel": "clerical" }, "depth": "applied", "depthDescription": "Applied, moderately complex mains-level questions.", "difficulty": "medium", "questionTarget": 50, "accuracyTarget": 75 },
+    { "match": { "category": "banking", "stageClass": "mains", "examLevel": "officer" }, "depth": "applied", "depthDescription": "Complex applications, caselets and DI-linked calculations at PO mains level.", "difficulty": "hard", "questionTarget": 50, "accuracyTarget": 70 },
+    { "match": {}, "depth": "standard", "depthDescription": "Standard preparation.", "difficulty": "medium", "questionTarget": 40, "accuracyTarget": 80 }
+  ],
+  "requirementBasis": {
+    "speedTargetSec": "official-section-pace: section duration ÷ section questions from the official notification (stage pace when the section has no own timer).",
+    "questionTarget": "editorial-estimate (configurable).",
+    "accuracyTarget": "editorial-estimate (configurable).",
+    "difficulty": "editorial-estimate by exam category, stage and level.",
+    "depth": "editorial-estimate by exam category, stage and level; topic-specific descriptions from overrides.json."
+  }
+}

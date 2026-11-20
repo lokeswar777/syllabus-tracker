@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "kind": "shared-learning",
+  "updatedAt": "2026-11-20T09:00:00.000Z",
+  "topics": {
+    "quant.percentage": {
+      "status": "concept-completed",
+      "updatedAt": "2026-11-20T09:00:00.000Z",
+      "sourceExamId": "ssc-cgl"
+    },
+    "quant.algebra-identities": {
+      "status": "concept-completed",
+      "updatedAt": "2026-11-20T09:00:00.000Z",
+      "sourceExamId": "ssc-cgl"
+    },
+    "english.reading-comprehension": {
+      "status": "concept-completed",
+      "updatedAt": "2026-11-20T09:00:00.000Z",
+      "sourceExamId": "ssc-cgl"
+    },
+    "ga.history-modern": {
+      "status": "learning",
+      "updatedAt": "2026-11-20T09:00:00.000Z",
+      "sourceExamId": "ssc-cgl"
+    },
+    "quant.data-interpretation": {
+      "status": "concept-completed",
+      "updatedAt": "2026-11-20T09:00:00.000Z",
+      "sourceExamId": "sbi-po"
+    },
+    "reasoning.puzzles": {
+      "status": "learning",
+      "updatedAt": "2026-11-20T09:00:00.000Z",
+      "sourceExamId": "sbi-po"
+    }
+  },
+  "subtopics": {
+    "quant.trigonometry.identities": {
+      "status": "concept-completed",
+      "updatedAt": "2026-11-20T09:00:00.000Z",
+      "sourceExamId": "ssc-cgl"
+    }
+  }
+}

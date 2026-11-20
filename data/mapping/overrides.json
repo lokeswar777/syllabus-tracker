@@ -1,0 +1,43 @@
+{
+  "$comment": "Manual, reviewed corrections to the generated mapping. build-mapping.mjs applies these on every run, so they survive regeneration. Keys are master topic IDs (mt.<library topic id>). Requirement keys, from least to most specific: '*', '@<category>', '@<category>:<stageClass>', '<examId>', '<examId>/<stageId>'.",
+  "schemaVersion": 1,
+  "masters": {
+    "mt.quant.percentage": {
+      "verification": { "status": "verified", "note": "Same canonical library topic in all 9 exams; subtopic coverage reviewed 2026-11-20." },
+      "requirements": {
+        "@ssc": { "depthDescription": "Standard to advanced arithmetic problems: successive change, product constancy, applications." },
+        "ssc-cgl/tier2-paper1": { "depthDescription": "Advanced multi-step percentage problems (Tier-II Mathematical Abilities)." },
+        "@banking:prelims": { "depthDescription": "Speed-based calculations: percentage–fraction equivalents, quick approximation, one-step word problems." },
+        "@banking:mains": { "depthDescription": "Complex applications and DI-related percentage calculations (caselets, multi-chart DI)." }
+      }
+    },
+    "mt.ga.current-affairs": {
+      "syncMode": "partial",
+      "note": "Same topic, but the time window differs (SSC ≈ 6–12 months, banking ≈ 3–6 months with banking/economy focus). Coverage can be shared; the status per exam is kept separate."
+    },
+    "mt.reasoning.coding-decoding": {
+      "verification": { "status": "verified", "note": "SSC tests letter/number/symbol coding; banking tests word/sentence (Chinese) and conditional coding. Shared at subtopic level only (letter, number)." },
+      "syncMode": "partial"
+    },
+    "mt.personality.interview": {
+      "syncMode": "independent",
+      "verification": { "status": "verified", "note": "Same assessment type, but each bank's interview (SBI PO GE + interview, IBPS PO, RRB PO) is prepared separately." }
+    },
+    "mt.language-test.local-language": {
+      "syncMode": "independent",
+      "verification": { "status": "needs-review", "note": "Only shareable if both exams were applied for in a state with the same local language; review per candidate." }
+    },
+    "mt.personality.psychometric-test": {
+      "syncMode": "independent",
+      "verification": { "status": "verified", "note": "Self-report profiling; nothing to learn or share across exams." }
+    }
+  },
+  "excludeMappings": [],
+  "relatedLinks": {
+    "add": [
+      { "from": "mt.quant.number-series", "to": "mt.reasoning.series", "relation": "related-concept", "note": "Banking quant number series vs SSC reasoning number series: same skill, tested in different sections." },
+      { "from": "mt.quant.data-sufficiency", "to": "mt.reasoning.data-sufficiency", "relation": "related-concept", "note": "Same question format (statement sufficiency), different subject content." }
+    ],
+    "remove": []
+  }
+}

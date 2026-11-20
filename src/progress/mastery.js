@@ -81,10 +81,11 @@ export function aggregateStats({ sessions = [], records = [], cfg }) {
  *   revision    = 100 × min(1, revisions/targetRevisions) × revisionPerformance
  *   speed       = 100 when avg time ≤ target, 0 at target × zeroCreditMultiple (linear between)
  */
-export function scoreMastery({ concept, stats, level, cfg, now }) {
+export function scoreMastery({ concept, stats, level, cfg, now, targets = null }) {
   const M = cfg.mastery;
   const att = stats.attempted;
-  const target = M.accuracy.targetQuestions[level];
+  // Phase 4: exam-specific question / speed targets (from the cross-exam mapping or the user) replace the generic ones
+  const target = Number.isFinite(targets?.questionTarget) ? targets.questionTarget : M.accuracy.targetQuestions[level];
   const ratio = target > 0 ? Math.min(1, att / target) : 1;
   const volume = M.accuracy.volumeCurve === 'linear' ? ratio : Math.sqrt(ratio);
   const accuracy = att > 0 ? clampPct(Math.min(100, (stats._weightedCorrect / att) * 100) * volume) : 0;
@@ -109,7 +110,8 @@ export function scoreMastery({ concept, stats, level, cfg, now }) {
   const S = M.speed;
   let speed = 0;
   if (stats.avgTimeSeconds !== null) {
-    const t = stats.avgTimeSeconds, tgt = S.targetSecondsPerQuestion, zero = tgt * S.zeroCreditMultiple;
+    const tgt = Number.isFinite(targets?.speedTargetSec) ? targets.speedTargetSec : S.targetSecondsPerQuestion;
+    const t = stats.avgTimeSeconds, zero = tgt * S.zeroCreditMultiple;
     speed = t <= tgt ? 100 : t >= zero ? 0 : clampPct(100 * (1 - (t - tgt) / (zero - tgt)));
   }
 

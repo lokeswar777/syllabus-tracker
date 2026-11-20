@@ -2,12 +2,13 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "progress.schema.json",
   "title": "Progress collections (user data)",
-  "description": "The four independently stored collections of the progress engine (src/progress). Each is saved under its own storage key/file: progress, sharedLearning, practice, weightOverrides. They reference syllabus/weightage only by stable IDs.",
+  "description": "The independently stored collections of the progress engine (src/progress). Each is saved under its own storage key/file: progress, sharedLearning, practice, weightOverrides and (schema v2, Phase 4) syncSettings. They reference syllabus/weightage/mapping only by stable IDs. v1 files remain valid.",
   "oneOf": [
     { "$ref": "#/$defs/progress" },
     { "$ref": "#/$defs/sharedLearning" },
     { "$ref": "#/$defs/practice" },
-    { "$ref": "#/$defs/weightOverrides" }
+    { "$ref": "#/$defs/weightOverrides" },
+    { "$ref": "#/$defs/syncSettings" }
   ],
   "$defs": {
     "timestamp": { "type": "string", "format": "date-time" },
@@ -40,6 +41,16 @@
             "practiceSets": { "type": "number", "minimum": 0 }, "revisionCount": { "type": "number", "minimum": 0 },
             "totalTimeSeconds": { "type": "number", "minimum": 0 }, "lastPracticed": { "$ref": "#/$defs/date" }
           }
+        },
+        "targets": {
+          "type": ["object", "null"],
+          "description": "v2: exam-specific preparation targets overriding the cross-exam mapping defaults",
+          "additionalProperties": false,
+          "properties": {
+            "depth": { "type": ["string", "null"] }, "depthDescription": { "type": ["string", "null"] }, "difficulty": { "$ref": "#/$defs/difficulty" },
+            "questionTarget": { "type": ["number", "null"], "exclusiveMinimum": 0 }, "accuracyTarget": { "$ref": "#/$defs/pct" },
+            "speedTargetSec": { "type": ["number", "null"], "exclusiveMinimum": 0 }
+          }
         }
       }
     },
@@ -62,7 +73,7 @@
       "type": "object",
       "required": ["schemaVersion", "kind", "settings", "exams"],
       "properties": {
-        "schemaVersion": { "const": 1 },
+        "schemaVersion": { "enum": [1, 2] },
         "kind": { "const": "progress" },
         "updatedAt": { "$ref": "#/$defs/timestamp" },
         "settings": { "type": "object", "properties": { "activeExamId": { "type": ["string", "null"] }, "sharedLearning": { "type": "boolean" } } },
@@ -71,15 +82,34 @@
     },
     "sharedRecord": {
       "type": "object",
-      "required": ["status"],
+      "description": "Shared conceptual learning for a library topic/subtopic. For topics this is the shared concept record of master topic mt.<topicId> (v2 adds the concept fields).",
       "additionalProperties": false,
-      "properties": { "status": { "type": "string" }, "updatedAt": { "$ref": "#/$defs/timestamp" }, "sourceExamId": { "type": ["string", "null"] } }
+      "properties": {
+        "status": { "type": ["string", "null"] },
+        "updatedAt": { "$ref": "#/$defs/timestamp" },
+        "sourceExamId": { "type": ["string", "null"] },
+        "conceptCompletion": { "$ref": "#/$defs/pct" },
+        "notes": { "type": "string" },
+        "learningDates": { "type": "array", "items": { "$ref": "#/$defs/date" } },
+        "resources": {
+          "type": "array",
+          "items": {
+            "type": "object", "required": ["id", "title"], "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string" }, "title": { "type": "string" },
+              "type": { "enum": ["book", "video", "course", "notes", "website", "test-series", "other"] },
+              "url": { "type": ["string", "null"] }, "note": { "type": "string" }, "addedOn": { "$ref": "#/$defs/date" }
+            }
+          }
+        },
+        "revisions": { "type": "array", "items": { "type": "object", "required": ["date"], "additionalProperties": false, "properties": { "date": { "$ref": "#/$defs/date" }, "note": { "type": "string" } } } }
+      }
     },
     "sharedLearning": {
       "type": "object",
       "required": ["schemaVersion", "kind", "topics", "subtopics"],
       "properties": {
-        "schemaVersion": { "const": 1 },
+        "schemaVersion": { "enum": [1, 2] },
         "kind": { "const": "shared-learning" },
         "updatedAt": { "$ref": "#/$defs/timestamp" },
         "topics": { "type": "object", "propertyNames": { "$ref": "#/$defs/topicId" }, "additionalProperties": { "$ref": "#/$defs/sharedRecord" } },
@@ -101,6 +131,8 @@
         "difficulty": { "$ref": "#/$defs/difficulty" },
         "practiceSet": { "type": "boolean" },
         "revision": { "type": "boolean" },
+        "stageId": { "type": ["string", "null"], "description": "v2: stage the practice was for (prelims / mains / tier1 …)" },
+        "level": { "type": ["string", "null"], "description": "v2: exam category of the practice (ssc / banking)" },
         "note": { "type": "string" },
         "createdAt": { "$ref": "#/$defs/timestamp" }
       }
@@ -109,17 +141,29 @@
       "type": "object",
       "required": ["schemaVersion", "kind", "exams"],
       "properties": {
-        "schemaVersion": { "const": 1 },
+        "schemaVersion": { "enum": [1, 2] },
         "kind": { "const": "practice" },
         "updatedAt": { "$ref": "#/$defs/timestamp" },
         "exams": { "type": "object", "additionalProperties": { "type": "object", "required": ["sessions"], "properties": { "sessions": { "type": "array", "items": { "$ref": "#/$defs/session" } } } } }
+      }
+    },
+    "syncSettings": {
+      "type": "object",
+      "description": "v2 (Phase 4): synchronization switches. enabled=false stops all synchronization; modes holds per-master-topic choices that override the mapping default.",
+      "required": ["schemaVersion", "kind", "enabled", "modes"],
+      "properties": {
+        "schemaVersion": { "enum": [2] },
+        "kind": { "const": "sync-settings" },
+        "updatedAt": { "$ref": "#/$defs/timestamp" },
+        "enabled": { "type": "boolean" },
+        "modes": { "type": "object", "propertyNames": { "pattern": "^mt\\.[a-z0-9-]+\\.[a-z0-9-]+$" }, "additionalProperties": { "enum": ["full", "partial", "independent"] } }
       }
     },
     "weightOverrides": {
       "type": "object",
       "required": ["schemaVersion", "kind", "exams"],
       "properties": {
-        "schemaVersion": { "const": 1 },
+        "schemaVersion": { "enum": [1, 2] },
         "kind": { "const": "weight-overrides" },
         "updatedAt": { "$ref": "#/$defs/timestamp" },
         "exams": {

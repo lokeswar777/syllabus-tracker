@@ -7,3 +7,6 @@ export { aggregateStats, scoreMastery } from './mastery.js';
 export { compileConfig, clampPct, round2, nodeKind } from './config.js';
 export * as progressDb from './progress-db.js';
 export { MemoryStorage, WebStorageAdapter, loadDb, saveCollections } from './storage.js';
+// Phase 4: common syllabus mapping & synchronization
+export { buildMapping, masterIdOf, topicIdOfMaster, stageClassOf } from '../mapping/build.js';
+export { buildSharedTopicDashboard, buildCrossExamInsights } from '../mapping/insights.js';
