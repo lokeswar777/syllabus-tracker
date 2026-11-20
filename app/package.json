@@ -1,6 +1,6 @@
 {
   "name": "syllabus-tracker-app",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "private": true,
   "type": "module",
   "description": "Phase 6: interactive frontend for the syllabus tracker. Uses the engines in ../src (progress, mapping, planner) and the built data in ../dist and ../data.",
@@ -30,6 +30,7 @@
     "@types/react-dom": "18.3.7",
     "@vitejs/plugin-react": "4.5.2",
     "autoprefixer": "10.4.21",
+    "fake-indexeddb": "6.0.1",
     "jsdom": "26.1.0",
     "postcss": "8.5.4",
     "tailwindcss": "3.4.17",

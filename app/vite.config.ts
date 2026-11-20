@@ -10,7 +10,7 @@ export default defineConfig({
   plugins: [react()],
   base: './',
   server: { fs: { allow: [root] }, port: 5173 },
-  build: { outDir: 'dist', chunkSizeWarningLimit: 1200 },
+  build: { outDir: 'dist', target: 'es2022', chunkSizeWarningLimit: 1200 },
   test: {
     environment: 'jsdom',
     setupFiles: ['./tests/setup.ts'],

@@ -186,3 +186,38 @@ describe('Phase 6 regression: classification uses the displayed (rounded) comple
     assert.deepEqual(misses, []);
   });
 });
+
+describe('Phase 7: reliable saving', { skip: !DIST_READY && 'run `npm run build` first' }, () => {
+  test('a failed save does not block later saves; multi-collection commits use writeMany', async () => {
+    const data = new Map();
+    let fail = false;
+    const batches = [];
+    const storage = {
+      async read(k) { return data.has(k) ? structuredClone(data.get(k)) : null; },
+      async write(k, v) { if (fail) throw new Error('disk full'); data.set(k, structuredClone(v)); },
+      async writeMany(entries) { if (fail) throw new Error('disk full'); batches.push(entries.map(([k]) => k)); for (const [k, v] of entries) data.set(k, structuredClone(v)); },
+    };
+    const e = await new ProgressEngine({ loader: createNodeLoader(), storage, config, clock: () => NOW }).init();
+    await e.switchExam('ssc-cgl');
+    await e.flush();
+    fail = true;
+    e.setStatus('quant.percentage', 'learning');
+    await assert.rejects(() => e.flush(), /disk full/);
+    fail = false;
+    e.setStatus('quant.average', 'learning');
+    await e.flush();
+    assert.equal(data.get('progress').exams['ssc-cgl'].topics['quant.average'].status, 'learning');
+    assert.equal(data.get('progress').exams['ssc-cgl'].topics['quant.percentage'].status, 'learning', 'the full collection is written again, so the failed change is recovered');
+    e.recordPractice('quant.average', { attempted: 5, correct: 3 });
+    await e.flush();
+    assert.deepEqual(batches.at(-1), ['practice', 'progress'], 'practice + progress in one atomic batch');
+  });
+
+  test('duplicate practice session ids are rejected', async () => {
+    const e = await new ProgressEngine({ loader: createNodeLoader(), storage: new MemoryStorage(), config, clock: () => NOW }).init();
+    await e.switchExam('ssc-cgl');
+    e.recordPractice('quant.average', { id: 'x1', attempted: 5, correct: 3 });
+    assert.throws(() => e.recordPractice('quant.average', { id: 'x1', attempted: 5, correct: 3 }), /already exists/);
+    assert.equal(e.getExamSessions('ssc-cgl').length, 1);
+  });
+});

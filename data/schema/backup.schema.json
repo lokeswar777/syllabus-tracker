@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "backup.schema.json",
+  "title": "Syllabus Tracker backup file (Phase 7)",
+  "description": "File produced by Settings → Export backup. Collections keep the exact format the engines store (see progress.schema.json and planner.schema.json). formatVersion 1 (Phase 6 export: format, formatVersion, exportedAt, collections) is still accepted on import.",
+  "type": "object",
+  "required": ["format", "formatVersion", "exportedAt", "collections"],
+  "properties": {
+    "format": { "const": "syllabus-tracker-export" },
+    "formatVersion": { "enum": [1, 2] },
+    "app": { "type": "object", "properties": { "name": { "const": "syllabus-tracker" }, "version": { "type": "string" } } },
+    "exportedAt": { "type": "string", "format": "date-time" },
+    "schema": {
+      "type": "object",
+      "description": "schemaVersion of each collection at export time (null = collection absent).",
+      "properties": { "collections": { "type": "object", "additionalProperties": { "type": ["integer", "null"] } } }
+    },
+    "mapping": {
+      "type": ["object", "null"],
+      "description": "Phase 4 mapping the data was created with (master topic count and metadata), for reference.",
+      "properties": { "masterTopics": { "type": ["integer", "null"] }, "meta": { "type": ["object", "null"] } }
+    },
+    "summary": {
+      "type": "object",
+      "description": "Counts shown on the import confirmation screen (derived from collections).",
+      "properties": {
+        "exams": { "type": "object", "additionalProperties": { "type": "object", "properties": {
+          "topicRecords": { "type": "integer" }, "subtopicRecords": { "type": "integer" }, "sessions": { "type": "integer" },
+          "questions": { "type": "integer" }, "revisions": { "type": "integer" }, "notes": { "type": "integer" } } } },
+        "sharedConcepts": { "type": "integer" }, "plans": { "type": "integer" }, "tasks": { "type": "integer" },
+        "targets": { "type": "array", "items": { "type": "string" } }, "historyDays": { "type": "integer" },
+        "customWeights": { "type": "integer" }, "syncPreferences": { "type": "integer" }
+      }
+    },
+    "collections": {
+      "type": "object",
+      "required": ["progress"],
+      "additionalProperties": false,
+      "properties": {
+        "progress": { "$ref": "#/$defs/collection", "properties": { "kind": { "const": "progress" }, "settings": { "type": "object" }, "exams": { "type": "object" } }, "required": ["kind", "schemaVersion", "settings", "exams"] },
+        "sharedLearning": { "anyOf": [{ "type": "null" }, { "$ref": "#/$defs/collection", "properties": { "kind": { "const": "shared-learning" }, "topics": { "type": "object" }, "subtopics": { "type": "object" } }, "required": ["kind", "topics", "subtopics"] }] },
+        "practice": { "anyOf": [{ "type": "null" }, { "$ref": "#/$defs/collection", "properties": { "kind": { "const": "practice" }, "exams": { "type": "object", "additionalProperties": { "type": "object", "required": ["sessions"], "properties": { "sessions": { "type": "array", "items": { "$ref": "#/$defs/session" } } } } } }, "required": ["kind", "exams"] }] },
+        "weightOverrides": { "anyOf": [{ "type": "null" }, { "$ref": "#/$defs/collection", "properties": { "kind": { "const": "weight-overrides" }, "exams": { "type": "object", "additionalProperties": { "type": "object", "additionalProperties": { "type": "number", "minimum": 0 } } } }, "required": ["kind", "exams"] }] },
+        "syncSettings": { "anyOf": [{ "type": "null" }, { "$ref": "#/$defs/collection", "properties": { "kind": { "const": "sync-settings" }, "enabled": { "type": "boolean" }, "modes": { "type": "object", "additionalProperties": { "enum": ["full", "partial", "independent"] } } }, "required": ["kind"] }] },
+        "planner": { "anyOf": [{ "type": "null" }, { "$ref": "planner.schema.json#/$defs/plannerCollection" }] },
+        "history": { "anyOf": [{ "type": "null" }, { "type": "object", "required": ["kind", "exams"], "properties": { "kind": { "const": "history" }, "schemaVersion": { "const": 1 }, "exams": { "type": "object", "additionalProperties": { "type": "object", "additionalProperties": { "type": "object", "properties": { "completion": { "type": "number" }, "mastery": { "type": "number" }, "completed": { "type": "integer" }, "total": { "type": "integer" }, "attempted": { "type": "integer" }, "accuracy": { "type": ["number", "null"] } } } } } } }] },
+        "progressConfig": { "description": "User-edited scoring config (same shape as data/progress/config.json); null = defaults.", "type": ["object", "null"] }
+      }
+    },
+    "checksum": { "type": ["string", "null"], "pattern": "^sha256:[0-9a-f]{64}$", "description": "SHA-256 of JSON.stringify(collections); null when the browser offered no SubtleCrypto." }
+  },
+  "$defs": {
+    "collection": { "type": "object", "properties": { "schemaVersion": { "type": "integer", "minimum": 1 }, "kind": { "type": "string" }, "updatedAt": { "type": "string" } } },
+    "session": {
+      "type": "object",
+      "required": ["id", "nodeId", "date", "attempted", "correct"],
+      "properties": {
+        "id": { "type": "string", "description": "unique across the whole file" },
+        "nodeId": { "type": "string", "pattern": "^[a-z0-9-]+\\.[a-z0-9-]+(\\.[a-z0-9-]+)?$" },
+        "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "attempted": { "type": "integer", "minimum": 0 },
+        "correct": { "type": "integer", "minimum": 0 },
+        "incorrect": { "type": "integer", "minimum": 0 },
+        "timeSeconds": { "type": ["number", "null"], "minimum": 0 },
+        "revision": { "type": "boolean" },
+        "stageId": { "type": ["string", "null"] },
+        "level": { "type": ["string", "null"] },
+        "note": { "type": "string" },
+        "createdAt": { "type": "string" }
+      }
+    }
+  }
+}

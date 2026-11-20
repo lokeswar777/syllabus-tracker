@@ -130,7 +130,7 @@ describe('AppStore', () => {
   test('import rejects foreign or malformed files without touching data', async () => {
     const s = await makeStore();
     await s.selectExam('ssc-cgl');
-    await expect(s.importData({ hello: 1 })).rejects.toThrow(/Not a Syllabus Tracker export/);
+    await expect(s.importData({ hello: 1 })).rejects.toThrow(/not a Syllabus Tracker backup/);
     await expect(s.importData({ format: 'syllabus-tracker-export', collections: { progress: { kind: 'nope' } } })).rejects.toThrow(/unexpected format/);
     await expect(s.importData({ format: 'syllabus-tracker-export', collections: { evil: {} } })).rejects.toThrow(/Unknown collection/);
     expect(s.activeExamId).toBe('ssc-cgl');

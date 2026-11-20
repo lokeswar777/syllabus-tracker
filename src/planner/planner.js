@@ -373,7 +373,7 @@ export class StudyPlanner {
     this.data = next;
     if (invalidate) { this.version++; this.cache = null; }
     const snapshot = next;
-    this.saveChain = this.saveChain.then(() => this.storage.write(PLANNER_KEY, snapshot));
+    this.saveChain = this.saveChain.catch(() => {}).then(() => this.storage.write(PLANNER_KEY, snapshot)); // recovers after a failed save
     return this.saveChain;
   }
 }

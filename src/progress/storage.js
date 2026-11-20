@@ -3,6 +3,7 @@
  * under its own key, so resetting or corrupting one never erases the others.
  *
  * Adapter interface:  async read(key) → object | null      async write(key, object) → void
+ * Optional:           async writeMany([[key, object], …]) → void   all-or-nothing (used when one change touches several collections)
  */
 import { COLLECTIONS, normalizeDb, createEmptyDb } from './progress-db.js';
 
@@ -40,5 +41,6 @@ export async function loadDb(storage, now = new Date()) {
 }
 
 export async function saveCollections(storage, db, keys = COLLECTIONS) {
+  if (typeof storage.writeMany === 'function') return storage.writeMany(keys.map((key) => [key, db[key]])); // atomic when supported
   for (const key of keys) await storage.write(key, db[key]);
 }

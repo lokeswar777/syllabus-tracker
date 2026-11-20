@@ -11,7 +11,7 @@ The app in [`app/`](../app/) is the user interface for everything built in Phase
 |---|---|
 | Stack | React 18, TypeScript (strict), Tailwind CSS 3, Recharts 2, Lucide icons, Vite 6 |
 | Tests | Vitest + Testing Library (jsdom, real engines and data), Playwright (real Chrome, desktop and mobile) |
-| Storage | Browser `localStorage` through the engines' own `WebStorageAdapter`; each collection under its own key |
+| Storage | IndexedDB since Phase 7 (atomic, batched writes; restore points): see [PERSISTENCE.md](PERSISTENCE.md). Phase 6 used `localStorage` and is migrated automatically. |
 
 ## Running
 
@@ -138,7 +138,9 @@ The integration tests additionally cover:
 - completing a task without an outcome leaving progress untouched
 - practice logged from a topic showing up in analytics
 
-## Known limitations
+> Phase 7 updates: storage, saving, backup/restore, CSV, restore points and current test counts are documented in [PERSISTENCE.md](PERSISTENCE.md).
+
+## Known limitations (Phase 6; see PERSISTENCE.md for the current list)
 
 - **Single device.** Data lives in the browser's local storage, so there is no cross-device sync. Export and import move data between browsers. If storage is unavailable (private mode), the app warns and keeps data for the session only.
 - **The trend chart starts empty.** It is recorded from the first use, one point per day, and is not reconstructed for earlier dates, because the engines don't keep status history. Practice trends use the dated sessions and are complete.
