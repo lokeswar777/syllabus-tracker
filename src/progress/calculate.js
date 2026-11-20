@@ -156,6 +156,7 @@ export function calculateProgress({ model, db, config, now = new Date(), stageId
     const sharedTopicRec = shared.topics?.[topicId];
     topics[topicId] = {
       topicId, name: T.name, subject: T.subject, priority: T.priority,
+      trend: T.trend ?? null, weightageConfidence: T.weightageConfidence ?? null,
       masterTopicId: sync?.masterOf?.(topicId) ?? null,
       inScope: occ.length > 0, isGateOnly: occ.length > 0 && occSum === 0,
       effectiveWeight: effectiveWeight * 100,

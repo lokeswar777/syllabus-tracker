@@ -1,0 +1,81 @@
+{
+  "$comment": "Default configuration of the preparation priority engine (src/planner). Users override any part through the planner settings (configOverrides), which are deep-merged onto this file and validated.",
+  "schemaVersion": 1,
+  "priority": {
+    "weights": {
+      "learningGap": 0.30,
+      "masteryGap": 0.20,
+      "untouched": 0.10,
+      "revisionDue": 0.20,
+      "accuracyGap": 0.10,
+      "difficulty": 0.05
+    },
+    "importance": {
+      "method": "sqrt-relative-to-max",
+      "note": "importance = √(topic effective weight ÷ heaviest topic's weight in the same exam). It compresses the long tail so mid-weight topics still surface.",
+      "gateTopicImportance": 0.3
+    },
+    "historicalFrequency": {
+      "note": "Phase 2 trend = how reliably the topic appears in past papers. It scales importance: importance × (base + (1 − base) × trendScore).",
+      "base": 0.7,
+      "trendScore": { "consistent": 1, "emerging": 0.9, "fluctuating": 0.6, "declining": 0.4, "not-applicable": 0.5, "unknown": 0.5 }
+    },
+    "difficultyScore": { "easy": 0.3, "medium": 0.6, "hard": 1, "unknown": 0.5 },
+    "accuracy": { "recentSessions": 3, "minQuestions": 10 },
+    "classification": {
+      "thresholds": { "Critical": 45, "High": 30, "Medium": 15, "Low": 0 },
+      "note": "Score ≥ threshold → class (checked from Critical downward). Scores range 0–100."
+    },
+    "examUrgency": {
+      "horizonDays": 180,
+      "urgencyBoost": 1,
+      "note": "Exam share = importance × (1 + urgencyBoost × urgency), urgency = 1 − daysLeft/horizon (0 when no date or further away than the horizon)."
+    },
+    "finalStretch": {
+      "days": 30,
+      "revisionWeightFactor": 1.5,
+      "lowImportanceUntouchedFactor": 0.5,
+      "lowImportanceBelow": 0.5,
+      "note": "Within the final stretch before an exam, revision weighs more and starting low-importance untouched topics weighs less."
+    },
+    "exclude": { "completedAndMasteredAtOrAbove": 90 }
+  },
+  "revision": {
+    "intervalsDays": [1, 3, 7, 15, 30],
+    "afterLastInterval": "repeat-last",
+    "studiedAtOrAbove": 50,
+    "lowAccuracy": { "below": 60, "intervalFactor": 0.5 },
+    "dueSoonDays": 2,
+    "note": "Revision n+1 is due intervals[n] days after the last revision (or after the last study date when no revision exists yet). Only confirmed revisions count: a manual revision entry or a practice session marked as revision."
+  },
+  "weakAreas": {
+    "minQuestions": 10,
+    "weakAccuracyBelow": 60,
+    "weakMasteryBelow": 40,
+    "speedSlowerThanTargetBy": 1.15,
+    "goodAccuracyMargin": 5,
+    "insufficientPracticeBelowShare": 0.5,
+    "repeatedRevisionAtOrAbove": 3,
+    "repeatedRevisionMasteryBelow": 50,
+    "repeatedIncorrectAtOrAbove": 15,
+    "decliningAccuracyDrop": 10
+  },
+  "actions": {
+    "sectionalTest": { "topicMasteryAtOrAbove": 65 },
+    "mockTest": { "examCompletionAtOrAbove": 50, "orDaysLeftAtOrBelow": 45, "withCompletionAtOrAbove": 30, "minGapDays": 7 }
+  },
+  "dailyPlan": {
+    "defaultHours": 4,
+    "maxTasks": 10,
+    "maxTasksPerSubject": 3,
+    "revisionMaxShare": 0.4,
+    "minutes": {
+      "learn-concept": { "easy": 40, "medium": 60, "hard": 90 },
+      "complete-subtopics": { "perSubtopic": 20, "max": 90 },
+      "practice-questions": { "questionsPerSession": 20, "overheadFactor": 1.5, "min": 20, "max": 60, "defaultSecondsPerQuestion": 45 },
+      "revise-notes": { "easy": 15, "medium": 20, "hard": 30 },
+      "sectional-test": 30,
+      "mock-test": 120
+    }
+  }
+}

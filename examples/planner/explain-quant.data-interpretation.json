@@ -1,0 +1,111 @@
+{
+  "topicId": "quant.data-interpretation",
+  "name": "Data Interpretation",
+  "score": 48.69,
+  "classification": "Critical",
+  "formula": "combined = Σ_exam share × score_exam; score_exam = 100 × Σ_k w_k·f_k / Σ w_k (see docs/PRIORITY_ENGINE.md)",
+  "thresholds": {
+    "Critical": 45,
+    "High": 30,
+    "Medium": 15,
+    "Low": 0
+  },
+  "weights": {
+    "learningGap": 0.3,
+    "masteryGap": 0.2,
+    "untouched": 0.1,
+    "revisionDue": 0.2,
+    "accuracyGap": 0.1,
+    "difficulty": 0.05
+  },
+  "perExam": [
+    {
+      "examId": "ssc-cgl",
+      "share": 0.52,
+      "score": 40.09,
+      "contribution": 20.82,
+      "classification": "High",
+      "factors": {
+        "importance": 0.627,
+        "history": 0.6,
+        "adjustedImportance": 0.551,
+        "learningGap": 1,
+        "masteryGap": 1,
+        "untouched": 1,
+        "revisionDue": 0,
+        "accuracyGap": 0,
+        "difficulty": 1
+      },
+      "contributions": {
+        "learningGap": 17.41,
+        "masteryGap": 11.61,
+        "untouched": 5.8,
+        "revisionDue": 0,
+        "accuracyGap": 0,
+        "difficulty": 5.26
+      },
+      "context": {
+        "trend": "fluctuating",
+        "difficulty": "hard",
+        "accuracyTarget": 85,
+        "recentAccuracy": null,
+        "finalStretch": false,
+        "gateOnly": false
+      },
+      "reasons": [
+        "High weightage (2.32% of SSC CGL) with 0% syllabus completion",
+        "No SSC CGL practice yet (mastery 0%)",
+        "Important topic not studied yet (Phase-2 priority Very High)"
+      ],
+      "action": {
+        "action": "learn-concept",
+        "detail": "Not started: learn the concept first."
+      },
+      "arithmetic": "0.52 × 40.09 = 20.82"
+    },
+    {
+      "examId": "sbi-po",
+      "share": 0.48,
+      "score": 57.98,
+      "contribution": 27.88,
+      "classification": "Critical",
+      "factors": {
+        "importance": 0.948,
+        "history": 0.6,
+        "adjustedImportance": 0.835,
+        "learningGap": 1,
+        "masteryGap": 1,
+        "untouched": 1,
+        "revisionDue": 0,
+        "accuracyGap": 0,
+        "difficulty": 1
+      },
+      "contributions": {
+        "learningGap": 26.36,
+        "masteryGap": 17.57,
+        "untouched": 8.79,
+        "revisionDue": 0,
+        "accuracyGap": 0,
+        "difficulty": 5.26
+      },
+      "context": {
+        "trend": "fluctuating",
+        "difficulty": "hard",
+        "accuracyTarget": 80,
+        "recentAccuracy": null,
+        "finalStretch": false,
+        "gateOnly": false
+      },
+      "reasons": [
+        "High weightage (9.94% of SBI PO) with 0% syllabus completion",
+        "No SBI PO practice yet (mastery 0%)",
+        "Important topic not studied yet (Phase-2 priority Very High)"
+      ],
+      "action": {
+        "action": "learn-concept",
+        "detail": "Not started: learn the concept first."
+      },
+      "arithmetic": "0.48 × 57.98 = 27.88"
+    }
+  ]
+}

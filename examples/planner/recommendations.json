@@ -1,0 +1,831 @@
+{
+  "generatedFor": "2026-11-20",
+  "shares": [
+    {
+      "examId": "ssc-cgl",
+      "importance": 60,
+      "examDate": "2027-06-15",
+      "daysLeft": 207,
+      "urgency": 0,
+      "past": false,
+      "raw": 60,
+      "share": 0.5192307692307693
+    },
+    {
+      "examId": "sbi-po",
+      "importance": 40,
+      "examDate": "2027-03-10",
+      "daysLeft": 110,
+      "urgency": 0.38888888888888884,
+      "past": false,
+      "raw": 55.55555555555556,
+      "share": 0.4807692307692308
+    }
+  ],
+  "recommendations": [
+    {
+      "rank": 1,
+      "topicId": "quant.data-interpretation",
+      "name": "Data Interpretation",
+      "subject": "quant",
+      "masterTopicId": "mt.quant.data-interpretation",
+      "priorityScore": 48.69,
+      "classification": "Critical",
+      "relevantExam": {
+        "examId": "sbi-po",
+        "name": "SBI PO"
+      },
+      "section": "Test II: Data Analysis & Interpretation",
+      "topicWeightage": 9.94,
+      "syllabusCompletion": 0,
+      "examMastery": 0,
+      "reasons": [
+        "High weightage (9.94% of SBI PO) with 0% syllabus completion",
+        "No SBI PO practice yet (mastery 0%)",
+        "Important topic not studied yet (Phase-2 priority Very High)",
+        "Relevant to 2 target exams (SSC CGL, SBI PO), counted by its weight in each"
+      ],
+      "suggestedAction": {
+        "action": "learn-concept",
+        "label": "Learn the concept",
+        "detail": "Not started: learn the concept first."
+      },
+      "relevantExams": [
+        {
+          "examId": "ssc-cgl",
+          "name": "SSC CGL",
+          "share": 0.52,
+          "score": 40.09,
+          "contribution": 20.82,
+          "section": "Section-I Part A: Mathematical Abilities",
+          "topicWeightage": 2.32,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        },
+        {
+          "examId": "sbi-po",
+          "name": "SBI PO",
+          "share": 0.48,
+          "score": 57.98,
+          "contribution": 27.88,
+          "section": "Test II: Data Analysis & Interpretation",
+          "topicWeightage": 9.94,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "topicId": "english.cloze-test",
+      "name": "Cloze Test",
+      "subject": "english",
+      "masterTopicId": "mt.english.cloze-test",
+      "priorityScore": 44.05,
+      "classification": "High",
+      "relevantExam": {
+        "examId": "ssc-cgl",
+        "name": "SSC CGL"
+      },
+      "section": "Section-II Part A: English Language and Comprehension",
+      "topicWeightage": 3.79,
+      "syllabusCompletion": 0,
+      "examMastery": 0,
+      "reasons": [
+        "High weightage (3.79% of SSC CGL) with 0% syllabus completion",
+        "No SSC CGL practice yet (mastery 0%)",
+        "Important topic not studied yet (Phase-2 priority Very High)",
+        "Asked consistently in previous papers",
+        "Relevant to 2 target exams (SSC CGL, SBI PO), counted by its weight in each"
+      ],
+      "suggestedAction": {
+        "action": "learn-concept",
+        "label": "Learn the concept",
+        "detail": "Not started: learn the concept first."
+      },
+      "relevantExams": [
+        {
+          "examId": "ssc-cgl",
+          "name": "SSC CGL",
+          "share": 0.52,
+          "score": 55.84,
+          "contribution": 28.99,
+          "section": "Section-II Part A: English Language and Comprehension",
+          "topicWeightage": 3.79,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        },
+        {
+          "examId": "sbi-po",
+          "name": "SBI PO",
+          "share": 0.48,
+          "score": 31.31,
+          "contribution": 15.05,
+          "section": "English Language",
+          "topicWeightage": 1.88,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "topicId": "english.reading-comprehension",
+      "name": "Reading Comprehension",
+      "subject": "english",
+      "masterTopicId": "mt.english.reading-comprehension",
+      "priorityScore": 42.7,
+      "classification": "High",
+      "relevantExam": {
+        "examId": "ssc-cgl",
+        "name": "SSC CGL"
+      },
+      "section": "Section-II Part A: English Language and Comprehension",
+      "topicWeightage": 5.91,
+      "syllabusCompletion": 20,
+      "examMastery": 0,
+      "reasons": [
+        "High weightage (5.91% of SSC CGL) with 20% syllabus completion",
+        "No SSC CGL practice yet (mastery 0%)",
+        "hard difficulty for SSC CGL",
+        "Asked consistently in previous papers",
+        "Relevant to 2 target exams (SSC CGL, SBI PO), counted by its weight in each"
+      ],
+      "suggestedAction": {
+        "action": "learn-concept",
+        "label": "Learn the concept",
+        "detail": "Concept 40% learned: finish the concept."
+      },
+      "relevantExams": [
+        {
+          "examId": "ssc-cgl",
+          "name": "SSC CGL",
+          "share": 0.52,
+          "score": 51.58,
+          "contribution": 26.78,
+          "section": "Section-II Part A: English Language and Comprehension",
+          "topicWeightage": 5.91,
+          "syllabusCompletion": 20,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        },
+        {
+          "examId": "sbi-po",
+          "name": "SBI PO",
+          "share": 0.48,
+          "score": 33.11,
+          "contribution": 15.92,
+          "section": "English Language",
+          "topicWeightage": 4.55,
+          "syllabusCompletion": 20,
+          "examMastery": 10,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "topicId": "english.para-jumbles",
+      "name": "Para Jumbles & Sentence Rearrangement",
+      "subject": "english",
+      "masterTopicId": "mt.english.para-jumbles",
+      "priorityScore": 34.84,
+      "classification": "High",
+      "relevantExam": {
+        "examId": "ssc-cgl",
+        "name": "SSC CGL"
+      },
+      "section": "Section-II Part A: English Language and Comprehension",
+      "topicWeightage": 1.97,
+      "syllabusCompletion": 0,
+      "examMastery": 0,
+      "reasons": [
+        "Moderate weightage (1.97% of SSC CGL) with 0% syllabus completion",
+        "No SSC CGL practice yet (mastery 0%)",
+        "Important topic not studied yet (Phase-2 priority Very High)",
+        "Relevant to 2 target exams (SSC CGL, SBI PO), counted by its weight in each"
+      ],
+      "suggestedAction": {
+        "action": "learn-concept",
+        "label": "Learn the concept",
+        "detail": "Not started: learn the concept first."
+      },
+      "relevantExams": [
+        {
+          "examId": "ssc-cgl",
+          "name": "SSC CGL",
+          "share": 0.52,
+          "score": 37.35,
+          "contribution": 19.39,
+          "section": "Section-II Part A: English Language and Comprehension",
+          "topicWeightage": 1.97,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        },
+        {
+          "examId": "sbi-po",
+          "name": "SBI PO",
+          "share": 0.48,
+          "score": 32.12,
+          "contribution": 15.44,
+          "section": "English Language",
+          "topicWeightage": 2.58,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "topicId": "english.error-detection",
+      "name": "Error Detection",
+      "subject": "english",
+      "masterTopicId": "mt.english.error-detection",
+      "priorityScore": 34.53,
+      "classification": "High",
+      "relevantExam": {
+        "examId": "ssc-cgl",
+        "name": "SSC CGL"
+      },
+      "section": "Section-II Part A: English Language and Comprehension",
+      "topicWeightage": 3.08,
+      "syllabusCompletion": 0,
+      "examMastery": 0,
+      "reasons": [
+        "High weightage (3.08% of SSC CGL) with 0% syllabus completion",
+        "No SSC CGL practice yet (mastery 0%)",
+        "Important topic not studied yet (Phase-2 priority Very High)",
+        "Relevant to 2 target exams (SSC CGL, SBI PO), counted by its weight in each"
+      ],
+      "suggestedAction": {
+        "action": "learn-concept",
+        "label": "Learn the concept",
+        "detail": "Not started: learn the concept first."
+      },
+      "relevantExams": [
+        {
+          "examId": "ssc-cgl",
+          "name": "SSC CGL",
+          "share": 0.52,
+          "score": 45.39,
+          "contribution": 23.57,
+          "section": "Section-II Part A: English Language and Comprehension",
+          "topicWeightage": 3.08,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        },
+        {
+          "examId": "sbi-po",
+          "name": "SBI PO",
+          "share": 0.48,
+          "score": 22.8,
+          "contribution": 10.96,
+          "section": "English Language",
+          "topicWeightage": 1.1,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "topicId": "computer.ms-office",
+      "name": "MS Office",
+      "subject": "computer",
+      "masterTopicId": "mt.computer.ms-office",
+      "priorityScore": 33.33,
+      "classification": "High",
+      "relevantExam": {
+        "examId": "ssc-cgl",
+        "name": "SSC CGL"
+      },
+      "section": "Section-III: Computer Knowledge Test",
+      "topicWeightage": 3.19,
+      "syllabusCompletion": 0,
+      "examMastery": 0,
+      "reasons": [
+        "High weightage (3.19% of SSC CGL) with 0% syllabus completion",
+        "No SSC CGL practice yet (mastery 0%)",
+        "Important topic not studied yet (Phase-2 priority Very High)",
+        "Asked consistently in previous papers",
+        "Relevant to 2 target exams (SSC CGL, SBI PO), counted by its weight in each"
+      ],
+      "suggestedAction": {
+        "action": "learn-concept",
+        "label": "Learn the concept",
+        "detail": "Not started: learn the concept first."
+      },
+      "relevantExams": [
+        {
+          "examId": "ssc-cgl",
+          "name": "SSC CGL",
+          "share": 0.52,
+          "score": 51.66,
+          "contribution": 26.82,
+          "section": "Section-III: Computer Knowledge Test",
+          "topicWeightage": 3.19,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        },
+        {
+          "examId": "sbi-po",
+          "name": "SBI PO",
+          "share": 0.48,
+          "score": 13.54,
+          "contribution": 6.51,
+          "section": "Test I: Reasoning & Computer Aptitude",
+          "topicWeightage": 0.19,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "topicId": "english.sentence-improvement",
+      "name": "Sentence Improvement",
+      "subject": "english",
+      "masterTopicId": "mt.english.sentence-improvement",
+      "priorityScore": 30.78,
+      "classification": "High",
+      "relevantExam": {
+        "examId": "ssc-cgl",
+        "name": "SSC CGL"
+      },
+      "section": "Section-II Part A: English Language and Comprehension",
+      "topicWeightage": 2.13,
+      "syllabusCompletion": 0,
+      "examMastery": 0,
+      "reasons": [
+        "High weightage (2.13% of SSC CGL) with 0% syllabus completion",
+        "No SSC CGL practice yet (mastery 0%)",
+        "Important topic not studied yet (Phase-2 priority Very High)",
+        "Relevant to 2 target exams (SSC CGL, SBI PO), counted by its weight in each"
+      ],
+      "suggestedAction": {
+        "action": "learn-concept",
+        "label": "Learn the concept",
+        "detail": "Not started: learn the concept first."
+      },
+      "relevantExams": [
+        {
+          "examId": "ssc-cgl",
+          "name": "SSC CGL",
+          "share": 0.52,
+          "score": 38.63,
+          "contribution": 20.06,
+          "section": "Section-II Part A: English Language and Comprehension",
+          "topicWeightage": 2.13,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        },
+        {
+          "examId": "sbi-po",
+          "name": "SBI PO",
+          "share": 0.48,
+          "score": 22.31,
+          "contribution": 10.73,
+          "section": "English Language",
+          "topicWeightage": 1.04,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        }
+      ]
+    },
+    {
+      "rank": 8,
+      "topicId": "reasoning.seating-arrangement",
+      "name": "Seating Arrangement",
+      "subject": "reasoning",
+      "masterTopicId": "mt.reasoning.seating-arrangement",
+      "priorityScore": 28.25,
+      "classification": "Medium",
+      "relevantExam": {
+        "examId": "sbi-po",
+        "name": "SBI PO"
+      },
+      "section": "Test I: Reasoning & Computer Aptitude",
+      "topicWeightage": 4.4,
+      "syllabusCompletion": 65,
+      "examMastery": 69.67,
+      "reasons": [
+        "Revision overdue by 1 day(s)",
+        "High weightage (4.4% of SBI PO) with 65% syllabus completion",
+        "Exam mastery only 69.67% after 60 questions",
+        "Relevant to 2 target exams (SSC CGL, SBI PO), counted by its weight in each"
+      ],
+      "suggestedAction": {
+        "action": "revise-notes",
+        "label": "Revise notes",
+        "detail": "Revision 1 overdue by 1 day(s): revise notes and key formulas."
+      },
+      "relevantExams": [
+        {
+          "examId": "ssc-cgl",
+          "name": "SSC CGL",
+          "share": 0.52,
+          "score": 26.09,
+          "contribution": 13.55,
+          "section": "Section-I Part B: Reasoning and General Intelligence",
+          "topicWeightage": 0.83,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        },
+        {
+          "examId": "sbi-po",
+          "name": "SBI PO",
+          "share": 0.48,
+          "score": 30.58,
+          "contribution": 14.7,
+          "section": "Test I: Reasoning & Computer Aptitude",
+          "topicWeightage": 4.4,
+          "syllabusCompletion": 65,
+          "examMastery": 69.67,
+          "action": "revise-notes",
+          "revisionStatus": "overdue"
+        }
+      ]
+    },
+    {
+      "rank": 9,
+      "topicId": "personality.interview",
+      "name": "Personal Interview",
+      "subject": "personality",
+      "masterTopicId": "mt.personality.interview",
+      "priorityScore": 27.08,
+      "classification": "Medium",
+      "relevantExam": {
+        "examId": "sbi-po",
+        "name": "SBI PO"
+      },
+      "section": "Personal Interview",
+      "topicWeightage": 11.05,
+      "syllabusCompletion": 0,
+      "examMastery": 0,
+      "reasons": [
+        "High weightage (11.05% of SBI PO) with 0% syllabus completion",
+        "No SBI PO practice yet (mastery 0%)",
+        "Important topic not studied yet (Phase-2 priority Very High)"
+      ],
+      "suggestedAction": {
+        "action": "learn-concept",
+        "label": "Learn the concept",
+        "detail": "Not started: learn the concept first."
+      },
+      "relevantExams": [
+        {
+          "examId": "sbi-po",
+          "name": "SBI PO",
+          "share": 0.48,
+          "score": 56.32,
+          "contribution": 27.08,
+          "section": "Personal Interview",
+          "topicWeightage": 11.05,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        }
+      ]
+    },
+    {
+      "rank": 10,
+      "topicId": "english.fill-blanks",
+      "name": "Fill in the Blanks",
+      "subject": "english",
+      "masterTopicId": "mt.english.fill-blanks",
+      "priorityScore": 27,
+      "classification": "Medium",
+      "relevantExam": {
+        "examId": "ssc-cgl",
+        "name": "SSC CGL"
+      },
+      "section": "Section-II Part A: English Language and Comprehension",
+      "topicWeightage": 1.34,
+      "syllabusCompletion": 0,
+      "examMastery": 0,
+      "reasons": [
+        "Moderate weightage (1.34% of SSC CGL) with 0% syllabus completion",
+        "No SSC CGL practice yet (mastery 0%)",
+        "hard difficulty for SSC CGL",
+        "Relevant to 2 target exams (SSC CGL, SBI PO), counted by its weight in each"
+      ],
+      "suggestedAction": {
+        "action": "learn-concept",
+        "label": "Learn the concept",
+        "detail": "Not started: learn the concept first."
+      },
+      "relevantExams": [
+        {
+          "examId": "ssc-cgl",
+          "name": "SSC CGL",
+          "share": 0.52,
+          "score": 31.73,
+          "contribution": 16.48,
+          "section": "Section-II Part A: English Language and Comprehension",
+          "topicWeightage": 1.34,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        },
+        {
+          "examId": "sbi-po",
+          "name": "SBI PO",
+          "share": 0.48,
+          "score": 21.9,
+          "contribution": 10.53,
+          "section": "English Language",
+          "topicWeightage": 0.99,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        }
+      ]
+    },
+    {
+      "rank": 11,
+      "topicId": "reasoning.coding-decoding",
+      "name": "Coding–Decoding",
+      "subject": "reasoning",
+      "masterTopicId": "mt.reasoning.coding-decoding",
+      "priorityScore": 26.03,
+      "classification": "Medium",
+      "relevantExam": {
+        "examId": "ssc-cgl",
+        "name": "SSC CGL"
+      },
+      "section": "Section-I Part B: Reasoning and General Intelligence",
+      "topicWeightage": 2.4,
+      "syllabusCompletion": 65,
+      "examMastery": 52.36,
+      "reasons": [
+        "Revision overdue by 7 day(s)",
+        "High weightage (2.4% of SSC CGL) with 65% syllabus completion",
+        "Exam mastery only 52.36% after 40 questions",
+        "Relevant to 2 target exams (SSC CGL, SBI PO), counted by its weight in each"
+      ],
+      "suggestedAction": {
+        "action": "revise-notes",
+        "label": "Revise notes",
+        "detail": "Revision 1 overdue by 7 day(s): revise notes and key formulas."
+      },
+      "relevantExams": [
+        {
+          "examId": "ssc-cgl",
+          "name": "SSC CGL",
+          "share": 0.52,
+          "score": 33.36,
+          "contribution": 17.32,
+          "section": "Section-I Part B: Reasoning and General Intelligence",
+          "topicWeightage": 2.4,
+          "syllabusCompletion": 65,
+          "examMastery": 52.36,
+          "action": "revise-notes",
+          "revisionStatus": "overdue"
+        },
+        {
+          "examId": "sbi-po",
+          "name": "SBI PO",
+          "share": 0.48,
+          "score": 18.11,
+          "contribution": 8.71,
+          "section": "Test I: Reasoning & Computer Aptitude",
+          "topicWeightage": 0.59,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        }
+      ]
+    },
+    {
+      "rank": 12,
+      "topicId": "reasoning.critical-reasoning",
+      "name": "Statement-based & Critical Reasoning",
+      "subject": "reasoning",
+      "masterTopicId": "mt.reasoning.critical-reasoning",
+      "priorityScore": 25.38,
+      "classification": "Medium",
+      "relevantExam": {
+        "examId": "sbi-po",
+        "name": "SBI PO"
+      },
+      "section": "Test I: Reasoning & Computer Aptitude",
+      "topicWeightage": 2.19,
+      "syllabusCompletion": 0,
+      "examMastery": 0,
+      "reasons": [
+        "Moderate weightage (2.19% of SBI PO) with 0% syllabus completion",
+        "No SBI PO practice yet (mastery 0%)",
+        "hard difficulty for SBI PO",
+        "Relevant to 2 target exams (SSC CGL, SBI PO), counted by its weight in each"
+      ],
+      "suggestedAction": {
+        "action": "learn-concept",
+        "label": "Learn the concept",
+        "detail": "Not started: learn the concept first."
+      },
+      "relevantExams": [
+        {
+          "examId": "ssc-cgl",
+          "name": "SSC CGL",
+          "share": 0.52,
+          "score": 21.1,
+          "contribution": 10.96,
+          "section": "Section-I Part B: Reasoning and General Intelligence",
+          "topicWeightage": 0.48,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        },
+        {
+          "examId": "sbi-po",
+          "name": "SBI PO",
+          "share": 0.48,
+          "score": 30.01,
+          "contribution": 14.43,
+          "section": "Test I: Reasoning & Computer Aptitude",
+          "topicWeightage": 2.19,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        }
+      ]
+    },
+    {
+      "rank": 13,
+      "topicId": "reasoning.puzzles",
+      "name": "Puzzles",
+      "subject": "reasoning",
+      "masterTopicId": "mt.reasoning.puzzles",
+      "priorityScore": 25.1,
+      "classification": "Medium",
+      "relevantExam": {
+        "examId": "sbi-po",
+        "name": "SBI PO"
+      },
+      "section": "Test I: Reasoning & Computer Aptitude",
+      "topicWeightage": 7.88,
+      "syllabusCompletion": 0,
+      "examMastery": 0,
+      "reasons": [
+        "High weightage (7.88% of SBI PO) with 0% syllabus completion",
+        "No SBI PO practice yet (mastery 0%)",
+        "Important topic not studied yet (Phase-2 priority Very High)"
+      ],
+      "suggestedAction": {
+        "action": "learn-concept",
+        "label": "Learn the concept",
+        "detail": "Not started: learn the concept first."
+      },
+      "relevantExams": [
+        {
+          "examId": "sbi-po",
+          "name": "SBI PO",
+          "share": 0.48,
+          "score": 52.2,
+          "contribution": 25.1,
+          "section": "Test I: Reasoning & Computer Aptitude",
+          "topicWeightage": 7.88,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        }
+      ]
+    },
+    {
+      "rank": 14,
+      "topicId": "computer.software-os",
+      "name": "Software & Operating Systems",
+      "subject": "computer",
+      "masterTopicId": "mt.computer.software-os",
+      "priorityScore": 24.34,
+      "classification": "Medium",
+      "relevantExam": {
+        "examId": "ssc-cgl",
+        "name": "SSC CGL"
+      },
+      "section": "Section-III: Computer Knowledge Test",
+      "topicWeightage": 1.37,
+      "syllabusCompletion": 0,
+      "examMastery": 0,
+      "reasons": [
+        "Moderate weightage (1.37% of SSC CGL) with 0% syllabus completion",
+        "No SSC CGL practice yet (mastery 0%)",
+        "hard difficulty for SSC CGL",
+        "Asked consistently in previous papers",
+        "Relevant to 2 target exams (SSC CGL, SBI PO), counted by its weight in each"
+      ],
+      "suggestedAction": {
+        "action": "learn-concept",
+        "label": "Learn the concept",
+        "detail": "Not started: learn the concept first."
+      },
+      "relevantExams": [
+        {
+          "examId": "ssc-cgl",
+          "name": "SSC CGL",
+          "share": 0.52,
+          "score": 35.67,
+          "contribution": 18.52,
+          "section": "Section-III: Computer Knowledge Test",
+          "topicWeightage": 1.37,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        },
+        {
+          "examId": "sbi-po",
+          "name": "SBI PO",
+          "share": 0.48,
+          "score": 12.11,
+          "contribution": 5.82,
+          "section": "Test I: Reasoning & Computer Aptitude",
+          "topicWeightage": 0.13,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        }
+      ]
+    },
+    {
+      "rank": 15,
+      "topicId": "ga.polity",
+      "name": "Indian Polity & Constitution",
+      "subject": "ga",
+      "masterTopicId": "mt.ga.polity",
+      "priorityScore": 24.32,
+      "classification": "Medium",
+      "relevantExam": {
+        "examId": "ssc-cgl",
+        "name": "SSC CGL"
+      },
+      "section": "Section-II Part B: General Awareness",
+      "topicWeightage": 2.56,
+      "syllabusCompletion": 0,
+      "examMastery": 0,
+      "reasons": [
+        "High weightage (2.56% of SSC CGL) with 0% syllabus completion",
+        "No SSC CGL practice yet (mastery 0%)",
+        "Important topic not studied yet (Phase-2 priority Very High)",
+        "Asked consistently in previous papers"
+      ],
+      "suggestedAction": {
+        "action": "learn-concept",
+        "label": "Learn the concept",
+        "detail": "Not started: learn the concept first."
+      },
+      "relevantExams": [
+        {
+          "examId": "ssc-cgl",
+          "name": "SSC CGL",
+          "share": 0.52,
+          "score": 46.83,
+          "contribution": 24.32,
+          "section": "Section-II Part B: General Awareness",
+          "topicWeightage": 2.56,
+          "syllabusCompletion": 0,
+          "examMastery": 0,
+          "action": "learn-concept",
+          "revisionStatus": "not-studied"
+        }
+      ]
+    }
+  ],
+  "examRecommendations": []
+}

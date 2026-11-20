@@ -58,7 +58,11 @@ export function buildExamModel({ syllabusExam, weightageExam, trackId, choices =
   for (const id of wStages.keys()) if (!syllabusExam.stages.some((s) => s.id === id)) warnings.push(`weightage stage '${id}' is not in the syllabus; ignored`);
 
   const priority = {};
-  for (const t of track?.topicSummary ?? []) priority[t.topicId] = t.priority;
+  const history = {}; // Phase 2 historical question trend + estimate confidence (used by the Phase 5 priority engine)
+  for (const t of track?.topicSummary ?? []) {
+    priority[t.topicId] = t.priority;
+    history[t.topicId] = { trend: t.trend ?? null, confidence: t.confidence ?? null };
+  }
 
   const stageRaw = fillMissing(
     sylStages.map((s) => weightOverrides[W_KEY.stage(track?.trackId, s.id)] ?? wStages.get(s.id)?.weight?.effective),
@@ -111,7 +115,7 @@ export function buildExamModel({ syllabusExam, weightageExam, trackId, choices =
           w: topW[ti],
           subtopics: t.subtopics.map((s, k) => ({ id: s.id, slug: s.slug, name: s.name, w: subW[k] })),
         };
-        topics[t.topicId] ??= { topicId: t.topicId, name: t.name, subject: t.subject, priority: priority[t.topicId] ?? null, occurrences: [], subtopicIds: [] };
+        topics[t.topicId] ??= { topicId: t.topicId, name: t.name, subject: t.subject, priority: priority[t.topicId] ?? null, trend: history[t.topicId]?.trend ?? null, weightageConfidence: history[t.topicId]?.confidence ?? null, occurrences: [], subtopicIds: [] };
         const T = topics[t.topicId];
         T.occurrences.push({ stageId: st.id, sectionKey: key, node, examW: stageW[si] * secW[ci] * topW[ti], stageW: secW[ci] * topW[ti] });
         for (const s of t.subtopics) {

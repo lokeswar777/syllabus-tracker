@@ -6,6 +6,7 @@ Structured syllabus and weightage data for **SSC CGL, SSC CHSL, SSC CPO, SBI PO,
 - **Phase 2:** exam-wise weightage database (section 5)
 - **Phase 3:** progress calculation engine: [`docs/PROGRESS_ENGINE.md`](docs/PROGRESS_ENGINE.md) (`src/progress/`, `npm test`, `npm run demo:progress`)
 - **Phase 4:** common syllabus mapping and smart progress synchronization: [`docs/COMMON_MAPPING_SYNC.md`](docs/COMMON_MAPPING_SYNC.md) (`data/mapping/`, `src/mapping/`, `npm run demo:sync`)
+- **Phase 5:** smart preparation priority engine (priority scoring, revision tracker, weak areas, daily plan): [`docs/PRIORITY_ENGINE.md`](docs/PRIORITY_ENGINE.md) (`data/planner/`, `src/planner/`, `npm run demo:planner`)
 
 ```
 data/                         ← SOURCE OF TRUTH (hand-edited)
@@ -156,9 +157,10 @@ npm run check:weightage  # weightage: validate against the syllabus (sums, cover
 npm run build            # both layers → dist/ (weightage.json, WEIGHTAGE_REPORT.md included)
 npm run seed:weightage   # regenerate weightage defaults from scripts/weightage/estimates.mjs (keeps custom values)
 npm run build:mapping    # regenerate the master topic database + cross-exam mapping (applies data/mapping/overrides.json)
-npm test                 # build, verify the mapping is current, then run all tests (progress engine + mapping/sync)
+npm test                 # build, verify the mapping is current, then run all tests (progress engine, mapping/sync, planner)
 npm run demo:progress    # worked example on real data → examples/progress-sample/
 npm run demo:sync        # Phase 4 worked example → examples/common-mapping/
+npm run demo:planner     # Phase 5 worked example → examples/planner/
 ```
 
 - **New exam** (e.g. RRB NTPC): add a category in `registry.json` if needed, create `data/exams/<id>.json` reusing library IDs, add new topics to the library only when nothing existing fits, then run the build. Overlap with all existing exams appears automatically.

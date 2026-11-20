@@ -1,0 +1,606 @@
+{
+  "untouchedHighWeight": [
+    {
+      "topicId": "quant.data-interpretation",
+      "name": "Data Interpretation",
+      "score": 48.69,
+      "exams": [
+        {
+          "examId": "ssc-cgl",
+          "effectiveWeight": 2.32,
+          "phase2Priority": "Very High"
+        },
+        {
+          "examId": "sbi-po",
+          "effectiveWeight": 9.94,
+          "phase2Priority": "Very High"
+        }
+      ]
+    },
+    {
+      "topicId": "ga.current-affairs",
+      "name": "Current Affairs",
+      "score": 47.04,
+      "exams": [
+        {
+          "examId": "ssc-cgl",
+          "effectiveWeight": 2.84,
+          "phase2Priority": "Very High"
+        },
+        {
+          "examId": "sbi-po",
+          "effectiveWeight": 4.35,
+          "phase2Priority": "High"
+        }
+      ]
+    },
+    {
+      "topicId": "english.cloze-test",
+      "name": "Cloze Test",
+      "score": 44.05,
+      "exams": [
+        {
+          "examId": "ssc-cgl",
+          "effectiveWeight": 3.79,
+          "phase2Priority": "Very High"
+        },
+        {
+          "examId": "sbi-po",
+          "effectiveWeight": 1.88,
+          "phase2Priority": "High"
+        }
+      ]
+    },
+    {
+      "topicId": "english.para-jumbles",
+      "name": "Para Jumbles & Sentence Rearrangement",
+      "score": 34.84,
+      "exams": [
+        {
+          "examId": "ssc-cgl",
+          "effectiveWeight": 1.97,
+          "phase2Priority": "Very High"
+        },
+        {
+          "examId": "sbi-po",
+          "effectiveWeight": 2.58,
+          "phase2Priority": "High"
+        }
+      ]
+    },
+    {
+      "topicId": "english.error-detection",
+      "name": "Error Detection",
+      "score": 34.53,
+      "exams": [
+        {
+          "examId": "ssc-cgl",
+          "effectiveWeight": 3.08,
+          "phase2Priority": "Very High"
+        },
+        {
+          "examId": "sbi-po",
+          "effectiveWeight": 1.1,
+          "phase2Priority": "High"
+        }
+      ]
+    },
+    {
+      "topicId": "computer.ms-office",
+      "name": "MS Office",
+      "score": 33.33,
+      "exams": [
+        {
+          "examId": "ssc-cgl",
+          "effectiveWeight": 3.19,
+          "phase2Priority": "Very High"
+        }
+      ]
+    },
+    {
+      "topicId": "english.sentence-improvement",
+      "name": "Sentence Improvement",
+      "score": 30.78,
+      "exams": [
+        {
+          "examId": "ssc-cgl",
+          "effectiveWeight": 2.13,
+          "phase2Priority": "Very High"
+        }
+      ]
+    },
+    {
+      "topicId": "personality.interview",
+      "name": "Personal Interview",
+      "score": 27.08,
+      "exams": [
+        {
+          "examId": "sbi-po",
+          "effectiveWeight": 11.05,
+          "phase2Priority": "Very High"
+        }
+      ]
+    },
+    {
+      "topicId": "english.fill-blanks",
+      "name": "Fill in the Blanks",
+      "score": 27,
+      "exams": [
+        {
+          "examId": "ssc-cgl",
+          "effectiveWeight": 1.34,
+          "phase2Priority": "High"
+        }
+      ]
+    },
+    {
+      "topicId": "reasoning.critical-reasoning",
+      "name": "Statement-based & Critical Reasoning",
+      "score": 25.38,
+      "exams": [
+        {
+          "examId": "sbi-po",
+          "effectiveWeight": 2.19,
+          "phase2Priority": "High"
+        }
+      ]
+    }
+  ],
+  "commonAcrossTargets": [
+    {
+      "topicId": "quant.data-interpretation",
+      "name": "Data Interpretation",
+      "score": 48.69,
+      "examCount": 2,
+      "combinedWeight": 5.98,
+      "exams": [
+        "ssc-cgl",
+        "sbi-po"
+      ]
+    },
+    {
+      "topicId": "english.reading-comprehension",
+      "name": "Reading Comprehension",
+      "score": 42.7,
+      "examCount": 2,
+      "combinedWeight": 5.26,
+      "exams": [
+        "ssc-cgl",
+        "sbi-po"
+      ]
+    },
+    {
+      "topicId": "ga.current-affairs",
+      "name": "Current Affairs",
+      "score": 47.04,
+      "examCount": 2,
+      "combinedWeight": 3.56,
+      "exams": [
+        "ssc-cgl",
+        "sbi-po"
+      ]
+    },
+    {
+      "topicId": "english.cloze-test",
+      "name": "Cloze Test",
+      "score": 44.05,
+      "examCount": 2,
+      "combinedWeight": 2.87,
+      "exams": [
+        "ssc-cgl",
+        "sbi-po"
+      ]
+    },
+    {
+      "topicId": "reasoning.seating-arrangement",
+      "name": "Seating Arrangement",
+      "score": 28.25,
+      "examCount": 2,
+      "combinedWeight": 2.54,
+      "exams": [
+        "ssc-cgl",
+        "sbi-po"
+      ]
+    },
+    {
+      "topicId": "english.para-jumbles",
+      "name": "Para Jumbles & Sentence Rearrangement",
+      "score": 34.84,
+      "examCount": 2,
+      "combinedWeight": 2.26,
+      "exams": [
+        "ssc-cgl",
+        "sbi-po"
+      ]
+    },
+    {
+      "topicId": "english.error-detection",
+      "name": "Error Detection",
+      "score": 34.53,
+      "examCount": 2,
+      "combinedWeight": 2.13,
+      "exams": [
+        "ssc-cgl",
+        "sbi-po"
+      ]
+    },
+    {
+      "topicId": "computer.ms-office",
+      "name": "MS Office",
+      "score": 33.33,
+      "examCount": 2,
+      "combinedWeight": 1.75,
+      "exams": [
+        "ssc-cgl",
+        "sbi-po"
+      ]
+    },
+    {
+      "topicId": "english.sentence-improvement",
+      "name": "Sentence Improvement",
+      "score": 30.78,
+      "examCount": 2,
+      "combinedWeight": 1.61,
+      "exams": [
+        "ssc-cgl",
+        "sbi-po"
+      ]
+    },
+    {
+      "topicId": "reasoning.coding-decoding",
+      "name": "Coding–Decoding",
+      "score": 26.03,
+      "examCount": 2,
+      "combinedWeight": 1.53,
+      "exams": [
+        "ssc-cgl",
+        "sbi-po"
+      ]
+    }
+  ],
+  "lowestMasterySections": [
+    {
+      "examId": "sbi-po",
+      "stageId": "mains",
+      "sectionId": "general-awareness",
+      "name": "Test III: General Awareness / Economy / Banking Knowledge",
+      "weightInExam": 14.42,
+      "completion": 0,
+      "mastery": 0
+    },
+    {
+      "examId": "ssc-cgl",
+      "stageId": "tier2-paper1",
+      "sectionId": "ga",
+      "name": "Section-II Part B: General Awareness",
+      "weightInExam": 11.54,
+      "completion": 0,
+      "mastery": 0
+    },
+    {
+      "examId": "sbi-po",
+      "stageId": "phase3",
+      "sectionId": "interview",
+      "name": "Personal Interview",
+      "weightInExam": 11.05,
+      "completion": 0,
+      "mastery": 0
+    },
+    {
+      "examId": "ssc-cgl",
+      "stageId": "tier2-paper1",
+      "sectionId": "computer",
+      "name": "Section-III: Computer Knowledge Test",
+      "weightInExam": 9.23,
+      "completion": 0,
+      "mastery": 0
+    },
+    {
+      "examId": "ssc-cgl",
+      "stageId": "tier1",
+      "sectionId": "ga",
+      "name": "General Awareness",
+      "weightInExam": 7.69,
+      "completion": 0,
+      "mastery": 0
+    },
+    {
+      "examId": "sbi-po",
+      "stageId": "phase3",
+      "sectionId": "group-exercise",
+      "name": "Group Exercise",
+      "weightInExam": 7.37,
+      "completion": 0,
+      "mastery": 0
+    },
+    {
+      "examId": "sbi-po",
+      "stageId": "mains",
+      "sectionId": "descriptive",
+      "name": "Descriptive Paper: Communication Skills",
+      "weightInExam": 7.21,
+      "completion": 0,
+      "mastery": 0
+    },
+    {
+      "examId": "ssc-cgl",
+      "stageId": "tier1",
+      "sectionId": "english",
+      "name": "English Comprehension",
+      "weightInExam": 7.69,
+      "completion": 4.95,
+      "mastery": 0.62
+    },
+    {
+      "examId": "ssc-cgl",
+      "stageId": "tier2-paper1",
+      "sectionId": "english",
+      "name": "Section-II Part A: English Language and Comprehension",
+      "weightInExam": 20.77,
+      "completion": 5.91,
+      "mastery": 0.8
+    },
+    {
+      "examId": "sbi-po",
+      "stageId": "mains",
+      "sectionId": "data-analysis",
+      "name": "Test II: Data Analysis & Interpretation",
+      "weightInExam": 14.42,
+      "completion": 2.88,
+      "mastery": 0.83
+    }
+  ],
+  "revisionBacklog": {
+    "overdue": 6,
+    "dueToday": 0,
+    "dueSoon": 0,
+    "oldestOverdue": [
+      {
+        "examId": "ssc-cgl",
+        "topicId": "quant.ratio-proportion",
+        "name": "Ratio & Proportion",
+        "daysOverdue": 17,
+        "nextDue": "2026-11-03",
+        "revisionNumber": 1
+      },
+      {
+        "examId": "sbi-po",
+        "topicId": "quant.simplification",
+        "name": "Simplification & Approximation",
+        "daysOverdue": 16,
+        "nextDue": "2026-11-04",
+        "revisionNumber": 1
+      },
+      {
+        "examId": "sbi-po",
+        "topicId": "quant.percentage",
+        "name": "Percentage",
+        "daysOverdue": 13,
+        "nextDue": "2026-11-07",
+        "revisionNumber": 1
+      },
+      {
+        "examId": "ssc-cgl",
+        "topicId": "reasoning.coding-decoding",
+        "name": "Coding–Decoding",
+        "daysOverdue": 7,
+        "nextDue": "2026-11-13",
+        "revisionNumber": 1
+      },
+      {
+        "examId": "ssc-cgl",
+        "topicId": "quant.percentage",
+        "name": "Percentage",
+        "daysOverdue": 3,
+        "nextDue": "2026-11-17",
+        "revisionNumber": 2
+      },
+      {
+        "examId": "sbi-po",
+        "topicId": "reasoning.seating-arrangement",
+        "name": "Seating Arrangement",
+        "daysOverdue": 1,
+        "nextDue": "2026-11-19",
+        "revisionNumber": 1
+      }
+    ]
+  },
+  "decliningAccuracy": [
+    {
+      "examId": "sbi-po",
+      "topicId": "reasoning.seating-arrangement",
+      "name": "Seating Arrangement",
+      "earlierAccuracy": 80,
+      "recentAccuracy": 43.33
+    }
+  ],
+  "morePracticeWouldHelp": [
+    {
+      "examId": "ssc-cgl",
+      "topicId": "english.reading-comprehension",
+      "name": "Reading Comprehension",
+      "category": "studied-not-practised",
+      "attempted": 0,
+      "questionTarget": 60,
+      "accuracy": null,
+      "effectiveWeight": 5.91
+    },
+    {
+      "examId": "sbi-po",
+      "topicId": "english.reading-comprehension",
+      "name": "Reading Comprehension",
+      "category": "studied-not-practised",
+      "attempted": 0,
+      "questionTarget": 60,
+      "accuracy": null,
+      "effectiveWeight": 4.55
+    },
+    {
+      "examId": "ssc-cgl",
+      "topicId": "english.synonyms-antonyms",
+      "name": "Synonyms, Antonyms & Homonyms",
+      "category": "studied-not-practised",
+      "attempted": 0,
+      "questionTarget": 60,
+      "accuracy": null,
+      "effectiveWeight": 2.13
+    },
+    {
+      "examId": "ssc-cgl",
+      "topicId": "quant.simplification",
+      "name": "Simplification & Approximation",
+      "category": "studied-not-practised",
+      "attempted": 0,
+      "questionTarget": 60,
+      "accuracy": null,
+      "effectiveWeight": 0.7
+    },
+    {
+      "examId": "ssc-cgl",
+      "topicId": "quant.ratio-proportion",
+      "name": "Ratio & Proportion",
+      "category": "good-accuracy-insufficient-practice",
+      "attempted": 25,
+      "questionTarget": 60,
+      "accuracy": 88,
+      "effectiveWeight": 0.64
+    },
+    {
+      "examId": "sbi-po",
+      "topicId": "quant.ratio-proportion",
+      "name": "Ratio & Proportion",
+      "category": "studied-not-practised",
+      "attempted": 0,
+      "questionTarget": 60,
+      "accuracy": null,
+      "effectiveWeight": 0.53
+    },
+    {
+      "examId": "sbi-po",
+      "topicId": "quant.simplification",
+      "name": "Simplification & Approximation",
+      "category": "good-concept-poor-speed",
+      "attempted": 30,
+      "questionTarget": 60,
+      "accuracy": 90,
+      "effectiveWeight": 0.23
+    },
+    {
+      "examId": "sbi-po",
+      "topicId": "english.synonyms-antonyms",
+      "name": "Synonyms, Antonyms & Homonyms",
+      "category": "studied-not-practised",
+      "attempted": 0,
+      "questionTarget": 60,
+      "accuracy": null,
+      "effectiveWeight": 0.17
+    }
+  ],
+  "sharedLearningSavings": {
+    "conceptReuse": {
+      "conceptsCompleted": 3,
+      "repetitionsAvoided": 3,
+      "note": "Each completed shared concept is learned once instead of once per linked exam. No hours are estimated (no reliable data)."
+    },
+    "examsBenefiting": [
+      {
+        "examId": "ssc-cgl",
+        "shortName": "SSC CGL",
+        "sharedLearningUplift": 1.53,
+        "topicsUsingShared": 2
+      },
+      {
+        "examId": "sbi-po",
+        "shortName": "SBI PO",
+        "sharedLearningUplift": 0.65,
+        "topicsUsingShared": 3
+      }
+    ],
+    "finishOnceBenefitsMany": [
+      {
+        "topicId": "quant.data-interpretation",
+        "message": "Data Interpretation: concept 0% complete. Finishing it once benefits 2 exams (SSC CGL, SBI PO).",
+        "benefitsExams": [
+          "ssc-cgl",
+          "sbi-po"
+        ]
+      },
+      {
+        "topicId": "english.reading-comprehension",
+        "message": "Reading Comprehension: concept 40% complete. Finishing it once benefits 2 exams (SSC CGL, SBI PO).",
+        "benefitsExams": [
+          "ssc-cgl",
+          "sbi-po"
+        ]
+      },
+      {
+        "topicId": "ga.current-affairs",
+        "message": "Current Affairs: concept 0% complete. Finishing it once benefits 2 exams (SSC CGL, SBI PO).",
+        "benefitsExams": [
+          "ssc-cgl",
+          "sbi-po"
+        ]
+      },
+      {
+        "topicId": "english.cloze-test",
+        "message": "Cloze Test: concept 0% complete. Finishing it once benefits 2 exams (SSC CGL, SBI PO).",
+        "benefitsExams": [
+          "ssc-cgl",
+          "sbi-po"
+        ]
+      },
+      {
+        "topicId": "reasoning.seating-arrangement",
+        "message": "Seating Arrangement: concept 0% complete. Finishing it once benefits 2 exams (SSC CGL, SBI PO).",
+        "benefitsExams": [
+          "ssc-cgl",
+          "sbi-po"
+        ]
+      },
+      {
+        "topicId": "english.error-detection",
+        "message": "Error Detection: concept 0% complete. Finishing it once benefits 2 exams (SSC CGL, SBI PO).",
+        "benefitsExams": [
+          "ssc-cgl",
+          "sbi-po"
+        ]
+      },
+      {
+        "topicId": "computer.ms-office",
+        "message": "MS Office: concept 0% complete. Finishing it once benefits 2 exams (SSC CGL, SBI PO).",
+        "benefitsExams": [
+          "ssc-cgl",
+          "sbi-po"
+        ]
+      },
+      {
+        "topicId": "english.sentence-improvement",
+        "message": "Sentence Improvement: concept 0% complete. Finishing it once benefits 2 exams (SSC CGL, SBI PO).",
+        "benefitsExams": [
+          "ssc-cgl",
+          "sbi-po"
+        ]
+      },
+      {
+        "topicId": "reasoning.coding-decoding",
+        "message": "Coding–Decoding: concept 0% complete. Finishing it once benefits 2 exams (SSC CGL, SBI PO).",
+        "benefitsExams": [
+          "ssc-cgl",
+          "sbi-po"
+        ]
+      },
+      {
+        "topicId": "reasoning.critical-reasoning",
+        "message": "Statement-based & Critical Reasoning: concept 0% complete. Finishing it once benefits 2 exams (SSC CGL, SBI PO).",
+        "benefitsExams": [
+          "ssc-cgl",
+          "sbi-po"
+        ]
+      }
+    ]
+  },
+  "examNames": {
+    "ssc-cgl": "ssc-cgl",
+    "sbi-po": "sbi-po"
+  }
+}

@@ -1,0 +1,299 @@
+{
+  "ssc-cgl": {
+    "weakTopics": [
+      {
+        "topicId": "reasoning.coding-decoding",
+        "name": "Coding–Decoding",
+        "section": "Section-I Part B: Reasoning and General Intelligence",
+        "effectiveWeight": 2.4,
+        "completion": 65,
+        "mastery": 52.36,
+        "category": "studied-but-weak",
+        "flags": [
+          "repeated-incorrect"
+        ],
+        "weakness": 32.18,
+        "evidence": {
+          "attempted": 40,
+          "accuracy": 47.5,
+          "accuracyTarget": 85,
+          "recentAccuracy": 47.5,
+          "earlierAccuracy": null,
+          "incorrect": 21,
+          "avgTimeSeconds": 33.75,
+          "speedTargetSec": 36,
+          "mastery": 52.36,
+          "revisionCount": 0,
+          "questionTarget": 60
+        }
+      },
+      {
+        "topicId": "quant.ratio-proportion",
+        "name": "Ratio & Proportion",
+        "section": "Section-I Part A: Mathematical Abilities",
+        "effectiveWeight": 0.64,
+        "completion": 90,
+        "mastery": 56.06,
+        "category": "good-accuracy-insufficient-practice",
+        "flags": [],
+        "weakness": 10.22,
+        "evidence": {
+          "attempted": 25,
+          "accuracy": 88,
+          "accuracyTarget": 85,
+          "recentAccuracy": 88,
+          "earlierAccuracy": null,
+          "incorrect": 3,
+          "avgTimeSeconds": 36,
+          "speedTargetSec": 36,
+          "mastery": 56.06,
+          "revisionCount": 0,
+          "questionTarget": 60
+        }
+      }
+    ],
+    "weakestSections": [
+      {
+        "stageId": "tier2-paper1",
+        "sectionId": "ga",
+        "name": "Section-II Part B: General Awareness",
+        "weightInExam": 11.54,
+        "completion": 0,
+        "mastery": 0
+      },
+      {
+        "stageId": "tier2-paper1",
+        "sectionId": "computer",
+        "name": "Section-III: Computer Knowledge Test",
+        "weightInExam": 9.23,
+        "completion": 0,
+        "mastery": 0
+      },
+      {
+        "stageId": "tier1",
+        "sectionId": "ga",
+        "name": "General Awareness",
+        "weightInExam": 7.69,
+        "completion": 0,
+        "mastery": 0
+      },
+      {
+        "stageId": "tier1",
+        "sectionId": "english",
+        "name": "English Comprehension",
+        "weightInExam": 7.69,
+        "completion": 4.95,
+        "mastery": 0.62
+      },
+      {
+        "stageId": "tier2-paper1",
+        "sectionId": "english",
+        "name": "Section-II Part A: English Language and Comprehension",
+        "weightInExam": 20.77,
+        "completion": 5.91,
+        "mastery": 0.8
+      }
+    ],
+    "categories": {
+      "not-studied": {
+        "count": 100,
+        "topicIds": [
+          "reasoning.analogy",
+          "reasoning.classification",
+          "reasoning.series",
+          "reasoning.mathematical-operations",
+          "reasoning.word-building",
+          "reasoning.venn-diagrams",
+          "reasoning.syllogism",
+          "reasoning.critical-reasoning"
+        ]
+      },
+      "studied-but-weak": {
+        "count": 1,
+        "topicIds": [
+          "reasoning.coding-decoding"
+        ]
+      },
+      "studied-not-practised": {
+        "count": 3,
+        "topicIds": [
+          "quant.simplification",
+          "english.reading-comprehension",
+          "english.synonyms-antonyms"
+        ]
+      },
+      "ok": {
+        "count": 1,
+        "topicIds": [
+          "quant.percentage"
+        ]
+      },
+      "good-accuracy-insufficient-practice": {
+        "count": 1,
+        "topicIds": [
+          "quant.ratio-proportion"
+        ]
+      }
+    }
+  },
+  "sbi-po": {
+    "weakTopics": [
+      {
+        "topicId": "reasoning.seating-arrangement",
+        "name": "Seating Arrangement",
+        "section": "Test I: Reasoning & Computer Aptitude",
+        "effectiveWeight": 4.4,
+        "completion": 65,
+        "mastery": 69.67,
+        "category": "studied-but-weak",
+        "flags": [
+          "slow",
+          "repeated-incorrect",
+          "declining-accuracy"
+        ],
+        "weakness": 33.46,
+        "evidence": {
+          "attempted": 60,
+          "accuracy": 61.67,
+          "accuracyTarget": 80,
+          "recentAccuracy": 43.33,
+          "earlierAccuracy": 80,
+          "incorrect": 23,
+          "avgTimeSeconds": 70,
+          "speedTargetSec": 40,
+          "mastery": 69.67,
+          "revisionCount": 0,
+          "questionTarget": 60
+        }
+      },
+      {
+        "topicId": "quant.percentage",
+        "name": "Percentage",
+        "section": "Test II: Data Analysis & Interpretation",
+        "effectiveWeight": 0.7,
+        "completion": 50,
+        "mastery": 25.11,
+        "category": "studied-but-weak",
+        "flags": [],
+        "weakness": 19.54,
+        "evidence": {
+          "attempted": 20,
+          "accuracy": 70,
+          "accuracyTarget": 80,
+          "recentAccuracy": 70,
+          "earlierAccuracy": null,
+          "incorrect": 6,
+          "avgTimeSeconds": 45,
+          "speedTargetSec": 40,
+          "mastery": 25.11,
+          "revisionCount": 0,
+          "questionTarget": 60
+        }
+      },
+      {
+        "topicId": "quant.simplification",
+        "name": "Simplification & Approximation",
+        "section": "Quantitative Aptitude",
+        "effectiveWeight": 0.23,
+        "completion": 65,
+        "mastery": 58.95,
+        "category": "good-concept-poor-speed",
+        "flags": [
+          "slow"
+        ],
+        "weakness": 14.3,
+        "evidence": {
+          "attempted": 30,
+          "accuracy": 90,
+          "accuracyTarget": 80,
+          "recentAccuracy": 90,
+          "earlierAccuracy": null,
+          "incorrect": 3,
+          "avgTimeSeconds": 55,
+          "speedTargetSec": 40,
+          "mastery": 58.95,
+          "revisionCount": 0,
+          "questionTarget": 60
+        }
+      }
+    ],
+    "weakestSections": [
+      {
+        "stageId": "mains",
+        "sectionId": "general-awareness",
+        "name": "Test III: General Awareness / Economy / Banking Knowledge",
+        "weightInExam": 14.42,
+        "completion": 0,
+        "mastery": 0
+      },
+      {
+        "stageId": "phase3",
+        "sectionId": "interview",
+        "name": "Personal Interview",
+        "weightInExam": 11.05,
+        "completion": 0,
+        "mastery": 0
+      },
+      {
+        "stageId": "phase3",
+        "sectionId": "group-exercise",
+        "name": "Group Exercise",
+        "weightInExam": 7.37,
+        "completion": 0,
+        "mastery": 0
+      },
+      {
+        "stageId": "mains",
+        "sectionId": "descriptive",
+        "name": "Descriptive Paper: Communication Skills",
+        "weightInExam": 7.21,
+        "completion": 0,
+        "mastery": 0
+      },
+      {
+        "stageId": "mains",
+        "sectionId": "data-analysis",
+        "name": "Test II: Data Analysis & Interpretation",
+        "weightInExam": 14.42,
+        "completion": 2.88,
+        "mastery": 0.83
+      }
+    ],
+    "categories": {
+      "studied-not-practised": {
+        "count": 3,
+        "topicIds": [
+          "english.reading-comprehension",
+          "english.synonyms-antonyms",
+          "quant.ratio-proportion"
+        ]
+      },
+      "not-studied": {
+        "count": 89,
+        "topicIds": [
+          "english.cloze-test",
+          "english.error-detection",
+          "english.fill-blanks",
+          "english.para-jumbles",
+          "english.sentence-improvement",
+          "english.word-usage",
+          "english.sentence-completion",
+          "english.grammar-rules"
+        ]
+      },
+      "good-concept-poor-speed": {
+        "count": 1,
+        "topicIds": [
+          "quant.simplification"
+        ]
+      },
+      "studied-but-weak": {
+        "count": 2,
+        "topicIds": [
+          "quant.percentage",
+          "reasoning.seating-arrangement"
+        ]
+      }
+    }
+  }
+}
