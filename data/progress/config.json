@@ -1,0 +1,56 @@
+{
+  "$comment": "Scoring configuration for the progress engine (src/progress). Every number here can be changed without touching code; the engine validates this file when it loads.",
+  "schemaVersion": 1,
+  "statuses": [
+    { "id": "not-started", "label": "Not Started", "score": 0, "phase": "none" },
+    { "id": "learning", "label": "Learning", "score": 20, "phase": "concept" },
+    { "id": "concept-completed", "label": "Concept Completed", "score": 50, "phase": "concept" },
+    { "id": "practicing", "label": "Practicing Questions", "score": 65, "phase": "exam" },
+    { "id": "revision-pending", "label": "Revision Pending", "score": 75, "phase": "exam" },
+    { "id": "completed", "label": "Completed", "score": 90, "phase": "exam" },
+    { "id": "mastered", "label": "Mastered", "score": 100, "phase": "exam" }
+  ],
+  "classification": {
+    "completedAtOrAbove": 90,
+    "masteredMasteryAtOrAbove": 80,
+    "masteredMinQuestions": 20,
+    "highWeightPriorities": ["Very High", "High"],
+    "highWeightIncompleteBelow": 90,
+    "highWeightLimit": 15
+  },
+  "sharedLearning": {
+    "enabled": true,
+    "maxSharedStatus": "concept-completed",
+    "note": "Only conceptual learning (statuses up to maxSharedStatus) is shared between exams through library topic IDs. Practising, revision, completion and mastery stay exam-specific."
+  },
+  "mastery": {
+    "weights": { "concept": 0.25, "accuracy": 0.4, "consistency": 0.2, "revision": 0.15, "speed": 0 },
+    "conceptSource": "exam-only",
+    "conceptScoreByStatus": {
+      "not-started": 0, "learning": 40, "concept-completed": 100, "practicing": 100,
+      "revision-pending": 100, "completed": 100, "mastered": 100
+    },
+    "accuracy": {
+      "targetQuestions": { "topic": 50, "subtopic": 20 },
+      "volumeCurve": "sqrt",
+      "difficultyMultiplier": { "easy": 0.85, "medium": 1, "hard": 1.15 },
+      "defaultDifficulty": "medium"
+    },
+    "consistency": {
+      "targetPracticeSets": { "topic": 6, "subtopic": 3 },
+      "setsWeight": 0.6,
+      "recencyWeight": 0.4,
+      "fullCreditDays": 7,
+      "zeroCreditDays": 60
+    },
+    "revision": { "targetRevisions": 3, "unknownPerformance": 0.8 },
+    "speed": { "targetSecondsPerQuestion": 60, "zeroCreditMultiple": 3 },
+    "levels": [
+      { "id": "beginner", "label": "Beginner", "min": 0 },
+      { "id": "developing", "label": "Developing", "min": 40 },
+      { "id": "proficient", "label": "Proficient", "min": 65 },
+      { "id": "mastered", "label": "Mastered", "min": 80 }
+    ],
+    "notAssessedLevel": { "id": "not-assessed", "label": "Not assessed" }
+  }
+}

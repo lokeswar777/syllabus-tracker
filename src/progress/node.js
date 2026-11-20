@@ -1,0 +1,65 @@
+/**
+ * Node-only helpers: JSON-file storage and a loader that reads the built syllabus/weightage
+ * (dist/syllabus.json, dist/weightage/<exam>.json). The browser uses WebStorageAdapter plus a fetch-based loader instead.
+ */
+import { readFile, writeFile, rename, mkdir } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
+import { join, resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+export const PROJECT_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
+let writeSeq = 0;
+
+/** One JSON file per collection, written atomically (temp file + rename). Unreadable files are kept as *.corrupt-<ts>. */
+export class FileStorage {
+  constructor(dir) { this.dir = dir; }
+  path(key) { return join(this.dir, `${key}.json`); }
+  async read(key) {
+    const p = this.path(key);
+    if (!existsSync(p)) return null;
+    const text = await readFile(p, 'utf8');
+    try { return JSON.parse(text); } catch {
+      await rename(p, `${p}.corrupt-${Date.now()}`);
+      return null;
+    }
+  }
+  async write(key, value) {
+    await mkdir(this.dir, { recursive: true });
+    const p = this.path(key);
+    const tmp = `${p}.${process.pid}.${Date.now()}.${++writeSeq}.tmp`; // unique even for writes in the same ms
+    await writeFile(tmp, JSON.stringify(value, null, 2));
+    await rename(tmp, p);
+  }
+}
+
+/** Loader over the build output. Reads dist/syllabus.json once and weightage per exam on demand. */
+export function createNodeLoader({ distDir = join(PROJECT_ROOT, 'dist') } = {}) {
+  let syllabus = null;
+  const weightage = new Map();
+  const ensure = async () => {
+    if (syllabus) return;
+    const p = join(distDir, 'syllabus.json');
+    if (!existsSync(p)) throw new Error(`${p} not found: run \`npm run build\` first`);
+    syllabus = JSON.parse(await readFile(p, 'utf8'));
+  };
+  return {
+    async listExams() {
+      await ensure();
+      return syllabus.exams.map((e) => ({ examId: e.id, shortName: e.shortName, name: e.name, category: e.category }));
+    },
+    async loadExam(examId) {
+      await ensure();
+      const syllabusExam = syllabus.exams.find((e) => e.id === examId);
+      if (!syllabusExam) throw new Error(`exam '${examId}' not found in syllabus`);
+      if (!weightage.has(examId)) {
+        const p = join(distDir, 'weightage', `${examId}.json`);
+        weightage.set(examId, existsSync(p) ? JSON.parse(await readFile(p, 'utf8')) : null);
+      }
+      return { syllabusExam, weightageExam: weightage.get(examId) };
+    },
+  };
+}
+
+export async function loadDefaultConfig() {
+  return JSON.parse(await readFile(join(PROJECT_ROOT, 'data', 'progress', 'config.json'), 'utf8'));
+}

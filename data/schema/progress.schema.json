@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "progress.schema.json",
+  "title": "Progress collections (user data)",
+  "description": "The four independently stored collections of the progress engine (src/progress). Each is saved under its own storage key/file: progress, sharedLearning, practice, weightOverrides. They reference syllabus/weightage only by stable IDs.",
+  "oneOf": [
+    { "$ref": "#/$defs/progress" },
+    { "$ref": "#/$defs/sharedLearning" },
+    { "$ref": "#/$defs/practice" },
+    { "$ref": "#/$defs/weightOverrides" }
+  ],
+  "$defs": {
+    "timestamp": { "type": "string", "format": "date-time" },
+    "date": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "pct": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+    "topicId": { "type": "string", "pattern": "^[a-z0-9-]+\\.[a-z0-9-]+$" },
+    "subtopicId": { "type": "string", "pattern": "^[a-z0-9-]+\\.[a-z0-9-]+\\.[a-z0-9-]+$" },
+    "nodeId": { "type": "string", "pattern": "^[a-z0-9-]+\\.[a-z0-9-]+(\\.[a-z0-9-]+)?$" },
+    "status": { "type": ["string", "null"], "description": "Status id from data/progress/config.json (not-started … mastered)" },
+    "difficulty": { "enum": ["easy", "medium", "hard", null] },
+    "nodeRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": { "$ref": "#/$defs/status" },
+        "completionOverride": { "$ref": "#/$defs/pct" },
+        "masteryOverride": { "$ref": "#/$defs/pct" },
+        "difficulty": { "$ref": "#/$defs/difficulty" },
+        "notes": { "type": "string" },
+        "startDate": { "$ref": "#/$defs/date" },
+        "completionDate": { "$ref": "#/$defs/date" },
+        "lastUpdated": { "type": ["string", "null"], "format": "date-time" },
+        "shareLearning": { "type": "boolean" },
+        "revisions": { "type": "array", "items": { "type": "object", "required": ["date"], "additionalProperties": false, "properties": { "date": { "$ref": "#/$defs/date" }, "note": { "type": "string" } } } },
+        "manualStats": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": {
+            "attempted": { "type": "number", "minimum": 0 }, "correct": { "type": "number", "minimum": 0 }, "incorrect": { "type": "number", "minimum": 0 },
+            "practiceSets": { "type": "number", "minimum": 0 }, "revisionCount": { "type": "number", "minimum": 0 },
+            "totalTimeSeconds": { "type": "number", "minimum": 0 }, "lastPracticed": { "$ref": "#/$defs/date" }
+          }
+        }
+      }
+    },
+    "examProgress": {
+      "type": "object",
+      "required": ["examId", "topics", "subtopics"],
+      "additionalProperties": false,
+      "properties": {
+        "examId": { "type": "string" },
+        "trackId": { "type": ["string", "null"] },
+        "stageId": { "type": ["string", "null"], "description": "Selected stage scope (null = whole exam)" },
+        "choices": { "type": "object", "additionalProperties": { "type": "string" }, "description": "{ choiceGroup: sectionId }, e.g. { language: 'hindi' }" },
+        "createdAt": { "$ref": "#/$defs/timestamp" },
+        "updatedAt": { "$ref": "#/$defs/timestamp" },
+        "topics": { "type": "object", "propertyNames": { "$ref": "#/$defs/topicId" }, "additionalProperties": { "$ref": "#/$defs/nodeRecord" } },
+        "subtopics": { "type": "object", "propertyNames": { "$ref": "#/$defs/subtopicId" }, "additionalProperties": { "$ref": "#/$defs/nodeRecord" } }
+      }
+    },
+    "progress": {
+      "type": "object",
+      "required": ["schemaVersion", "kind", "settings", "exams"],
+      "properties": {
+        "schemaVersion": { "const": 1 },
+        "kind": { "const": "progress" },
+        "updatedAt": { "$ref": "#/$defs/timestamp" },
+        "settings": { "type": "object", "properties": { "activeExamId": { "type": ["string", "null"] }, "sharedLearning": { "type": "boolean" } } },
+        "exams": { "type": "object", "additionalProperties": { "$ref": "#/$defs/examProgress" } }
+      }
+    },
+    "sharedRecord": {
+      "type": "object",
+      "required": ["status"],
+      "additionalProperties": false,
+      "properties": { "status": { "type": "string" }, "updatedAt": { "$ref": "#/$defs/timestamp" }, "sourceExamId": { "type": ["string", "null"] } }
+    },
+    "sharedLearning": {
+      "type": "object",
+      "required": ["schemaVersion", "kind", "topics", "subtopics"],
+      "properties": {
+        "schemaVersion": { "const": 1 },
+        "kind": { "const": "shared-learning" },
+        "updatedAt": { "$ref": "#/$defs/timestamp" },
+        "topics": { "type": "object", "propertyNames": { "$ref": "#/$defs/topicId" }, "additionalProperties": { "$ref": "#/$defs/sharedRecord" } },
+        "subtopics": { "type": "object", "propertyNames": { "$ref": "#/$defs/subtopicId" }, "additionalProperties": { "$ref": "#/$defs/sharedRecord" } }
+      }
+    },
+    "session": {
+      "type": "object",
+      "required": ["id", "nodeId", "date", "attempted", "correct"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "nodeId": { "$ref": "#/$defs/nodeId" },
+        "date": { "$ref": "#/$defs/date" },
+        "attempted": { "type": "integer", "minimum": 0 },
+        "correct": { "type": "integer", "minimum": 0 },
+        "incorrect": { "type": "integer", "minimum": 0 },
+        "timeSeconds": { "type": ["number", "null"], "minimum": 0 },
+        "difficulty": { "$ref": "#/$defs/difficulty" },
+        "practiceSet": { "type": "boolean" },
+        "revision": { "type": "boolean" },
+        "note": { "type": "string" },
+        "createdAt": { "$ref": "#/$defs/timestamp" }
+      }
+    },
+    "practice": {
+      "type": "object",
+      "required": ["schemaVersion", "kind", "exams"],
+      "properties": {
+        "schemaVersion": { "const": 1 },
+        "kind": { "const": "practice" },
+        "updatedAt": { "$ref": "#/$defs/timestamp" },
+        "exams": { "type": "object", "additionalProperties": { "type": "object", "required": ["sessions"], "properties": { "sessions": { "type": "array", "items": { "$ref": "#/$defs/session" } } } } }
+      }
+    },
+    "weightOverrides": {
+      "type": "object",
+      "required": ["schemaVersion", "kind", "exams"],
+      "properties": {
+        "schemaVersion": { "const": 1 },
+        "kind": { "const": "weight-overrides" },
+        "updatedAt": { "$ref": "#/$defs/timestamp" },
+        "exams": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "propertyNames": { "pattern": "^(stage:[^:]+:[^/]+|section:[^/]+/[^/]+|topic:[^/]+/[^/]+/[^/]+|subtopic:[^/]+/[^/]+/[^/]+/[^/]+)$" },
+            "additionalProperties": { "type": "number", "minimum": 0 }
+          }
+        }
+      }
+    }
+  }
+}

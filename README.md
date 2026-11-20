@@ -4,6 +4,7 @@ Structured syllabus and weightage data for **SSC CGL, SSC CHSL, SSC CPO, SBI PO,
 
 - **Phase 1:** syllabus database (sections 1–4)
 - **Phase 2:** exam-wise weightage database (section 5)
+- **Phase 3:** progress calculation engine: [`docs/PROGRESS_ENGINE.md`](docs/PROGRESS_ENGINE.md) (`src/progress/`, `npm test`, `npm run demo:progress`)
 
 ```
 data/                         ← SOURCE OF TRUTH (hand-edited)
@@ -153,6 +154,8 @@ npm run build:data       # syllabus: validate + regenerate dist/syllabus.json, o
 npm run check:weightage  # weightage: validate against the syllabus (sums, coverage, orphans, duplicates)
 npm run build            # both layers → dist/ (weightage.json, WEIGHTAGE_REPORT.md included)
 npm run seed:weightage   # regenerate weightage defaults from scripts/weightage/estimates.mjs (keeps custom values)
+npm test                 # build both layers, then run the progress-engine test suite
+npm run demo:progress    # worked example on real data → examples/progress-sample/
 ```
 
 - **New exam** (e.g. RRB NTPC): add a category in `registry.json` if needed, create `data/exams/<id>.json` reusing library IDs, add new topics to the library only when nothing existing fits, then run the build. Overlap with all existing exams appears automatically.
