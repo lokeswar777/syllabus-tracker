@@ -1,0 +1,602 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "planner.schema.json",
+  "title": "Preparation priority engine (Phase 5)",
+  "description": "Validates the planner collection (storage key 'planner': settings, dismissals, daily plans) and data/planner/config.json (scoring, classification, revision, weak-area and daily-plan configuration).",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/plannerCollection"
+    },
+    {
+      "$ref": "#/$defs/plannerConfig"
+    }
+  ],
+  "$defs": {
+    "date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "dateTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "examId": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "topicId": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+\\.[a-z0-9-]+$"
+    },
+    "action": {
+      "enum": [
+        "learn-concept",
+        "complete-subtopics",
+        "practice-questions",
+        "sectional-test",
+        "revise-notes",
+        "mock-test"
+      ]
+    },
+    "classification": {
+      "enum": [
+        "Critical",
+        "High",
+        "Medium",
+        "Low",
+        null
+      ]
+    },
+    "unit": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "plannerCollection": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "kind",
+        "settings",
+        "dismissed",
+        "plans"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "kind": {
+          "const": "planner"
+        },
+        "updatedAt": {
+          "$ref": "#/$defs/dateTime"
+        },
+        "settings": {
+          "type": "object",
+          "required": [
+            "targets",
+            "dailyHours",
+            "configOverrides"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "targets": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "examId",
+                  "importance",
+                  "examDate"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "examId": {
+                    "$ref": "#/$defs/examId"
+                  },
+                  "importance": {
+                    "type": "number",
+                    "exclusiveMinimum": 0,
+                    "maximum": 100
+                  },
+                  "examDate": {
+                    "oneOf": [
+                      {
+                        "$ref": "#/$defs/date"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "dailyHours": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 24
+            },
+            "configOverrides": {
+              "type": "object",
+              "description": "Partial plannerConfig; validated by resolvePlannerConfig before saving."
+            }
+          }
+        },
+        "dismissed": {
+          "type": "object",
+          "description": "Keyed by topicId (all exams) or topicId@examId (one exam). Never affects progress records.",
+          "propertyNames": {
+            "pattern": "^[a-z0-9-]+\\.[a-z0-9-]+(@[a-z0-9-]+)?$"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "topicId",
+              "examId",
+              "until",
+              "dismissedAt"
+            ],
+            "properties": {
+              "topicId": {
+                "$ref": "#/$defs/topicId"
+              },
+              "examId": {
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/examId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "until": {
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/date"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "reason": {
+                "type": "string"
+              },
+              "dismissedAt": {
+                "$ref": "#/$defs/dateTime"
+              }
+            }
+          }
+        },
+        "plans": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/dailyPlan"
+          }
+        }
+      }
+    },
+    "dailyPlan": {
+      "type": "object",
+      "required": [
+        "date",
+        "hours",
+        "budgetMinutes",
+        "plannedMinutes",
+        "tasks",
+        "removed",
+        "customOrder"
+      ],
+      "properties": {
+        "date": {
+          "$ref": "#/$defs/date"
+        },
+        "hours": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 24
+        },
+        "budgetMinutes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "plannedMinutes": {
+          "type": "number",
+          "minimum": 0
+        },
+        "generatedAt": {
+          "$ref": "#/$defs/dateTime"
+        },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/task"
+          }
+        },
+        "removed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true,
+          "description": "taskIds and topic:<topicId> markers the user removed; not re-added on regeneration."
+        },
+        "customOrder": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "task": {
+      "type": "object",
+      "required": [
+        "taskId",
+        "kind",
+        "topicId",
+        "name",
+        "examIds",
+        "primaryExamId",
+        "action",
+        "minutes",
+        "source",
+        "status",
+        "order"
+      ],
+      "properties": {
+        "taskId": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "topic",
+            "exam"
+          ]
+        },
+        "topicId": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/topicId"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "subject": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "examIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/examId"
+          },
+          "uniqueItems": true
+        },
+        "primaryExamId": {
+          "$ref": "#/$defs/examId"
+        },
+        "section": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "action": {
+          "$ref": "#/$defs/action"
+        },
+        "detail": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "minutes": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "priorityScore": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 100
+        },
+        "classification": {
+          "$ref": "#/$defs/classification"
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "enum": [
+            "auto",
+            "manual"
+          ]
+        },
+        "status": {
+          "enum": [
+            "pending",
+            "completed"
+          ]
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "completedAt": {
+          "$ref": "#/$defs/dateTime"
+        },
+        "note": {
+          "type": "string"
+        },
+        "progressUpdates": {
+          "type": "array",
+          "description": "Progress-engine calls made because the user supplied an outcome; empty when completed without one.",
+          "items": {
+            "type": "object",
+            "required": [
+              "via"
+            ],
+            "properties": {
+              "via": {
+                "enum": [
+                  "engine.updateTopic",
+                  "engine.recordPractice",
+                  "engine.addRevision",
+                  "engine.updateConcept"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "plannerConfig": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "priority",
+        "revision",
+        "weakAreas",
+        "actions",
+        "dailyPlan"
+      ],
+      "properties": {
+        "$comment": {
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 1
+        },
+        "priority": {
+          "type": "object",
+          "required": [
+            "weights",
+            "classification",
+            "importance",
+            "historicalFrequency",
+            "difficultyScore",
+            "accuracy",
+            "examUrgency",
+            "finalStretch",
+            "exclude"
+          ],
+          "properties": {
+            "weights": {
+              "type": "object",
+              "required": [
+                "learningGap",
+                "masteryGap",
+                "untouched",
+                "revisionDue",
+                "accuracyGap",
+                "difficulty"
+              ],
+              "additionalProperties": {
+                "type": "number",
+                "minimum": 0
+              }
+            },
+            "classification": {
+              "type": "object",
+              "required": [
+                "thresholds"
+              ],
+              "properties": {
+                "thresholds": {
+                  "type": "object",
+                  "required": [
+                    "Critical",
+                    "High",
+                    "Medium",
+                    "Low"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "Critical": {
+                      "type": "number",
+                      "maximum": 100
+                    },
+                    "High": {
+                      "type": "number"
+                    },
+                    "Medium": {
+                      "type": "number"
+                    },
+                    "Low": {
+                      "const": 0
+                    }
+                  }
+                }
+              }
+            },
+            "importance": {
+              "type": "object",
+              "properties": {
+                "gateTopicImportance": {
+                  "$ref": "#/$defs/unit"
+                }
+              }
+            },
+            "historicalFrequency": {
+              "type": "object",
+              "properties": {
+                "base": {
+                  "$ref": "#/$defs/unit"
+                },
+                "trendScore": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/$defs/unit"
+                  }
+                }
+              }
+            },
+            "difficultyScore": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/$defs/unit"
+              }
+            },
+            "accuracy": {
+              "type": "object",
+              "properties": {
+                "recentSessions": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "minQuestions": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "examUrgency": {
+              "type": "object",
+              "properties": {
+                "horizonDays": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "urgencyBoost": {
+                  "type": "number",
+                  "minimum": 0
+                }
+              }
+            },
+            "finalStretch": {
+              "type": "object"
+            },
+            "exclude": {
+              "type": "object"
+            }
+          }
+        },
+        "revision": {
+          "type": "object",
+          "required": [
+            "intervalsDays"
+          ],
+          "properties": {
+            "intervalsDays": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 3650
+              }
+            },
+            "afterLastInterval": {
+              "enum": [
+                "repeat-last"
+              ]
+            },
+            "studiedAtOrAbove": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "lowAccuracy": {
+              "type": "object",
+              "properties": {
+                "below": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 100
+                },
+                "intervalFactor": {
+                  "type": "number",
+                  "exclusiveMinimum": 0,
+                  "maximum": 1
+                }
+              }
+            },
+            "dueSoonDays": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "note": {
+              "type": "string"
+            }
+          }
+        },
+        "weakAreas": {
+          "type": "object"
+        },
+        "actions": {
+          "type": "object"
+        },
+        "dailyPlan": {
+          "type": "object",
+          "properties": {
+            "defaultHours": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 24
+            },
+            "maxTasks": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "maxTasksPerSubject": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "revisionMaxShare": {
+              "$ref": "#/$defs/unit"
+            },
+            "minutes": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  }
+}

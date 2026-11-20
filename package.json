@@ -1,9 +1,9 @@
 {
   "name": "syllabus-tracker",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
   "type": "module",
-  "description": "Competitive exam syllabus tracker: syllabus database (Phase 1), weightage (Phase 2), progress engine (Phase 3) and common syllabus mapping with smart progress synchronization (Phase 4) for SSC & Banking.",
+  "description": "Competitive exam syllabus tracker: syllabus database (Phase 1), weightage (Phase 2), progress engine (Phase 3), common syllabus mapping with smart progress synchronization (Phase 4) and the smart preparation priority engine (Phase 5) for SSC & Banking.",
   "main": "src/progress/index.js",
   "scripts": {
     "build:data": "node scripts/build.mjs",
@@ -18,8 +18,10 @@
     "test": "node scripts/build.mjs && node scripts/build-weightage.mjs && node scripts/build-mapping.mjs --check && node --test \"test/**/*.test.mjs\"",
     "test:progress": "node --test \"test/progress/*.test.mjs\"",
     "test:mapping": "node --test \"test/mapping/*.test.mjs\"",
+    "test:planner": "node --test \"test/planner/*.test.mjs\"",
     "demo:progress": "node scripts/progress-demo.mjs",
-    "demo:sync": "node scripts/sync-demo.mjs"
+    "demo:sync": "node scripts/sync-demo.mjs",
+    "demo:planner": "node scripts/planner-demo.mjs"
   },
   "engines": {
     "node": ">=22"

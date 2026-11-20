@@ -255,6 +255,11 @@ export class ProgressEngine {
     this.#commit(P.setPracticeTotals(this.db, { examId, nodeId, totals, now: this.clock() }), ['progress']);
     return this.getReport();
   }
+  /** Read-only practice sessions of any exam (Phase 5 planner: recent accuracy, accuracy trend). */
+  getExamSessions(examId) {
+    this.#requireDb();
+    return Object.freeze([...(this.db.practice.exams[examId]?.sessions ?? [])]);
+  }
   practiceSessions(nodeId = null) {
     const examId = this.#requireExam();
     const all = this.db.practice.exams[examId]?.sessions ?? [];
