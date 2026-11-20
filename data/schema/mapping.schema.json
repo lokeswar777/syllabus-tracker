@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "mapping.schema.json",
+  "title": "Common syllabus mapping (Phase 4)",
+  "description": "Validates data/mapping/master-topics.json (generated), cross-exam-mapping.json (generated) and overrides.json (manual edits).",
+  "oneOf": [{ "$ref": "#/$defs/masterTopicsFile" }, { "$ref": "#/$defs/crossExamMappingFile" }, { "$ref": "#/$defs/overridesFile" }],
+  "$defs": {
+    "masterId": { "type": "string", "pattern": "^mt\\.[a-z0-9-]+\\.[a-z0-9-]+$" },
+    "topicId": { "type": "string", "pattern": "^[a-z0-9-]+\\.[a-z0-9-]+$" },
+    "syncMode": { "enum": ["full", "partial", "independent"] },
+    "verificationStatus": { "enum": ["verified", "needs-review", "rejected"] },
+    "requirement": {
+      "type": "object",
+      "properties": {
+        "stageClass": { "type": "string" }, "depth": { "type": "string" }, "depthDescription": { "type": "string" },
+        "difficulty": { "enum": ["easy", "medium", "hard", null] },
+        "questionTarget": { "type": ["number", "null"] }, "accuracyTarget": { "type": ["number", "null"] }, "speedTargetSec": { "type": ["number", "null"] },
+        "speedBasis": { "enum": ["official-section-pace", "official-stage-pace", null] }, "source": { "enum": ["profile", "manual-override"] },
+        "rule": { "enum": ["strictest-of-stages", "single-stage"] }
+      }
+    },
+    "master": {
+      "type": "object",
+      "required": ["masterTopicId", "libraryTopicId", "name", "subject", "exams", "categories", "coverage", "similarity", "verification", "defaultSyncMode", "sharedSubtopicIds", "subtopicIds", "relatedMasterTopics"],
+      "properties": {
+        "masterTopicId": { "$ref": "#/$defs/masterId" },
+        "libraryTopicId": { "$ref": "#/$defs/topicId" },
+        "name": { "type": "string" }, "subject": { "type": "string" }, "subjectName": { "type": "string" }, "group": { "type": ["string", "null"] },
+        "exams": { "type": "array", "minItems": 2, "items": { "type": "string" }, "uniqueItems": true },
+        "categories": { "type": "array", "items": { "type": "string" } },
+        "coverage": { "type": "string" },
+        "similarity": { "type": "object", "required": ["level", "minJaccard"], "properties": { "level": { "enum": ["identical", "high", "partial", "low"] }, "minJaccard": { "type": "number" }, "avgJaccard": { "type": "number" } } },
+        "verification": { "type": "object", "required": ["status", "method"], "properties": { "status": { "$ref": "#/$defs/verificationStatus" }, "method": { "enum": ["auto", "manual"] }, "note": { "type": "string" } } },
+        "defaultSyncMode": { "$ref": "#/$defs/syncMode" },
+        "sharedSubtopicIds": { "type": "array", "items": { "type": "string" } },
+        "subtopicIds": { "type": "array", "items": { "type": "string" } },
+        "relatedMasterTopics": { "type": "array", "items": { "type": "object", "required": ["masterTopicId", "relation", "sync"], "properties": { "masterTopicId": { "$ref": "#/$defs/masterId" }, "sync": { "const": "never" } } } },
+        "note": { "type": "string" }
+      }
+    },
+    "masterTopicsFile": {
+      "type": "object", "required": ["meta", "masters"],
+      "properties": { "$comment": { "type": "string" }, "meta": { "type": "object" }, "masters": { "type": "array", "items": { "$ref": "#/$defs/master" } } },
+      "additionalProperties": false
+    },
+    "crossExamMappingFile": {
+      "type": "object", "required": ["meta", "mappings", "byExam", "unmapped", "excluded", "review"],
+      "properties": {
+        "$comment": { "type": "string" }, "meta": { "type": "object" },
+        "mappings": { "type": "object", "propertyNames": { "$ref": "#/$defs/masterId" }, "additionalProperties": { "type": "array", "items": { "type": "object", "required": ["mappingId", "examId", "stageId", "sectionId", "topicId", "subtopicSlugs"] } } },
+        "byExam": { "type": "object", "additionalProperties": { "type": "object", "additionalProperties": { "type": "object", "required": ["masterTopicId", "mappingIds", "requirement", "stageRequirements"], "properties": { "masterTopicId": { "oneOf": [{ "$ref": "#/$defs/masterId" }, { "type": "null" }] }, "requirement": { "$ref": "#/$defs/requirement" }, "stageRequirements": { "type": "object", "additionalProperties": { "$ref": "#/$defs/requirement" } } } } } },
+        "unmapped": { "type": "array" }, "excluded": { "type": "array" }, "review": { "type": "array" }
+      },
+      "additionalProperties": false
+    },
+    "overridesFile": {
+      "type": "object", "required": ["schemaVersion", "masters"],
+      "properties": {
+        "$comment": { "type": "string" },
+        "schemaVersion": { "const": 1 },
+        "masters": {
+          "type": "object", "propertyNames": { "$ref": "#/$defs/masterId" },
+          "additionalProperties": {
+            "type": "object", "additionalProperties": false,
+            "properties": {
+              "verification": { "type": "object", "required": ["status"], "properties": { "status": { "$ref": "#/$defs/verificationStatus" }, "note": { "type": "string" } }, "additionalProperties": false },
+              "syncMode": { "$ref": "#/$defs/syncMode" },
+              "note": { "type": "string" },
+              "requirements": {
+                "type": "object",
+                "propertyNames": { "pattern": "^(\\*|@[a-z]+(:[a-z]+)?|[a-z0-9-]+(/[a-z0-9-]+)?)$" },
+                "additionalProperties": { "type": "object", "additionalProperties": false, "properties": { "depth": { "type": "string" }, "depthDescription": { "type": "string" }, "difficulty": { "enum": ["easy", "medium", "hard", null] }, "questionTarget": { "type": ["number", "null"] }, "accuracyTarget": { "type": ["number", "null"] }, "speedTargetSec": { "type": ["number", "null"] } } }
+              }
+            }
+          }
+        },
+        "excludeMappings": { "type": "array", "items": { "type": "object", "required": ["masterTopicId", "examId", "reason"], "properties": { "masterTopicId": { "$ref": "#/$defs/masterId" }, "examId": { "type": "string" }, "reason": { "type": "string", "minLength": 1 } }, "additionalProperties": false } },
+        "relatedLinks": { "type": "object", "properties": { "add": { "type": "array" }, "remove": { "type": "array" } }, "additionalProperties": false }
+      },
+      "additionalProperties": false
+    }
+  }
+}

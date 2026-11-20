@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "kind": "progress",
+  "updatedAt": "2026-11-20T09:00:00.000Z",
+  "settings": {
+    "activeExamId": "ssc-cgl",
+    "sharedLearning": true
+  },
+  "exams": {
+    "ssc-cgl": {
+      "examId": "ssc-cgl",
+      "trackId": null,
+      "stageId": null,
+      "choices": {},
+      "createdAt": "2026-11-20T09:00:00.000Z",
+      "updatedAt": "2026-11-20T09:00:00.000Z",
+      "topics": {
+        "quant.percentage": {
+          "status": "mastered",
+          "completionOverride": null,
+          "masteryOverride": null,
+          "difficulty": null,
+          "notes": "",
+          "startDate": "2026-11-20",
+          "completionDate": "2026-11-20",
+          "lastUpdated": "2026-11-20T09:00:00.000Z",
+          "shareLearning": true,
+          "revisions": [
+            {
+              "date": "2026-11-12",
+              "note": "formula sheet"
+            }
+          ],
+          "manualStats": null
+        },
+        "quant.algebra-identities": {
+          "status": "concept-completed",
+          "completionOverride": null,
+          "masteryOverride": null,
+          "difficulty": null,
+          "notes": "",
+          "startDate": "2026-11-20",
+          "completionDate": null,
+          "lastUpdated": "2026-11-20T09:00:00.000Z",
+          "shareLearning": true,
+          "revisions": [],
+          "manualStats": null
+        },
+        "english.reading-comprehension": {
+          "status": "practicing",
+          "completionOverride": null,
+          "masteryOverride": null,
+          "difficulty": null,
+          "notes": "Editorial passages are slow; time each set.",
+          "startDate": "2026-11-20",
+          "completionDate": null,
+          "lastUpdated": "2026-11-20T09:00:00.000Z",
+          "shareLearning": true,
+          "revisions": [],
+          "manualStats": null
+        },
+        "ga.history-modern": {
+          "status": "learning",
+          "completionOverride": null,
+          "masteryOverride": null,
+          "difficulty": null,
+          "notes": "",
+          "startDate": "2026-11-20",
+          "completionDate": null,
+          "lastUpdated": "2026-11-20T09:00:00.000Z",
+          "shareLearning": true,
+          "revisions": [],
+          "manualStats": null
+        }
+      },
+      "subtopics": {
+        "quant.trigonometry.identities": {
+          "status": "mastered",
+          "completionOverride": null,
+          "masteryOverride": null,
+          "difficulty": null,
+          "notes": "",
+          "startDate": "2026-11-20",
+          "completionDate": "2026-11-20",
+          "lastUpdated": "2026-11-20T09:00:00.000Z",
+          "shareLearning": true,
+          "revisions": [],
+          "manualStats": null
+        }
+      }
+    },
+    "sbi-po": {
+      "examId": "sbi-po",
+      "trackId": null,
+      "stageId": null,
+      "choices": {},
+      "createdAt": "2026-11-20T09:00:00.000Z",
+      "updatedAt": "2026-11-20T09:00:00.000Z",
+      "topics": {
+        "quant.data-interpretation": {
+          "status": "practicing",
+          "completionOverride": null,
+          "masteryOverride": null,
+          "difficulty": null,
+          "notes": "",
+          "startDate": "2026-11-20",
+          "completionDate": null,
+          "lastUpdated": "2026-11-20T09:00:00.000Z",
+          "shareLearning": true,
+          "revisions": [],
+          "manualStats": null
+        },
+        "reasoning.puzzles": {
+          "status": "learning",
+          "completionOverride": null,
+          "masteryOverride": null,
+          "difficulty": null,
+          "notes": "",
+          "startDate": "2026-11-20",
+          "completionDate": null,
+          "lastUpdated": "2026-11-20T09:00:00.000Z",
+          "shareLearning": true,
+          "revisions": [],
+          "manualStats": null
+        }
+      },
+      "subtopics": {}
+    }
+  }
+}

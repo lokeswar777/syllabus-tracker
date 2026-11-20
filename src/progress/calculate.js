@@ -17,6 +17,7 @@
  */
 import { compileConfig, clampPct, round2, topicOf } from './config.js';
 import { aggregateStats, scoreMastery } from './mastery.js';
+import { conceptPctOf } from './progress-db.js';
 
 /**
  * @param {object} p
@@ -25,14 +26,19 @@ import { aggregateStats, scoreMastery } from './mastery.js';
  * @param {object} p.config  scoring config (data/progress/config.json)
  * @param {Date}   [p.now]
  * @param {string|null} [p.stageId] scope: null/undefined = whole exam (track); a stage id = that stage only
+ * @param {object} [p.sync]         Phase 4: { modeFor(topicId) → 'full'|'partial'|'independent', masterOf(topicId) → id|null }.
+ *                                   Omitted → every topic behaves as 'full' (Phase 3 behaviour).
+ * @param {object} [p.requirements]  Phase 4: cross-exam-mapping byExam[examId] → per-topic exam requirements
  */
-export function calculateProgress({ model, db, config, now = new Date(), stageId = null }) {
+export function calculateProgress({ model, db, config, now = new Date(), stageId = null, sync = null, requirements = null }) {
   const cfg = compileConfig(config);
   const examId = model.examId;
   const ep = db?.progress?.exams?.[examId];
   const topicRecs = ep?.topics ?? {};
   const subRecs = ep?.subtopics ?? {};
-  const sharedOn = cfg.sharedLearning.enabled && db?.progress?.settings?.sharedLearning !== false;
+  const sharedOn = cfg.sharedLearning.enabled && db?.progress?.settings?.sharedLearning !== false && db?.syncSettings?.enabled !== false;
+  const modeOf = (topicId) => (sharedOn ? (sync?.modeFor(topicId) ?? 'full') : 'independent');
+  const cap = cfg.sharedLearning.capScore;
   const shared = db?.sharedLearning ?? { topics: {}, subtopics: {} };
   const sessions = db?.practice?.exams?.[examId]?.sessions ?? [];
   const diagnostics = { warnings: [...model.warnings], orphanRecords: [], ignoredSessions: [] };
@@ -67,13 +73,19 @@ export function calculateProgress({ model, db, config, now = new Date(), stageId
     if (Number.isFinite(sRec?.completionOverride)) { ownScore = clampPct(sRec.completionOverride); source = 'override'; }
     else if (!sRec?.status && Number.isFinite(tRec?.completionOverride)) { ownScore = clampPct(tRec.completionOverride); source = 'topic-override'; }
 
-    const shareEnabled = sharedOn && tRec?.shareLearning !== false && sRec?.shareLearning !== false;
-    const sharedRec = shared.subtopics?.[subId] ?? shared.topics?.[meta.topicId] ?? null;
-    const sharedStatus = sharedRec && cfg.isStatus(sharedRec.status) ? sharedRec.status : null;
-    const sharedScore = sharedStatus ? Math.min(cfg.score(sharedStatus), cfg.sharedLearning.capScore) : 0;
+    // sync mode: per-exam opt-out (shareLearning=false) always wins, then the topic's mode
+    const syncMode = tRec?.shareLearning === false || sRec?.shareLearning === false ? 'independent' : modeOf(meta.topicId);
+    const shareEnabled = syncMode !== 'independent';
+    // shared conceptual score = max(subtopic concept status, topic concept completion), capped at the concept level
+    const subShared = shared.subtopics?.[subId];
+    const subScore = subShared && cfg.isStatus(subShared.status) ? cfg.score(subShared.status) : 0;
+    const topicScore = (conceptPctOf(shared.topics?.[meta.topicId], cfg) * cap) / 100;
+    const sharedScore = Math.min(cap, Math.max(subScore, topicScore));
+    const sharedStatus = sharedScore > 0 ? cfg.statusAtOrBelow(sharedScore) : null;
     const useShared = shareEnabled && sharedScore > ownScore;
     const completion = clampPct(useShared ? sharedScore : ownScore);
-    const effectiveStatus = useShared ? cfg.statusAtOrBelow(sharedScore) : ownStatus;
+    // full: the shared concept status is shown; partial: completion is shared but the exam keeps its own status
+    const effectiveStatus = useShared && syncMode === 'full' ? cfg.statusAtOrBelow(sharedScore) : ownStatus;
 
     const stats = aggregateStats({ sessions: byNode.get(subId) ?? [], records: [sRec], cfg });
     const concept = cfg.mastery.conceptScore(cfg.mastery.conceptSource === 'effective' ? effectiveStatus : ownStatus);
@@ -82,9 +94,9 @@ export function calculateProgress({ model, db, config, now = new Date(), stageId
     subs[subId] = {
       id: subId, topicId: meta.topicId, name: meta.name,
       status: sRec?.status ?? null, inheritedStatus: source === 'topic' ? ownStatus : null, effectiveStatus, completionSource: useShared ? 'shared' : source,
-      completion, mastery, masteryLevel: cfg.mastery.levelFor(mastery, stats.attempted > 0 || Number.isFinite(sRec?.masteryOverride)),
+      completion, ownCompletion: clampPct(ownScore), mastery, masteryLevel: cfg.mastery.levelFor(mastery, stats.attempted > 0 || Number.isFinite(sRec?.masteryOverride)),
       masteryComponents: ms.components, masteryOverridden: Number.isFinite(sRec?.masteryOverride),
-      concept, sharedLearning: { enabled: shareEnabled, status: sharedStatus, score: sharedScore, applied: useShared },
+      concept, sharedLearning: { enabled: shareEnabled, syncMode, status: sharedStatus, score: sharedScore, applied: useShared },
       ...practiceFields(stats), ...recordFields(sRec),
     };
   }
@@ -119,7 +131,10 @@ export function calculateProgress({ model, db, config, now = new Date(), stageId
     const occW = occ.map((o) => weightOf(o));
     const occSum = occW.reduce((a, b) => a + b, 0);
     const occCompletion = occ.map((o) => o.node.subtopics.reduce((a, s) => a + s.w * subs[s.id].completion, 0));
-    const completion = occ.length ? clampPct(occSum > 0 ? occW.reduce((a, w, i) => a + w * occCompletion[i], 0) / occSum : occCompletion.reduce((a, b) => a + b, 0) / occ.length) : 0;
+    const occOwn = occ.map((o) => o.node.subtopics.reduce((a, s) => a + s.w * subs[s.id].ownCompletion, 0));
+    const avgOcc = (vals) => (occ.length ? clampPct(occSum > 0 ? occW.reduce((a, w, i) => a + w * vals[i], 0) / occSum : vals.reduce((a, b) => a + b, 0) / occ.length) : 0);
+    const completion = avgOcc(occCompletion);
+    const ownCompletion = avgOcc(occOwn);
     // concept understanding of the topic: subtopic concept scores weighted like completion (all occurrences)
     const subW = {};
     const anyWeighted = T.occurrences.some((o) => o.examW > 0);
@@ -128,25 +143,37 @@ export function calculateProgress({ model, db, config, now = new Date(), stageId
     const subWSum = Object.values(subW).reduce((a, b) => a + b, 0);
     const concept = subWSum > 0 ? Object.entries(subW).reduce((a, [id, w]) => a + w * subs[id].concept, 0) / subWSum : 0;
     // practice: every session in the topic subtree, counted once
-    const subSessions = T.subtopicIds.flatMap((id) => byNode.get(id) ?? []);
-    const stats = aggregateStats({ sessions: [...(byNode.get(topicId) ?? []), ...subSessions], records: [tRec, ...T.subtopicIds.map((id) => subRecs[id])], cfg });
-    const ms = scoreMastery({ concept, stats, level: 'topic', cfg, now });
+    const topicSessions = [...(byNode.get(topicId) ?? []), ...T.subtopicIds.flatMap((id) => byNode.get(id) ?? [])];
+    const stats = aggregateStats({ sessions: topicSessions, records: [tRec, ...T.subtopicIds.map((id) => subRecs[id])], cfg });
+    // exam-specific requirement: mapping default (Phase 4) overridden by the record's own targets
+    const mappedReq = requirements?.[topicId]?.requirement ?? null;
+    const requirement = mappedReq || tRec?.targets ? { ...(mappedReq ?? {}), ...(tRec?.targets ?? {}), source: tRec?.targets ? 'user-override' : mappedReq?.source ?? null } : null;
+    const ms = scoreMastery({ concept, stats, level: 'topic', cfg, now, targets: requirement });
     const masteryOverridden = Number.isFinite(tRec?.masteryOverride);
     const mastery = masteryOverridden ? clampPct(tRec.masteryOverride) : ms.score;
-    const shareEnabled = sharedOn && tRec?.shareLearning !== false;
+    const syncMode = tRec?.shareLearning === false ? 'independent' : modeOf(topicId);
     const subList = T.subtopicIds.map((id) => subs[id]);
+    const sharedTopicRec = shared.topics?.[topicId];
     topics[topicId] = {
       topicId, name: T.name, subject: T.subject, priority: T.priority,
+      masterTopicId: sync?.masterOf?.(topicId) ?? null,
       inScope: occ.length > 0, isGateOnly: occ.length > 0 && occSum === 0,
       effectiveWeight: effectiveWeight * 100,
       status: tRec?.status ?? null,
-      completion, mastery, masteryOverridden,
+      completion, ownCompletion, sharedUplift: completion - ownCompletion, mastery, masteryOverridden,
       masteryLevel: cfg.mastery.levelFor(mastery, stats.attempted > 0 || masteryOverridden),
       masteryComponents: ms.components, concept,
       contribution: effectiveWeight * completion, // percentage points of the scope (weight fraction × 0–100)
       remaining: effectiveWeight * (100 - completion), // percentage points still to cover
       category: categoryOf(completion, cfg),
-      sharedLearning: { enabled: shareEnabled, subtopicsUsingShared: subList.filter((s) => s.sharedLearning.applied).length },
+      sharedLearning: {
+        enabled: syncMode !== 'independent', syncMode, subtopicsUsingShared: subList.filter((s) => s.sharedLearning.applied).length,
+        conceptStatus: sharedTopicRec?.status ?? null, conceptCompletion: round2(conceptPctOf(sharedTopicRec, cfg)),
+      },
+      requirement,
+      targetsMet: targetsMet(stats, requirement),
+      practiceByStage: practiceByStage(topicSessions, cfg),
+      stagePreparation: stagePreparation(requirements?.[topicId]?.stageRequirements, tRec?.targets, topicSessions, cfg),
       subtopicIds: T.subtopicIds,
       occurrences: T.occurrences.map((o) => ({ stageId: o.stageId, sectionKey: o.sectionKey, weightInExam: o.examW * 100, weightInStage: o.stageW * 100 })),
       ...practiceFields(stats), ...recordFields(tRec),
@@ -167,6 +194,14 @@ export function calculateProgress({ model, db, config, now = new Date(), stageId
   const scopeW = (st) => (stageId ? 1 : st.w);
   const completion = clampPct(scoped.reduce((a, st) => a + scopeW(st) * st.completion, 0));
   const mastery = clampPct(scoped.reduce((a, st) => a + scopeW(st) * st.mastery, 0));
+  // own (exam-only) completion over the same scope = completion without any shared concept uplift
+  let ownCompletion = 0;
+  for (const st of model.stages) {
+    if (stageId && st.id !== stageId) continue;
+    const sw = stageId ? 1 : st.w;
+    for (const sec of st.sections) for (const tp of sec.topics) for (const s of tp.subtopics) ownCompletion += sw * sec.w * tp.w * s.w * subs[s.id].ownCompletion;
+  }
+  ownCompletion = clampPct(ownCompletion);
   const scopeTopics = Object.values(topics).filter((t) => t.inScope);
   const C = cfg.classification;
   const isMastered = (t) => t.mastery >= C.masteredMasteryAtOrAbove && (t.attempted >= C.masteredMinQuestions || t.masteryOverridden);
@@ -187,11 +222,13 @@ export function calculateProgress({ model, db, config, now = new Date(), stageId
   const allStats = aggregateStats({ sessions: [...byNode.values()].flat(), records: [...Object.values(topicRecs), ...Object.values(subRecs)].filter(Boolean), cfg });
 
   return {
-    examId, shortName: model.shortName, trackId: model.trackId, trackName: model.trackName,
+    examId, shortName: model.shortName, category: model.category, trackId: model.trackId, trackName: model.trackName,
     scope: stageId ? { type: 'stage', stageId } : { type: 'exam' },
     calculatedAt: now.toISOString(),
     summary: {
       syllabusCompletion: round2(completion),
+      ownSyllabusCompletion: round2(ownCompletion),
+      sharedLearningUplift: round2(completion - ownCompletion),
       examMastery: round2(mastery),
       remainingWeightedSyllabus: round2(100 - completion),
       topicCounts: {
@@ -231,6 +268,44 @@ export function calculateProgress({ model, db, config, now = new Date(), stageId
   };
 }
 
+/** Exam-specific targets check (null when the requirement sets no targets, e.g. skill/descriptive). */
+function targetsMet(stats, req) {
+  if (!req || (req.questionTarget == null && req.accuracyTarget == null && req.speedTargetSec == null)) return null;
+  const questions = req.questionTarget == null ? null : stats.attempted >= req.questionTarget;
+  const accuracy = req.accuracyTarget == null ? null : stats.accuracy !== null && stats.accuracy >= req.accuracyTarget;
+  const speed = req.speedTargetSec == null ? null : stats.avgTimeSeconds !== null && stats.avgTimeSeconds <= req.speedTargetSec;
+  const gaps = [];
+  if (questions === false) gaps.push({ target: 'questions', have: stats.attempted, need: req.questionTarget });
+  if (accuracy === false) gaps.push({ target: 'accuracy', have: stats.accuracy === null ? null : round2(stats.accuracy), need: req.accuracyTarget });
+  if (speed === false) gaps.push({ target: 'speed', have: stats.avgTimeSeconds === null ? null : round2(stats.avgTimeSeconds), need: req.speedTargetSec });
+  return { questions, accuracy, speed, all: gaps.length === 0, gaps };
+}
+
+/** Practice split by the stage it was done for (prelims / mains …); 'unspecified' when not recorded. */
+function practiceByStage(sessions, cfg) {
+  const groups = {};
+  for (const s of sessions) (groups[s.stageId ?? 'unspecified'] ??= []).push(s);
+  return Object.fromEntries(Object.entries(groups).map(([k, list]) => {
+    const st = aggregateStats({ sessions: list, cfg });
+    return [k, { attempted: st.attempted, correct: st.correct, accuracy: st.accuracy === null ? null : round2(st.accuracy), avgTimeSeconds: st.avgTimeSeconds === null ? null : round2(st.avgTimeSeconds), practiceSets: st.practiceSets, revisionCount: st.revisionCount }];
+  }));
+}
+
+/**
+ * Prelims vs mains (per stage) readiness: each stage's own requirement checked against the practice
+ * logged for that stage only. Practice without a stage counts toward the exam-level check, not here.
+ */
+function stagePreparation(stageReqs, userTargets, sessions, cfg) {
+  if (!stageReqs) return null;
+  const byStage = {};
+  for (const [key, req] of Object.entries(stageReqs)) { const sid = key.split('/')[0]; byStage[sid] ??= req; }
+  return Object.fromEntries(Object.entries(byStage).map(([sid, req]) => {
+    const merged = { ...req, ...(userTargets ?? {}) };
+    const st = aggregateStats({ sessions: sessions.filter((s) => s.stageId === sid), cfg });
+    return [sid, { stageClass: req.stageClass, requirement: merged, attempted: st.attempted, accuracy: st.accuracy === null ? null : round2(st.accuracy), avgTimeSeconds: st.avgTimeSeconds === null ? null : round2(st.avgTimeSeconds), targetsMet: targetsMet(st, merged) }];
+  }));
+}
+
 function categoryOf(completion, cfg) {
   if (completion >= cfg.classification.completedAtOrAbove) return 'completed';
   if (completion > 0) return 'in-progress';
@@ -250,7 +325,7 @@ function recordFields(r) {
     completionDate: r?.completionDate ?? null, lastUpdated: r?.lastUpdated ?? null,
   };
 }
-const NUMERIC_KEYS = ['completion', 'mastery', 'concept', 'effectiveWeight', 'contribution', 'remaining', 'accuracy', 'avgTimeSeconds', 'revisionAccuracy'];
+const NUMERIC_KEYS = ['completion', 'ownCompletion', 'sharedUplift', 'mastery', 'concept', 'effectiveWeight', 'contribution', 'remaining', 'accuracy', 'avgTimeSeconds', 'revisionAccuracy'];
 function roundRecord(r) {
   const o = { ...r };
   for (const k of NUMERIC_KEYS) if (typeof o[k] === 'number') o[k] = round2(o[k]);

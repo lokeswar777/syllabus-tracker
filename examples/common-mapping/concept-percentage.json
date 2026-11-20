@@ -1,0 +1,86 @@
+{
+  "masterTopicId": "mt.quant.percentage",
+  "libraryTopicId": "quant.percentage",
+  "name": "Percentage",
+  "status": "concept-completed",
+  "conceptCompletion": 100,
+  "notes": "Fraction equivalents, successive change, product constancy.",
+  "learningDates": [
+    "2026-11-15"
+  ],
+  "resources": [
+    {
+      "id": "id-001",
+      "title": "Quantitative Aptitude: Percentage chapter",
+      "type": "book",
+      "url": null,
+      "note": "",
+      "addedOn": "2026-11-20"
+    },
+    {
+      "id": "id-002",
+      "title": "Percentage shortcuts lecture",
+      "type": "video",
+      "url": "https://example.com/percentage",
+      "note": "",
+      "addedOn": "2026-11-20"
+    }
+  ],
+  "conceptRevisionCount": 1,
+  "revisions": [
+    {
+      "date": "2026-11-18",
+      "note": "Formula sheet recap"
+    }
+  ],
+  "updatedAt": "2026-11-20T09:00:00.000Z",
+  "verification": {
+    "status": "verified",
+    "method": "manual",
+    "note": "Same canonical library topic in all 9 exams; subtopic coverage reviewed 2026-11-20."
+  },
+  "similarity": {
+    "level": "identical",
+    "minJaccard": 1,
+    "avgJaccard": 1
+  },
+  "defaultSyncMode": "full",
+  "linkedExams": [
+    {
+      "examId": "ssc-cgl",
+      "syncMode": "full"
+    },
+    {
+      "examId": "ssc-chsl",
+      "syncMode": "full"
+    },
+    {
+      "examId": "ssc-cpo",
+      "syncMode": "full"
+    },
+    {
+      "examId": "sbi-po",
+      "syncMode": "full"
+    },
+    {
+      "examId": "sbi-clerk",
+      "syncMode": "full"
+    },
+    {
+      "examId": "ibps-po",
+      "syncMode": "full"
+    },
+    {
+      "examId": "ibps-clerk",
+      "syncMode": "full"
+    },
+    {
+      "examId": "ibps-rrb-po",
+      "syncMode": "full"
+    },
+    {
+      "examId": "ibps-rrb-clerk",
+      "syncMode": "full"
+    }
+  ]
+}

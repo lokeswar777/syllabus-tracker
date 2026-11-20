@@ -1,0 +1,3821 @@
+{
+  "selectedExams": [
+    "ssc-cgl",
+    "ssc-chsl",
+    "sbi-po",
+    "ibps-po",
+    "sbi-clerk"
+  ],
+  "examsByCategory": {
+    "ssc": [
+      "ssc-cgl",
+      "ssc-chsl"
+    ],
+    "banking": [
+      "sbi-po",
+      "ibps-po",
+      "sbi-clerk"
+    ]
+  },
+  "groups": {
+    "commonToAllSelected": [
+      {
+        "topicId": "english.cloze-test",
+        "masterTopicId": "mt.english.cloze-test",
+        "name": "Cloze Test"
+      },
+      {
+        "topicId": "english.error-detection",
+        "masterTopicId": "mt.english.error-detection",
+        "name": "Error Detection"
+      },
+      {
+        "topicId": "english.fill-blanks",
+        "masterTopicId": "mt.english.fill-blanks",
+        "name": "Fill in the Blanks"
+      },
+      {
+        "topicId": "english.grammar-rules",
+        "masterTopicId": "mt.english.grammar-rules",
+        "name": "Grammar Fundamentals"
+      },
+      {
+        "topicId": "english.idioms-phrases",
+        "masterTopicId": "mt.english.idioms-phrases",
+        "name": "Idioms & Phrases"
+      },
+      {
+        "topicId": "english.para-jumbles",
+        "masterTopicId": "mt.english.para-jumbles",
+        "name": "Para Jumbles & Sentence Rearrangement"
+      },
+      {
+        "topicId": "english.reading-comprehension",
+        "masterTopicId": "mt.english.reading-comprehension",
+        "name": "Reading Comprehension"
+      },
+      {
+        "topicId": "english.sentence-improvement",
+        "masterTopicId": "mt.english.sentence-improvement",
+        "name": "Sentence Improvement"
+      },
+      {
+        "topicId": "english.spelling",
+        "masterTopicId": "mt.english.spelling",
+        "name": "Spellings"
+      },
+      {
+        "topicId": "english.synonyms-antonyms",
+        "masterTopicId": "mt.english.synonyms-antonyms",
+        "name": "Synonyms, Antonyms & Homonyms"
+      },
+      {
+        "topicId": "fin.banking-structure",
+        "masterTopicId": "mt.fin.banking-structure",
+        "name": "Indian Banking: History & Structure"
+      },
+      {
+        "topicId": "fin.rbi",
+        "masterTopicId": "mt.fin.rbi",
+        "name": "RBI & Monetary Policy"
+      },
+      {
+        "topicId": "ga.art-culture",
+        "masterTopicId": "mt.ga.art-culture",
+        "name": "Art & Culture"
+      },
+      {
+        "topicId": "ga.current-affairs",
+        "masterTopicId": "mt.ga.current-affairs",
+        "name": "Current Affairs"
+      },
+      {
+        "topicId": "ga.economy-basics",
+        "masterTopicId": "mt.ga.economy-basics",
+        "name": "Economy: Basic Concepts & National Income"
+      },
+      {
+        "topicId": "ga.economy-fiscal",
+        "masterTopicId": "mt.ga.economy-fiscal",
+        "name": "Public Finance & Budget"
+      },
+      {
+        "topicId": "ga.economy-inflation",
+        "masterTopicId": "mt.ga.economy-inflation",
+        "name": "Inflation & Price Indices"
+      },
+      {
+        "topicId": "ga.geography-india",
+        "masterTopicId": "mt.ga.geography-india",
+        "name": "Indian Geography"
+      },
+      {
+        "topicId": "ga.govt-schemes",
+        "masterTopicId": "mt.ga.govt-schemes",
+        "name": "Government Schemes & Policies"
+      },
+      {
+        "topicId": "ga.international-organisations",
+        "masterTopicId": "mt.ga.international-organisations",
+        "name": "International Organisations & Groupings"
+      },
+      {
+        "topicId": "ga.science-technology",
+        "masterTopicId": "mt.ga.science-technology",
+        "name": "Science & Technology"
+      },
+      {
+        "topicId": "ga.sports",
+        "masterTopicId": "mt.ga.sports",
+        "name": "Sports"
+      },
+      {
+        "topicId": "ga.static-gk",
+        "masterTopicId": "mt.ga.static-gk",
+        "name": "Static GK"
+      },
+      {
+        "topicId": "quant.ages",
+        "masterTopicId": "mt.quant.ages",
+        "name": "Problems on Ages"
+      },
+      {
+        "topicId": "quant.average",
+        "masterTopicId": "mt.quant.average",
+        "name": "Average"
+      },
+      {
+        "topicId": "quant.boats-streams",
+        "masterTopicId": "mt.quant.boats-streams",
+        "name": "Boats & Streams"
+      },
+      {
+        "topicId": "quant.compound-interest",
+        "masterTopicId": "mt.quant.compound-interest",
+        "name": "Compound Interest"
+      },
+      {
+        "topicId": "quant.data-interpretation",
+        "masterTopicId": "mt.quant.data-interpretation",
+        "name": "Data Interpretation"
+      },
+      {
+        "topicId": "quant.discount",
+        "masterTopicId": "mt.quant.discount",
+        "name": "Discount"
+      },
+      {
+        "topicId": "quant.mensuration-2d",
+        "masterTopicId": "mt.quant.mensuration-2d",
+        "name": "Mensuration 2D"
+      },
+      {
+        "topicId": "quant.mensuration-3d",
+        "masterTopicId": "mt.quant.mensuration-3d",
+        "name": "Mensuration 3D"
+      },
+      {
+        "topicId": "quant.mixture-alligation",
+        "masterTopicId": "mt.quant.mixture-alligation",
+        "name": "Mixture & Alligation"
+      },
+      {
+        "topicId": "quant.partnership",
+        "masterTopicId": "mt.quant.partnership",
+        "name": "Partnership"
+      },
+      {
+        "topicId": "quant.percentage",
+        "masterTopicId": "mt.quant.percentage",
+        "name": "Percentage"
+      },
+      {
+        "topicId": "quant.pipes-cisterns",
+        "masterTopicId": "mt.quant.pipes-cisterns",
+        "name": "Pipes & Cisterns"
+      },
+      {
+        "topicId": "quant.probability",
+        "masterTopicId": "mt.quant.probability",
+        "name": "Probability"
+      },
+      {
+        "topicId": "quant.profit-loss",
+        "masterTopicId": "mt.quant.profit-loss",
+        "name": "Profit & Loss"
+      },
+      {
+        "topicId": "quant.ratio-proportion",
+        "masterTopicId": "mt.quant.ratio-proportion",
+        "name": "Ratio & Proportion"
+      },
+      {
+        "topicId": "quant.simple-interest",
+        "masterTopicId": "mt.quant.simple-interest",
+        "name": "Simple Interest"
+      },
+      {
+        "topicId": "quant.simplification",
+        "masterTopicId": "mt.quant.simplification",
+        "name": "Simplification & Approximation"
+      },
+      {
+        "topicId": "quant.time-distance",
+        "masterTopicId": "mt.quant.time-distance",
+        "name": "Speed, Time & Distance"
+      },
+      {
+        "topicId": "quant.time-work",
+        "masterTopicId": "mt.quant.time-work",
+        "name": "Time & Work"
+      },
+      {
+        "topicId": "quant.trains",
+        "masterTopicId": "mt.quant.trains",
+        "name": "Problems on Trains"
+      },
+      {
+        "topicId": "reasoning.blood-relations",
+        "masterTopicId": "mt.reasoning.blood-relations",
+        "name": "Blood Relations"
+      },
+      {
+        "topicId": "reasoning.coding-decoding",
+        "masterTopicId": "mt.reasoning.coding-decoding",
+        "name": "Coding–Decoding"
+      },
+      {
+        "topicId": "reasoning.critical-reasoning",
+        "masterTopicId": "mt.reasoning.critical-reasoning",
+        "name": "Statement-based & Critical Reasoning"
+      },
+      {
+        "topicId": "reasoning.direction-distance",
+        "masterTopicId": "mt.reasoning.direction-distance",
+        "name": "Direction & Distance"
+      },
+      {
+        "topicId": "reasoning.order-ranking",
+        "masterTopicId": "mt.reasoning.order-ranking",
+        "name": "Order & Ranking"
+      },
+      {
+        "topicId": "reasoning.seating-arrangement",
+        "masterTopicId": "mt.reasoning.seating-arrangement",
+        "name": "Seating Arrangement"
+      },
+      {
+        "topicId": "reasoning.syllogism",
+        "masterTopicId": "mt.reasoning.syllogism",
+        "name": "Syllogism"
+      },
+      {
+        "topicId": "reasoning.word-building",
+        "masterTopicId": "mt.reasoning.word-building",
+        "name": "Word Building & Alphabet Test"
+      }
+    ],
+    "commonToSSC": [
+      {
+        "topicId": "computer.fundamentals",
+        "masterTopicId": "mt.computer.fundamentals",
+        "name": "Computer Fundamentals"
+      },
+      {
+        "topicId": "computer.hardware-ports",
+        "masterTopicId": "mt.computer.hardware-ports",
+        "name": "Ports, Buses & Hardware"
+      },
+      {
+        "topicId": "computer.internet-email",
+        "masterTopicId": "mt.computer.internet-email",
+        "name": "Internet & E-mail"
+      },
+      {
+        "topicId": "computer.memory",
+        "masterTopicId": "mt.computer.memory",
+        "name": "Computer Memory & Storage"
+      },
+      {
+        "topicId": "computer.ms-office",
+        "masterTopicId": "mt.computer.ms-office",
+        "name": "MS Office"
+      },
+      {
+        "topicId": "computer.networking",
+        "masterTopicId": "mt.computer.networking",
+        "name": "Networking"
+      },
+      {
+        "topicId": "computer.security",
+        "masterTopicId": "mt.computer.security",
+        "name": "Cyber Security"
+      },
+      {
+        "topicId": "computer.software-os",
+        "masterTopicId": "mt.computer.software-os",
+        "name": "Software & Operating Systems"
+      },
+      {
+        "topicId": "english.cloze-test",
+        "masterTopicId": "mt.english.cloze-test",
+        "name": "Cloze Test"
+      },
+      {
+        "topicId": "english.error-detection",
+        "masterTopicId": "mt.english.error-detection",
+        "name": "Error Detection"
+      },
+      {
+        "topicId": "english.fill-blanks",
+        "masterTopicId": "mt.english.fill-blanks",
+        "name": "Fill in the Blanks"
+      },
+      {
+        "topicId": "english.grammar-rules",
+        "masterTopicId": "mt.english.grammar-rules",
+        "name": "Grammar Fundamentals"
+      },
+      {
+        "topicId": "english.idioms-phrases",
+        "masterTopicId": "mt.english.idioms-phrases",
+        "name": "Idioms & Phrases"
+      },
+      {
+        "topicId": "english.narration",
+        "masterTopicId": "mt.english.narration",
+        "name": "Direct & Indirect Narration"
+      },
+      {
+        "topicId": "english.one-word-substitution",
+        "masterTopicId": "mt.english.one-word-substitution",
+        "name": "One-Word Substitution"
+      },
+      {
+        "topicId": "english.para-jumbles",
+        "masterTopicId": "mt.english.para-jumbles",
+        "name": "Para Jumbles & Sentence Rearrangement"
+      },
+      {
+        "topicId": "english.reading-comprehension",
+        "masterTopicId": "mt.english.reading-comprehension",
+        "name": "Reading Comprehension"
+      },
+      {
+        "topicId": "english.sentence-improvement",
+        "masterTopicId": "mt.english.sentence-improvement",
+        "name": "Sentence Improvement"
+      },
+      {
+        "topicId": "english.spelling",
+        "masterTopicId": "mt.english.spelling",
+        "name": "Spellings"
+      },
+      {
+        "topicId": "english.synonyms-antonyms",
+        "masterTopicId": "mt.english.synonyms-antonyms",
+        "name": "Synonyms, Antonyms & Homonyms"
+      },
+      {
+        "topicId": "english.voice",
+        "masterTopicId": "mt.english.voice",
+        "name": "Active & Passive Voice"
+      },
+      {
+        "topicId": "fin.banking-structure",
+        "masterTopicId": "mt.fin.banking-structure",
+        "name": "Indian Banking: History & Structure"
+      },
+      {
+        "topicId": "fin.rbi",
+        "masterTopicId": "mt.fin.rbi",
+        "name": "RBI & Monetary Policy"
+      },
+      {
+        "topicId": "ga.art-culture",
+        "masterTopicId": "mt.ga.art-culture",
+        "name": "Art & Culture"
+      },
+      {
+        "topicId": "ga.current-affairs",
+        "masterTopicId": "mt.ga.current-affairs",
+        "name": "Current Affairs"
+      },
+      {
+        "topicId": "ga.economy-agriculture",
+        "masterTopicId": "mt.ga.economy-agriculture",
+        "name": "Agricultural Economy"
+      },
+      {
+        "topicId": "ga.economy-basics",
+        "masterTopicId": "mt.ga.economy-basics",
+        "name": "Economy: Basic Concepts & National Income"
+      },
+      {
+        "topicId": "ga.economy-external",
+        "masterTopicId": "mt.ga.economy-external",
+        "name": "External Sector"
+      },
+      {
+        "topicId": "ga.economy-fiscal",
+        "masterTopicId": "mt.ga.economy-fiscal",
+        "name": "Public Finance & Budget"
+      },
+      {
+        "topicId": "ga.economy-inflation",
+        "masterTopicId": "mt.ga.economy-inflation",
+        "name": "Inflation & Price Indices"
+      },
+      {
+        "topicId": "ga.economy-planning",
+        "masterTopicId": "mt.ga.economy-planning",
+        "name": "Economic Planning"
+      },
+      {
+        "topicId": "ga.economy-reforms",
+        "masterTopicId": "mt.ga.economy-reforms",
+        "name": "Economic Reforms"
+      },
+      {
+        "topicId": "ga.economy-social",
+        "masterTopicId": "mt.ga.economy-social",
+        "name": "Poverty, Unemployment & Population"
+      },
+      {
+        "topicId": "ga.environment",
+        "masterTopicId": "mt.ga.environment",
+        "name": "Environment & Ecology"
+      },
+      {
+        "topicId": "ga.geography-india",
+        "masterTopicId": "mt.ga.geography-india",
+        "name": "Indian Geography"
+      },
+      {
+        "topicId": "ga.geography-physical",
+        "masterTopicId": "mt.ga.geography-physical",
+        "name": "Physical & World Geography"
+      },
+      {
+        "topicId": "ga.govt-schemes",
+        "masterTopicId": "mt.ga.govt-schemes",
+        "name": "Government Schemes & Policies"
+      },
+      {
+        "topicId": "ga.history-ancient",
+        "masterTopicId": "mt.ga.history-ancient",
+        "name": "Ancient Indian History"
+      },
+      {
+        "topicId": "ga.history-medieval",
+        "masterTopicId": "mt.ga.history-medieval",
+        "name": "Medieval Indian History"
+      },
+      {
+        "topicId": "ga.history-modern",
+        "masterTopicId": "mt.ga.history-modern",
+        "name": "Modern Indian History & Freedom Struggle"
+      },
+      {
+        "topicId": "ga.india-neighbours",
+        "masterTopicId": "mt.ga.india-neighbours",
+        "name": "India & Neighbouring Countries"
+      },
+      {
+        "topicId": "ga.international-organisations",
+        "masterTopicId": "mt.ga.international-organisations",
+        "name": "International Organisations & Groupings"
+      },
+      {
+        "topicId": "ga.polity",
+        "masterTopicId": "mt.ga.polity",
+        "name": "Indian Polity & Constitution"
+      },
+      {
+        "topicId": "ga.science-biology",
+        "masterTopicId": "mt.ga.science-biology",
+        "name": "Biology (Everyday Science)"
+      },
+      {
+        "topicId": "ga.science-chemistry",
+        "masterTopicId": "mt.ga.science-chemistry",
+        "name": "Chemistry (Everyday Science)"
+      },
+      {
+        "topicId": "ga.science-physics",
+        "masterTopicId": "mt.ga.science-physics",
+        "name": "Physics (Everyday Science)"
+      },
+      {
+        "topicId": "ga.science-technology",
+        "masterTopicId": "mt.ga.science-technology",
+        "name": "Science & Technology"
+      },
+      {
+        "topicId": "ga.sports",
+        "masterTopicId": "mt.ga.sports",
+        "name": "Sports"
+      },
+      {
+        "topicId": "ga.static-gk",
+        "masterTopicId": "mt.ga.static-gk",
+        "name": "Static GK"
+      },
+      {
+        "topicId": "quant.ages",
+        "masterTopicId": "mt.quant.ages",
+        "name": "Problems on Ages"
+      },
+      {
+        "topicId": "quant.algebra-identities",
+        "masterTopicId": "mt.quant.algebra-identities",
+        "name": "Algebraic Identities & Expressions"
+      },
+      {
+        "topicId": "quant.average",
+        "masterTopicId": "mt.quant.average",
+        "name": "Average"
+      },
+      {
+        "topicId": "quant.boats-streams",
+        "masterTopicId": "mt.quant.boats-streams",
+        "name": "Boats & Streams"
+      },
+      {
+        "topicId": "quant.compound-interest",
+        "masterTopicId": "mt.quant.compound-interest",
+        "name": "Compound Interest"
+      },
+      {
+        "topicId": "quant.coordinate-geometry",
+        "masterTopicId": "mt.quant.coordinate-geometry",
+        "name": "Coordinate Geometry & Graphs"
+      },
+      {
+        "topicId": "quant.data-interpretation",
+        "masterTopicId": "mt.quant.data-interpretation",
+        "name": "Data Interpretation"
+      },
+      {
+        "topicId": "quant.discount",
+        "masterTopicId": "mt.quant.discount",
+        "name": "Discount"
+      },
+      {
+        "topicId": "quant.geometry-circles",
+        "masterTopicId": "mt.quant.geometry-circles",
+        "name": "Circles"
+      },
+      {
+        "topicId": "quant.geometry-lines-angles",
+        "masterTopicId": "mt.quant.geometry-lines-angles",
+        "name": "Lines & Angles"
+      },
+      {
+        "topicId": "quant.geometry-quadrilaterals-polygons",
+        "masterTopicId": "mt.quant.geometry-quadrilaterals-polygons",
+        "name": "Quadrilaterals & Polygons"
+      },
+      {
+        "topicId": "quant.geometry-triangles",
+        "masterTopicId": "mt.quant.geometry-triangles",
+        "name": "Triangles"
+      },
+      {
+        "topicId": "quant.hcf-lcm",
+        "masterTopicId": "mt.quant.hcf-lcm",
+        "name": "HCF & LCM"
+      },
+      {
+        "topicId": "quant.heights-distances",
+        "masterTopicId": "mt.quant.heights-distances",
+        "name": "Heights & Distances"
+      },
+      {
+        "topicId": "quant.linear-equations",
+        "masterTopicId": "mt.quant.linear-equations",
+        "name": "Linear Equations"
+      },
+      {
+        "topicId": "quant.mensuration-2d",
+        "masterTopicId": "mt.quant.mensuration-2d",
+        "name": "Mensuration 2D"
+      },
+      {
+        "topicId": "quant.mensuration-3d",
+        "masterTopicId": "mt.quant.mensuration-3d",
+        "name": "Mensuration 3D"
+      },
+      {
+        "topicId": "quant.mixture-alligation",
+        "masterTopicId": "mt.quant.mixture-alligation",
+        "name": "Mixture & Alligation"
+      },
+      {
+        "topicId": "quant.number-system",
+        "masterTopicId": "mt.quant.number-system",
+        "name": "Number System"
+      },
+      {
+        "topicId": "quant.partnership",
+        "masterTopicId": "mt.quant.partnership",
+        "name": "Partnership"
+      },
+      {
+        "topicId": "quant.percentage",
+        "masterTopicId": "mt.quant.percentage",
+        "name": "Percentage"
+      },
+      {
+        "topicId": "quant.pipes-cisterns",
+        "masterTopicId": "mt.quant.pipes-cisterns",
+        "name": "Pipes & Cisterns"
+      },
+      {
+        "topicId": "quant.probability",
+        "masterTopicId": "mt.quant.probability",
+        "name": "Probability"
+      },
+      {
+        "topicId": "quant.profit-loss",
+        "masterTopicId": "mt.quant.profit-loss",
+        "name": "Profit & Loss"
+      },
+      {
+        "topicId": "quant.ratio-proportion",
+        "masterTopicId": "mt.quant.ratio-proportion",
+        "name": "Ratio & Proportion"
+      },
+      {
+        "topicId": "quant.simple-interest",
+        "masterTopicId": "mt.quant.simple-interest",
+        "name": "Simple Interest"
+      },
+      {
+        "topicId": "quant.simplification",
+        "masterTopicId": "mt.quant.simplification",
+        "name": "Simplification & Approximation"
+      },
+      {
+        "topicId": "quant.statistics",
+        "masterTopicId": "mt.quant.statistics",
+        "name": "Basic Statistics"
+      },
+      {
+        "topicId": "quant.surds-indices",
+        "masterTopicId": "mt.quant.surds-indices",
+        "name": "Surds & Indices"
+      },
+      {
+        "topicId": "quant.time-distance",
+        "masterTopicId": "mt.quant.time-distance",
+        "name": "Speed, Time & Distance"
+      },
+      {
+        "topicId": "quant.time-work",
+        "masterTopicId": "mt.quant.time-work",
+        "name": "Time & Work"
+      },
+      {
+        "topicId": "quant.trains",
+        "masterTopicId": "mt.quant.trains",
+        "name": "Problems on Trains"
+      },
+      {
+        "topicId": "quant.trigonometry",
+        "masterTopicId": "mt.quant.trigonometry",
+        "name": "Trigonometry"
+      },
+      {
+        "topicId": "reasoning.analogy",
+        "masterTopicId": "mt.reasoning.analogy",
+        "name": "Analogy"
+      },
+      {
+        "topicId": "reasoning.arithmetic-reasoning",
+        "masterTopicId": "mt.reasoning.arithmetic-reasoning",
+        "name": "Arithmetical Reasoning & Problem Solving"
+      },
+      {
+        "topicId": "reasoning.blood-relations",
+        "masterTopicId": "mt.reasoning.blood-relations",
+        "name": "Blood Relations"
+      },
+      {
+        "topicId": "reasoning.calendar-clock",
+        "masterTopicId": "mt.reasoning.calendar-clock",
+        "name": "Calendar & Clock"
+      },
+      {
+        "topicId": "reasoning.classification",
+        "masterTopicId": "mt.reasoning.classification",
+        "name": "Classification (Odd One Out)"
+      },
+      {
+        "topicId": "reasoning.coding-decoding",
+        "masterTopicId": "mt.reasoning.coding-decoding",
+        "name": "Coding–Decoding"
+      },
+      {
+        "topicId": "reasoning.counting-figures",
+        "masterTopicId": "mt.reasoning.counting-figures",
+        "name": "Counting of Figures"
+      },
+      {
+        "topicId": "reasoning.critical-reasoning",
+        "masterTopicId": "mt.reasoning.critical-reasoning",
+        "name": "Statement-based & Critical Reasoning"
+      },
+      {
+        "topicId": "reasoning.cubes-dice",
+        "masterTopicId": "mt.reasoning.cubes-dice",
+        "name": "Cubes, Dice & Spatial Ability"
+      },
+      {
+        "topicId": "reasoning.direction-distance",
+        "masterTopicId": "mt.reasoning.direction-distance",
+        "name": "Direction & Distance"
+      },
+      {
+        "topicId": "reasoning.embedded-figures",
+        "masterTopicId": "mt.reasoning.embedded-figures",
+        "name": "Embedded Figures"
+      },
+      {
+        "topicId": "reasoning.emotional-social-intelligence",
+        "masterTopicId": "mt.reasoning.emotional-social-intelligence",
+        "name": "Emotional & Social Intelligence"
+      },
+      {
+        "topicId": "reasoning.figure-completion",
+        "masterTopicId": "mt.reasoning.figure-completion",
+        "name": "Figure Completion & Formation"
+      },
+      {
+        "topicId": "reasoning.mathematical-operations",
+        "masterTopicId": "mt.reasoning.mathematical-operations",
+        "name": "Mathematical & Symbolic Operations"
+      },
+      {
+        "topicId": "reasoning.mirror-water-images",
+        "masterTopicId": "mt.reasoning.mirror-water-images",
+        "name": "Mirror & Water Images"
+      },
+      {
+        "topicId": "reasoning.order-ranking",
+        "masterTopicId": "mt.reasoning.order-ranking",
+        "name": "Order & Ranking"
+      },
+      {
+        "topicId": "reasoning.paper-folding-cutting",
+        "masterTopicId": "mt.reasoning.paper-folding-cutting",
+        "name": "Paper Folding & Cutting"
+      },
+      {
+        "topicId": "reasoning.seating-arrangement",
+        "masterTopicId": "mt.reasoning.seating-arrangement",
+        "name": "Seating Arrangement"
+      },
+      {
+        "topicId": "reasoning.series",
+        "masterTopicId": "mt.reasoning.series",
+        "name": "Series"
+      },
+      {
+        "topicId": "reasoning.syllogism",
+        "masterTopicId": "mt.reasoning.syllogism",
+        "name": "Syllogism"
+      },
+      {
+        "topicId": "reasoning.venn-diagrams",
+        "masterTopicId": "mt.reasoning.venn-diagrams",
+        "name": "Venn Diagrams"
+      },
+      {
+        "topicId": "reasoning.word-building",
+        "masterTopicId": "mt.reasoning.word-building",
+        "name": "Word Building & Alphabet Test"
+      }
+    ],
+    "commonToBanking": [
+      {
+        "topicId": "english.cloze-test",
+        "masterTopicId": "mt.english.cloze-test",
+        "name": "Cloze Test"
+      },
+      {
+        "topicId": "english.error-detection",
+        "masterTopicId": "mt.english.error-detection",
+        "name": "Error Detection"
+      },
+      {
+        "topicId": "english.fill-blanks",
+        "masterTopicId": "mt.english.fill-blanks",
+        "name": "Fill in the Blanks"
+      },
+      {
+        "topicId": "english.grammar-rules",
+        "masterTopicId": "mt.english.grammar-rules",
+        "name": "Grammar Fundamentals"
+      },
+      {
+        "topicId": "english.idioms-phrases",
+        "masterTopicId": "mt.english.idioms-phrases",
+        "name": "Idioms & Phrases"
+      },
+      {
+        "topicId": "english.para-jumbles",
+        "masterTopicId": "mt.english.para-jumbles",
+        "name": "Para Jumbles & Sentence Rearrangement"
+      },
+      {
+        "topicId": "english.reading-comprehension",
+        "masterTopicId": "mt.english.reading-comprehension",
+        "name": "Reading Comprehension"
+      },
+      {
+        "topicId": "english.sentence-completion",
+        "masterTopicId": "mt.english.sentence-completion",
+        "name": "Sentence Completion & Connectors"
+      },
+      {
+        "topicId": "english.sentence-improvement",
+        "masterTopicId": "mt.english.sentence-improvement",
+        "name": "Sentence Improvement"
+      },
+      {
+        "topicId": "english.spelling",
+        "masterTopicId": "mt.english.spelling",
+        "name": "Spellings"
+      },
+      {
+        "topicId": "english.synonyms-antonyms",
+        "masterTopicId": "mt.english.synonyms-antonyms",
+        "name": "Synonyms, Antonyms & Homonyms"
+      },
+      {
+        "topicId": "english.word-usage",
+        "masterTopicId": "mt.english.word-usage",
+        "name": "New-pattern Vocabulary & Usage"
+      },
+      {
+        "topicId": "fin.banking-current-affairs",
+        "masterTopicId": "mt.fin.banking-current-affairs",
+        "name": "Banking & Financial Current Affairs"
+      },
+      {
+        "topicId": "fin.banking-structure",
+        "masterTopicId": "mt.fin.banking-structure",
+        "name": "Indian Banking: History & Structure"
+      },
+      {
+        "topicId": "fin.banking-terms",
+        "masterTopicId": "mt.fin.banking-terms",
+        "name": "Banking Terminology & Operations"
+      },
+      {
+        "topicId": "fin.budget-economic-survey",
+        "masterTopicId": "mt.fin.budget-economic-survey",
+        "name": "Union Budget & Economic Survey (current)"
+      },
+      {
+        "topicId": "fin.digital-payments",
+        "masterTopicId": "mt.fin.digital-payments",
+        "name": "Digital Banking & Payments"
+      },
+      {
+        "topicId": "fin.financial-inclusion",
+        "masterTopicId": "mt.fin.financial-inclusion",
+        "name": "Financial Inclusion"
+      },
+      {
+        "topicId": "fin.financial-markets",
+        "masterTopicId": "mt.fin.financial-markets",
+        "name": "Financial Markets"
+      },
+      {
+        "topicId": "fin.insurance-pension",
+        "masterTopicId": "mt.fin.insurance-pension",
+        "name": "Insurance & Pension"
+      },
+      {
+        "topicId": "fin.rbi",
+        "masterTopicId": "mt.fin.rbi",
+        "name": "RBI & Monetary Policy"
+      },
+      {
+        "topicId": "fin.regulators-institutions",
+        "masterTopicId": "mt.fin.regulators-institutions",
+        "name": "Regulators & Financial Institutions"
+      },
+      {
+        "topicId": "fin.rural-agri-finance",
+        "masterTopicId": "mt.fin.rural-agri-finance",
+        "name": "Rural Banking & Agricultural Finance"
+      },
+      {
+        "topicId": "ga.art-culture",
+        "masterTopicId": "mt.ga.art-culture",
+        "name": "Art & Culture"
+      },
+      {
+        "topicId": "ga.current-affairs",
+        "masterTopicId": "mt.ga.current-affairs",
+        "name": "Current Affairs"
+      },
+      {
+        "topicId": "ga.economy-basics",
+        "masterTopicId": "mt.ga.economy-basics",
+        "name": "Economy: Basic Concepts & National Income"
+      },
+      {
+        "topicId": "ga.economy-fiscal",
+        "masterTopicId": "mt.ga.economy-fiscal",
+        "name": "Public Finance & Budget"
+      },
+      {
+        "topicId": "ga.economy-inflation",
+        "masterTopicId": "mt.ga.economy-inflation",
+        "name": "Inflation & Price Indices"
+      },
+      {
+        "topicId": "ga.geography-india",
+        "masterTopicId": "mt.ga.geography-india",
+        "name": "Indian Geography"
+      },
+      {
+        "topicId": "ga.govt-schemes",
+        "masterTopicId": "mt.ga.govt-schemes",
+        "name": "Government Schemes & Policies"
+      },
+      {
+        "topicId": "ga.international-organisations",
+        "masterTopicId": "mt.ga.international-organisations",
+        "name": "International Organisations & Groupings"
+      },
+      {
+        "topicId": "ga.science-technology",
+        "masterTopicId": "mt.ga.science-technology",
+        "name": "Science & Technology"
+      },
+      {
+        "topicId": "ga.sports",
+        "masterTopicId": "mt.ga.sports",
+        "name": "Sports"
+      },
+      {
+        "topicId": "ga.static-gk",
+        "masterTopicId": "mt.ga.static-gk",
+        "name": "Static GK"
+      },
+      {
+        "topicId": "quant.ages",
+        "masterTopicId": "mt.quant.ages",
+        "name": "Problems on Ages"
+      },
+      {
+        "topicId": "quant.average",
+        "masterTopicId": "mt.quant.average",
+        "name": "Average"
+      },
+      {
+        "topicId": "quant.boats-streams",
+        "masterTopicId": "mt.quant.boats-streams",
+        "name": "Boats & Streams"
+      },
+      {
+        "topicId": "quant.compound-interest",
+        "masterTopicId": "mt.quant.compound-interest",
+        "name": "Compound Interest"
+      },
+      {
+        "topicId": "quant.data-interpretation",
+        "masterTopicId": "mt.quant.data-interpretation",
+        "name": "Data Interpretation"
+      },
+      {
+        "topicId": "quant.data-sufficiency",
+        "masterTopicId": "mt.quant.data-sufficiency",
+        "name": "Data Sufficiency (Quant)"
+      },
+      {
+        "topicId": "quant.discount",
+        "masterTopicId": "mt.quant.discount",
+        "name": "Discount"
+      },
+      {
+        "topicId": "quant.mensuration-2d",
+        "masterTopicId": "mt.quant.mensuration-2d",
+        "name": "Mensuration 2D"
+      },
+      {
+        "topicId": "quant.mensuration-3d",
+        "masterTopicId": "mt.quant.mensuration-3d",
+        "name": "Mensuration 3D"
+      },
+      {
+        "topicId": "quant.mixture-alligation",
+        "masterTopicId": "mt.quant.mixture-alligation",
+        "name": "Mixture & Alligation"
+      },
+      {
+        "topicId": "quant.number-series",
+        "masterTopicId": "mt.quant.number-series",
+        "name": "Number Series (Quant)"
+      },
+      {
+        "topicId": "quant.partnership",
+        "masterTopicId": "mt.quant.partnership",
+        "name": "Partnership"
+      },
+      {
+        "topicId": "quant.percentage",
+        "masterTopicId": "mt.quant.percentage",
+        "name": "Percentage"
+      },
+      {
+        "topicId": "quant.permutation-combination",
+        "masterTopicId": "mt.quant.permutation-combination",
+        "name": "Permutation & Combination"
+      },
+      {
+        "topicId": "quant.pipes-cisterns",
+        "masterTopicId": "mt.quant.pipes-cisterns",
+        "name": "Pipes & Cisterns"
+      },
+      {
+        "topicId": "quant.probability",
+        "masterTopicId": "mt.quant.probability",
+        "name": "Probability"
+      },
+      {
+        "topicId": "quant.profit-loss",
+        "masterTopicId": "mt.quant.profit-loss",
+        "name": "Profit & Loss"
+      },
+      {
+        "topicId": "quant.quadratic-equations",
+        "masterTopicId": "mt.quant.quadratic-equations",
+        "name": "Quadratic Equations"
+      },
+      {
+        "topicId": "quant.quantity-comparison",
+        "masterTopicId": "mt.quant.quantity-comparison",
+        "name": "Quantity Comparison"
+      },
+      {
+        "topicId": "quant.ratio-proportion",
+        "masterTopicId": "mt.quant.ratio-proportion",
+        "name": "Ratio & Proportion"
+      },
+      {
+        "topicId": "quant.simple-interest",
+        "masterTopicId": "mt.quant.simple-interest",
+        "name": "Simple Interest"
+      },
+      {
+        "topicId": "quant.simplification",
+        "masterTopicId": "mt.quant.simplification",
+        "name": "Simplification & Approximation"
+      },
+      {
+        "topicId": "quant.time-distance",
+        "masterTopicId": "mt.quant.time-distance",
+        "name": "Speed, Time & Distance"
+      },
+      {
+        "topicId": "quant.time-work",
+        "masterTopicId": "mt.quant.time-work",
+        "name": "Time & Work"
+      },
+      {
+        "topicId": "quant.trains",
+        "masterTopicId": "mt.quant.trains",
+        "name": "Problems on Trains"
+      },
+      {
+        "topicId": "reasoning.alphanumeric-series",
+        "masterTopicId": "mt.reasoning.alphanumeric-series",
+        "name": "Alphanumeric / Symbol Series"
+      },
+      {
+        "topicId": "reasoning.blood-relations",
+        "masterTopicId": "mt.reasoning.blood-relations",
+        "name": "Blood Relations"
+      },
+      {
+        "topicId": "reasoning.coding-decoding",
+        "masterTopicId": "mt.reasoning.coding-decoding",
+        "name": "Coding–Decoding"
+      },
+      {
+        "topicId": "reasoning.critical-reasoning",
+        "masterTopicId": "mt.reasoning.critical-reasoning",
+        "name": "Statement-based & Critical Reasoning"
+      },
+      {
+        "topicId": "reasoning.data-sufficiency",
+        "masterTopicId": "mt.reasoning.data-sufficiency",
+        "name": "Data Sufficiency (Reasoning)"
+      },
+      {
+        "topicId": "reasoning.direction-distance",
+        "masterTopicId": "mt.reasoning.direction-distance",
+        "name": "Direction & Distance"
+      },
+      {
+        "topicId": "reasoning.inequality",
+        "masterTopicId": "mt.reasoning.inequality",
+        "name": "Inequality"
+      },
+      {
+        "topicId": "reasoning.input-output",
+        "masterTopicId": "mt.reasoning.input-output",
+        "name": "Input–Output (Machine)"
+      },
+      {
+        "topicId": "reasoning.order-ranking",
+        "masterTopicId": "mt.reasoning.order-ranking",
+        "name": "Order & Ranking"
+      },
+      {
+        "topicId": "reasoning.puzzles",
+        "masterTopicId": "mt.reasoning.puzzles",
+        "name": "Puzzles"
+      },
+      {
+        "topicId": "reasoning.seating-arrangement",
+        "masterTopicId": "mt.reasoning.seating-arrangement",
+        "name": "Seating Arrangement"
+      },
+      {
+        "topicId": "reasoning.syllogism",
+        "masterTopicId": "mt.reasoning.syllogism",
+        "name": "Syllogism"
+      },
+      {
+        "topicId": "reasoning.word-building",
+        "masterTopicId": "mt.reasoning.word-building",
+        "name": "Word Building & Alphabet Test"
+      }
+    ],
+    "uniqueToSSC": [
+      {
+        "topicId": "english.narration",
+        "masterTopicId": "mt.english.narration",
+        "name": "Direct & Indirect Narration"
+      },
+      {
+        "topicId": "english.one-word-substitution",
+        "masterTopicId": "mt.english.one-word-substitution",
+        "name": "One-Word Substitution"
+      },
+      {
+        "topicId": "english.voice",
+        "masterTopicId": "mt.english.voice",
+        "name": "Active & Passive Voice"
+      },
+      {
+        "topicId": "ga.environment",
+        "masterTopicId": "mt.ga.environment",
+        "name": "Environment & Ecology"
+      },
+      {
+        "topicId": "ga.geography-physical",
+        "masterTopicId": "mt.ga.geography-physical",
+        "name": "Physical & World Geography"
+      },
+      {
+        "topicId": "ga.history-ancient",
+        "masterTopicId": "mt.ga.history-ancient",
+        "name": "Ancient Indian History"
+      },
+      {
+        "topicId": "ga.history-medieval",
+        "masterTopicId": "mt.ga.history-medieval",
+        "name": "Medieval Indian History"
+      },
+      {
+        "topicId": "ga.history-modern",
+        "masterTopicId": "mt.ga.history-modern",
+        "name": "Modern Indian History & Freedom Struggle"
+      },
+      {
+        "topicId": "ga.india-neighbours",
+        "masterTopicId": "mt.ga.india-neighbours",
+        "name": "India & Neighbouring Countries"
+      },
+      {
+        "topicId": "ga.polity",
+        "masterTopicId": "mt.ga.polity",
+        "name": "Indian Polity & Constitution"
+      },
+      {
+        "topicId": "ga.science-biology",
+        "masterTopicId": "mt.ga.science-biology",
+        "name": "Biology (Everyday Science)"
+      },
+      {
+        "topicId": "ga.science-chemistry",
+        "masterTopicId": "mt.ga.science-chemistry",
+        "name": "Chemistry (Everyday Science)"
+      },
+      {
+        "topicId": "ga.science-physics",
+        "masterTopicId": "mt.ga.science-physics",
+        "name": "Physics (Everyday Science)"
+      },
+      {
+        "topicId": "quant.algebra-identities",
+        "masterTopicId": "mt.quant.algebra-identities",
+        "name": "Algebraic Identities & Expressions"
+      },
+      {
+        "topicId": "quant.coordinate-geometry",
+        "masterTopicId": "mt.quant.coordinate-geometry",
+        "name": "Coordinate Geometry & Graphs"
+      },
+      {
+        "topicId": "quant.geometry-circles",
+        "masterTopicId": "mt.quant.geometry-circles",
+        "name": "Circles"
+      },
+      {
+        "topicId": "quant.geometry-lines-angles",
+        "masterTopicId": "mt.quant.geometry-lines-angles",
+        "name": "Lines & Angles"
+      },
+      {
+        "topicId": "quant.geometry-quadrilaterals-polygons",
+        "masterTopicId": "mt.quant.geometry-quadrilaterals-polygons",
+        "name": "Quadrilaterals & Polygons"
+      },
+      {
+        "topicId": "quant.geometry-triangles",
+        "masterTopicId": "mt.quant.geometry-triangles",
+        "name": "Triangles"
+      },
+      {
+        "topicId": "quant.hcf-lcm",
+        "masterTopicId": "mt.quant.hcf-lcm",
+        "name": "HCF & LCM"
+      },
+      {
+        "topicId": "quant.heights-distances",
+        "masterTopicId": "mt.quant.heights-distances",
+        "name": "Heights & Distances"
+      },
+      {
+        "topicId": "quant.linear-equations",
+        "masterTopicId": "mt.quant.linear-equations",
+        "name": "Linear Equations"
+      },
+      {
+        "topicId": "quant.number-system",
+        "masterTopicId": "mt.quant.number-system",
+        "name": "Number System"
+      },
+      {
+        "topicId": "quant.statistics",
+        "masterTopicId": "mt.quant.statistics",
+        "name": "Basic Statistics"
+      },
+      {
+        "topicId": "quant.surds-indices",
+        "masterTopicId": "mt.quant.surds-indices",
+        "name": "Surds & Indices"
+      },
+      {
+        "topicId": "quant.trigonometry",
+        "masterTopicId": "mt.quant.trigonometry",
+        "name": "Trigonometry"
+      },
+      {
+        "topicId": "reasoning.analogy",
+        "masterTopicId": "mt.reasoning.analogy",
+        "name": "Analogy"
+      },
+      {
+        "topicId": "reasoning.arithmetic-reasoning",
+        "masterTopicId": "mt.reasoning.arithmetic-reasoning",
+        "name": "Arithmetical Reasoning & Problem Solving"
+      },
+      {
+        "topicId": "reasoning.calendar-clock",
+        "masterTopicId": "mt.reasoning.calendar-clock",
+        "name": "Calendar & Clock"
+      },
+      {
+        "topicId": "reasoning.clerical-aptitude",
+        "masterTopicId": "mt.reasoning.clerical-aptitude",
+        "name": "Clerical Aptitude"
+      },
+      {
+        "topicId": "reasoning.counting-figures",
+        "masterTopicId": "mt.reasoning.counting-figures",
+        "name": "Counting of Figures"
+      },
+      {
+        "topicId": "reasoning.cubes-dice",
+        "masterTopicId": "mt.reasoning.cubes-dice",
+        "name": "Cubes, Dice & Spatial Ability"
+      },
+      {
+        "topicId": "reasoning.embedded-figures",
+        "masterTopicId": "mt.reasoning.embedded-figures",
+        "name": "Embedded Figures"
+      },
+      {
+        "topicId": "reasoning.emotional-social-intelligence",
+        "masterTopicId": "mt.reasoning.emotional-social-intelligence",
+        "name": "Emotional & Social Intelligence"
+      },
+      {
+        "topicId": "reasoning.figure-completion",
+        "masterTopicId": "mt.reasoning.figure-completion",
+        "name": "Figure Completion & Formation"
+      },
+      {
+        "topicId": "reasoning.mathematical-operations",
+        "masterTopicId": "mt.reasoning.mathematical-operations",
+        "name": "Mathematical & Symbolic Operations"
+      },
+      {
+        "topicId": "reasoning.mirror-water-images",
+        "masterTopicId": "mt.reasoning.mirror-water-images",
+        "name": "Mirror & Water Images"
+      },
+      {
+        "topicId": "reasoning.paper-folding-cutting",
+        "masterTopicId": "mt.reasoning.paper-folding-cutting",
+        "name": "Paper Folding & Cutting"
+      },
+      {
+        "topicId": "reasoning.series",
+        "masterTopicId": "mt.reasoning.series",
+        "name": "Series"
+      },
+      {
+        "topicId": "reasoning.venn-diagrams",
+        "masterTopicId": "mt.reasoning.venn-diagrams",
+        "name": "Venn Diagrams"
+      },
+      {
+        "topicId": "skill.deo-skill-test",
+        "masterTopicId": null,
+        "name": "Skill Test for Data Entry Operators"
+      },
+      {
+        "topicId": "skill.dest",
+        "masterTopicId": null,
+        "name": "Data Entry Speed Test (DEST)"
+      },
+      {
+        "topicId": "skill.typing-test",
+        "masterTopicId": null,
+        "name": "Typing Test (LDC/JSA)"
+      }
+    ],
+    "uniqueToBanking": [
+      {
+        "topicId": "computer.emerging-tech",
+        "masterTopicId": "mt.computer.emerging-tech",
+        "name": "Emerging Technologies & Abbreviations"
+      },
+      {
+        "topicId": "computer.number-systems-logic",
+        "masterTopicId": "mt.computer.number-systems-logic",
+        "name": "Number Systems & Logic Gates"
+      },
+      {
+        "topicId": "computer.programming-dbms",
+        "masterTopicId": "mt.computer.programming-dbms",
+        "name": "Programming & DBMS Basics"
+      },
+      {
+        "topicId": "descriptive.comprehension-writing",
+        "masterTopicId": null,
+        "name": "Comprehension (Written Answers)"
+      },
+      {
+        "topicId": "descriptive.email-writing",
+        "masterTopicId": null,
+        "name": "E-mail Writing"
+      },
+      {
+        "topicId": "descriptive.essay",
+        "masterTopicId": null,
+        "name": "Essay Writing"
+      },
+      {
+        "topicId": "descriptive.precis-writing",
+        "masterTopicId": null,
+        "name": "Précis Writing"
+      },
+      {
+        "topicId": "descriptive.report-writing",
+        "masterTopicId": null,
+        "name": "Report Writing"
+      },
+      {
+        "topicId": "descriptive.situation-analysis",
+        "masterTopicId": null,
+        "name": "Situation Analysis"
+      },
+      {
+        "topicId": "english.sentence-completion",
+        "masterTopicId": "mt.english.sentence-completion",
+        "name": "Sentence Completion & Connectors"
+      },
+      {
+        "topicId": "english.word-usage",
+        "masterTopicId": "mt.english.word-usage",
+        "name": "New-pattern Vocabulary & Usage"
+      },
+      {
+        "topicId": "fin.banking-current-affairs",
+        "masterTopicId": "mt.fin.banking-current-affairs",
+        "name": "Banking & Financial Current Affairs"
+      },
+      {
+        "topicId": "fin.banking-terms",
+        "masterTopicId": "mt.fin.banking-terms",
+        "name": "Banking Terminology & Operations"
+      },
+      {
+        "topicId": "fin.budget-economic-survey",
+        "masterTopicId": "mt.fin.budget-economic-survey",
+        "name": "Union Budget & Economic Survey (current)"
+      },
+      {
+        "topicId": "fin.digital-payments",
+        "masterTopicId": "mt.fin.digital-payments",
+        "name": "Digital Banking & Payments"
+      },
+      {
+        "topicId": "fin.financial-inclusion",
+        "masterTopicId": "mt.fin.financial-inclusion",
+        "name": "Financial Inclusion"
+      },
+      {
+        "topicId": "fin.financial-markets",
+        "masterTopicId": "mt.fin.financial-markets",
+        "name": "Financial Markets"
+      },
+      {
+        "topicId": "fin.insurance-pension",
+        "masterTopicId": "mt.fin.insurance-pension",
+        "name": "Insurance & Pension"
+      },
+      {
+        "topicId": "fin.regulators-institutions",
+        "masterTopicId": "mt.fin.regulators-institutions",
+        "name": "Regulators & Financial Institutions"
+      },
+      {
+        "topicId": "fin.rural-agri-finance",
+        "masterTopicId": "mt.fin.rural-agri-finance",
+        "name": "Rural Banking & Agricultural Finance"
+      },
+      {
+        "topicId": "language-test.local-language",
+        "masterTopicId": "mt.language-test.local-language",
+        "name": "Local Language Proficiency"
+      },
+      {
+        "topicId": "personality.group-exercise",
+        "masterTopicId": null,
+        "name": "Group Exercise"
+      },
+      {
+        "topicId": "personality.interview",
+        "masterTopicId": "mt.personality.interview",
+        "name": "Personal Interview"
+      },
+      {
+        "topicId": "personality.psychometric-test",
+        "masterTopicId": "mt.personality.psychometric-test",
+        "name": "Psychometric / Personality Test"
+      },
+      {
+        "topicId": "quant.data-sufficiency",
+        "masterTopicId": "mt.quant.data-sufficiency",
+        "name": "Data Sufficiency (Quant)"
+      },
+      {
+        "topicId": "quant.number-series",
+        "masterTopicId": "mt.quant.number-series",
+        "name": "Number Series (Quant)"
+      },
+      {
+        "topicId": "quant.permutation-combination",
+        "masterTopicId": "mt.quant.permutation-combination",
+        "name": "Permutation & Combination"
+      },
+      {
+        "topicId": "quant.quadratic-equations",
+        "masterTopicId": "mt.quant.quadratic-equations",
+        "name": "Quadratic Equations"
+      },
+      {
+        "topicId": "quant.quantity-comparison",
+        "masterTopicId": "mt.quant.quantity-comparison",
+        "name": "Quantity Comparison"
+      },
+      {
+        "topicId": "reasoning.alphanumeric-series",
+        "masterTopicId": "mt.reasoning.alphanumeric-series",
+        "name": "Alphanumeric / Symbol Series"
+      },
+      {
+        "topicId": "reasoning.data-sufficiency",
+        "masterTopicId": "mt.reasoning.data-sufficiency",
+        "name": "Data Sufficiency (Reasoning)"
+      },
+      {
+        "topicId": "reasoning.inequality",
+        "masterTopicId": "mt.reasoning.inequality",
+        "name": "Inequality"
+      },
+      {
+        "topicId": "reasoning.input-output",
+        "masterTopicId": "mt.reasoning.input-output",
+        "name": "Input–Output (Machine)"
+      },
+      {
+        "topicId": "reasoning.puzzles",
+        "masterTopicId": "mt.reasoning.puzzles",
+        "name": "Puzzles"
+      }
+    ]
+  },
+  "counts": {
+    "commonToAllSelected": 51,
+    "commonToSSC": 104,
+    "commonToBanking": 72,
+    "uniqueToSSC": 43,
+    "uniqueToBanking": 34
+  },
+  "sharedConceptsCompleted": [
+    {
+      "masterTopicId": "mt.quant.percentage",
+      "name": "Percentage",
+      "exams": [
+        "ssc-cgl",
+        "ssc-chsl",
+        "sbi-po",
+        "ibps-po",
+        "sbi-clerk"
+      ]
+    }
+  ],
+  "examSpecificPracticePending": [
+    {
+      "masterTopicId": "mt.quant.percentage",
+      "name": "Percentage",
+      "examId": "ssc-cgl",
+      "stageId": "tier1",
+      "stageClass": "prelims",
+      "gaps": [
+        {
+          "target": "speed",
+          "have": 37.5,
+          "need": 36
+        }
+      ],
+      "requirement": {
+        "stageClass": "prelims",
+        "depth": "standard",
+        "depthDescription": "Standard to advanced arithmetic problems: successive change, product constancy, applications.",
+        "difficulty": "medium",
+        "questionTarget": 40,
+        "accuracyTarget": 85,
+        "speedTargetSec": 36,
+        "speedBasis": "official-section-pace",
+        "source": "manual-override"
+      }
+    },
+    {
+      "masterTopicId": "mt.quant.percentage",
+      "name": "Percentage",
+      "examId": "ssc-cgl",
+      "stageId": "tier2-paper1",
+      "stageClass": "mains",
+      "gaps": [
+        {
+          "target": "questions",
+          "have": 0,
+          "need": 60
+        },
+        {
+          "target": "accuracy",
+          "have": null,
+          "need": 85
+        },
+        {
+          "target": "speed",
+          "have": null,
+          "need": 60
+        }
+      ],
+      "requirement": {
+        "stageClass": "mains",
+        "depth": "advanced",
+        "depthDescription": "Advanced multi-step percentage problems (Tier-II Mathematical Abilities).",
+        "difficulty": "hard",
+        "questionTarget": 60,
+        "accuracyTarget": 85,
+        "speedTargetSec": 60,
+        "speedBasis": "official-section-pace",
+        "source": "manual-override"
+      }
+    },
+    {
+      "masterTopicId": "mt.quant.percentage",
+      "name": "Percentage",
+      "examId": "ssc-chsl",
+      "stageId": "tier1",
+      "stageClass": "prelims",
+      "gaps": [
+        {
+          "target": "questions",
+          "have": 0,
+          "need": 40
+        },
+        {
+          "target": "accuracy",
+          "have": null,
+          "need": 85
+        },
+        {
+          "target": "speed",
+          "have": null,
+          "need": 36
+        }
+      ],
+      "requirement": {
+        "stageClass": "prelims",
+        "depth": "standard",
+        "depthDescription": "Standard to advanced arithmetic problems: successive change, product constancy, applications.",
+        "difficulty": "medium",
+        "questionTarget": 40,
+        "accuracyTarget": 85,
+        "speedTargetSec": 36,
+        "speedBasis": "official-section-pace",
+        "source": "manual-override"
+      }
+    },
+    {
+      "masterTopicId": "mt.quant.percentage",
+      "name": "Percentage",
+      "examId": "ssc-chsl",
+      "stageId": "tier2",
+      "stageClass": "mains",
+      "gaps": [
+        {
+          "target": "questions",
+          "have": 0,
+          "need": 60
+        },
+        {
+          "target": "accuracy",
+          "have": null,
+          "need": 85
+        },
+        {
+          "target": "speed",
+          "have": null,
+          "need": 60
+        }
+      ],
+      "requirement": {
+        "stageClass": "mains",
+        "depth": "advanced",
+        "depthDescription": "Standard to advanced arithmetic problems: successive change, product constancy, applications.",
+        "difficulty": "hard",
+        "questionTarget": 60,
+        "accuracyTarget": 85,
+        "speedTargetSec": 60,
+        "speedBasis": "official-section-pace",
+        "source": "manual-override"
+      }
+    },
+    {
+      "masterTopicId": "mt.quant.percentage",
+      "name": "Percentage",
+      "examId": "sbi-po",
+      "stageId": "prelims",
+      "stageClass": "prelims",
+      "gaps": [
+        {
+          "target": "questions",
+          "have": 30,
+          "need": 60
+        },
+        {
+          "target": "accuracy",
+          "have": 73.33,
+          "need": 80
+        },
+        {
+          "target": "speed",
+          "have": 46,
+          "need": 40
+        }
+      ],
+      "requirement": {
+        "stageClass": "prelims",
+        "depth": "speed",
+        "depthDescription": "Speed-based calculations: percentage–fraction equivalents, quick approximation, one-step word problems.",
+        "difficulty": "medium",
+        "questionTarget": 60,
+        "accuracyTarget": 80,
+        "speedTargetSec": 40,
+        "speedBasis": "official-section-pace",
+        "source": "manual-override"
+      }
+    },
+    {
+      "masterTopicId": "mt.quant.percentage",
+      "name": "Percentage",
+      "examId": "sbi-po",
+      "stageId": "mains",
+      "stageClass": "mains",
+      "gaps": [
+        {
+          "target": "questions",
+          "have": 0,
+          "need": 50
+        },
+        {
+          "target": "accuracy",
+          "have": null,
+          "need": 70
+        },
+        {
+          "target": "speed",
+          "have": null,
+          "need": 90
+        }
+      ],
+      "requirement": {
+        "stageClass": "mains",
+        "depth": "applied",
+        "depthDescription": "Complex applications and DI-related percentage calculations (caselets, multi-chart DI).",
+        "difficulty": "hard",
+        "questionTarget": 50,
+        "accuracyTarget": 70,
+        "speedTargetSec": 90,
+        "speedBasis": "official-section-pace",
+        "source": "manual-override"
+      }
+    },
+    {
+      "masterTopicId": "mt.quant.percentage",
+      "name": "Percentage",
+      "examId": "ibps-po",
+      "stageId": "prelims",
+      "stageClass": "prelims",
+      "gaps": [
+        {
+          "target": "questions",
+          "have": 0,
+          "need": 60
+        },
+        {
+          "target": "accuracy",
+          "have": null,
+          "need": 80
+        },
+        {
+          "target": "speed",
+          "have": null,
+          "need": 34.3
+        }
+      ],
+      "requirement": {
+        "stageClass": "prelims",
+        "depth": "speed",
+        "depthDescription": "Speed-based calculations: percentage–fraction equivalents, quick approximation, one-step word problems.",
+        "difficulty": "medium",
+        "questionTarget": 60,
+        "accuracyTarget": 80,
+        "speedTargetSec": 34.3,
+        "speedBasis": "official-section-pace",
+        "source": "manual-override"
+      }
+    },
+    {
+      "masterTopicId": "mt.quant.percentage",
+      "name": "Percentage",
+      "examId": "ibps-po",
+      "stageId": "mains",
+      "stageClass": "mains",
+      "gaps": [
+        {
+          "target": "questions",
+          "have": 0,
+          "need": 50
+        },
+        {
+          "target": "accuracy",
+          "have": null,
+          "need": 70
+        },
+        {
+          "target": "speed",
+          "have": null,
+          "need": 67.5
+        }
+      ],
+      "requirement": {
+        "stageClass": "mains",
+        "depth": "applied",
+        "depthDescription": "Complex applications and DI-related percentage calculations (caselets, multi-chart DI).",
+        "difficulty": "hard",
+        "questionTarget": 50,
+        "accuracyTarget": 70,
+        "speedTargetSec": 67.5,
+        "speedBasis": "official-section-pace",
+        "source": "manual-override"
+      }
+    },
+    {
+      "masterTopicId": "mt.quant.percentage",
+      "name": "Percentage",
+      "examId": "sbi-clerk",
+      "stageId": "prelims",
+      "stageClass": "prelims",
+      "gaps": [
+        {
+          "target": "questions",
+          "have": 0,
+          "need": 60
+        },
+        {
+          "target": "accuracy",
+          "have": null,
+          "need": 85
+        },
+        {
+          "target": "speed",
+          "have": null,
+          "need": 34.3
+        }
+      ],
+      "requirement": {
+        "stageClass": "prelims",
+        "depth": "speed",
+        "depthDescription": "Speed-based calculations: percentage–fraction equivalents, quick approximation, one-step word problems.",
+        "difficulty": "easy",
+        "questionTarget": 60,
+        "accuracyTarget": 85,
+        "speedTargetSec": 34.3,
+        "speedBasis": "official-section-pace",
+        "source": "manual-override"
+      }
+    },
+    {
+      "masterTopicId": "mt.quant.percentage",
+      "name": "Percentage",
+      "examId": "sbi-clerk",
+      "stageId": "mains",
+      "stageClass": "mains",
+      "gaps": [
+        {
+          "target": "questions",
+          "have": 0,
+          "need": 50
+        },
+        {
+          "target": "accuracy",
+          "have": null,
+          "need": 75
+        },
+        {
+          "target": "speed",
+          "have": null,
+          "need": 54
+        }
+      ],
+      "requirement": {
+        "stageClass": "mains",
+        "depth": "applied",
+        "depthDescription": "Complex applications and DI-related percentage calculations (caselets, multi-chart DI).",
+        "difficulty": "medium",
+        "questionTarget": 50,
+        "accuracyTarget": 75,
+        "speedTargetSec": 54,
+        "speedBasis": "official-section-pace",
+        "source": "manual-override"
+      }
+    }
+  ],
+  "topicCards": {
+    "mt.ga.current-affairs": {
+      "masterTopicId": "mt.ga.current-affairs",
+      "topicId": "ga.current-affairs",
+      "name": "Current Affairs",
+      "subject": "ga",
+      "similarity": "identical",
+      "verification": "verified",
+      "concept": {
+        "completion": 0,
+        "status": null
+      },
+      "exams": {
+        "ssc-cgl": {
+          "category": "ssc",
+          "syncMode": "partial",
+          "status": null,
+          "completion": 0,
+          "ownCompletion": 0,
+          "mastery": 0,
+          "masteryLevel": "not-assessed",
+          "attempted": 0,
+          "accuracy": null,
+          "avgTimeSeconds": null,
+          "effectiveWeight": 2.84,
+          "priority": "Very High",
+          "requirement": {
+            "stageClass": "mains",
+            "depth": "advanced",
+            "depthDescription": "Advanced, multi-step SSC Tier-II / Paper-II level problems.",
+            "difficulty": "hard",
+            "questionTarget": 60,
+            "accuracyTarget": 85,
+            "speedTargetSec": 36,
+            "speedBasis": "official-section-pace",
+            "source": "profile",
+            "rule": "strictest-of-stages"
+          },
+          "targetsMet": {
+            "questions": false,
+            "accuracy": false,
+            "speed": false,
+            "all": false,
+            "gaps": [
+              {
+                "target": "questions",
+                "have": 0,
+                "need": 60
+              },
+              {
+                "target": "accuracy",
+                "have": null,
+                "need": 85
+              },
+              {
+                "target": "speed",
+                "have": null,
+                "need": 36
+              }
+            ]
+          },
+          "practiceByStage": {},
+          "stagePreparation": {
+            "tier1": {
+              "stageClass": "prelims",
+              "requirement": {
+                "stageClass": "prelims",
+                "depth": "standard",
+                "depthDescription": "Standard SSC-level questions; accuracy under negative marking.",
+                "difficulty": "medium",
+                "questionTarget": 40,
+                "accuracyTarget": 85,
+                "speedTargetSec": 36,
+                "speedBasis": "official-section-pace",
+                "source": "profile"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 40
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 85
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 36
+                  }
+                ]
+              }
+            },
+            "tier2-paper1": {
+              "stageClass": "mains",
+              "requirement": {
+                "stageClass": "mains",
+                "depth": "advanced",
+                "depthDescription": "Advanced, multi-step SSC Tier-II / Paper-II level problems.",
+                "difficulty": "hard",
+                "questionTarget": 60,
+                "accuracyTarget": 85,
+                "speedTargetSec": 48,
+                "speedBasis": "official-section-pace",
+                "source": "profile"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 60
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 85
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 48
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "ssc-chsl": {
+          "category": "ssc",
+          "syncMode": "partial",
+          "status": null,
+          "completion": 0,
+          "ownCompletion": 0,
+          "mastery": 0,
+          "masteryLevel": "not-assessed",
+          "attempted": 0,
+          "accuracy": null,
+          "avgTimeSeconds": null,
+          "effectiveWeight": 2.19,
+          "priority": "Very High",
+          "requirement": {
+            "stageClass": "mains",
+            "depth": "advanced",
+            "depthDescription": "Advanced, multi-step SSC Tier-II / Paper-II level problems.",
+            "difficulty": "hard",
+            "questionTarget": 60,
+            "accuracyTarget": 85,
+            "speedTargetSec": 36,
+            "speedBasis": "official-section-pace",
+            "source": "profile",
+            "rule": "strictest-of-stages"
+          },
+          "targetsMet": {
+            "questions": false,
+            "accuracy": false,
+            "speed": false,
+            "all": false,
+            "gaps": [
+              {
+                "target": "questions",
+                "have": 0,
+                "need": 60
+              },
+              {
+                "target": "accuracy",
+                "have": null,
+                "need": 85
+              },
+              {
+                "target": "speed",
+                "have": null,
+                "need": 36
+              }
+            ]
+          },
+          "practiceByStage": {},
+          "stagePreparation": {
+            "tier1": {
+              "stageClass": "prelims",
+              "requirement": {
+                "stageClass": "prelims",
+                "depth": "standard",
+                "depthDescription": "Standard SSC-level questions; accuracy under negative marking.",
+                "difficulty": "medium",
+                "questionTarget": 40,
+                "accuracyTarget": 85,
+                "speedTargetSec": 36,
+                "speedBasis": "official-section-pace",
+                "source": "profile"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 40
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 85
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 36
+                  }
+                ]
+              }
+            },
+            "tier2": {
+              "stageClass": "mains",
+              "requirement": {
+                "stageClass": "mains",
+                "depth": "advanced",
+                "depthDescription": "Advanced, multi-step SSC Tier-II / Paper-II level problems.",
+                "difficulty": "hard",
+                "questionTarget": 60,
+                "accuracyTarget": 85,
+                "speedTargetSec": 60,
+                "speedBasis": "official-section-pace",
+                "source": "profile"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 60
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 85
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 60
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "sbi-po": {
+          "category": "banking",
+          "syncMode": "partial",
+          "status": null,
+          "completion": 0,
+          "ownCompletion": 0,
+          "mastery": 0,
+          "masteryLevel": "not-assessed",
+          "attempted": 0,
+          "accuracy": null,
+          "avgTimeSeconds": null,
+          "effectiveWeight": 4.35,
+          "priority": "High",
+          "requirement": {
+            "stageClass": "mains",
+            "depth": "applied",
+            "depthDescription": "Complex applications, caselets and DI-linked calculations at PO mains level.",
+            "difficulty": "hard",
+            "questionTarget": 50,
+            "accuracyTarget": 70,
+            "speedTargetSec": 45,
+            "speedBasis": "official-section-pace",
+            "source": "profile",
+            "rule": "single-stage"
+          },
+          "targetsMet": {
+            "questions": false,
+            "accuracy": false,
+            "speed": false,
+            "all": false,
+            "gaps": [
+              {
+                "target": "questions",
+                "have": 0,
+                "need": 50
+              },
+              {
+                "target": "accuracy",
+                "have": null,
+                "need": 70
+              },
+              {
+                "target": "speed",
+                "have": null,
+                "need": 45
+              }
+            ]
+          },
+          "practiceByStage": {},
+          "stagePreparation": {
+            "mains": {
+              "stageClass": "mains",
+              "requirement": {
+                "stageClass": "mains",
+                "depth": "applied",
+                "depthDescription": "Complex applications, caselets and DI-linked calculations at PO mains level.",
+                "difficulty": "hard",
+                "questionTarget": 50,
+                "accuracyTarget": 70,
+                "speedTargetSec": 45,
+                "speedBasis": "official-section-pace",
+                "source": "profile"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 50
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 70
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 45
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "ibps-po": {
+          "category": "banking",
+          "syncMode": "partial",
+          "status": null,
+          "completion": 0,
+          "ownCompletion": 0,
+          "mastery": 0,
+          "masteryLevel": "not-assessed",
+          "attempted": 0,
+          "accuracy": null,
+          "avgTimeSeconds": null,
+          "effectiveWeight": 4.81,
+          "priority": "Very High",
+          "requirement": {
+            "stageClass": "mains",
+            "depth": "applied",
+            "depthDescription": "Complex applications, caselets and DI-linked calculations at PO mains level.",
+            "difficulty": "hard",
+            "questionTarget": 50,
+            "accuracyTarget": 70,
+            "speedTargetSec": 42,
+            "speedBasis": "official-section-pace",
+            "source": "profile",
+            "rule": "single-stage"
+          },
+          "targetsMet": {
+            "questions": false,
+            "accuracy": false,
+            "speed": false,
+            "all": false,
+            "gaps": [
+              {
+                "target": "questions",
+                "have": 0,
+                "need": 50
+              },
+              {
+                "target": "accuracy",
+                "have": null,
+                "need": 70
+              },
+              {
+                "target": "speed",
+                "have": null,
+                "need": 42
+              }
+            ]
+          },
+          "practiceByStage": {},
+          "stagePreparation": {
+            "mains": {
+              "stageClass": "mains",
+              "requirement": {
+                "stageClass": "mains",
+                "depth": "applied",
+                "depthDescription": "Complex applications, caselets and DI-linked calculations at PO mains level.",
+                "difficulty": "hard",
+                "questionTarget": 50,
+                "accuracyTarget": 70,
+                "speedTargetSec": 42,
+                "speedBasis": "official-section-pace",
+                "source": "profile"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 50
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 70
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 42
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "sbi-clerk": {
+          "category": "banking",
+          "syncMode": "partial",
+          "status": null,
+          "completion": 0,
+          "ownCompletion": 0,
+          "mastery": 0,
+          "masteryLevel": "not-assessed",
+          "attempted": 0,
+          "accuracy": null,
+          "avgTimeSeconds": null,
+          "effectiveWeight": 5.66,
+          "priority": "Very High",
+          "requirement": {
+            "stageClass": "mains",
+            "depth": "applied",
+            "depthDescription": "Applied, moderately complex mains-level questions.",
+            "difficulty": "medium",
+            "questionTarget": 50,
+            "accuracyTarget": 75,
+            "speedTargetSec": 42,
+            "speedBasis": "official-section-pace",
+            "source": "profile",
+            "rule": "single-stage"
+          },
+          "targetsMet": {
+            "questions": false,
+            "accuracy": false,
+            "speed": false,
+            "all": false,
+            "gaps": [
+              {
+                "target": "questions",
+                "have": 0,
+                "need": 50
+              },
+              {
+                "target": "accuracy",
+                "have": null,
+                "need": 75
+              },
+              {
+                "target": "speed",
+                "have": null,
+                "need": 42
+              }
+            ]
+          },
+          "practiceByStage": {},
+          "stagePreparation": {
+            "mains": {
+              "stageClass": "mains",
+              "requirement": {
+                "stageClass": "mains",
+                "depth": "applied",
+                "depthDescription": "Applied, moderately complex mains-level questions.",
+                "difficulty": "medium",
+                "questionTarget": 50,
+                "accuracyTarget": 75,
+                "speedTargetSec": 42,
+                "speedBasis": "official-section-pace",
+                "source": "profile"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 50
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 75
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 42
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "mt.quant.percentage": {
+      "masterTopicId": "mt.quant.percentage",
+      "topicId": "quant.percentage",
+      "name": "Percentage",
+      "subject": "quant",
+      "similarity": "identical",
+      "verification": "verified",
+      "concept": {
+        "completion": 100,
+        "status": "concept-completed"
+      },
+      "exams": {
+        "ssc-cgl": {
+          "category": "ssc",
+          "syncMode": "full",
+          "status": "practicing",
+          "completion": 65,
+          "ownCompletion": 65,
+          "mastery": 62.76,
+          "masteryLevel": "developing",
+          "attempted": 40,
+          "accuracy": 85,
+          "avgTimeSeconds": 37.5,
+          "effectiveWeight": 0.7,
+          "priority": "Medium",
+          "requirement": {
+            "stageClass": "mains",
+            "depth": "advanced",
+            "depthDescription": "Advanced multi-step percentage problems (Tier-II Mathematical Abilities).",
+            "difficulty": "hard",
+            "questionTarget": 60,
+            "accuracyTarget": 85,
+            "speedTargetSec": 36,
+            "speedBasis": "official-section-pace",
+            "source": "manual-override",
+            "rule": "strictest-of-stages"
+          },
+          "targetsMet": {
+            "questions": false,
+            "accuracy": true,
+            "speed": false,
+            "all": false,
+            "gaps": [
+              {
+                "target": "questions",
+                "have": 40,
+                "need": 60
+              },
+              {
+                "target": "speed",
+                "have": 37.5,
+                "need": 36
+              }
+            ]
+          },
+          "practiceByStage": {
+            "tier1": {
+              "attempted": 40,
+              "correct": 34,
+              "accuracy": 85,
+              "avgTimeSeconds": 37.5,
+              "practiceSets": 1,
+              "revisionCount": 0
+            }
+          },
+          "stagePreparation": {
+            "tier1": {
+              "stageClass": "prelims",
+              "requirement": {
+                "stageClass": "prelims",
+                "depth": "standard",
+                "depthDescription": "Standard to advanced arithmetic problems: successive change, product constancy, applications.",
+                "difficulty": "medium",
+                "questionTarget": 40,
+                "accuracyTarget": 85,
+                "speedTargetSec": 36,
+                "speedBasis": "official-section-pace",
+                "source": "manual-override"
+              },
+              "attempted": 40,
+              "accuracy": 85,
+              "avgTimeSeconds": 37.5,
+              "targetsMet": {
+                "questions": true,
+                "accuracy": true,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "speed",
+                    "have": 37.5,
+                    "need": 36
+                  }
+                ]
+              }
+            },
+            "tier2-paper1": {
+              "stageClass": "mains",
+              "requirement": {
+                "stageClass": "mains",
+                "depth": "advanced",
+                "depthDescription": "Advanced multi-step percentage problems (Tier-II Mathematical Abilities).",
+                "difficulty": "hard",
+                "questionTarget": 60,
+                "accuracyTarget": 85,
+                "speedTargetSec": 60,
+                "speedBasis": "official-section-pace",
+                "source": "manual-override"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 60
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 85
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 60
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "ssc-chsl": {
+          "category": "ssc",
+          "syncMode": "full",
+          "status": null,
+          "completion": 50,
+          "ownCompletion": 0,
+          "mastery": 0,
+          "masteryLevel": "not-assessed",
+          "attempted": 0,
+          "accuracy": null,
+          "avgTimeSeconds": null,
+          "effectiveWeight": 0.99,
+          "priority": "High",
+          "requirement": {
+            "stageClass": "mains",
+            "depth": "advanced",
+            "depthDescription": "Standard to advanced arithmetic problems: successive change, product constancy, applications.",
+            "difficulty": "hard",
+            "questionTarget": 60,
+            "accuracyTarget": 85,
+            "speedTargetSec": 36,
+            "speedBasis": "official-section-pace",
+            "source": "manual-override",
+            "rule": "strictest-of-stages"
+          },
+          "targetsMet": {
+            "questions": false,
+            "accuracy": false,
+            "speed": false,
+            "all": false,
+            "gaps": [
+              {
+                "target": "questions",
+                "have": 0,
+                "need": 60
+              },
+              {
+                "target": "accuracy",
+                "have": null,
+                "need": 85
+              },
+              {
+                "target": "speed",
+                "have": null,
+                "need": 36
+              }
+            ]
+          },
+          "practiceByStage": {},
+          "stagePreparation": {
+            "tier1": {
+              "stageClass": "prelims",
+              "requirement": {
+                "stageClass": "prelims",
+                "depth": "standard",
+                "depthDescription": "Standard to advanced arithmetic problems: successive change, product constancy, applications.",
+                "difficulty": "medium",
+                "questionTarget": 40,
+                "accuracyTarget": 85,
+                "speedTargetSec": 36,
+                "speedBasis": "official-section-pace",
+                "source": "manual-override"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 40
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 85
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 36
+                  }
+                ]
+              }
+            },
+            "tier2": {
+              "stageClass": "mains",
+              "requirement": {
+                "stageClass": "mains",
+                "depth": "advanced",
+                "depthDescription": "Standard to advanced arithmetic problems: successive change, product constancy, applications.",
+                "difficulty": "hard",
+                "questionTarget": 60,
+                "accuracyTarget": 85,
+                "speedTargetSec": 60,
+                "speedBasis": "official-section-pace",
+                "source": "manual-override"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 60
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 85
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 60
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "sbi-po": {
+          "category": "banking",
+          "syncMode": "full",
+          "status": null,
+          "completion": 50,
+          "ownCompletion": 0,
+          "mastery": 30.74,
+          "masteryLevel": "beginner",
+          "attempted": 30,
+          "accuracy": 73.33,
+          "avgTimeSeconds": 46,
+          "effectiveWeight": 0.7,
+          "priority": "Medium",
+          "requirement": {
+            "stageClass": "mains",
+            "depth": "applied",
+            "depthDescription": "Complex applications and DI-related percentage calculations (caselets, multi-chart DI).",
+            "difficulty": "hard",
+            "questionTarget": 60,
+            "accuracyTarget": 80,
+            "speedTargetSec": 40,
+            "speedBasis": "official-section-pace",
+            "source": "manual-override",
+            "rule": "strictest-of-stages"
+          },
+          "targetsMet": {
+            "questions": false,
+            "accuracy": false,
+            "speed": false,
+            "all": false,
+            "gaps": [
+              {
+                "target": "questions",
+                "have": 30,
+                "need": 60
+              },
+              {
+                "target": "accuracy",
+                "have": 73.33,
+                "need": 80
+              },
+              {
+                "target": "speed",
+                "have": 46,
+                "need": 40
+              }
+            ]
+          },
+          "practiceByStage": {
+            "prelims": {
+              "attempted": 30,
+              "correct": 22,
+              "accuracy": 73.33,
+              "avgTimeSeconds": 46,
+              "practiceSets": 1,
+              "revisionCount": 0
+            }
+          },
+          "stagePreparation": {
+            "prelims": {
+              "stageClass": "prelims",
+              "requirement": {
+                "stageClass": "prelims",
+                "depth": "speed",
+                "depthDescription": "Speed-based calculations: percentage–fraction equivalents, quick approximation, one-step word problems.",
+                "difficulty": "medium",
+                "questionTarget": 60,
+                "accuracyTarget": 80,
+                "speedTargetSec": 40,
+                "speedBasis": "official-section-pace",
+                "source": "manual-override"
+              },
+              "attempted": 30,
+              "accuracy": 73.33,
+              "avgTimeSeconds": 46,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 30,
+                    "need": 60
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": 73.33,
+                    "need": 80
+                  },
+                  {
+                    "target": "speed",
+                    "have": 46,
+                    "need": 40
+                  }
+                ]
+              }
+            },
+            "mains": {
+              "stageClass": "mains",
+              "requirement": {
+                "stageClass": "mains",
+                "depth": "applied",
+                "depthDescription": "Complex applications and DI-related percentage calculations (caselets, multi-chart DI).",
+                "difficulty": "hard",
+                "questionTarget": 50,
+                "accuracyTarget": 70,
+                "speedTargetSec": 90,
+                "speedBasis": "official-section-pace",
+                "source": "manual-override"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 50
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 70
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 90
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "ibps-po": {
+          "category": "banking",
+          "syncMode": "full",
+          "status": null,
+          "completion": 50,
+          "ownCompletion": 0,
+          "mastery": 0,
+          "masteryLevel": "not-assessed",
+          "attempted": 0,
+          "accuracy": null,
+          "avgTimeSeconds": null,
+          "effectiveWeight": 0.58,
+          "priority": "Medium",
+          "requirement": {
+            "stageClass": "mains",
+            "depth": "applied",
+            "depthDescription": "Complex applications and DI-related percentage calculations (caselets, multi-chart DI).",
+            "difficulty": "hard",
+            "questionTarget": 60,
+            "accuracyTarget": 80,
+            "speedTargetSec": 34.3,
+            "speedBasis": "official-section-pace",
+            "source": "manual-override",
+            "rule": "strictest-of-stages"
+          },
+          "targetsMet": {
+            "questions": false,
+            "accuracy": false,
+            "speed": false,
+            "all": false,
+            "gaps": [
+              {
+                "target": "questions",
+                "have": 0,
+                "need": 60
+              },
+              {
+                "target": "accuracy",
+                "have": null,
+                "need": 80
+              },
+              {
+                "target": "speed",
+                "have": null,
+                "need": 34.3
+              }
+            ]
+          },
+          "practiceByStage": {},
+          "stagePreparation": {
+            "prelims": {
+              "stageClass": "prelims",
+              "requirement": {
+                "stageClass": "prelims",
+                "depth": "speed",
+                "depthDescription": "Speed-based calculations: percentage–fraction equivalents, quick approximation, one-step word problems.",
+                "difficulty": "medium",
+                "questionTarget": 60,
+                "accuracyTarget": 80,
+                "speedTargetSec": 34.3,
+                "speedBasis": "official-section-pace",
+                "source": "manual-override"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 60
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 80
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 34.3
+                  }
+                ]
+              }
+            },
+            "mains": {
+              "stageClass": "mains",
+              "requirement": {
+                "stageClass": "mains",
+                "depth": "applied",
+                "depthDescription": "Complex applications and DI-related percentage calculations (caselets, multi-chart DI).",
+                "difficulty": "hard",
+                "questionTarget": 50,
+                "accuracyTarget": 70,
+                "speedTargetSec": 67.5,
+                "speedBasis": "official-section-pace",
+                "source": "manual-override"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 50
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 70
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 67.5
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "sbi-clerk": {
+          "category": "banking",
+          "syncMode": "full",
+          "status": null,
+          "completion": 50,
+          "ownCompletion": 0,
+          "mastery": 0,
+          "masteryLevel": "not-assessed",
+          "attempted": 0,
+          "accuracy": null,
+          "avgTimeSeconds": null,
+          "effectiveWeight": 0.71,
+          "priority": "Medium",
+          "requirement": {
+            "stageClass": "mains",
+            "depth": "applied",
+            "depthDescription": "Complex applications and DI-related percentage calculations (caselets, multi-chart DI).",
+            "difficulty": "medium",
+            "questionTarget": 60,
+            "accuracyTarget": 85,
+            "speedTargetSec": 34.3,
+            "speedBasis": "official-section-pace",
+            "source": "manual-override",
+            "rule": "strictest-of-stages"
+          },
+          "targetsMet": {
+            "questions": false,
+            "accuracy": false,
+            "speed": false,
+            "all": false,
+            "gaps": [
+              {
+                "target": "questions",
+                "have": 0,
+                "need": 60
+              },
+              {
+                "target": "accuracy",
+                "have": null,
+                "need": 85
+              },
+              {
+                "target": "speed",
+                "have": null,
+                "need": 34.3
+              }
+            ]
+          },
+          "practiceByStage": {},
+          "stagePreparation": {
+            "prelims": {
+              "stageClass": "prelims",
+              "requirement": {
+                "stageClass": "prelims",
+                "depth": "speed",
+                "depthDescription": "Speed-based calculations: percentage–fraction equivalents, quick approximation, one-step word problems.",
+                "difficulty": "easy",
+                "questionTarget": 60,
+                "accuracyTarget": 85,
+                "speedTargetSec": 34.3,
+                "speedBasis": "official-section-pace",
+                "source": "manual-override"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 60
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 85
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 34.3
+                  }
+                ]
+              }
+            },
+            "mains": {
+              "stageClass": "mains",
+              "requirement": {
+                "stageClass": "mains",
+                "depth": "applied",
+                "depthDescription": "Complex applications and DI-related percentage calculations (caselets, multi-chart DI).",
+                "difficulty": "medium",
+                "questionTarget": 50,
+                "accuracyTarget": 75,
+                "speedTargetSec": 54,
+                "speedBasis": "official-section-pace",
+                "source": "manual-override"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 50
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 75
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 54
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "mt.quant.ratio-proportion": {
+      "masterTopicId": "mt.quant.ratio-proportion",
+      "topicId": "quant.ratio-proportion",
+      "name": "Ratio & Proportion",
+      "subject": "quant",
+      "similarity": "identical",
+      "verification": "verified",
+      "concept": {
+        "completion": 60,
+        "status": "learning"
+      },
+      "exams": {
+        "ssc-cgl": {
+          "category": "ssc",
+          "syncMode": "full",
+          "status": null,
+          "completion": 30,
+          "ownCompletion": 0,
+          "mastery": 0,
+          "masteryLevel": "not-assessed",
+          "attempted": 0,
+          "accuracy": null,
+          "avgTimeSeconds": null,
+          "effectiveWeight": 0.64,
+          "priority": "Medium",
+          "requirement": {
+            "stageClass": "mains",
+            "depth": "advanced",
+            "depthDescription": "Advanced, multi-step SSC Tier-II / Paper-II level problems.",
+            "difficulty": "hard",
+            "questionTarget": 60,
+            "accuracyTarget": 85,
+            "speedTargetSec": 36,
+            "speedBasis": "official-section-pace",
+            "source": "profile",
+            "rule": "strictest-of-stages"
+          },
+          "targetsMet": {
+            "questions": false,
+            "accuracy": false,
+            "speed": false,
+            "all": false,
+            "gaps": [
+              {
+                "target": "questions",
+                "have": 0,
+                "need": 60
+              },
+              {
+                "target": "accuracy",
+                "have": null,
+                "need": 85
+              },
+              {
+                "target": "speed",
+                "have": null,
+                "need": 36
+              }
+            ]
+          },
+          "practiceByStage": {},
+          "stagePreparation": {
+            "tier1": {
+              "stageClass": "prelims",
+              "requirement": {
+                "stageClass": "prelims",
+                "depth": "standard",
+                "depthDescription": "Standard SSC-level questions; accuracy under negative marking.",
+                "difficulty": "medium",
+                "questionTarget": 40,
+                "accuracyTarget": 85,
+                "speedTargetSec": 36,
+                "speedBasis": "official-section-pace",
+                "source": "profile"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 40
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 85
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 36
+                  }
+                ]
+              }
+            },
+            "tier2-paper1": {
+              "stageClass": "mains",
+              "requirement": {
+                "stageClass": "mains",
+                "depth": "advanced",
+                "depthDescription": "Advanced, multi-step SSC Tier-II / Paper-II level problems.",
+                "difficulty": "hard",
+                "questionTarget": 60,
+                "accuracyTarget": 85,
+                "speedTargetSec": 60,
+                "speedBasis": "official-section-pace",
+                "source": "profile"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 60
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 85
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 60
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "ssc-chsl": {
+          "category": "ssc",
+          "syncMode": "full",
+          "status": null,
+          "completion": 30,
+          "ownCompletion": 0,
+          "mastery": 0,
+          "masteryLevel": "not-assessed",
+          "attempted": 0,
+          "accuracy": null,
+          "avgTimeSeconds": null,
+          "effectiveWeight": 0.92,
+          "priority": "High",
+          "requirement": {
+            "stageClass": "mains",
+            "depth": "advanced",
+            "depthDescription": "Advanced, multi-step SSC Tier-II / Paper-II level problems.",
+            "difficulty": "hard",
+            "questionTarget": 60,
+            "accuracyTarget": 85,
+            "speedTargetSec": 36,
+            "speedBasis": "official-section-pace",
+            "source": "profile",
+            "rule": "strictest-of-stages"
+          },
+          "targetsMet": {
+            "questions": false,
+            "accuracy": false,
+            "speed": false,
+            "all": false,
+            "gaps": [
+              {
+                "target": "questions",
+                "have": 0,
+                "need": 60
+              },
+              {
+                "target": "accuracy",
+                "have": null,
+                "need": 85
+              },
+              {
+                "target": "speed",
+                "have": null,
+                "need": 36
+              }
+            ]
+          },
+          "practiceByStage": {},
+          "stagePreparation": {
+            "tier1": {
+              "stageClass": "prelims",
+              "requirement": {
+                "stageClass": "prelims",
+                "depth": "standard",
+                "depthDescription": "Standard SSC-level questions; accuracy under negative marking.",
+                "difficulty": "medium",
+                "questionTarget": 40,
+                "accuracyTarget": 85,
+                "speedTargetSec": 36,
+                "speedBasis": "official-section-pace",
+                "source": "profile"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 40
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 85
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 36
+                  }
+                ]
+              }
+            },
+            "tier2": {
+              "stageClass": "mains",
+              "requirement": {
+                "stageClass": "mains",
+                "depth": "advanced",
+                "depthDescription": "Advanced, multi-step SSC Tier-II / Paper-II level problems.",
+                "difficulty": "hard",
+                "questionTarget": 60,
+                "accuracyTarget": 85,
+                "speedTargetSec": 60,
+                "speedBasis": "official-section-pace",
+                "source": "profile"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 60
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 85
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 60
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "sbi-po": {
+          "category": "banking",
+          "syncMode": "full",
+          "status": null,
+          "completion": 30,
+          "ownCompletion": 0,
+          "mastery": 0,
+          "masteryLevel": "not-assessed",
+          "attempted": 0,
+          "accuracy": null,
+          "avgTimeSeconds": null,
+          "effectiveWeight": 0.53,
+          "priority": "Medium",
+          "requirement": {
+            "stageClass": "mains",
+            "depth": "applied",
+            "depthDescription": "Complex applications, caselets and DI-linked calculations at PO mains level.",
+            "difficulty": "hard",
+            "questionTarget": 60,
+            "accuracyTarget": 80,
+            "speedTargetSec": 40,
+            "speedBasis": "official-section-pace",
+            "source": "profile",
+            "rule": "strictest-of-stages"
+          },
+          "targetsMet": {
+            "questions": false,
+            "accuracy": false,
+            "speed": false,
+            "all": false,
+            "gaps": [
+              {
+                "target": "questions",
+                "have": 0,
+                "need": 60
+              },
+              {
+                "target": "accuracy",
+                "have": null,
+                "need": 80
+              },
+              {
+                "target": "speed",
+                "have": null,
+                "need": 40
+              }
+            ]
+          },
+          "practiceByStage": {},
+          "stagePreparation": {
+            "prelims": {
+              "stageClass": "prelims",
+              "requirement": {
+                "stageClass": "prelims",
+                "depth": "speed",
+                "depthDescription": "Speed-based questions at PO prelims level (puzzles, DI, arithmetic under a 20-minute section timer).",
+                "difficulty": "medium",
+                "questionTarget": 60,
+                "accuracyTarget": 80,
+                "speedTargetSec": 40,
+                "speedBasis": "official-section-pace",
+                "source": "profile"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 60
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 80
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 40
+                  }
+                ]
+              }
+            },
+            "mains": {
+              "stageClass": "mains",
+              "requirement": {
+                "stageClass": "mains",
+                "depth": "applied",
+                "depthDescription": "Complex applications, caselets and DI-linked calculations at PO mains level.",
+                "difficulty": "hard",
+                "questionTarget": 50,
+                "accuracyTarget": 70,
+                "speedTargetSec": 90,
+                "speedBasis": "official-section-pace",
+                "source": "profile"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 50
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 70
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 90
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "ibps-po": {
+          "category": "banking",
+          "syncMode": "full",
+          "status": null,
+          "completion": 30,
+          "ownCompletion": 0,
+          "mastery": 0,
+          "masteryLevel": "not-assessed",
+          "attempted": 0,
+          "accuracy": null,
+          "avgTimeSeconds": null,
+          "effectiveWeight": 0.44,
+          "priority": "Medium",
+          "requirement": {
+            "stageClass": "mains",
+            "depth": "applied",
+            "depthDescription": "Complex applications, caselets and DI-linked calculations at PO mains level.",
+            "difficulty": "hard",
+            "questionTarget": 60,
+            "accuracyTarget": 80,
+            "speedTargetSec": 34.3,
+            "speedBasis": "official-section-pace",
+            "source": "profile",
+            "rule": "strictest-of-stages"
+          },
+          "targetsMet": {
+            "questions": false,
+            "accuracy": false,
+            "speed": false,
+            "all": false,
+            "gaps": [
+              {
+                "target": "questions",
+                "have": 0,
+                "need": 60
+              },
+              {
+                "target": "accuracy",
+                "have": null,
+                "need": 80
+              },
+              {
+                "target": "speed",
+                "have": null,
+                "need": 34.3
+              }
+            ]
+          },
+          "practiceByStage": {},
+          "stagePreparation": {
+            "prelims": {
+              "stageClass": "prelims",
+              "requirement": {
+                "stageClass": "prelims",
+                "depth": "speed",
+                "depthDescription": "Speed-based questions at PO prelims level (puzzles, DI, arithmetic under a 20-minute section timer).",
+                "difficulty": "medium",
+                "questionTarget": 60,
+                "accuracyTarget": 80,
+                "speedTargetSec": 34.3,
+                "speedBasis": "official-section-pace",
+                "source": "profile"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 60
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 80
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 34.3
+                  }
+                ]
+              }
+            },
+            "mains": {
+              "stageClass": "mains",
+              "requirement": {
+                "stageClass": "mains",
+                "depth": "applied",
+                "depthDescription": "Complex applications, caselets and DI-linked calculations at PO mains level.",
+                "difficulty": "hard",
+                "questionTarget": 50,
+                "accuracyTarget": 70,
+                "speedTargetSec": 67.5,
+                "speedBasis": "official-section-pace",
+                "source": "profile"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 50
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 70
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 67.5
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "sbi-clerk": {
+          "category": "banking",
+          "syncMode": "full",
+          "status": null,
+          "completion": 30,
+          "ownCompletion": 0,
+          "mastery": 0,
+          "masteryLevel": "not-assessed",
+          "attempted": 0,
+          "accuracy": null,
+          "avgTimeSeconds": null,
+          "effectiveWeight": 0.53,
+          "priority": "Medium",
+          "requirement": {
+            "stageClass": "mains",
+            "depth": "applied",
+            "depthDescription": "Applied, moderately complex mains-level questions.",
+            "difficulty": "medium",
+            "questionTarget": 60,
+            "accuracyTarget": 85,
+            "speedTargetSec": 34.3,
+            "speedBasis": "official-section-pace",
+            "source": "profile",
+            "rule": "strictest-of-stages"
+          },
+          "targetsMet": {
+            "questions": false,
+            "accuracy": false,
+            "speed": false,
+            "all": false,
+            "gaps": [
+              {
+                "target": "questions",
+                "have": 0,
+                "need": 60
+              },
+              {
+                "target": "accuracy",
+                "have": null,
+                "need": 85
+              },
+              {
+                "target": "speed",
+                "have": null,
+                "need": 34.3
+              }
+            ]
+          },
+          "practiceByStage": {},
+          "stagePreparation": {
+            "prelims": {
+              "stageClass": "prelims",
+              "requirement": {
+                "stageClass": "prelims",
+                "depth": "speed",
+                "depthDescription": "Speed-based calculation and pattern recognition at clerk level.",
+                "difficulty": "easy",
+                "questionTarget": 60,
+                "accuracyTarget": 85,
+                "speedTargetSec": 34.3,
+                "speedBasis": "official-section-pace",
+                "source": "profile"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 60
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 85
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 34.3
+                  }
+                ]
+              }
+            },
+            "mains": {
+              "stageClass": "mains",
+              "requirement": {
+                "stageClass": "mains",
+                "depth": "applied",
+                "depthDescription": "Applied, moderately complex mains-level questions.",
+                "difficulty": "medium",
+                "questionTarget": 50,
+                "accuracyTarget": 75,
+                "speedTargetSec": 54,
+                "speedBasis": "official-section-pace",
+                "source": "profile"
+              },
+              "attempted": 0,
+              "accuracy": null,
+              "avgTimeSeconds": null,
+              "targetsMet": {
+                "questions": false,
+                "accuracy": false,
+                "speed": false,
+                "all": false,
+                "gaps": [
+                  {
+                    "target": "questions",
+                    "have": 0,
+                    "need": 50
+                  },
+                  {
+                    "target": "accuracy",
+                    "have": null,
+                    "need": 75
+                  },
+                  {
+                    "target": "speed",
+                    "have": null,
+                    "need": 54
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

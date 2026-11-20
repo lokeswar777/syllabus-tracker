@@ -11,8 +11,16 @@
  */
 import { isoTime, isoDate, nodeKind, topicOf, clampPct } from './config.js';
 
-export const SCHEMA_VERSION = 1;
-export const COLLECTIONS = ['progress', 'sharedLearning', 'practice', 'weightOverrides'];
+/**
+ * Schema history
+ *   1  Phase 3: progress, sharedLearning, practice, weightOverrides
+ *   2  Phase 4: + syncSettings collection; shared topic records gain concept fields (conceptCompletion, notes,
+ *      learningDates, resources, revisions); node records gain `targets`; sessions gain `stageId`, `level`.
+ *      Migration 1 → 2 only adds; no existing field is changed or removed.
+ */
+export const SCHEMA_VERSION = 2;
+export const COLLECTIONS = ['progress', 'sharedLearning', 'practice', 'weightOverrides', 'syncSettings'];
+export const SYNC_MODES = ['full', 'partial', 'independent'];
 
 export function createEmptyDb(now = new Date()) {
   const t = isoTime(now);
@@ -21,6 +29,7 @@ export function createEmptyDb(now = new Date()) {
     sharedLearning: { schemaVersion: SCHEMA_VERSION, kind: 'shared-learning', updatedAt: t, topics: {}, subtopics: {} },
     practice: { schemaVersion: SCHEMA_VERSION, kind: 'practice', updatedAt: t, exams: {} },
     weightOverrides: { schemaVersion: SCHEMA_VERSION, kind: 'weight-overrides', updatedAt: t, exams: {} },
+    syncSettings: { schemaVersion: SCHEMA_VERSION, kind: 'sync-settings', updatedAt: t, enabled: true, modes: {} },
   };
 }
 
@@ -43,6 +52,8 @@ export function createNodeRecord() {
     shareLearning: true,        // false = this exam neither reads nor writes shared learning for the node
     revisions: [],              // manual revision log [{ date, note }] (revisions done without a question set)
     manualStats: null,          // manual practice totals added to logged sessions (see setPracticeTotals)
+    targets: null,              // exam-specific preparation targets overriding the mapping defaults:
+                                // { depth, depthDescription, difficulty, questionTarget, accuracyTarget, speedTargetSec }
   };
 }
 
@@ -80,21 +91,42 @@ export function normalizeDb(raw, now = new Date()) {
   db.practice = { ...db.practice, exams: pe };
   db.sharedLearning = { ...db.sharedLearning, topics: { ...(db.sharedLearning.topics ?? {}) }, subtopics: { ...(db.sharedLearning.subtopics ?? {}) } };
   db.weightOverrides = { ...db.weightOverrides, exams: { ...(db.weightOverrides.exams ?? {}) } };
+  // syncSettings (v2): drop invalid modes instead of failing
+  const modes = {};
+  for (const [mid, m] of Object.entries(db.syncSettings.modes ?? {})) {
+    if (SYNC_MODES.includes(m)) modes[mid] = m; else issues.push(`syncSettings.modes.${mid}: invalid mode '${m}' dropped`);
+  }
+  db.syncSettings = { ...db.syncSettings, enabled: db.syncSettings.enabled !== false, modes };
   return { db, issues };
 }
+/** Keeps stored records exactly as saved (no defaults injected); missing fields are treated as defaults when read. */
 function cleanRecords(recs, label, issues) {
   const out = {};
   for (const [id, r] of Object.entries(recs ?? {})) {
     if (!r || typeof r !== 'object') { issues.push(`${label}.${id}: dropped (not an object)`); continue; }
-    out[id] = { ...createNodeRecord(), ...r };
+    out[id] = { ...r };
   }
   return out;
 }
 
 // ───────────────────────── update helpers ─────────────────────────
 
-const EDITABLE = ['status', 'completionOverride', 'masteryOverride', 'difficulty', 'notes', 'startDate', 'completionDate', 'shareLearning'];
+const EDITABLE = ['status', 'completionOverride', 'masteryOverride', 'difficulty', 'notes', 'startDate', 'completionDate', 'shareLearning', 'targets'];
 const DIFFICULTIES = ['easy', 'medium', 'hard'];
+const TARGET_KEYS = ['depth', 'depthDescription', 'difficulty', 'questionTarget', 'accuracyTarget', 'speedTargetSec'];
+
+function checkTargets(t) {
+  if (t === null) return;
+  if (typeof t !== 'object') throw new TypeError('targets must be an object or null');
+  for (const [k, v] of Object.entries(t)) {
+    if (!TARGET_KEYS.includes(k)) throw new TypeError(`unknown target '${k}' (allowed: ${TARGET_KEYS.join(', ')})`);
+    if (v === null) continue;
+    if (k === 'difficulty' && !DIFFICULTIES.includes(v)) throw new TypeError(`targets.difficulty must be one of ${DIFFICULTIES.join(', ')}`);
+    if (['questionTarget', 'speedTargetSec'].includes(k) && !(Number.isFinite(v) && v > 0)) throw new RangeError(`targets.${k} must be a positive number`);
+    if (k === 'accuracyTarget' && !(Number.isFinite(v) && v >= 0 && v <= 100)) throw new RangeError('targets.accuracyTarget must be 0–100');
+    if (['depth', 'depthDescription'].includes(k) && typeof v !== 'string') throw new TypeError(`targets.${k} must be a string`);
+  }
+}
 
 function withExam(db, examId, now, fn) {
   const exam = db.progress.exams[examId] ?? createExamProgress(examId, now);
@@ -110,8 +142,10 @@ function withExam(db, examId, now, fn) {
  *   lastUpdated    ← now, on every change
  * Shared learning: when the status changes and sharing is enabled for the node, the conceptual part of the
  * status (capped at sharedLearning.maxSharedStatus) is merged into the shared store, and it only ever increases.
+ * Phase 4: this write-back happens only when the topic's sync mode is 'full' (syncModeFor). In 'partial' and
+ * 'independent' modes an exam status change never touches shared learning.
  */
-export function updateNode(db, { examId, nodeId, patch, cfg, now = new Date() }) {
+export function updateNode(db, { examId, nodeId, patch, cfg, now = new Date(), syncModeFor = () => 'full' }) {
   const kind = nodeKind(nodeId);
   if (!kind) throw new TypeError(`'${nodeId}' is not a topic or subtopic id`);
   for (const k of Object.keys(patch)) if (!EDITABLE.includes(k)) throw new TypeError(`field '${k}' is not editable (editable: ${EDITABLE.join(', ')})`);
@@ -121,12 +155,14 @@ export function updateNode(db, { examId, nodeId, patch, cfg, now = new Date() })
   if (patch.difficulty !== undefined && patch.difficulty !== null && !DIFFICULTIES.includes(patch.difficulty)) throw new TypeError(`difficulty must be one of ${DIFFICULTIES.join(', ')}`);
   for (const k of ['startDate', 'completionDate'])
     if (patch[k] != null && !/^\d{4}-\d{2}-\d{2}$/.test(patch[k])) throw new TypeError(`${k} must be YYYY-MM-DD or null`);
+  if (patch.targets !== undefined) checkTargets(patch.targets);
 
   const bucket = kind === 'topic' ? 'topics' : 'subtopics';
   let sharedWrite = null;
   let next = withExam(db, examId, now, (exam) => {
     const prev = exam[bucket][nodeId] ?? createNodeRecord();
     const rec = { ...prev, ...patch, lastUpdated: isoTime(now) };
+    if (patch.targets) rec.targets = { ...(prev.targets ?? {}), ...patch.targets };
     if (patch.status !== undefined) {
       const score = cfg.score(patch.status ?? 'not-started');
       if (score > 0 && !rec.startDate && patch.startDate === undefined) rec.startDate = isoDate(now);
@@ -138,26 +174,115 @@ export function updateNode(db, { examId, nodeId, patch, cfg, now = new Date() })
     }
     return { ...exam, [bucket]: { ...exam[bucket], [nodeId]: rec } };
   });
-  if (sharedWrite && cfg.sharedLearning.enabled && next.progress.settings.sharedLearning !== false)
+  if (sharedWrite && cfg.sharedLearning.enabled && next.progress.settings.sharedLearning !== false
+    && next.syncSettings?.enabled !== false && syncModeFor(topicOf(nodeId)) === 'full')
     next = mergeShared(next, { nodeId, status: sharedWrite, examId, cfg, now });
   return next;
 }
 
-/** Monotonic merge of conceptual learning into the shared store (never lowers what another exam recorded). */
+/** Concept completion (0–100) a shared record stands for. */
+export function conceptPctOf(rec, cfg) {
+  if (!rec) return 0;
+  if (Number.isFinite(rec.conceptCompletion)) return clampPct(rec.conceptCompletion);
+  const cap = cfg.sharedLearning.capScore || 1;
+  return rec.status && cfg.isStatus(rec.status) ? clampPct(Math.min(cfg.score(rec.status), cap) / cap * 100) : 0;
+}
+
+/**
+ * Monotonic merge of conceptual learning into the shared store (never lowers what another exam recorded).
+ * Existing concept fields (notes, resources, dates, revisions) are always kept.
+ */
 function mergeShared(db, { nodeId, status, examId, cfg, now }) {
   const kind = nodeKind(nodeId);
   const bucket = kind === 'topic' ? 'topics' : 'subtopics';
   const capped = cfg.score(status) > cfg.sharedLearning.capScore ? cfg.sharedLearning.maxSharedStatus : status;
   const prev = db.sharedLearning[bucket][nodeId];
-  if (prev && cfg.score(prev.status) >= cfg.score(capped)) return db;
   if (cfg.score(capped) === 0) return db;
-  return {
-    ...db,
-    sharedLearning: {
-      ...db.sharedLearning, updatedAt: isoTime(now),
-      [bucket]: { ...db.sharedLearning[bucket], [nodeId]: { status: capped, updatedAt: isoTime(now), sourceExamId: examId } },
-    },
-  };
+  if (prev && cfg.score(prev.status) >= cfg.score(capped)) return db;
+  const rec = { ...(prev ?? {}), status: capped, updatedAt: isoTime(now), sourceExamId: examId };
+  if (kind === 'topic') {
+    rec.conceptCompletion = Math.max(conceptPctOf(prev, cfg), conceptPctOf({ status: capped }, cfg));
+    rec.learningDates = addDate(prev?.learningDates, isoDate(now));
+  }
+  return { ...db, sharedLearning: { ...db.sharedLearning, updatedAt: isoTime(now), [bucket]: { ...db.sharedLearning[bucket], [nodeId]: rec } } };
+}
+const addDate = (list = [], d) => (list.includes(d) ? list : [...list, d].sort());
+
+// ───────────────────────── shared concept learning (Phase 4) ─────────────────────────
+const CONCEPT_FIELDS = ['status', 'conceptCompletion', 'notes', 'learningDate'];
+const RESOURCE_TYPES = ['book', 'video', 'course', 'notes', 'website', 'test-series', 'other'];
+
+/**
+ * Explicit update of a shared concept record (topic level, keyed by the library topic ID of the master topic).
+ * Unlike exam-driven writes this may lower values: it is the learner's own record of conceptual learning.
+ *   status            concept-phase status (≤ sharedLearning.maxSharedStatus)
+ *   conceptCompletion 0–100 (derived from status when omitted, and vice versa)
+ *   notes             string
+ *   learningDate      YYYY-MM-DD, appended to learningDates
+ */
+export function updateConcept(db, { topicId, patch, cfg, now = new Date(), examId = null }) {
+  if (nodeKind(topicId) !== 'topic') throw new TypeError(`'${topicId}' is not a topic id`);
+  for (const k of Object.keys(patch)) if (!CONCEPT_FIELDS.includes(k)) throw new TypeError(`concept field '${k}' is not editable (editable: ${CONCEPT_FIELDS.join(', ')})`);
+  const cap = cfg.sharedLearning.capScore;
+  if (patch.status != null) {
+    if (!cfg.isStatus(patch.status)) throw new TypeError(`unknown status '${patch.status}'`);
+    if (cfg.score(patch.status) > cap) throw new RangeError(`concept status cannot exceed '${cfg.sharedLearning.maxSharedStatus}': practising and mastery are exam-specific`);
+  }
+  if (patch.conceptCompletion != null && !(Number.isFinite(patch.conceptCompletion) && patch.conceptCompletion >= 0 && patch.conceptCompletion <= 100)) throw new RangeError('conceptCompletion must be 0–100');
+  if (patch.learningDate != null && !/^\d{4}-\d{2}-\d{2}$/.test(patch.learningDate)) throw new TypeError('learningDate must be YYYY-MM-DD');
+  const prev = db.sharedLearning.topics[topicId] ?? {};
+  const rec = { ...prev, updatedAt: isoTime(now), sourceExamId: examId ?? prev.sourceExamId ?? null };
+  if (patch.status !== undefined) {
+    rec.status = patch.status;
+    if (patch.conceptCompletion === undefined) rec.conceptCompletion = conceptPctOf({ status: patch.status ?? 'not-started' }, cfg);
+  }
+  if (patch.conceptCompletion !== undefined) {
+    rec.conceptCompletion = patch.conceptCompletion;
+    if (patch.status === undefined) rec.status = cfg.statusAtOrBelow((patch.conceptCompletion ?? 0) * cap / 100);
+  }
+  if (patch.notes !== undefined) rec.notes = String(patch.notes ?? '');
+  const scoreNow = conceptPctOf(rec, cfg);
+  if (patch.learningDate || (scoreNow > conceptPctOf(prev, cfg))) rec.learningDates = addDate(prev.learningDates, patch.learningDate ?? isoDate(now));
+  return { ...db, sharedLearning: { ...db.sharedLearning, updatedAt: isoTime(now), topics: { ...db.sharedLearning.topics, [topicId]: rec } } };
+}
+
+export function addConceptResource(db, { topicId, resource, newId, now = new Date() }) {
+  if (nodeKind(topicId) !== 'topic') throw new TypeError(`'${topicId}' is not a topic id`);
+  if (!resource?.title) throw new TypeError('resource.title is required');
+  if (resource.type && !RESOURCE_TYPES.includes(resource.type)) throw new TypeError(`resource.type must be one of ${RESOURCE_TYPES.join(', ')}`);
+  const prev = db.sharedLearning.topics[topicId] ?? {};
+  const r = { id: resource.id ?? newId(), title: resource.title, type: resource.type ?? 'other', url: resource.url ?? null, note: resource.note ?? '', addedOn: isoDate(now) };
+  const rec = { ...prev, resources: [...(prev.resources ?? []), r], updatedAt: isoTime(now) };
+  return { ...db, sharedLearning: { ...db.sharedLearning, updatedAt: isoTime(now), topics: { ...db.sharedLearning.topics, [topicId]: rec } } };
+}
+
+export function removeConceptResource(db, { topicId, resourceId, now = new Date() }) {
+  const prev = db.sharedLearning.topics[topicId];
+  if (!prev?.resources?.some((r) => r.id === resourceId)) return db;
+  const rec = { ...prev, resources: prev.resources.filter((r) => r.id !== resourceId), updatedAt: isoTime(now) };
+  return { ...db, sharedLearning: { ...db.sharedLearning, updatedAt: isoTime(now), topics: { ...db.sharedLearning.topics, [topicId]: rec } } };
+}
+
+/** Concept revision (shared): counts toward the concept's revision count, not toward any exam's revision score. */
+export function addConceptRevision(db, { topicId, date, note = '', now = new Date() }) {
+  if (nodeKind(topicId) !== 'topic') throw new TypeError(`'${topicId}' is not a topic id`);
+  const d = date ?? isoDate(now);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(d)) throw new TypeError('date must be YYYY-MM-DD');
+  const prev = db.sharedLearning.topics[topicId] ?? {};
+  const rec = { ...prev, revisions: [...(prev.revisions ?? []), { date: d, note }], updatedAt: isoTime(now) };
+  return { ...db, sharedLearning: { ...db.sharedLearning, updatedAt: isoTime(now), topics: { ...db.sharedLearning.topics, [topicId]: rec } } };
+}
+
+// ───────────────────────── synchronization settings (Phase 4) ─────────────────────────
+/** Per master topic sync mode; null removes the user choice (back to the mapping default). */
+export function setSyncMode(db, { masterTopicId, mode, now = new Date() }) {
+  if (mode !== null && !SYNC_MODES.includes(mode)) throw new TypeError(`sync mode must be one of ${SYNC_MODES.join(', ')} or null`);
+  const modes = { ...db.syncSettings.modes };
+  if (mode === null) delete modes[masterTopicId]; else modes[masterTopicId] = mode;
+  return { ...db, syncSettings: { ...db.syncSettings, updatedAt: isoTime(now), modes } };
+}
+export function setSyncEnabled(db, { enabled, now = new Date() }) {
+  return { ...db, syncSettings: { ...db.syncSettings, updatedAt: isoTime(now), enabled: !!enabled } };
 }
 
 /** Explicitly set (or clear with null) a shared conceptual status. This is the only way to lower it. */
@@ -203,6 +328,8 @@ export function recordPractice(db, { examId, nodeId, session, newId, now = new D
     difficulty: session.difficulty ?? null,
     practiceSet: session.practiceSet !== false,
     revision: !!session.revision,
+    stageId: session.stageId ?? null,   // e.g. prelims / mains / tier1: separates prelims and mains practice
+    level: session.level ?? null,       // exam category (ssc / banking): SSC-level vs banking-level practice
     note: session.note ?? '',
     createdAt: isoTime(now),
   };
