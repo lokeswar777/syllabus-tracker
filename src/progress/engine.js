@@ -295,6 +295,29 @@ export class ProgressEngine {
     return this.getReport();
   }
 
+  // ───────────── configuration & read-only views (Phase 6 UI) ─────────────
+  /** Replace the scoring config (status scores, mastery parameters …). Validated first; stored records are untouched. */
+  setConfig(config) {
+    const compiled = compileConfig(config); // throws on invalid config, leaving the current one active
+    this.config = config;
+    this.cfg = compiled;
+    this.version++;
+    this.cache.clear();
+    for (const l of this.listeners) l(this.version);
+    return this.active ? this.getReport() : null;
+  }
+  /** Read-only copy of one exam's progress record (topics, subtopics, revisions, notes, settings). */
+  getExamRecords(examId) {
+    this.#requireDb();
+    const ep = this.db.progress.exams[examId];
+    return ep ? structuredClone(ep) : null;
+  }
+  /** Read-only copy of one exam's custom weight overrides ({ weightKey: value }). */
+  getWeightOverrides(examId) {
+    this.#requireDb();
+    return structuredClone(this.db.weightOverrides.exams[examId] ?? {});
+  }
+
   // ───────────── plumbing ─────────────
   subscribe(listener) { this.listeners.add(listener); return () => this.listeners.delete(listener); }
   getVersion() { return this.version; }

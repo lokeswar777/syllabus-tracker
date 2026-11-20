@@ -205,7 +205,7 @@ export function calculateProgress({ model, db, config, now = new Date(), stageId
   ownCompletion = clampPct(ownCompletion);
   const scopeTopics = Object.values(topics).filter((t) => t.inScope);
   const C = cfg.classification;
-  const isMastered = (t) => t.mastery >= C.masteredMasteryAtOrAbove && (t.attempted >= C.masteredMinQuestions || t.masteryOverridden);
+  const isMastered = (t) => round2(t.mastery) >= C.masteredMasteryAtOrAbove && (t.attempted >= C.masteredMinQuestions || t.masteryOverridden);
   const highWeightIncomplete = scopeTopics
     .filter((t) => !t.isGateOnly && C.highWeightPriorities.includes(t.priority) && t.completion < C.highWeightIncompleteBelow)
     .sort((a, b) => b.remaining - a.remaining)
@@ -307,7 +307,9 @@ function stagePreparation(stageReqs, userTargets, sessions, cfg) {
   }));
 }
 
-function categoryOf(completion, cfg) {
+function categoryOf(rawCompletion, cfg) {
+  // compare the value the report shows (2 decimals): weighted sums like 89.99999999 must count as 90
+  const completion = Math.round(rawCompletion * 100) / 100;
   if (completion >= cfg.classification.completedAtOrAbove) return 'completed';
   if (completion > 0) return 'in-progress';
   return 'pending';

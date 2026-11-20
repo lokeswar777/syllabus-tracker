@@ -147,3 +147,42 @@ describe('Real data (dist/)', { skip: !DIST_READY && 'run `npm run build` first'
     near(stage.summary.syllabusCompletion, stage.topics['stats.sampling'].effectiveWeight);
   });
 });
+
+describe('Phase 6 engine additions (UI support)', { skip: !DIST_READY && 'run `npm run build` first' }, () => {
+  test('setConfig validates, recalculates and leaves stored records untouched', async () => {
+
+
+    const e = await new ProgressEngine({ loader: createNodeLoader(), storage: new MemoryStorage(), config, clock: () => NOW }).init();
+    await e.switchExam('ssc-cgl');
+    e.setStatus('quant.percentage', 'practicing');
+    const rec = JSON.stringify(e.getExamRecords('ssc-cgl'));
+    const before = e.getReport().topics['quant.percentage'].completion;
+    const next = structuredClone(config);
+    next.statuses.find((s) => s.id === 'practicing').score = 70;
+    let notified = 0; e.subscribe(() => notified++);
+    e.setConfig(next);
+    assert.equal(before, 65);
+    assert.equal(e.getReport().topics['quant.percentage'].completion, 70);
+    assert.equal(JSON.stringify(e.getExamRecords('ssc-cgl')), rec);
+    assert.equal(notified, 1);
+    const bad = structuredClone(config); bad.statuses[1].score = 99;
+    assert.throws(() => e.setConfig(bad), /Invalid progress config/);
+    assert.equal(e.getReport().topics['quant.percentage'].completion, 70, 'invalid config is not applied');
+    assert.deepEqual(e.getWeightOverrides('ssc-cgl'), {});
+    assert.equal(e.getExamRecords('sbi-po'), null);
+  });
+});
+
+describe('Phase 6 regression: classification uses the displayed (rounded) completion', { skip: !DIST_READY && 'run `npm run build` first' }, () => {
+  test('every topic set to "completed" is counted as completed in all 9 exams (no 89.999… misses)', async () => {
+    const e = await new ProgressEngine({ loader: createNodeLoader(), storage: new MemoryStorage(), config, clock: () => NOW }).init();
+    const exams = (await createNodeLoader().listExams()).map((x) => x.examId);
+    const misses = [];
+    for (const ex of exams) {
+      await e.switchExam(ex);
+      for (const id of Object.keys(e.getModel().topics)) e.setStatus(id, 'completed');
+      for (const t of Object.values(e.getReport({ stageId: null }).topics)) if (t.category !== 'completed') misses.push(`${ex}:${t.topicId}=${t.completion}`);
+    }
+    assert.deepEqual(misses, []);
+  });
+});
