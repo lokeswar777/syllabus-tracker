@@ -214,7 +214,15 @@
           "minimum": 0
         },
         "generatedAt": {
-          "$ref": "#/$defs/dateTime"
+          "oneOf": [
+            {
+              "$ref": "#/$defs/dateTime"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "null for a plan created by adding a task manually"
         },
         "tasks": {
           "type": "array",

@@ -198,29 +198,64 @@ export class StudyPlanner {
   }
 
   // ───────────── daily plan ─────────────
-  async generateDailyPlan(date = this.today(), { hours } = {}) {
+  /**
+   * @param {string} date
+   * @param {{hours?: number, excludeTopicIds?: string[]}} [o]  excludeTopicIds: topics not to auto-add on this day
+   *        (e.g. already planned on another day of the week); not stored as removals.
+   */
+  async generateDailyPlan(date = this.today(), { hours, excludeTopicIds = [] } = {}) {
     if (!DATE.test(date)) throw new TypeError('date must be YYYY-MM-DD');
     const { priorities, reports, shares, cfg } = await this.compute();
     const h = hours ?? this.data.settings.dailyHours ?? cfg.dailyPlan.defaultHours;
     if (!(Number.isFinite(h) && h >= 0 && h <= 24)) throw new RangeError('hours must be within 0–24');
-    const plan = buildDailyPlan({ date, hours: h, topics: this.#liveTopics(priorities.topics, cfg), mockCandidates: this.#mockCandidates(reports, shares, cfg, date), existing: this.data.plans[date] ?? null, cfg, now: this.clock() });
+    const exclude = new Set(excludeTopicIds);
+    const topics = this.#liveTopics(priorities.topics, cfg).filter((t) => !exclude.has(t.topicId));
+    const plan = buildDailyPlan({ date, hours: h, topics, mockCandidates: this.#mockCandidates(reports, shares, cfg, date), existing: this.data.plans[date] ?? null, cfg, now: this.clock() });
     await this.#set((d) => { d.plans[date] = plan; }, { invalidate: false });
     return structuredClone(plan);
   }
   getDailyPlan(date = this.today()) { return this.data.plans[date] ? structuredClone(this.data.plans[date]) : null; }
 
-  /** Manually add a task (kept on regeneration). */
-  addTask(date, { topicId = null, examId, action, minutes, detail = '', name = null }) {
+  /** Manually add a task (kept on regeneration). Creates an empty plan for the day when there is none. */
+  async addTask(date, { topicId = null, examId, action, minutes, detail = '', name = null }) {
+    if (!DATE.test(date)) throw new TypeError('date must be YYYY-MM-DD');
     if (!ACTIONS.includes(action)) throw new TypeError(`action must be one of ${ACTIONS.join(', ')}`);
     if (!(Number.isFinite(minutes) && minutes > 0 && minutes <= 24 * 60)) throw new RangeError('minutes must be > 0');
     if (!this.data.settings.targets.some((t) => t.examId === examId)) throw new RangeError(`'${examId}' is not a target exam`);
-    const plan = this.#plan(date);
-    const taskId = `${date}:manual:${topicId ?? examId}:${action}:${plan.tasks.length + 1}`;
+    if (!name && topicId && !this.topicNames.has(topicId)) { try { await this.compute(); } catch { /* name falls back to the ID */ } }
+    const existing = this.data.plans[date];
+    const used = [...(existing?.tasks ?? []).map((t) => t.taskId), ...(existing?.removed ?? [])];
+    const seq = Math.max(0, ...used.map((id) => Number(String(id).split(':').at(-1)) || 0)) + 1; // unique within the day
+    const taskId = `${date}:manual:${topicId ?? examId}:${action}:${seq}`;
     return this.#set((d) => {
+      if (!d.plans[date]) d.plans[date] = this.#emptyPlan(date);
       const p = d.plans[date];
       p.tasks.push({ taskId, kind: topicId ? 'topic' : 'exam', topicId, name: name ?? this.topicNames.get(topicId) ?? topicId ?? examId, subject: topicId ? topicId.split('.')[0] : null, examIds: [examId], primaryExamId: examId, section: null, action, detail, minutes, priorityScore: null, classification: null, reason: 'Added manually', source: 'manual', status: 'pending', order: p.tasks.length + 1 });
       p.plannedMinutes = p.tasks.reduce((a, t) => a + t.minutes, 0);
     }).then(() => taskId);
+  }
+  /** Move a pending task to another day (drag-and-drop). It becomes a manual task there and is not re-added on the old day. */
+  async moveTask(fromDate, taskId, toDate, { index = null } = {}) {
+    if (!DATE.test(toDate)) throw new TypeError('toDate must be YYYY-MM-DD');
+    const plan = this.#plan(fromDate);
+    const task = plan.tasks.find((t) => t.taskId === taskId);
+    if (!task) throw new RangeError(`no task '${taskId}' on ${fromDate}`);
+    if (task.status === 'completed') throw new Error('completed tasks cannot be moved');
+    if (fromDate === toDate) {
+      if (index === null) return taskId;
+      const ids = plan.tasks.map((t) => t.taskId).filter((id) => id !== taskId);
+      ids.splice(Math.max(0, Math.min(index, ids.length)), 0, taskId);
+      await this.reorderTasks(fromDate, ids);
+      return taskId;
+    }
+    await this.removeTask(fromDate, taskId);
+    const newId = await this.addTask(toDate, { topicId: task.topicId, examId: task.primaryExamId, action: task.action, minutes: task.minutes, detail: task.detail ?? '', name: task.name });
+    if (index !== null) {
+      const ids = this.data.plans[toDate].tasks.map((t) => t.taskId).filter((id) => id !== newId);
+      ids.splice(Math.max(0, Math.min(index, ids.length)), 0, newId);
+      await this.reorderTasks(toDate, ids);
+    }
+    return newId;
   }
   /** Remove a task; the topic is not re-added to that day's plan on regeneration. */
   removeTask(date, taskId) {
@@ -322,6 +357,10 @@ export class StudyPlanner {
     const t = d.settings.targets.find((x) => x.examId === examId);
     if (!t) throw new RangeError(`'${examId}' is not a target exam`);
     return t;
+  }
+  #emptyPlan(date) {
+    const hours = this.data.settings.dailyHours ?? this.config().dailyPlan.defaultHours;
+    return { date, hours, budgetMinutes: Math.round(hours * 60), plannedMinutes: 0, generatedAt: null, tasks: [], removed: [], customOrder: null };
   }
   #plan(date) {
     if (!this.data.plans[date]) throw new RangeError(`no plan for ${date}: call generateDailyPlan('${date}') first`);

@@ -1,0 +1,43 @@
+{
+  "name": "syllabus-tracker-app",
+  "version": "0.6.0",
+  "private": true,
+  "type": "module",
+  "description": "Phase 6: interactive frontend for the syllabus tracker. Uses the engines in ../src (progress, mapping, planner) and the built data in ../dist and ../data.",
+  "scripts": {
+    "sync-data": "node scripts/sync-data.mjs",
+    "dev": "node scripts/sync-data.mjs && vite",
+    "build": "node scripts/sync-data.mjs && tsc --noEmit -p tsconfig.json && vite build",
+    "preview": "vite preview --port 4173 --strictPort",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "lucide-react": "0.468.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "recharts": "2.15.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.53.1",
+    "@testing-library/dom": "10.4.0",
+    "@testing-library/jest-dom": "6.6.3",
+    "@testing-library/react": "16.3.0",
+    "@testing-library/user-event": "14.6.1",
+    "@types/node": "22.15.30",
+    "@types/react": "18.3.23",
+    "@types/react-dom": "18.3.7",
+    "@vitejs/plugin-react": "4.5.2",
+    "autoprefixer": "10.4.21",
+    "jsdom": "26.1.0",
+    "postcss": "8.5.4",
+    "tailwindcss": "3.4.17",
+    "typescript": "5.8.3",
+    "vite": "6.3.5",
+    "vitest": "3.2.4"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

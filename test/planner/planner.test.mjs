@@ -270,3 +270,34 @@ describe('Phase 5 planner (real data)', { skip: !DIST_READY && 'run `npm run bui
     assert.throws(() => b.planner.setDailyHours(30), RangeError);
   });
 });
+
+describe('Phase 6 planner additions (UI support)', { skip: !DIST_READY && 'run `npm run build` first' }, () => {
+  test('addTask creates an empty plan for a day without one; moveTask moves between days and reorders', async () => {
+    const { planner, engine } = await setup();
+    const before = snapshotProgress(engine);
+    const id = await planner.addTask('2026-11-25', { topicId: 'quant.percentage', examId: 'ssc-cgl', action: 'practice-questions', minutes: 30 });
+    let p = planner.getDailyPlan('2026-11-25');
+    assert.deepEqual([p.tasks.length, p.tasks[0].taskId, p.tasks[0].name, p.generatedAt], [1, id, 'Percentage', null]);
+    const gen = await planner.generateDailyPlan('2026-11-26', { hours: 4 });
+    const moving = gen.tasks[1];
+    const moved = await planner.moveTask('2026-11-26', moving.taskId, '2026-11-25', { index: 0 });
+    p = planner.getDailyPlan('2026-11-25');
+    assert.deepEqual(p.tasks.map((t) => t.taskId), [moved, id]);
+    assert.equal(p.tasks[0].topicId, moving.topicId);
+    const day26 = await planner.generateDailyPlan('2026-11-26', { hours: 4 });
+    assert.ok(!day26.tasks.some((t) => t.topicId === moving.topicId), 'moved topic is not re-added on the old day');
+    // same-day move = reorder
+    await planner.moveTask('2026-11-25', id, '2026-11-25', { index: 0 });
+    assert.equal(planner.getDailyPlan('2026-11-25').tasks[0].taskId, id);
+    assert.equal(snapshotProgress(engine), before, 'planning never changes progress');
+  });
+
+  test('generateDailyPlan can exclude topics already planned on other days', async () => {
+    const { planner } = await setup();
+    const a = await planner.generateDailyPlan('2026-11-21', { hours: 4 });
+    const ids = a.tasks.map((t) => t.topicId).filter(Boolean);
+    const b = await planner.generateDailyPlan('2026-11-22', { hours: 4, excludeTopicIds: ids });
+    assert.ok(b.tasks.length > 0 && b.tasks.every((t) => !ids.includes(t.topicId)));
+    assert.deepEqual(b.removed, [], 'exclusions are not stored as removals');
+  });
+});
