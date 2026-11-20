@@ -1,6 +1,6 @@
 {
   "name": "syllabus-tracker",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "private": true,
   "type": "module",
   "description": "Competitive exam syllabus tracker: syllabus database (Phase 1), weightage (Phase 2), progress engine (Phase 3), common syllabus mapping with smart progress synchronization (Phase 4), the smart preparation priority engine (Phase 5) and the interactive frontend in app/ (Phase 6) for SSC & Banking.",

@@ -41,6 +41,7 @@ export interface Engine {
   deletePractice(sessionId: string): Report;
   updateConcept(id: string, patch: Record<string, unknown>): void;
   setSyncMode(id: string, mode: string | null): void;
+  syncModeFor(examId: string, topicId: string): 'full' | 'partial' | 'independent';
   setSharedLearningEnabled(enabled: boolean): void;
   setStage(stageId: string | null): Report;
   setTrack(trackId: string): Report;

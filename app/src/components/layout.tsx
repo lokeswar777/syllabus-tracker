@@ -3,7 +3,7 @@ import {
   LayoutDashboard, ListTree, GitCompareArrows, Network, Flame, CalendarDays, RotateCcw, BarChart3, Settings as SettingsIcon,
   PanelLeftClose, PanelLeftOpen, Menu, X, Sun, Moon, Monitor, CheckCircle2, Loader2, AlertTriangle, GraduationCap, Info,
 } from 'lucide-react';
-import { useApp, useLocalPref, useTheme, type Route } from '../lib/hooks';
+import { useApp, useLocalPref, useTheme, useUi, type Route } from '../lib/hooks';
 import { cn, IconButton, Select } from './ui';
 
 export const NAV: { route: Route; label: string; icon: typeof LayoutDashboard }[] = [
@@ -80,12 +80,20 @@ export function Sidebar({ route, onNavigate, mobileOpen, onCloseMobile }: { rout
 }
 
 function SaveIndicator() {
-  const { store } = useApp();
+  const store = useUi();
   const s = store.saveState;
-  const meta = { saved: { I: CheckCircle2, t: 'Saved', c: 'text-muted' }, saving: { I: Loader2, t: 'Saving…', c: 'text-muted' }, error: { I: AlertTriangle, t: 'Not saved', c: 'text-critical' } }[s];
+  if (s === 'error') {
+    return (
+      <span className="inline-flex items-center gap-1.5 text-xs text-critical" role="alert" data-testid="save-state" title={store.saveError ?? undefined}>
+        <AlertTriangle className="h-3.5 w-3.5" aria-hidden />Save failed
+        <button type="button" onClick={() => void store.retrySave()} className="rounded-md border border-critical/40 px-1.5 py-0.5 font-medium hover:bg-critical/10" data-testid="save-retry">Retry</button>
+      </span>
+    );
+  }
+  const meta = s === 'saving' ? { I: Loader2, t: 'Saving…' } : { I: CheckCircle2, t: 'Saved' };
   return (
-    <span className={cn('hidden items-center gap-1.5 text-xs sm:inline-flex', meta.c)} role="status" aria-live="polite" data-testid="save-state">
-      <meta.I className={cn('h-3.5 w-3.5', s === 'saving' && 'animate-spin')} aria-hidden />{meta.t}
+    <span className="inline-flex items-center gap-1.5 text-xs text-muted" role="status" aria-live="polite" data-testid="save-state">
+      <meta.I className={cn('h-3.5 w-3.5', s === 'saving' && 'animate-spin')} aria-hidden /><span className="hidden sm:inline">{meta.t}</span>
     </span>
   );
 }
@@ -156,7 +164,7 @@ export function Topbar({ onOpenMobile }: { onOpenMobile: () => void }) {
 }
 
 export function Toasts() {
-  const { store } = useApp();
+  const store = useUi();
   return (
     <div className="pointer-events-none fixed bottom-4 right-4 z-[60] flex w-[min(24rem,calc(100vw-2rem))] flex-col gap-2" aria-live="polite">
       {store.toasts.map((t) => (

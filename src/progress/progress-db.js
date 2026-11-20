@@ -317,6 +317,7 @@ export function recordPractice(db, { examId, nodeId, session, newId, now = new D
   if (session.incorrect != null && !(Number.isInteger(session.incorrect) && session.incorrect >= 0 && correct + session.incorrect <= attempted)) throw new RangeError('incorrect must be an integer and correct + incorrect ≤ attempted');
   if (session.timeSeconds != null && !(Number.isFinite(session.timeSeconds) && session.timeSeconds >= 0)) throw new RangeError('timeSeconds must be ≥ 0');
   if (session.difficulty != null && !DIFFICULTIES.includes(session.difficulty)) throw new TypeError(`difficulty must be one of ${DIFFICULTIES.join(', ')}`);
+  if (session.id != null && (db.practice.exams[examId]?.sessions ?? []).some((x) => x.id === session.id)) throw new RangeError(`practice session id '${session.id}' already exists`);
   const s = {
     id: session.id ?? newId(),
     nodeId,

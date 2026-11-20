@@ -26,12 +26,15 @@ export function PracticeForm({ report, topicId, onDone, compact }: { report: Rep
     : !(Number.isInteger(c) && c >= 0 && c <= a) ? 'Correct answers must be between 0 and the questions attempted'
       : m !== null && !(m > 0 && m < 1440) ? 'Minutes must be a positive number' : !isDate(date) ? 'Choose a valid date' : null;
   const touched = attempted !== '' || correct !== '';
+  const [submitting, setSubmitting] = useState(false);
 
   const submit = async () => {
-    if (error) return;
+    if (error || submitting) return; // no double submissions
+    setSubmitting(true);
     const st = stages.length > 1 ? (stageId && stages.includes(stageId) ? stageId : null) : undefined;
     const ok = await store.run(() => store.engine.recordPractice(node, { attempted: a, correct: c, timeSeconds: m === null ? null : Math.round(m * 60), date, revision, ...(st !== undefined ? { stageId: st } : {}) }),
       `Logged ${a} questions (${Math.round((c / a) * 100)}% correct) for ${topic?.name ?? node}`);
+    setSubmitting(false);
     if (ok) { setAttempted(''); setCorrect(''); setMinutes(''); setRevision(false); onDone?.(); }
   };
 
@@ -68,7 +71,7 @@ export function PracticeForm({ report, topicId, onDone, compact }: { report: Rep
       </div>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <Checkbox checked={revision} onChange={setRevision} label="This was a revision session (counts as a completed revision)" />
-        <Button type="submit" variant="primary" icon={Plus} disabled={!!error}>Log practice</Button>
+        <Button type="submit" variant="primary" icon={Plus} disabled={!!error} loading={submitting}>Log practice</Button>
       </div>
       {touched && error && <p className="text-xs text-critical" role="alert">{error}</p>}
     </form>

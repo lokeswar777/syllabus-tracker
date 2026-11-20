@@ -1,18 +1,21 @@
-import { Component, type ReactNode } from 'react';
+import { Component, lazy, Suspense, type ReactNode } from 'react';
 import { GraduationCap, Loader2, Database } from 'lucide-react';
 import { StoreProvider, useApp, useRoute, type Route } from './lib/hooks';
 import type { AppStore } from './lib/store';
 import { Sidebar, Topbar, Toasts, useMobileNav } from './components/layout';
 import { Card, ErrorState } from './components/ui';
-import { Dashboard } from './pages/Dashboard';
-import { SyllabusPage } from './pages/Syllabus';
-import { ComparePage } from './pages/Compare';
-import { CommonTopicsPage } from './pages/CommonTopics';
-import { PrioritiesPage } from './pages/Priorities';
-import { PlannerPage } from './pages/Planner';
-import { RevisionPage } from './pages/Revision';
-import { PracticePage } from './pages/Practice';
-import { SettingsPage } from './pages/Settings';
+import { LoadingBlock } from './components/ui';
+
+// Pages are loaded on demand (smaller first download; charts load with the pages that use them).
+const Dashboard = lazy(() => import('./pages/Dashboard').then((m) => ({ default: m.Dashboard })));
+const SyllabusPage = lazy(() => import('./pages/Syllabus').then((m) => ({ default: m.SyllabusPage })));
+const ComparePage = lazy(() => import('./pages/Compare').then((m) => ({ default: m.ComparePage })));
+const CommonTopicsPage = lazy(() => import('./pages/CommonTopics').then((m) => ({ default: m.CommonTopicsPage })));
+const PrioritiesPage = lazy(() => import('./pages/Priorities').then((m) => ({ default: m.PrioritiesPage })));
+const PlannerPage = lazy(() => import('./pages/Planner').then((m) => ({ default: m.PlannerPage })));
+const RevisionPage = lazy(() => import('./pages/Revision').then((m) => ({ default: m.RevisionPage })));
+const PracticePage = lazy(() => import('./pages/Practice').then((m) => ({ default: m.PracticePage })));
+const SettingsPage = lazy(() => import('./pages/Settings').then((m) => ({ default: m.SettingsPage })));
 
 export type PageProps = { params: URLSearchParams; navigate: (r: Route, p?: Record<string, string>) => void };
 const PAGES: Record<Route, (p: PageProps) => ReactNode> = {
@@ -39,7 +42,9 @@ function Shell() {
         <Topbar onOpenMobile={nav.openNav} />
         <main className="mx-auto w-full min-w-0 max-w-[1400px] flex-1 px-4 py-5 sm:px-6 sm:py-6" id="main">
           <PageBoundary key={route}>
-            {NEEDS_EXAM.includes(route) && !store.activeExamId ? <Welcome /> : <Page params={params} navigate={navigate} />}
+            <Suspense fallback={<LoadingBlock label="Loading page…" rows={6} />}>
+              {NEEDS_EXAM.includes(route) && !store.activeExamId ? <Welcome /> : <Page params={params} navigate={navigate} />}
+            </Suspense>
           </PageBoundary>
         </main>
       </div>

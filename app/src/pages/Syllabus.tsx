@@ -262,6 +262,7 @@ function TopicDetail({ ctx, t }: { ctx: ExamCtx; t: TopicReport }) {
           <div className="flex flex-wrap gap-2">
             <Button size="sm" icon={RotateCcw} onClick={() => store.run(() => store.engine.addRevision(t.topicId, { date: store.today(), note: 'Confirmed from syllabus tracker' }), `Revision of ${t.name} recorded`)}>Confirm revision today</Button>
           </div>
+          <OverrideEditor t={t} />
           <div>
             <label className="label flex items-center gap-1.5" htmlFor={`notes-${t.topicId}`}><NotebookPen className="h-3.5 w-3.5" /> Notes</label>
             <textarea id={`notes-${t.topicId}`} value={notes} onChange={(e) => setNotes(e.target.value)} rows={3} placeholder="Formulas, weak points, sources…"
@@ -281,3 +282,27 @@ function TopicDetail({ ctx, t }: { ctx: ExamCtx; t: TopicReport }) {
 const Metric = ({ label, value }: { label: string; value: string }) => (
   <div className="rounded-lg border border-line bg-surface px-2.5 py-2"><dt className="text-2xs text-muted">{label}</dt><dd className="tabular mt-0.5 text-sm font-medium">{value}</dd></div>
 );
+
+/** Manual completion / mastery overrides (engine fields completionOverride / masteryOverride); empty = calculated value. */
+function OverrideEditor({ t }: { t: TopicReport }) {
+  const { store } = useApp();
+  const rec = store.engine.getExamRecords(store.activeExamId!)?.topics[t.topicId] as { completionOverride?: number | null; masteryOverride?: number | null } | undefined;
+  const [c, setC] = useState(rec?.completionOverride != null ? String(rec.completionOverride) : '');
+  const [m, setM] = useState(rec?.masteryOverride != null ? String(rec.masteryOverride) : '');
+  const parse = (v: string) => (v.trim() === '' ? null : Number(v));
+  const valid = (v: number | null) => v === null || (Number.isFinite(v) && v >= 0 && v <= 100);
+  const pc = parse(c), pm = parse(m);
+  const dirty = pc !== (rec?.completionOverride ?? null) || pm !== (rec?.masteryOverride ?? null);
+  return (
+    <details className="rounded-lg border border-line bg-surface px-3 py-2 text-xs" open={rec?.completionOverride != null || rec?.masteryOverride != null}>
+      <summary className="cursor-pointer select-none text-muted">Manual overrides {t.masteryOverridden ? '(mastery overridden)' : ''}</summary>
+      <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-[1fr_1fr_auto] sm:items-end">
+        <label className="block"><span className="label">Completion % (empty = from status)</span><Input inputMode="decimal" value={c} onChange={(e) => setC(e.target.value.replace(/[^\d.]/g, ''))} aria-label={`Completion override of ${t.name}`} /></label>
+        <label className="block"><span className="label">Mastery % (empty = calculated)</span><Input inputMode="decimal" value={m} onChange={(e) => setM(e.target.value.replace(/[^\d.]/g, ''))} aria-label={`Mastery override of ${t.name}`} /></label>
+        <Button size="sm" className="col-span-2 sm:col-span-1" disabled={!dirty || !valid(pc) || !valid(pm)}
+          onClick={() => store.run(() => store.engine.updateTopic(t.topicId, { completionOverride: pc, masteryOverride: pm }), 'Overrides saved')}>Save overrides</Button>
+      </div>
+      {(!valid(pc) || !valid(pm)) && <p className="mt-1 text-critical">Values must be between 0 and 100.</p>}
+    </details>
+  );
+}

@@ -17,6 +17,13 @@ export function useApp() {
   return { store, version };
 }
 
+/** Toasts and save status only: re-renders the header/toasts without re-rendering pages. */
+export function useUi() {
+  const store = useStore();
+  useSyncExternalStore(store.subscribeUi, store.getUiVersion, store.getUiVersion);
+  return store;
+}
+
 /** Runs an async computation (e.g. planner.getRecommendations) whenever deps change; stale results are dropped. */
 export function useAsync<T>(fn: () => Promise<T> | T, deps: unknown[]) {
   const [state, setState] = useState<{ data: T | undefined; error: Error | null; loading: boolean }>({ data: undefined, error: null, loading: true });

@@ -8,6 +8,7 @@ Structured syllabus and weightage data for **SSC CGL, SSC CHSL, SSC CPO, SBI PO,
 - **Phase 4:** common syllabus mapping and smart progress synchronization: [`docs/COMMON_MAPPING_SYNC.md`](docs/COMMON_MAPPING_SYNC.md) (`data/mapping/`, `src/mapping/`, `npm run demo:sync`)
 - **Phase 5:** smart preparation priority engine (priority scoring, revision tracker, weak areas, daily plan): [`docs/PRIORITY_ENGINE.md`](docs/PRIORITY_ENGINE.md) (`data/planner/`, `src/planner/`, `npm run demo:planner`)
 - **Phase 6:** interactive frontend (React + TypeScript + Tailwind + Recharts), connected to all the engines above: [`docs/FRONTEND.md`](docs/FRONTEND.md) (`app/`, `npm run app:install && npm run app:dev`)
+- **Phase 7:** permanent storage (IndexedDB), automatic atomic saving, backup/restore (full or merge), CSV exports, restore points, integrity checks, deployment: [`docs/PERSISTENCE.md`](docs/PERSISTENCE.md)
 
 ```
 data/                         ← SOURCE OF TRUTH (hand-edited)

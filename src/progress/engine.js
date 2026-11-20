@@ -341,7 +341,8 @@ export class ProgressEngine {
     this.version++;
     this.cache.clear();
     const snapshot = db;
-    this.saveChain = this.saveChain.then(() => saveCollections(this.storage, snapshot, keys));
+    // a failed save must not block later ones: the chain recovers, flush() reports the latest result
+    this.saveChain = this.saveChain.catch(() => {}).then(() => saveCollections(this.storage, snapshot, keys));
     for (const l of this.listeners) l(this.version);
   }
   #requireDb() { if (!this.db) throw new Error('call init() first'); }

@@ -1,16 +1,17 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { Crosshair, Clock, Scale, Gauge, ListChecks, Palette, Database, Download, Upload, RotateCcw, Trash2, SlidersHorizontal, Link2, Save } from 'lucide-react';
+import { useEffect, useMemo, useState } from 'react';
+import { Crosshair, Clock, Scale, Gauge, ListChecks, Palette, RotateCcw, SlidersHorizontal, Link2, Save } from 'lucide-react';
+import { DataManagement } from '../components/DataManagement';
 import type { PageProps } from '../App';
 import { useApp, useTheme } from '../lib/hooks';
 import { progress } from '../lib/engines';
 import type { ProgressConfig } from '../lib/engines';
 import { isDate, pct } from '../lib/format';
-import { Badge, Button, Card, CardBody, CardHeader, Checkbox, Field, Input, Modal, PageHeader, Segmented, Select, cn } from '../components/ui';
+import { Badge, Button, Card, CardBody, CardHeader, Checkbox, Field, Input, PageHeader, Segmented, Select } from '../components/ui';
 
 const NAV = [
   { id: 'targets', label: 'Target exams' }, { id: 'time', label: 'Study time & revision' }, { id: 'priority', label: 'Priority scoring' },
   { id: 'weightage', label: 'Topic weightage' }, { id: 'statuses', label: 'Status scores' }, { id: 'mastery', label: 'Mastery' },
-  { id: 'appearance', label: 'Appearance' }, { id: 'data', label: 'Data' },
+  { id: 'appearance', label: 'Appearance' }, { id: 'data', label: 'Data & backups' },
 ];
 
 export function SettingsPage({ params }: PageProps) {
@@ -33,7 +34,7 @@ export function SettingsPage({ params }: PageProps) {
           <StatusScoresCard />
           <MasteryCard />
           <AppearanceCard />
-          <DataCard />
+          <Section id="data"><DataManagement /></Section>
         </div>
       </div>
     </div>
@@ -290,69 +291,6 @@ function AppearanceCard() {
         <CardHeader title="Appearance" icon={Palette} />
         <CardBody><Segmented label="Theme" value={pref} onChange={setPref} options={[{ value: 'light', label: 'Light' }, { value: 'dark', label: 'Dark' }, { value: 'system', label: 'System' }]} /></CardBody>
       </Card>
-    </Section>
-  );
-}
-
-function DataCard() {
-  const { store } = useApp();
-  const fileRef = useRef<HTMLInputElement>(null);
-  const [pending, setPending] = useState<{ name: string; data: unknown; summary: string } | null>(null);
-  const [resetOpen, setResetOpen] = useState(false);
-  const [confirmText, setConfirmText] = useState('');
-  const doExport = async () => {
-    const data = await store.exportData();
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `syllabus-tracker-${store.today()}.json`;
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-    store.toast('success', 'Export downloaded');
-  };
-  const onFile = async (f: File | undefined) => {
-    if (!f) return;
-    try {
-      const data = JSON.parse(await f.text()) as { format?: string; exportedAt?: string; collections?: Record<string, { exams?: Record<string, unknown> } | null> };
-      if (data.format !== 'syllabus-tracker-export') throw new Error('This is not a Syllabus Tracker export file.');
-      const exams = Object.keys(data.collections?.progress?.exams ?? {});
-      setPending({ name: f.name, data, summary: `Exported ${data.exportedAt ? new Date(data.exportedAt).toLocaleString() : 'at an unknown time'} · progress for ${exams.length} exam${exams.length === 1 ? '' : 's'}${exams.length ? ` (${exams.map((e) => store.examName(e)).join(', ')})` : ''}` });
-    } catch (e) {
-      store.toast('error', `Import failed: ${(e as Error).message}`);
-    } finally {
-      if (fileRef.current) fileRef.current.value = '';
-    }
-  };
-  return (
-    <Section id="data">
-      <Card>
-        <CardHeader title="Data export and import" icon={Database} description="Progress, practice, shared learning, sync settings, weight overrides, planner, scoring settings and trend history, in one JSON file." />
-        <CardBody className="flex flex-wrap gap-2">
-          <Button icon={Download} onClick={doExport} data-testid="export">Export data</Button>
-          <Button icon={Upload} onClick={() => fileRef.current?.click()}>Import data…</Button>
-          <input ref={fileRef} type="file" accept="application/json,.json" className="hidden" onChange={(e) => onFile(e.target.files?.[0])} data-testid="import-file" />
-          <Button variant="ghost" icon={Trash2} className="text-critical hover:text-critical sm:ml-auto" onClick={() => setResetOpen(true)}>Reset all data…</Button>
-        </CardBody>
-      </Card>
-      {pending && (
-        <Modal open onClose={() => setPending(null)} title="Import data?"
-          footer={<><Button onClick={() => setPending(null)}>Cancel</Button><Button variant="primary" onClick={async () => {
-            const ok = await store.run(() => store.importData(pending.data), 'Data imported');
-            if (ok !== undefined) setPending(null);
-          }}>Replace my data</Button></>}>
-          <p className="text-sm">{pending.name}</p>
-          <p className="mt-1 text-xs text-muted">{pending.summary}</p>
-          <p className="mt-3 text-xs text-critical">This replaces all progress currently saved in this browser. Export first if you may need it.</p>
-        </Modal>
-      )}
-      {resetOpen && (
-        <Modal open onClose={() => setResetOpen(false)} title="Reset all data?"
-          footer={<><Button onClick={() => setResetOpen(false)}>Cancel</Button><Button variant="danger" disabled={confirmText !== 'RESET'} onClick={async () => { await store.run(() => store.resetAll(), 'All data was reset'); setResetOpen(false); }}>Reset everything</Button></>}>
-          <p className="text-sm text-ink2">Deletes all progress, practice, plans and settings in this browser. The syllabus and weightage databases are not affected.</p>
-          <Field label="Type RESET to confirm" className="mt-3"><Input value={confirmText} onChange={(e) => setConfirmText(e.target.value)} className={cn(confirmText && confirmText !== 'RESET' && 'border-critical')} /></Field>
-        </Modal>
-      )}
     </Section>
   );
 }

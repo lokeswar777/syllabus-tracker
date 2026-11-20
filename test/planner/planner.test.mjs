@@ -301,3 +301,17 @@ describe('Phase 6 planner additions (UI support)', { skip: !DIST_READY && 'run `
     assert.deepEqual(b.removed, [], 'exclusions are not stored as removals');
   });
 });
+
+describe('Phase 7: planner saving recovers after a failure', { skip: !DIST_READY && 'run `npm run build` first' }, () => {
+  test('a failed planner save does not block the next one', async () => {
+    const mem = new MemoryStorage();
+    let fail = false;
+    const storage = { read: (k) => mem.read(k), write: (k, v) => (fail && k === PLANNER_KEY ? Promise.reject(new Error('disk full')) : mem.write(k, v)) };
+    const { planner } = await setup({ storage });
+    fail = true;
+    await assert.rejects(() => planner.setDailyHours(2), /disk full/);
+    fail = false;
+    await planner.setDailyHours(3);
+    assert.equal((await mem.read(PLANNER_KEY)).settings.dailyHours, 3);
+  });
+});
