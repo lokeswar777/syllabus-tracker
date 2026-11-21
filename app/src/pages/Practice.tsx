@@ -5,7 +5,7 @@ import { useApp } from '../lib/hooks';
 import { useExam } from '../lib/useExam';
 import { practiceBySection, practiceByTopic, practiceTotals, practiceTrend, scopedSessions, topicOf } from '../lib/selectors';
 import { num, pct, secs, shortDate } from '../lib/format';
-import { Badge, Button, Card, CardBody, CardHeader, EmptyState, IconButton, PageHeader, Progress, Segmented, Select, Stat, cn } from '../components/ui';
+import { Badge, Button, Card, CardBody, CardHeader, EmptyState, IconButton, PageHeader, Progress, ResponsiveTable, Segmented, Select, Stat, cn } from '../components/ui';
 import { PercentTrend, VolumeBars } from '../components/charts';
 import { PracticeForm } from '../components/PracticeForm';
 
@@ -63,7 +63,7 @@ export function PracticePage(_: PageProps) {
           <Card>
             <CardHeader title="Section-wise performance" icon={LayoutGrid} />
             <div className="scroll-x px-2 pb-2">
-              <table className="table-base min-w-[40rem]" data-testid="section-perf">
+              <ResponsiveTable className="table-base min-w-[40rem]" data-testid="section-perf">
                 <thead><tr><th>Section</th><th className="text-right">Attempted</th><th className="text-right">Correct</th><th className="text-right">Incorrect</th><th className="w-48">Accuracy</th><th className="text-right">Avg time</th></tr></thead>
                 <tbody>
                   {sections.map((s) => (
@@ -72,12 +72,12 @@ export function PracticePage(_: PageProps) {
                       <td className="tabular text-right">{num(s.attempted)}</td>
                       <td className="tabular text-right">{num(s.correct)}</td>
                       <td className="tabular text-right">{num(s.incorrect)}</td>
-                      <td><div className="flex items-center gap-2"><Progress value={s.accuracy ?? 0} size="sm" label={`${s.name} accuracy`} /><span className="tabular w-10 text-right text-xs">{pct(s.accuracy, 0)}</span></div></td>
+                      <td><div className="flex flex-1 items-center gap-2 max-sm:max-w-[60%]"><Progress value={s.accuracy ?? 0} size="sm" label={`${s.name} accuracy`} /><span className="tabular w-10 text-right text-xs">{pct(s.accuracy, 0)}</span></div></td>
                       <td className="tabular text-right">{secs(s.avgTimeSeconds)}</td>
                     </tr>
                   ))}
                 </tbody>
-              </table>
+              </ResponsiveTable>
             </div>
           </Card>
 
@@ -87,7 +87,7 @@ export function PracticePage(_: PageProps) {
                 <option value="attempted">Most practised</option><option value="accuracy">Lowest accuracy</option><option value="time">Slowest</option><option value="name">Name</option>
               </Select>} />
             <div className="scroll-x px-2 pb-2">
-              <table className="table-base min-w-[44rem]" data-testid="topic-perf">
+              <ResponsiveTable className="table-base min-w-[44rem]" data-testid="topic-perf">
                 <thead><tr><th>Topic</th><th className="text-right">Attempted</th><th className="text-right">Accuracy</th><th className="text-right">Target</th><th className="text-right">Avg time</th><th className="text-right">Target</th><th className="text-right">Mastery</th></tr></thead>
                 <tbody>
                   {topics.map((t) => {
@@ -108,7 +108,7 @@ export function PracticePage(_: PageProps) {
                     );
                   })}
                 </tbody>
-              </table>
+              </ResponsiveTable>
             </div>
             <p className="px-5 pb-4 text-2xs text-muted">Values below target are shown in red text.</p>
           </Card>

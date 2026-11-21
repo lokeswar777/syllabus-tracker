@@ -5,7 +5,7 @@ import { useApp, useAsync } from '../lib/hooks';
 import { revisionHistory, topicOf } from '../lib/selectors';
 import { pct, shortDate, isDate, relativeDays, daysBetween } from '../lib/format';
 import type { Report, RevisionTracker } from '../lib/types';
-import { Badge, Button, Card, CardHeader, EmptyState, ErrorState, Field, Input, LoadingBlock, Modal, PageHeader, RevisionBadge, Segmented, Stat, cn } from '../components/ui';
+import { Badge, Button, Card, CardHeader, EmptyState, ErrorState, Field, Input, LoadingBlock, Modal, PageHeader, ResponsiveTable, RevisionBadge, Segmented, Stat, cn } from '../components/ui';
 import { TargetsGate } from '../components/TargetsGate';
 
 type Item = RevisionTracker['items'][number];
@@ -50,7 +50,7 @@ function Revision({ navigate }: { navigate: PageProps['navigate'] }) {
   return (
     <div className="space-y-4" data-testid="page-revision">
       <PageHeader title="Revision tracker" description="Spaced revision for every topic you have studied, per exam. A topic counts as revised only when you confirm it or log a revision session."
-        action={<Button icon={Settings2} onClick={() => navigate('settings', { section: 'revision' })}>Intervals: {t?.intervalsDays.join(' / ') ?? '…'} days</Button>} />
+        action={<Button icon={Settings2} onClick={() => navigate('settings', { section: 'time' })}>Intervals: {t?.intervalsDays.join(' / ') ?? '…'} days</Button>} />
       {!t ? <Card><LoadingBlock rows={6} /></Card> : (
         <>
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -73,7 +73,7 @@ function Revision({ navigate }: { navigate: PageProps['navigate'] }) {
               <CardHeader title="Revision history" icon={History} description="Confirmed revisions and revision practice sessions, with the topic’s current exam mastery" />
               {history.length === 0 ? <EmptyState icon={History} title="No revisions recorded yet" /> : (
                 <div className="scroll-x px-2 pb-2">
-                  <table className="table-base min-w-[40rem]" data-testid="revision-history">
+                  <ResponsiveTable className="table-base min-w-[40rem]" data-testid="revision-history">
                     <thead><tr><th>Date</th><th>Topic</th><th>Exam</th><th>Type</th><th className="text-right">Session accuracy</th><th className="text-right">Mastery now</th></tr></thead>
                     <tbody>
                       {history.slice(0, 200).map((h, i) => (
@@ -87,7 +87,7 @@ function Revision({ navigate }: { navigate: PageProps['navigate'] }) {
                         </tr>
                       ))}
                     </tbody>
-                  </table>
+                  </ResponsiveTable>
                 </div>
               )}
             </Card>

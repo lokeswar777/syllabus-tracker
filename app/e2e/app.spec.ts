@@ -166,7 +166,7 @@ test('loading state is shown while data loads', async ({ page }) => {
 });
 
 test('theme toggle switches dark mode and is remembered', async ({ page }) => {
-  await page.goto('./#/settings');
+  await page.goto('./#/settings?section=appearance');
   await page.getByRole('button', { name: /^SSC CGL/ }).isVisible().catch(() => false);
   await page.getByRole('radio', { name: 'Dark' }).click();
   await expect(page.locator('html')).toHaveClass(/dark/);

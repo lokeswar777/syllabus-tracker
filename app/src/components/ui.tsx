@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useRef, type ButtonHTMLAttributes, type ReactNode, type SelectHTMLAttributes, type InputHTMLAttributes } from 'react';
+import { forwardRef, useEffect, useLayoutEffect, useRef, type ButtonHTMLAttributes, type ReactNode, type SelectHTMLAttributes, type InputHTMLAttributes, type TableHTMLAttributes } from 'react';
 import { type LucideIcon, AlertOctagon, ArrowDownCircle, ArrowUpCircle, CircleDot, Loader2, X, Clock, CheckCircle2, CalendarClock, AlertTriangle, MinusCircle } from 'lucide-react';
 import type { PriorityClass, RevisionInfo } from '../lib/types';
 import { useMediaQuery } from '../lib/hooks';
@@ -101,6 +101,20 @@ export function Stat({ label, value, sub, icon: I, testId }: { label: string; va
       {sub && <div className="mt-1 text-xs text-muted">{sub}</div>}
     </Card>
   );
+}
+
+/** A table on wider screens and labelled cards on phones: each cell takes its label from the column header. */
+export function ResponsiveTable({ className, children, ...rest }: TableHTMLAttributes<HTMLTableElement>) {
+  const ref = useRef<HTMLTableElement>(null);
+  useLayoutEffect(() => {
+    const table = ref.current;
+    if (!table) return;
+    const heads = [...table.querySelectorAll('thead th')].map((th) => th.textContent?.trim() ?? '');
+    table.querySelectorAll('tbody tr').forEach((tr) => [...tr.children].forEach((td, i) => {
+      if (heads[i]) td.setAttribute('data-label', heads[i]); else td.removeAttribute('data-label');
+    }));
+  });
+  return <table ref={ref} className={cn('table-cards', className)} {...rest}>{children}</table>;
 }
 
 // ───────── form controls ─────────

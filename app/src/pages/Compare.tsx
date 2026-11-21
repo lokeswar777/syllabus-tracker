@@ -5,7 +5,7 @@ import { useApp, useAsync, useLocalPref } from '../lib/hooks';
 import { isDone, subjectSummary } from '../lib/selectors';
 import { num, pct, subjectLabel } from '../lib/format';
 import type { Report } from '../lib/types';
-import { Badge, Card, CardBody, CardHeader, EmptyState, ErrorState, LoadingBlock, PageHeader, Progress, Segmented, cn } from '../components/ui';
+import { Badge, Card, CardBody, CardHeader, EmptyState, ErrorState, LoadingBlock, PageHeader, Progress, ResponsiveTable, Segmented, cn } from '../components/ui';
 import { CompletionMasteryBars, HeatCell, LegendChip } from '../components/charts';
 
 export function ComparePage(_: PageProps) {
@@ -72,7 +72,7 @@ export function ComparePage(_: PageProps) {
                 <Card className="lg:col-span-2">
                   <CardHeader title="Summary" icon={Table2} />
                   <div className="scroll-x px-2 pb-3">
-                    <table className="table-base" data-testid="compare-table">
+                    <ResponsiveTable className="table-base" data-testid="compare-table">
                       <thead><tr><th>Exam</th><th className="text-right">Complete</th><th className="text-right">Mastery</th><th className="text-right">Topics done</th><th className="text-right">Questions</th></tr></thead>
                       <tbody>
                         {derived.overview.map((o) => (
@@ -85,7 +85,7 @@ export function ComparePage(_: PageProps) {
                           </tr>
                         ))}
                       </tbody>
-                    </table>
+                    </ResponsiveTable>
                   </div>
                 </Card>
               </div>
