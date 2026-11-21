@@ -177,7 +177,7 @@ Settings → Data & backups → **Run check**. It runs the import validation on 
 
 ## 5. Cross-device use
 
-**No cloud synchronisation is configured.** Data stays in the browser profile and device where it was entered, and the app says so in Settings. To use another device or browser:
+Signed-in cloud sync is available when Supabase is configured: see [CLOUD_SYNC.md](CLOUD_SYNC.md). Without it, data stays in the browser profile and device where it was entered, and the app says so in Settings. To use another device or browser:
 1. Export a backup on device A.
 2. Import it on device B, choosing **Merge** to combine with data already there, or **Full restore**.
 
