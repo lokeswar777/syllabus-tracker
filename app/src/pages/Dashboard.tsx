@@ -5,7 +5,7 @@ import { useApp, useAsync } from '../lib/hooks';
 import { useExam, WEAK_LABEL } from '../lib/useExam';
 import { historySeries, practiceTrend, scopedSessions, statusDistribution } from '../lib/selectors';
 import { longDate, mins, num, pct, shortDate } from '../lib/format';
-import { Button, Card, CardBody, CardHeader, EmptyState, PageHeader, Progress, ProgressRing, RevisionBadge, Segmented, Stat, ACTION_LABEL, cn } from '../components/ui';
+import { Button, Card, CardBody, CardHeader, EmptyState, FIVE_STAT_GRID, FIVE_STAT_SPANS, PageHeader, Progress, ProgressRing, RevisionBadge, Segmented, Stat, ACTION_LABEL, cn } from '../components/ui';
 import { CompletionDonut, CountBars, LegendChip, PercentTrend, VolumeBars } from '../components/charts';
 
 export function Dashboard({ navigate }: PageProps) {
@@ -76,13 +76,13 @@ export function Dashboard({ navigate }: PageProps) {
         </div>
       </section>
 
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-5">
-        <Stat label="Syllabus completion" value={pct(s.syllabusCompletion)} testId="stat-completion" icon={BookOpenCheck}
+      <div className={FIVE_STAT_GRID}>
+        <Stat className={FIVE_STAT_SPANS[0]} progress={s.syllabusCompletion} label="Syllabus completion" value={pct(s.syllabusCompletion)} testId="stat-completion" icon={BookOpenCheck}
           sub={s.sharedLearningUplift > 0 ? `incl. ${pct(s.sharedLearningUplift)} from shared concepts` : 'weighted by weightage'} />
-        <Stat label="Exam mastery" value={pct(s.examMastery)} testId="stat-mastery" icon={Gauge} sub={s.practice.attempted ? `${num(s.practice.attempted)} questions practised` : 'no practice recorded yet'} />
-        <Stat label="Topics completed" value={num(s.topicCounts.completed)} testId="stat-completed" icon={CheckCircle2} sub={`of ${s.topicCounts.total} topics · ${s.topicCounts.mastered} mastered`} />
-        <Stat label="Topics remaining" value={num(s.topicCounts.total - s.topicCounts.completed)} testId="stat-remaining" icon={ListTodo} sub={`${s.topicCounts.inProgress} in progress`} />
-        <Stat label="Need revision" value={num(revisionRows.length)} testId="stat-revision" icon={RotateCcw} sub={revisionRows.length ? `${overdue} overdue · ${revisionRows.length - overdue} due today` : 'nothing due today'} />
+        <Stat className={FIVE_STAT_SPANS[1]} progress={s.examMastery} progressTone="mastery" label="Exam mastery" value={pct(s.examMastery)} testId="stat-mastery" icon={Gauge} sub={s.practice.attempted ? `${num(s.practice.attempted)} questions practised` : 'no practice recorded yet'} />
+        <Stat className={FIVE_STAT_SPANS[2]} progress={s.topicCounts.total ? (s.topicCounts.completed / s.topicCounts.total) * 100 : 0} progressTone="good" label="Topics completed" value={num(s.topicCounts.completed)} testId="stat-completed" icon={CheckCircle2} sub={`of ${s.topicCounts.total} topics · ${s.topicCounts.mastered} mastered`} />
+        <Stat className={FIVE_STAT_SPANS[3]} label="Topics remaining" value={num(s.topicCounts.total - s.topicCounts.completed)} testId="stat-remaining" icon={ListTodo} sub={`${s.topicCounts.inProgress} in progress`} />
+        <Stat className={FIVE_STAT_SPANS[4]} label="Need revision" value={num(revisionRows.length)} testId="stat-revision" icon={RotateCcw} sub={revisionRows.length ? `${overdue} overdue · ${revisionRows.length - overdue} due today` : 'nothing due today'} />
       </div>
 
       <div className="grid gap-4 lg:grid-cols-3">

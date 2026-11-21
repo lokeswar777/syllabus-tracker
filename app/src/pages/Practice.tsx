@@ -5,7 +5,7 @@ import { useApp } from '../lib/hooks';
 import { useExam } from '../lib/useExam';
 import { practiceBySection, practiceByTopic, practiceTotals, practiceTrend, scopedSessions, topicOf } from '../lib/selectors';
 import { num, pct, secs, shortDate } from '../lib/format';
-import { Badge, Button, Card, CardBody, CardHeader, EmptyState, IconButton, PageHeader, Progress, ResponsiveTable, Segmented, Select, Stat, cn } from '../components/ui';
+import { Badge, Button, Card, CardBody, CardHeader, EmptyState, FIVE_STAT_GRID, FIVE_STAT_SPANS, IconButton, PageHeader, Progress, ResponsiveTable, Segmented, Select, Stat, cn } from '../components/ui';
 import { PercentTrend, VolumeBars } from '../components/charts';
 import { PracticeForm } from '../components/PracticeForm';
 
@@ -37,12 +37,12 @@ export function PracticePage(_: PageProps) {
         action={<Button variant="primary" icon={Plus} onClick={() => setShowForm(!showForm)}>{showForm ? 'Close' : 'Log practice'}</Button>} />
       {showForm && <Card><CardHeader title="Log a practice session" description={`Saved to ${report.shortName} only`} /><CardBody><PracticeForm report={report} onDone={() => setShowForm(false)} compact /></CardBody></Card>}
 
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-5">
-        <Stat label="Questions attempted" value={num(totals.attempted)} icon={ListOrdered} testId="pa-attempted" />
-        <Stat label="Correct" value={num(totals.correct)} icon={CheckCircle2} testId="pa-correct" />
-        <Stat label="Incorrect" value={num(totals.incorrect)} icon={XCircle} testId="pa-incorrect" />
-        <Stat label="Accuracy" value={pct(totals.accuracy)} icon={Target} testId="pa-accuracy" />
-        <Stat label="Avg time / question" value={secs(totals.avgTimeSeconds)} icon={Timer} sub="sessions with time recorded" testId="pa-time" />
+      <div className={FIVE_STAT_GRID}>
+        <Stat className={FIVE_STAT_SPANS[0]} label="Questions attempted" value={num(totals.attempted)} icon={ListOrdered} testId="pa-attempted" />
+        <Stat className={FIVE_STAT_SPANS[1]} label="Correct" value={num(totals.correct)} icon={CheckCircle2} testId="pa-correct" />
+        <Stat className={FIVE_STAT_SPANS[2]} label="Incorrect" value={num(totals.incorrect)} icon={XCircle} testId="pa-incorrect" />
+        <Stat className={FIVE_STAT_SPANS[3]} progress={totals.accuracy ?? undefined} label="Accuracy" value={pct(totals.accuracy)} icon={Target} testId="pa-accuracy" />
+        <Stat className={FIVE_STAT_SPANS[4]} label="Avg time / question" value={secs(totals.avgTimeSeconds)} icon={Timer} sub="sessions with time recorded" testId="pa-time" />
       </div>
 
       {sessions.length === 0 ? (

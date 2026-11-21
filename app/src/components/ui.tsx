@@ -40,7 +40,7 @@ export function CardHeader({ title, description, action, icon: I }: { title: Rea
   return (
     <div className="flex flex-wrap items-start justify-between gap-3 px-4 pt-4 sm:px-5">
       <div className="min-w-0">
-        <h3 className="flex items-center gap-2 text-sm font-semibold text-ink">{I && <I className="h-4 w-4 text-muted" aria-hidden />}{title}</h3>
+        <h3 className="flex items-center gap-2 text-[15px] font-semibold tracking-tight text-ink">{I && <I className="h-4 w-4 text-muted" aria-hidden />}{title}</h3>
         {description && <p className="mt-0.5 text-[13px] leading-5 text-muted">{description}</p>}
       </div>
       {action && <div className="flex shrink-0 items-center gap-2">{action}</div>}
@@ -51,10 +51,10 @@ export const CardBody = ({ className, children }: { className?: string; children
 
 export function PageHeader({ title, description, action }: { title: string; description?: ReactNode; action?: ReactNode }) {
   return (
-    <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+    <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
       <div className="min-w-0">
-        <h1 className="text-xl font-semibold tracking-tight text-ink">{title}</h1>
-        {description && <p className="mt-1 text-sm text-muted">{description}</p>}
+        <h1 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">{title}</h1>
+        {description && <p className="mt-1.5 max-w-3xl text-sm text-muted">{description}</p>}
       </div>
       {action && <div className="flex flex-wrap items-center gap-2">{action}</div>}
     </div>
@@ -109,15 +109,20 @@ export function ProgressRing({ value, label, size = 104, stroke = 9, trackClassN
   );
 }
 
-export function Stat({ label, value, sub, icon: I, testId }: { label: string; value: ReactNode; sub?: ReactNode; icon?: Icon; testId?: string }) {
+/** Five stat tiles with no orphan: 1 + 2 + 2 on phones, 3 + 2 on tablets, one row on wide screens. */
+export const FIVE_STAT_GRID = 'grid grid-cols-2 gap-3 md:grid-cols-6 xl:grid-cols-5';
+export const FIVE_STAT_SPANS = ['col-span-2 md:col-span-2 xl:col-span-1', 'md:col-span-2 xl:col-span-1', 'md:col-span-2 xl:col-span-1', 'md:col-span-3 xl:col-span-1', 'md:col-span-3 xl:col-span-1'];
+
+export function Stat({ label, value, sub, icon: I, testId, progress, progressTone = 'accent', className }: { label: string; value: ReactNode; sub?: ReactNode; icon?: Icon; testId?: string; progress?: number; progressTone?: 'accent' | 'mastery' | 'good'; className?: string }) {
   return (
-    <Card className="p-4">
+    <Card className={cn('p-4 sm:p-5', className)}>
       <div className="flex items-center justify-between gap-2">
-        <span className="text-xs font-medium text-muted">{label}</span>
-        {I && <I className="h-4 w-4 text-muted" aria-hidden />}
+        <span className="text-[13px] font-medium text-muted">{label}</span>
+        {I && <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent"><I className="h-4 w-4" aria-hidden /></span>}
       </div>
-      <div className="tabular mt-2 text-2xl font-semibold tracking-tight text-ink" data-testid={testId}>{value}</div>
-      {sub && <div className="mt-1 text-xs text-muted">{sub}</div>}
+      <div className="tabular mt-2 text-3xl font-bold tracking-tight text-ink" data-testid={testId}>{value}</div>
+      {progress !== undefined && <Progress value={progress} tone={progressTone} size="sm" className="mt-2.5" label={`${label} progress`} />}
+      {sub && <div className="mt-1.5 text-xs text-muted">{sub}</div>}
     </Card>
   );
 }
