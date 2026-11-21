@@ -61,7 +61,7 @@ test('collapsible sidebar (desktop)', async ({ page, isMobile }) => {
   await page.getByRole('button', { name: 'Expand sidebar' }).click();
 });
 
-test('exam and stage switching recalculate everything without mixing progress', async ({ page }) => {
+test('exam and stage switching recalculate everything without mixing progress', async ({ page, isMobile }) => {
   await page.goto('./');
   await seedThroughEngines(page);
   await page.goto('./#/dashboard');
@@ -71,7 +71,9 @@ test('exam and stage switching recalculate everything without mixing progress', 
   await expect(page.getByRole('heading', { name: 'SBI PO dashboard' })).toBeVisible();
   const sbi = await engineSummary(page);
   await expect(page.getByTestId('stat-completion')).toHaveText(pctText(sbi.syllabusCompletion));
+  if (isMobile) await page.getByRole('button', { name: /Exam options/ }).click();
   await page.getByTestId('stage-select').selectOption('prelims');
+  if (isMobile) await page.getByRole('button', { name: 'Done' }).click();
   await expect.poll(() => page.evaluate(() => (window as unknown as Win).__store.report().scope.stageId)).toBe('prelims');
   const pre = await engineSummary(page);
   await expect(page.getByTestId('stat-completion')).toHaveText(pctText(pre.syllabusCompletion));
@@ -79,7 +81,7 @@ test('exam and stage switching recalculate everything without mixing progress', 
   await expect(page.getByTestId('stat-completion')).toHaveText(pctText(cgl.syllabusCompletion));
 });
 
-test('syllabus: search, filters, inline edit, and persistence after reload', async ({ page }) => {
+test('syllabus: search, filters, inline edit, and persistence after reload', async ({ page, isMobile }) => {
   await page.goto('./');
   await page.getByRole('button', { name: /^SSC CGL/ }).click();
   await page.goto('./#/syllabus');
@@ -89,13 +91,42 @@ test('syllabus: search, filters, inline edit, and persistence after reload', asy
   await row.getByLabel('Status of Boats & Streams').selectOption('completed');
   await expect(page.getByTestId('save-state')).toContainText('Saved');
   await page.getByTestId('syllabus-search').fill('');
+  if (isMobile) await page.getByRole('button', { name: /^Filters/ }).click();
   await page.getByTestId('filter-status').selectOption('completed');
+  if (isMobile) await page.getByRole('button', { name: 'Done' }).click();
   await expect(page.getByTestId('visible-count')).toContainText('1 of');
   await page.reload();
   await page.getByTestId('syllabus-search').fill('Boats');
   await expect(page.getByTestId('topic-quant.boats-streams').first().getByLabel('Status of Boats & Streams')).toHaveValue('completed');
   await page.goto('./#/dashboard');
   await expect(page.getByTestId('stat-completed')).toHaveText('1');
+});
+
+test('syllabus keeps topic names readable at laptop width', async ({ page, isMobile }) => {
+  test.skip(isMobile, 'laptop viewport');
+  await page.setViewportSize({ width: 1024, height: 768 });
+  await page.goto('./');
+  await page.getByRole('button', { name: /^SSC CGL/ }).click();
+  await page.goto('./#/syllabus');
+  const topic = page.getByTestId('topic-reasoning.analogy').first().getByRole('button', { name: /Analogy/ });
+  await expect(topic).toBeVisible();
+  expect((await topic.boundingBox())!.width).toBeGreaterThan(200);
+  expect(await noHorizontalScroll(page)).toBe(true);
+});
+
+test('phone layout: bottom navigation, one-row header and 44px controls', async ({ page, isMobile }) => {
+  test.skip(!isMobile, 'phone viewport');
+  await page.goto('./');
+  await seedThroughEngines(page);
+  await page.goto('./#/planner');
+  const nav = page.getByTestId('bottom-nav');
+  await expect(nav).toBeVisible();
+  await nav.getByRole('link', { name: 'Revision' }).click();
+  await expect(page.getByTestId('page-revision')).toBeVisible();
+  expect((await page.locator('header').boundingBox())!.height).toBeLessThan(72);
+  const small = await page.evaluate(() => [...document.querySelectorAll('main button, header button, header select, nav a, nav button')]
+    .filter((el) => { const r = el.getBoundingClientRect(); return r.width > 0 && (r.height < 44 || r.width < 44); }).length);
+  expect(small).toBe(0);
 });
 
 test('planner: generate, drag a task to another day, complete it manually', async ({ page, isMobile }) => {
@@ -162,7 +193,7 @@ test('loading state is shown while data loads', async ({ page }) => {
 });
 
 test('theme toggle switches dark mode and is remembered', async ({ page }) => {
-  await page.goto('./#/settings');
+  await page.goto('./#/settings?section=appearance');
   await page.getByRole('button', { name: /^SSC CGL/ }).isVisible().catch(() => false);
   await page.getByRole('radio', { name: 'Dark' }).click();
   await expect(page.locator('html')).toHaveClass(/dark/);

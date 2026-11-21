@@ -1,6 +1,7 @@
-import { forwardRef, useEffect, useRef, type ButtonHTMLAttributes, type ReactNode, type SelectHTMLAttributes, type InputHTMLAttributes } from 'react';
+import { forwardRef, useEffect, useLayoutEffect, useRef, type ButtonHTMLAttributes, type ReactNode, type SelectHTMLAttributes, type InputHTMLAttributes, type TableHTMLAttributes } from 'react';
 import { type LucideIcon, AlertOctagon, ArrowDownCircle, ArrowUpCircle, CircleDot, Loader2, X, Clock, CheckCircle2, CalendarClock, AlertTriangle, MinusCircle } from 'lucide-react';
 import type { PriorityClass, RevisionInfo } from '../lib/types';
+import { useMediaQuery } from '../lib/hooks';
 
 export const cn = (...c: (string | false | null | undefined)[]) => c.filter(Boolean).join(' ');
 type Icon = LucideIcon;
@@ -9,14 +10,14 @@ type Icon = LucideIcon;
 type BtnProps = ButtonHTMLAttributes<HTMLButtonElement> & { variant?: 'primary' | 'secondary' | 'ghost' | 'danger'; size?: 'sm' | 'md'; icon?: Icon; loading?: boolean };
 export const Button = forwardRef<HTMLButtonElement, BtnProps>(function Button({ variant = 'secondary', size = 'md', icon: I, loading, className, children, disabled, ...rest }, ref) {
   const v = {
-    primary: 'bg-accent text-accent-ink hover:bg-accent/90 border border-transparent',
+    primary: 'bg-accent-fill text-accent-ink hover:bg-accent-fill/90 border border-transparent',
     secondary: 'bg-surface text-ink border border-line hover:bg-subtle',
     ghost: 'text-ink2 hover:bg-subtle hover:text-ink border border-transparent',
-    danger: 'bg-critical text-white hover:bg-critical/90 border border-transparent',
+    danger: 'bg-critical-fill text-white hover:bg-critical-fill/90 border border-transparent',
   }[variant];
   const s = size === 'sm' ? 'h-8 px-2.5 text-xs gap-1.5' : 'h-9 px-3.5 text-sm gap-2';
   return (
-    <button ref={ref} type="button" disabled={disabled || loading} className={cn('inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-lg font-medium transition-colors disabled:pointer-events-none disabled:opacity-50', v, s, className)} {...rest}>
+    <button ref={ref} type="button" disabled={disabled || loading} className={cn('inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-xl font-medium transition-[color,background-color,border-color,transform] duration-150 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50', v, s, className)} {...rest}>
       {loading ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : I ? <I className={size === 'sm' ? 'h-3.5 w-3.5' : 'h-4 w-4'} aria-hidden /> : null}
       {children}
     </button>
@@ -25,7 +26,7 @@ export const Button = forwardRef<HTMLButtonElement, BtnProps>(function Button({ 
 
 export function IconButton({ icon: I, label, className, ...rest }: ButtonHTMLAttributes<HTMLButtonElement> & { icon: Icon; label: string }) {
   return (
-    <button type="button" aria-label={label} title={label} className={cn('inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-ink2 transition-colors hover:bg-subtle hover:text-ink disabled:opacity-40', className)} {...rest}>
+    <button type="button" aria-label={label} title={label} className={cn('inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl text-ink2 transition-colors hover:bg-subtle hover:text-ink disabled:opacity-40', className)} {...rest}>
       <I className="h-4 w-4" aria-hidden />
     </button>
   );
@@ -39,8 +40,8 @@ export function CardHeader({ title, description, action, icon: I }: { title: Rea
   return (
     <div className="flex flex-wrap items-start justify-between gap-3 px-4 pt-4 sm:px-5">
       <div className="min-w-0">
-        <h3 className="flex items-center gap-2 text-sm font-semibold text-ink">{I && <I className="h-4 w-4 text-muted" aria-hidden />}{title}</h3>
-        {description && <p className="mt-0.5 text-xs text-muted">{description}</p>}
+        <h3 className="flex items-center gap-2 text-[15px] font-semibold tracking-tight text-ink">{I && <I className="h-4 w-4 text-muted" aria-hidden />}{title}</h3>
+        {description && <p className="mt-0.5 text-[13px] leading-5 text-muted">{description}</p>}
       </div>
       {action && <div className="flex shrink-0 items-center gap-2">{action}</div>}
     </div>
@@ -50,10 +51,10 @@ export const CardBody = ({ className, children }: { className?: string; children
 
 export function PageHeader({ title, description, action }: { title: string; description?: ReactNode; action?: ReactNode }) {
   return (
-    <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+    <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
       <div className="min-w-0">
-        <h1 className="text-xl font-semibold tracking-tight text-ink">{title}</h1>
-        {description && <p className="mt-1 text-sm text-muted">{description}</p>}
+        <h1 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">{title}</h1>
+        {description && <p className="mt-1.5 max-w-3xl text-sm text-muted">{description}</p>}
       </div>
       {action && <div className="flex flex-wrap items-center gap-2">{action}</div>}
     </div>
@@ -84,22 +85,60 @@ export function Progress({ value, tone = 'accent', className, label, size = 'md'
   const bar = { accent: 'bg-[#2a78d6] dark:bg-[#3987e5]', mastery: 'bg-[#eb6834] dark:bg-[#d95926]', good: 'bg-good', muted: 'bg-muted' }[tone];
   return (
     <div className={cn('w-full overflow-hidden rounded-full bg-subtle', size === 'sm' ? 'h-1.5' : 'h-2', className)} role="progressbar" aria-valuenow={Math.round(v)} aria-valuemin={0} aria-valuemax={100} aria-label={label}>
-      <div className={cn('h-full rounded-full transition-[width] duration-300', bar)} style={{ width: `${v}%` }} />
+      <div className={cn('h-full rounded-full transition-[width] duration-500 ease-out', bar)} style={{ width: `${v}%` }} />
     </div>
   );
 }
 
-export function Stat({ label, value, sub, icon: I, testId }: { label: string; value: ReactNode; sub?: ReactNode; icon?: Icon; testId?: string }) {
+/** Circular progress with the value in the middle; colors come from the surrounding hero or card. */
+export function ProgressRing({ value, label, size = 104, stroke = 9, trackClassName = 'stroke-white/25', barClassName = 'stroke-white', caption }: { value: number; label: string; size?: number; stroke?: number; trackClassName?: string; barClassName?: string; caption?: string }) {
+  const v = Math.max(0, Math.min(100, value || 0));
+  const r = (size - stroke) / 2;
+  const c = 2 * Math.PI * r;
   return (
-    <Card className="p-4">
-      <div className="flex items-center justify-between gap-2">
-        <span className="text-xs font-medium text-muted">{label}</span>
-        {I && <I className="h-4 w-4 text-muted" aria-hidden />}
+    <div className="relative shrink-0" style={{ width: size, height: size }} role="img" aria-label={`${label}: ${Math.round(v)}%`}>
+      <svg width={size} height={size} className="-rotate-90" aria-hidden>
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" strokeWidth={stroke} className={trackClassName} />
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" strokeWidth={stroke} strokeLinecap="round" strokeDasharray={c} strokeDashoffset={c * (1 - v / 100)} className={cn('transition-[stroke-dashoffset] duration-500', barClassName)} />
+      </svg>
+      <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <span className="tabular text-xl font-semibold leading-6">{Math.round(v)}%</span>
+        {caption && <span className="text-2xs opacity-90">{caption}</span>}
       </div>
-      <div className="tabular mt-2 text-2xl font-semibold tracking-tight text-ink" data-testid={testId}>{value}</div>
-      {sub && <div className="mt-1 text-xs text-muted">{sub}</div>}
+    </div>
+  );
+}
+
+/** Five stat tiles with no orphan: 1 + 2 + 2 on phones, 3 + 2 on tablets, one row on wide screens. */
+export const FIVE_STAT_GRID = 'grid grid-cols-2 gap-3 md:grid-cols-6 xl:grid-cols-5';
+export const FIVE_STAT_SPANS = ['col-span-2 md:col-span-2 xl:col-span-1', 'md:col-span-2 xl:col-span-1', 'md:col-span-2 xl:col-span-1', 'md:col-span-3 xl:col-span-1', 'md:col-span-3 xl:col-span-1'];
+
+export function Stat({ label, value, sub, icon: I, testId, progress, progressTone = 'accent', className }: { label: string; value: ReactNode; sub?: ReactNode; icon?: Icon; testId?: string; progress?: number; progressTone?: 'accent' | 'mastery' | 'good'; className?: string }) {
+  return (
+    <Card className={cn('p-4 sm:p-5', className)}>
+      <div className="flex items-center justify-between gap-2">
+        <span className="text-[13px] font-medium text-muted">{label}</span>
+        {I && <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent"><I className="h-4 w-4" aria-hidden /></span>}
+      </div>
+      <div className="tabular mt-2 text-3xl font-bold tracking-tight text-ink" data-testid={testId}>{value}</div>
+      {progress !== undefined && <Progress value={progress} tone={progressTone} size="sm" className="mt-2.5" label={`${label} progress`} />}
+      {sub && <div className="mt-1.5 text-xs text-muted">{sub}</div>}
     </Card>
   );
+}
+
+/** A table on wider screens and labelled cards on phones: each cell takes its label from the column header. */
+export function ResponsiveTable({ className, children, ...rest }: TableHTMLAttributes<HTMLTableElement>) {
+  const ref = useRef<HTMLTableElement>(null);
+  useLayoutEffect(() => {
+    const table = ref.current;
+    if (!table) return;
+    const heads = [...table.querySelectorAll('thead th')].map((th) => th.textContent?.trim() ?? '');
+    table.querySelectorAll('tbody tr').forEach((tr) => [...tr.children].forEach((td, i) => {
+      if (heads[i]) td.setAttribute('data-label', heads[i]); else td.removeAttribute('data-label');
+    }));
+  });
+  return <table ref={ref} className={cn('table-cards', className)} {...rest}>{children}</table>;
 }
 
 // ───────── form controls ─────────
@@ -120,18 +159,18 @@ export function Field({ label, hint, children, className }: { label: string; hin
 }
 export function Checkbox({ checked, onChange, label, className }: { checked: boolean; onChange: (v: boolean) => void; label: ReactNode; className?: string }) {
   return (
-    <label className={cn('inline-flex cursor-pointer select-none items-center gap-2 text-sm text-ink2', className)}>
-      <input type="checkbox" className="h-4 w-4 cursor-pointer rounded border-line accent-[rgb(var(--accent))]" checked={checked} onChange={(e) => onChange(e.target.checked)} />
+    <label className={cn('tap-row inline-flex cursor-pointer select-none items-center gap-2 text-sm text-ink2', className)}>
+      <input type="checkbox" className="h-4 w-4 cursor-pointer rounded border-line accent-[rgb(var(--accent-fill))]" checked={checked} onChange={(e) => onChange(e.target.checked)} />
       {label}
     </label>
   );
 }
 export function Segmented<T extends string>({ options, value, onChange, label }: { options: { value: T; label: ReactNode }[]; value: T; onChange: (v: T) => void; label: string }) {
   return (
-    <div role="radiogroup" aria-label={label} className="inline-flex rounded-lg border border-line bg-subtle p-0.5">
+    <div role="radiogroup" aria-label={label} className="inline-flex rounded-xl border border-line/70 bg-subtle p-0.5">
       {options.map((o) => (
         <button key={o.value} type="button" role="radio" aria-checked={value === o.value} onClick={() => onChange(o.value)}
-          className={cn('h-7 rounded-md px-2.5 text-xs font-medium transition-colors', value === o.value ? 'bg-surface text-ink shadow-sm' : 'text-muted hover:text-ink')}>
+          className={cn('h-7 rounded-[0.625rem] px-2.5 text-xs font-medium transition-colors', value === o.value ? 'bg-surface text-ink shadow-sm' : 'text-muted hover:text-ink')}>
           {o.label}
         </button>
       ))}
@@ -142,19 +181,23 @@ export function Segmented<T extends string>({ options, value, onChange, label }:
 // ───────── overlays & states ─────────
 export function Modal({ open, onClose, title, children, footer, wide }: { open: boolean; onClose: () => void; title: string; children: ReactNode; footer?: ReactNode; wide?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
+  const close = useRef(onClose);
+  close.current = onClose;
   useEffect(() => {
     if (!open) return;
     const prev = document.activeElement as HTMLElement | null;
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
     const first = ref.current?.querySelector<HTMLElement>('input, select, textarea, button:not([data-close])');
     first?.focus();
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close.current(); };
     document.addEventListener('keydown', onKey);
-    return () => { document.removeEventListener('keydown', onKey); prev?.focus?.(); };
-  }, [open, onClose]);
+    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = overflow; prev?.focus?.(); };
+  }, [open]);
   if (!open) return null;
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 p-0 sm:items-center sm:p-4" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div ref={ref} role="dialog" aria-modal="true" aria-label={title} className={cn('card max-h-[90vh] w-full overflow-y-auto rounded-b-none shadow-xl sm:rounded-xl', wide ? 'sm:max-w-2xl' : 'sm:max-w-md')}>
+    <div className="fixed inset-0 z-50 flex animate-fade items-end justify-center bg-black/40 p-0 sm:items-center sm:p-4" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+      <div ref={ref} role="dialog" aria-modal="true" aria-label={title} className={cn('card max-h-[90dvh] w-full animate-sheet overflow-y-auto rounded-b-none shadow-float sm:animate-dialog sm:rounded-2xl', wide ? 'sm:max-w-2xl' : 'sm:max-w-md')}>
         <div className="flex items-center justify-between border-b border-line px-5 py-3">
           <h2 className="text-sm font-semibold">{title}</h2>
           <IconButton icon={X} label="Close" onClick={onClose} data-close />
@@ -166,12 +209,59 @@ export function Modal({ open, onClose, title, children, footer, wide }: { open: 
   );
 }
 
+export function ConfirmDialog({ title, children, confirmLabel, onConfirm, onClose }: { title: string; children: ReactNode; confirmLabel: string; onConfirm: () => void; onClose: () => void }) {
+  return (
+    <Modal open onClose={onClose} title={title} footer={<><Button onClick={onClose}>Cancel</Button><Button variant="danger" onClick={onConfirm}>{confirmLabel}</Button></>}>
+      <p className="text-sm text-ink2">{children}</p>
+    </Modal>
+  );
+}
+
+const SHEET_BREAKPOINT = {
+  md: { closed: 'hidden md:contents', open: 'fixed inset-0 z-50 flex items-end md:contents', hide: 'md:hidden', inline: 'md:contents', query: '(max-width: 767.98px)' },
+  xl: { closed: 'hidden xl:contents', open: 'fixed inset-0 z-50 flex items-end xl:contents', hide: 'xl:hidden', inline: 'xl:contents', query: '(max-width: 1279.98px)' },
+};
+
+/** The same controls render inline from the breakpoint up, and as a bottom sheet below it. */
+export function InlineSheet({ open, onClose, title, breakpoint, children }: { open: boolean; onClose: () => void; title: string; breakpoint: keyof typeof SHEET_BREAKPOINT; children: ReactNode }) {
+  const m = SHEET_BREAKPOINT[breakpoint];
+  const isSheet = useMediaQuery(m.query);
+  const active = open && isSheet;
+  const ref = useRef<HTMLDivElement>(null);
+  const close = useRef(onClose);
+  close.current = onClose;
+  useEffect(() => {
+    if (!active) return;
+    const prev = document.activeElement as HTMLElement | null;
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    ref.current?.querySelector<HTMLElement>('select, input, textarea, button:not([data-close])')?.focus();
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close.current(); };
+    document.addEventListener('keydown', onKey);
+    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = overflow; prev?.focus?.(); };
+  }, [active]);
+  return (
+    <div className={open ? m.open : m.closed}>
+      <div className={cn('absolute inset-0 animate-fade bg-black/40', m.hide)} onClick={onClose} aria-hidden />
+      <div ref={ref} role={active ? 'dialog' : undefined} aria-modal={active || undefined} aria-label={active ? title : undefined}
+        className={cn('relative max-h-[85dvh] w-full animate-sheet overflow-y-auto rounded-t-2xl bg-surface p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] shadow-float', m.inline)}>
+        <div className={cn('mb-3 flex items-center justify-between', m.hide)}>
+          <h2 className="text-base font-semibold">{title}</h2>
+          <IconButton icon={X} label="Close" onClick={onClose} data-close />
+        </div>
+        <div className={cn('grid gap-3', m.inline)}>{children}</div>
+        <Button variant="primary" className={cn('mt-4 w-full', m.hide)} onClick={onClose}>Done</Button>
+      </div>
+    </div>
+  );
+}
+
 export function EmptyState({ icon: I, title, description, action, className }: { icon: Icon; title: string; description?: ReactNode; action?: ReactNode; className?: string }) {
   return (
     <div className={cn('flex flex-col items-center justify-center px-4 py-10 text-center', className)}>
-      <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-subtle"><I className="h-5 w-5 text-muted" aria-hidden /></div>
-      <p className="text-sm font-medium text-ink">{title}</p>
-      {description && <p className="mt-1 max-w-sm text-xs text-muted">{description}</p>}
+      <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10 text-accent"><I className="h-6 w-6" aria-hidden /></div>
+      <p className="text-[15px] font-semibold text-ink">{title}</p>
+      {description && <p className="mt-1 max-w-sm text-sm text-muted">{description}</p>}
       {action && <div className="mt-4">{action}</div>}
     </div>
   );
@@ -180,7 +270,7 @@ export function ErrorState({ error, onRetry }: { error: Error | string; onRetry?
   return <EmptyState icon={AlertTriangle} title="Something went wrong" description={typeof error === 'string' ? error : error.message} action={onRetry && <Button onClick={onRetry}>Try again</Button>} />;
 }
 export const Spinner = ({ className }: { className?: string }) => <Loader2 className={cn('h-4 w-4 animate-spin text-muted', className)} aria-label="Loading" />;
-export const Skeleton = ({ className }: { className?: string }) => <div className={cn('animate-pulse rounded-md bg-subtle', className)} />;
+export const Skeleton = ({ className }: { className?: string }) => <div className={cn('skeleton animate-shimmer rounded-xl', className)} />;
 export function LoadingBlock({ label = 'Calculating…', rows = 3 }: { label?: string; rows?: number }) {
   return (
     <div className="space-y-2 p-4" aria-busy="true" aria-live="polite">

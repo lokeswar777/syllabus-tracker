@@ -6,6 +6,7 @@ import { createFetchLoader } from './lib/loader';
 import { progress } from './lib/engines';
 import type { StorageAdapter } from './lib/engines';
 import { IndexedDBStorage, migrateFromLocalStorage } from './lib/idb';
+import '@fontsource-variable/inter/wght.css';
 import './index.css';
 
 type Kind = 'indexeddb' | 'localstorage' | 'memory';

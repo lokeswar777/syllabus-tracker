@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Crosshair, Clock, Scale, Gauge, ListChecks, Palette, RotateCcw, SlidersHorizontal, Link2, Save } from 'lucide-react';
 import { DataManagement } from '../components/DataManagement';
 import type { PageProps } from '../App';
@@ -6,7 +6,7 @@ import { useApp, useTheme } from '../lib/hooks';
 import { progress } from '../lib/engines';
 import type { ProgressConfig } from '../lib/engines';
 import { isDate, pct } from '../lib/format';
-import { Badge, Button, Card, CardBody, CardHeader, Checkbox, Field, Input, PageHeader, Segmented, Select } from '../components/ui';
+import { Badge, Button, Card, CardBody, CardHeader, Checkbox, Field, Input, PageHeader, ResponsiveTable, Segmented, Select, cn } from '../components/ui';
 
 const NAV = [
   { id: 'targets', label: 'Target exams' }, { id: 'time', label: 'Study time & revision' }, { id: 'priority', label: 'Priority scoring' },
@@ -14,34 +14,58 @@ const NAV = [
   { id: 'appearance', label: 'Appearance' }, { id: 'data', label: 'Data & backups' },
 ];
 
+const ActiveSection = createContext('targets');
+
 export function SettingsPage({ params }: PageProps) {
   const section = params.get('section');
+  const active = NAV.some((n) => n.id === section) ? section! : NAV[0].id;
+  const tabs = useRef<HTMLElement>(null);
   useEffect(() => { if (section) document.getElementById(`settings-${section}`)?.scrollIntoView({ block: 'start' }); }, [section]);
+  useEffect(() => {
+    const bar = tabs.current;
+    const tab = bar?.querySelector<HTMLElement>('[aria-current="true"]');
+    if (bar && tab) bar.scrollLeft = tab.offsetLeft - (bar.clientWidth - tab.offsetWidth) / 2;
+  }, [active]);
   return (
     <div data-testid="page-settings">
       <PageHeader title="Settings" description="Every change is validated and saved immediately; calculations update everywhere." />
+      <nav ref={tabs} className="sticky top-[calc(3.8125rem+env(safe-area-inset-top))] z-20 -mx-4 mb-3 overflow-x-auto bg-page/95 px-4 py-2 backdrop-blur sm:-mx-6 sm:px-6 lg:hidden" aria-label="Settings tabs">
+        <ul className="flex w-max gap-1.5">
+          {NAV.map((n) => (
+            <li key={n.id}>
+              <a href={`#/settings?section=${n.id}`} aria-current={n.id === active ? 'true' : undefined}
+                className={cn('flex items-center whitespace-nowrap rounded-lg border px-3 text-sm font-medium transition-colors', n.id === active ? 'border-accent/40 bg-accent/10 text-accent' : 'border-line bg-surface text-ink2')}>{n.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
       <div className="grid gap-6 lg:grid-cols-[12rem_minmax(0,1fr)]">
         <nav className="hidden lg:block" aria-label="Settings sections">
           <ul className="sticky top-20 space-y-0.5 text-sm">
-            {NAV.map((n) => <li key={n.id}><a href={`#/settings?section=${n.id}`} className="block rounded-md px-2 py-1.5 text-ink2 hover:bg-subtle hover:text-ink">{n.label}</a></li>)}
+            {NAV.map((n) => <li key={n.id}><a href={`#/settings?section=${n.id}`} aria-current={n.id === active ? 'true' : undefined} className={cn('block rounded-md px-2 py-1.5 transition-colors hover:bg-subtle hover:text-ink', n.id === active ? 'bg-subtle font-medium text-ink' : 'text-ink2')}>{n.label}</a></li>)}
           </ul>
         </nav>
-        <div className="min-w-0 space-y-5">
-          <TargetsCard />
-          <TimeCard />
-          <PriorityCard />
-          <WeightageCard />
-          <StatusScoresCard />
-          <MasteryCard />
-          <AppearanceCard />
-          <Section id="data"><DataManagement /></Section>
-        </div>
+        <ActiveSection.Provider value={active}>
+          <div className="min-w-0 space-y-5">
+            <TargetsCard />
+            <TimeCard />
+            <PriorityCard />
+            <WeightageCard />
+            <StatusScoresCard />
+            <MasteryCard />
+            <AppearanceCard />
+            <Section id="data"><DataManagement /></Section>
+          </div>
+        </ActiveSection.Provider>
       </div>
     </div>
   );
 }
 
-const Section = ({ id, children }: { id: string; children: React.ReactNode }) => <section id={`settings-${id}`} className="scroll-mt-24">{children}</section>;
+function Section({ id, children }: { id: string; children: React.ReactNode }) {
+  const active = useContext(ActiveSection);
+  return <section id={`settings-${id}`} className={cn('scroll-mt-36 lg:scroll-mt-24', id !== active && 'hidden lg:block')}>{children}</section>;
+}
 
 function TargetsCard() {
   const { store } = useApp();
@@ -63,7 +87,7 @@ function TargetsCard() {
         <CardHeader title="Target exams and exam priority" icon={Crosshair} description="Smart priorities, the planner and revisions plan across these exams. Importance sets each exam’s share; a nearer exam date raises it." />
         <CardBody>
           <div className="scroll-x">
-            <table className="table-base min-w-[34rem]" data-testid="targets-table">
+            <ResponsiveTable className="table-base min-w-[34rem]" data-testid="targets-table">
               <thead><tr><th>Exam</th><th>Importance (1–100)</th><th>Share</th><th>Exam date</th></tr></thead>
               <tbody>
                 {rows.map((r) => (
@@ -75,7 +99,7 @@ function TargetsCard() {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </ResponsiveTable>
           </div>
           <p className="mt-2 text-2xs text-muted">Share shown before date urgency; the planner adds urgency as an exam approaches (within 180 days).</p>
           {errors.length > 0 && <ul className="mt-2 text-xs text-critical">{errors.map((e) => <li key={e}>{e}</li>)}</ul>}
@@ -148,7 +172,7 @@ function PriorityCard() {
   return (
     <Section id="priority">
       <Card>
-        <CardHeader title="Priority scoring" icon={SlidersHorizontal} description="Relative weights of the Phase 5 priority factors and the class thresholds (score 0–100)" />
+        <CardHeader title="Priority scoring" icon={SlidersHorizontal} description="How much each factor counts, and the score needed for each priority class (0–100)" />
         <CardBody>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             {Object.keys(w).map((k) => <Field key={k} label={W_LABEL[k] ?? k}><Input inputMode="decimal" value={w[k]} onChange={(e) => setW({ ...w, [k]: e.target.value.replace(/[^\d.]/g, '') })} /></Field>)}
@@ -178,13 +202,13 @@ function WeightageCard() {
   return (
     <Section id="weightage">
       <Card>
-        <CardHeader title={`Topic weightage: ${report.shortName}`} icon={Scale} description="Custom weights are relative within the section; the other topics are rescaled so the section still totals 100%. Defaults come from the Phase 2 weightage database." />
+        <CardHeader title={`Topic weightage: ${report.shortName}`} icon={Scale} description="Custom weights are relative within the section; the other topics are rescaled so the section still totals 100%. Defaults come from the built-in weightage data." />
         <CardBody>
           <Select value={cur.sec.key} onChange={(e) => { setKey(e.target.value); setDraft({}); }} aria-label="Section" className="mb-3 sm:w-96">
             {sections.map(({ st, sec }) => <option key={sec.key} value={sec.key}>{report.stages.length > 1 ? `${st.name}: ` : ''}{sec.name}</option>)}
           </Select>
           <div className="scroll-x">
-            <table className="table-base min-w-[36rem]" data-testid="weight-table">
+            <ResponsiveTable className="table-base min-w-[36rem]" data-testid="weight-table">
               <thead><tr><th>Topic</th><th className="text-right">Weight in section</th><th className="text-right">Of exam</th><th>Custom (relative)</th><th /></tr></thead>
               <tbody>
                 {cur.sec.topics.map((t) => {
@@ -205,7 +229,7 @@ function WeightageCard() {
                   );
                 })}
               </tbody>
-            </table>
+            </ResponsiveTable>
           </div>
         </CardBody>
       </Card>
@@ -273,7 +297,7 @@ function MasteryCard() {
           </div>
           <div className="mt-4 border-t border-line pt-3">
             <Checkbox checked={store.engine.db.progress.settings.sharedLearning !== false} onChange={(v) => store.run(() => store.engine.setSharedLearningEnabled(v), v ? 'Shared concept learning enabled' : 'Shared concept learning disabled: each exam is independent')}
-              label={<span className="inline-flex items-center gap-1.5"><Link2 className="h-3.5 w-3.5" /> Share concept learning between exams (Phase 4 synchronisation)</span>} />
+              label={<span className="inline-flex items-center gap-1.5"><Link2 className="h-3.5 w-3.5" /> Share concept learning between exams</span>} />
           </div>
           {errors && <pre className="mt-2 whitespace-pre-wrap text-xs text-critical">{errors}</pre>}
           <div className="mt-3 flex justify-end"><Button variant="primary" icon={Save} disabled={!!errors} onClick={() => save('Mastery settings saved')}>Save mastery settings</Button></div>

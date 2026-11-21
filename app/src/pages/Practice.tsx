@@ -5,7 +5,7 @@ import { useApp } from '../lib/hooks';
 import { useExam } from '../lib/useExam';
 import { practiceBySection, practiceByTopic, practiceTotals, practiceTrend, scopedSessions, topicOf } from '../lib/selectors';
 import { num, pct, secs, shortDate } from '../lib/format';
-import { Badge, Button, Card, CardBody, CardHeader, EmptyState, IconButton, PageHeader, Progress, Segmented, Select, Stat, cn } from '../components/ui';
+import { Badge, Button, Card, CardBody, CardHeader, ConfirmDialog, EmptyState, FIVE_STAT_GRID, FIVE_STAT_SPANS, IconButton, PageHeader, Progress, ResponsiveTable, Segmented, Select, Stat, cn } from '../components/ui';
 import { PercentTrend, VolumeBars } from '../components/charts';
 import { PracticeForm } from '../components/PracticeForm';
 
@@ -27,6 +27,15 @@ export function PracticePage(_: PageProps) {
     return rows.sort(s);
   }, [report, sessions, sort]);
   const [showForm, setShowForm] = useState(false);
+  const [deleting, setDeleting] = useState<(typeof sessions)[number] | null>(null);
+  const removeSession = async (s: (typeof sessions)[number]) => {
+    const examId = ctx.examId;
+    setDeleting(null);
+    const done = await store.run(() => store.engine.deletePractice(s.id));
+    if (done === undefined) return;
+    // Undo puts the same session back, with its original id and values.
+    store.toast('success', 'Session deleted', { label: 'Undo', run: () => store.run(() => store.withExam(examId, () => store.engine.recordPractice(s.nodeId, { ...s })), 'Session restored') });
+  };
   const recent = [...sessions].sort((a, b) => b.date.localeCompare(a.date) || b.createdAt.localeCompare(a.createdAt)).slice(0, 15);
   const nameOf = (nodeId: string) => (nodeId === topicOf(nodeId) ? report.topics[nodeId]?.name : `${report.topics[topicOf(nodeId)]?.name} › ${report.subtopics[nodeId]?.name ?? nodeId}`) ?? nodeId;
   const fmtLabel = (d: string | number) => (by === 'week' ? `wk ${shortDate(String(d))}` : shortDate(String(d)));
@@ -37,12 +46,12 @@ export function PracticePage(_: PageProps) {
         action={<Button variant="primary" icon={Plus} onClick={() => setShowForm(!showForm)}>{showForm ? 'Close' : 'Log practice'}</Button>} />
       {showForm && <Card><CardHeader title="Log a practice session" description={`Saved to ${report.shortName} only`} /><CardBody><PracticeForm report={report} onDone={() => setShowForm(false)} compact /></CardBody></Card>}
 
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-5">
-        <Stat label="Questions attempted" value={num(totals.attempted)} icon={ListOrdered} testId="pa-attempted" />
-        <Stat label="Correct" value={num(totals.correct)} icon={CheckCircle2} testId="pa-correct" />
-        <Stat label="Incorrect" value={num(totals.incorrect)} icon={XCircle} testId="pa-incorrect" />
-        <Stat label="Accuracy" value={pct(totals.accuracy)} icon={Target} testId="pa-accuracy" />
-        <Stat label="Avg time / question" value={secs(totals.avgTimeSeconds)} icon={Timer} sub="sessions with time recorded" testId="pa-time" />
+      <div className={FIVE_STAT_GRID}>
+        <Stat className={FIVE_STAT_SPANS[0]} label="Questions attempted" value={num(totals.attempted)} icon={ListOrdered} testId="pa-attempted" />
+        <Stat className={FIVE_STAT_SPANS[1]} label="Correct" value={num(totals.correct)} icon={CheckCircle2} testId="pa-correct" />
+        <Stat className={FIVE_STAT_SPANS[2]} label="Incorrect" value={num(totals.incorrect)} icon={XCircle} testId="pa-incorrect" />
+        <Stat className={FIVE_STAT_SPANS[3]} progress={totals.accuracy ?? undefined} label="Accuracy" value={pct(totals.accuracy)} icon={Target} testId="pa-accuracy" />
+        <Stat className={FIVE_STAT_SPANS[4]} label="Avg time / question" value={secs(totals.avgTimeSeconds)} icon={Timer} sub="sessions with time recorded" testId="pa-time" />
       </div>
 
       {sessions.length === 0 ? (
@@ -63,7 +72,7 @@ export function PracticePage(_: PageProps) {
           <Card>
             <CardHeader title="Section-wise performance" icon={LayoutGrid} />
             <div className="scroll-x px-2 pb-2">
-              <table className="table-base min-w-[40rem]" data-testid="section-perf">
+              <ResponsiveTable className="table-base min-w-[40rem]" data-testid="section-perf">
                 <thead><tr><th>Section</th><th className="text-right">Attempted</th><th className="text-right">Correct</th><th className="text-right">Incorrect</th><th className="w-48">Accuracy</th><th className="text-right">Avg time</th></tr></thead>
                 <tbody>
                   {sections.map((s) => (
@@ -72,22 +81,22 @@ export function PracticePage(_: PageProps) {
                       <td className="tabular text-right">{num(s.attempted)}</td>
                       <td className="tabular text-right">{num(s.correct)}</td>
                       <td className="tabular text-right">{num(s.incorrect)}</td>
-                      <td><div className="flex items-center gap-2"><Progress value={s.accuracy ?? 0} size="sm" label={`${s.name} accuracy`} /><span className="tabular w-10 text-right text-xs">{pct(s.accuracy, 0)}</span></div></td>
+                      <td><div className="flex flex-1 items-center gap-2 max-sm:max-w-[60%]"><Progress value={s.accuracy ?? 0} size="sm" label={`${s.name} accuracy`} /><span className="tabular w-10 text-right text-xs">{pct(s.accuracy, 0)}</span></div></td>
                       <td className="tabular text-right">{secs(s.avgTimeSeconds)}</td>
                     </tr>
                   ))}
                 </tbody>
-              </table>
+              </ResponsiveTable>
             </div>
           </Card>
 
           <Card>
-            <CardHeader title="Topic-wise performance" icon={ListOrdered} description="Compared with this exam’s accuracy and speed targets (Phase 4 requirements)"
+            <CardHeader title="Topic-wise performance" icon={ListOrdered} description="Compared with this exam’s accuracy and speed targets"
               action={<Select value={sort} onChange={(e) => setSort(e.target.value as TopicSort)} className="h-8 w-44 text-xs" aria-label="Sort topics">
                 <option value="attempted">Most practised</option><option value="accuracy">Lowest accuracy</option><option value="time">Slowest</option><option value="name">Name</option>
               </Select>} />
             <div className="scroll-x px-2 pb-2">
-              <table className="table-base min-w-[44rem]" data-testid="topic-perf">
+              <ResponsiveTable className="table-base min-w-[44rem]" data-testid="topic-perf">
                 <thead><tr><th>Topic</th><th className="text-right">Attempted</th><th className="text-right">Accuracy</th><th className="text-right">Target</th><th className="text-right">Avg time</th><th className="text-right">Target</th><th className="text-right">Mastery</th></tr></thead>
                 <tbody>
                   {topics.map((t) => {
@@ -108,7 +117,7 @@ export function PracticePage(_: PageProps) {
                     );
                   })}
                 </tbody>
-              </table>
+              </ResponsiveTable>
             </div>
             <p className="px-5 pb-4 text-2xs text-muted">Values below target are shown in red text.</p>
           </Card>
@@ -124,13 +133,14 @@ export function PracticePage(_: PageProps) {
                   {s.stageId && <Badge>{report.stages.find((x) => x.stageId === s.stageId)?.name ?? s.stageId}</Badge>}
                   <span className="tabular text-xs">{s.correct}/{s.attempted} · {pct((s.correct / s.attempted) * 100, 0)}</span>
                   <span className="tabular w-14 text-right text-xs text-muted">{s.timeSeconds ? secs(s.timeSeconds / s.attempted) : '–'}</span>
-                  <IconButton icon={Trash2} label="Delete session" onClick={() => { if (window.confirm('Delete this practice session? Accuracy and mastery will be recalculated.')) void store.run(() => store.engine.deletePractice(s.id), 'Session deleted'); }} />
+                  <IconButton icon={Trash2} label="Delete session" onClick={() => setDeleting(s)} />
                 </li>
               ))}
             </ul>
           </Card>
         </>
       )}
+      {deleting && <ConfirmDialog title="Delete this practice session?" confirmLabel="Delete session" onClose={() => setDeleting(null)} onConfirm={() => void removeSession(deleting)}>Accuracy and mastery will be recalculated. You can undo this right after deleting.</ConfirmDialog>}
     </div>
   );
 }

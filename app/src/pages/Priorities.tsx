@@ -3,7 +3,7 @@ import { Flame, CalendarPlus, EyeOff, HelpCircle, Undo2, ChevronDown, Trophy, Al
 import type { PageProps } from '../App';
 import { useApp, useAsync } from '../lib/hooks';
 import { planner as plannerApi } from '../lib/engines';
-import { pct, shortDate, addDays, isDate } from '../lib/format';
+import { pct, reasonText, shortDate, addDays, isDate } from '../lib/format';
 import type { PriorityClass, Recommendation } from '../lib/types';
 import { Badge, Button, Card, CardBody, CardHeader, ClassBadge, CLASS_META, EmptyState, ErrorState, Field, Input, LoadingBlock, Modal, PageHeader, Select, ACTION_LABEL, cn } from '../components/ui';
 import { TargetsGate } from '../components/TargetsGate';
@@ -29,7 +29,7 @@ function Priorities({ navigate }: { navigate: PageProps['navigate'] }) {
   const data = res.data;
   return (
     <div className="space-y-4" data-testid="page-priorities">
-      <PageHeader title="Smart priorities" description="Ranked by the Phase 5 priority engine across your target exams: weightage, completion, mastery, revision, accuracy, difficulty and time left."
+      <PageHeader title="Smart priorities" description="The most valuable topics to study next across your target exams."
         action={<Button icon={CalendarPlus} onClick={() => navigate('planner')}>Open study planner</Button>} />
       {!data ? <Card><LoadingBlock rows={8} /></Card> : (
         <>
@@ -123,10 +123,10 @@ function RecRow({ r, onAdd, onDismiss, onExplain }: { r: Recommendation; onAdd: 
             <span>completion {pct(r.syllabusCompletion, 0)}</span>
             <span>mastery {pct(r.examMastery, 0)}</span>
           </div>
-          <ul className="mt-2 space-y-0.5 text-xs text-ink2">
-            {r.reasons.slice(0, 4).map((x) => <li key={x} className="flex gap-1.5"><span className="text-muted">•</span>{x}</li>)}
+          <ul className="mt-2 space-y-0.5 text-sm text-ink2">
+            {r.reasons.slice(0, 4).map((x) => <li key={x} className="flex gap-1.5"><span className="text-muted">•</span>{reasonText(x)}</li>)}
           </ul>
-          <p className="mt-2 text-xs"><Badge tone="accent">{r.suggestedAction.label}</Badge> <span className="text-ink2">{r.suggestedAction.detail}</span></p>
+          <p className="mt-2 text-sm"><Badge tone="accent">{r.suggestedAction.label}</Badge> <span className="text-ink2">{r.suggestedAction.detail}</span></p>
         </div>
         <div className="flex w-full flex-wrap gap-1.5 sm:w-auto sm:flex-col sm:items-end">
           <Button size="sm" variant="primary" icon={CalendarPlus} onClick={onAdd}>Add to plan</Button>
@@ -230,7 +230,7 @@ function ExplainModal({ topicId, onClose }: { topicId: string; onClose: () => vo
                   </tbody>
                 </table>
               </div>
-              <ul className="space-y-0.5 px-3 py-2 text-xs text-ink2">{x.reasons.map((r) => <li key={r}>• {r}</li>)}</ul>
+              <ul className="space-y-0.5 px-3 py-2 text-xs text-ink2">{x.reasons.map((r) => <li key={r}>• {reasonText(r)}</li>)}</ul>
             </div>
           ))}
           <p className="text-xs text-muted">Classes: Critical ≥ {ex.thresholds.Critical}, High ≥ {ex.thresholds.High}, Medium ≥ {ex.thresholds.Medium}. Weights and thresholds can be changed in Settings.</p>

@@ -2,7 +2,7 @@ import { Component, lazy, Suspense, type ReactNode } from 'react';
 import { GraduationCap, Loader2, Database } from 'lucide-react';
 import { StoreProvider, useApp, useRoute, type Route } from './lib/hooks';
 import type { AppStore } from './lib/store';
-import { Sidebar, Topbar, Toasts, useMobileNav } from './components/layout';
+import { BottomNav, Sidebar, Topbar, Toasts, useMobileNav } from './components/layout';
 import { Card, ErrorState } from './components/ui';
 import { LoadingBlock } from './components/ui';
 
@@ -39,15 +39,19 @@ function Shell() {
     <div className="flex min-h-screen">
       <Sidebar route={route} onNavigate={(r) => navigate(r)} mobileOpen={nav.open} onCloseMobile={nav.closeNav} />
       <div className="flex min-w-0 flex-1 flex-col">
-        <Topbar onOpenMobile={nav.openNav} />
-        <main className="mx-auto w-full min-w-0 max-w-[1400px] flex-1 px-4 py-5 sm:px-6 sm:py-6" id="main">
+        <Topbar />
+        <main className="mx-auto w-full min-w-0 max-w-[1400px] flex-1 px-4 pb-[calc(5.5rem+env(safe-area-inset-bottom))] pt-5 sm:px-6 sm:pt-6 lg:pb-6" id="main">
           <PageBoundary key={route}>
             <Suspense fallback={<LoadingBlock label="Loading page…" rows={6} />}>
-              {NEEDS_EXAM.includes(route) && !store.activeExamId ? <Welcome /> : <Page params={params} navigate={navigate} />}
+              {/* Opacity only: a transform here would break the fixed dialogs and sheets inside pages. */}
+              <div className="animate-page">
+                {NEEDS_EXAM.includes(route) && !store.activeExamId ? <Welcome /> : <Page params={params} navigate={navigate} />}
+              </div>
             </Suspense>
           </PageBoundary>
         </main>
       </div>
+      <BottomNav route={route} onNavigate={(r) => navigate(r)} onMore={nav.openNav} />
       <Toasts />
     </div>
   );
@@ -55,9 +59,9 @@ function Shell() {
 
 function LoadingScreen() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-3 text-muted" role="status" aria-live="polite" data-testid="app-loading">
-      <Loader2 className="h-6 w-6 animate-spin" aria-hidden />
-      <p className="text-sm">Loading syllabus, weightage and your progress…</p>
+    <div className="flex min-h-[100dvh] flex-col items-center justify-center gap-4 px-6 text-center text-muted" role="status" aria-live="polite" data-testid="app-loading">
+      <div className="hero-card flex h-14 w-14 items-center justify-center rounded-2xl text-white shadow-float"><GraduationCap className="h-7 w-7" aria-hidden /></div>
+      <p className="flex items-center gap-2 text-sm"><Loader2 className="h-4 w-4 animate-spin" aria-hidden />Loading syllabus, weightage and your progress…</p>
     </div>
   );
 }
@@ -80,7 +84,7 @@ export function Welcome() {
   return (
     <div className="mx-auto max-w-3xl py-6" data-testid="welcome">
       <div className="mb-6 flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent text-accent-ink"><GraduationCap className="h-5 w-5" /></div>
+        <div className="flex h-10 w-10 items-center justify-center rounded-2xl hero-card text-white"><GraduationCap className="h-5 w-5" /></div>
         <div>
           <h1 className="text-xl font-semibold tracking-tight">Choose your exam</h1>
           <p className="text-sm text-muted">Each exam keeps its own progress. Concepts you learn are shared across exams that test them.</p>
@@ -91,7 +95,7 @@ export function Welcome() {
           <h2 className="mb-2 text-xs font-medium uppercase tracking-wide text-muted">{g.label}</h2>
           <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
             {g.list.map((e) => (
-              <button key={e.examId} type="button" onClick={() => store.selectExam(e.examId)} className="card flex flex-col items-start p-4 text-left transition-colors hover:border-accent/50 hover:bg-subtle/50">
+              <button key={e.examId} type="button" onClick={() => store.selectExam(e.examId)} className="card flex flex-col items-start p-4 text-left transition-[transform,box-shadow,border-color] duration-150 hover:-translate-y-0.5 hover:border-accent/50 hover:shadow-float">
                 <span className="text-sm font-semibold">{e.shortName}</span>
                 <span className="mt-0.5 line-clamp-2 text-xs text-muted">{e.name}</span>
               </button>

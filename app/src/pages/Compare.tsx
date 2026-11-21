@@ -5,7 +5,7 @@ import { useApp, useAsync, useLocalPref } from '../lib/hooks';
 import { isDone, subjectSummary } from '../lib/selectors';
 import { num, pct, subjectLabel } from '../lib/format';
 import type { Report } from '../lib/types';
-import { Badge, Card, CardBody, CardHeader, EmptyState, ErrorState, LoadingBlock, PageHeader, Progress, Segmented, cn } from '../components/ui';
+import { Badge, Card, CardBody, CardHeader, EmptyState, ErrorState, LoadingBlock, PageHeader, Progress, ResponsiveTable, Segmented, cn } from '../components/ui';
 import { CompletionMasteryBars, HeatCell, LegendChip } from '../components/charts';
 
 export function ComparePage(_: PageProps) {
@@ -44,7 +44,7 @@ export function ComparePage(_: PageProps) {
 
   return (
     <div className="space-y-5" data-testid="page-compare">
-      <PageHeader title="Exam comparison" description="Each exam is calculated from its own progress and weightage; shared concept learning is counted where it applies." />
+      <PageHeader title="Exam comparison" description="Compare progress across exams, each using its own weightage." />
       <Card className="p-3">
         <div className="mb-2 text-xs font-medium text-muted">Exams to compare</div>
         <div className="flex flex-wrap gap-2" role="group" aria-label="Exams to compare">
@@ -72,7 +72,7 @@ export function ComparePage(_: PageProps) {
                 <Card className="lg:col-span-2">
                   <CardHeader title="Summary" icon={Table2} />
                   <div className="scroll-x px-2 pb-3">
-                    <table className="table-base" data-testid="compare-table">
+                    <ResponsiveTable className="table-base" data-testid="compare-table">
                       <thead><tr><th>Exam</th><th className="text-right">Complete</th><th className="text-right">Mastery</th><th className="text-right">Topics done</th><th className="text-right">Questions</th></tr></thead>
                       <tbody>
                         {derived.overview.map((o) => (
@@ -85,7 +85,7 @@ export function ComparePage(_: PageProps) {
                           </tr>
                         ))}
                       </tbody>
-                    </table>
+                    </ResponsiveTable>
                   </div>
                 </Card>
               </div>
@@ -121,7 +121,7 @@ export function ComparePage(_: PageProps) {
                           <ul className="space-y-2">
                             {o.r.analytics.sectionWise.filter((s) => !s.gate && s.weightInScope > 0).map((s) => (
                               <li key={s.key}>
-                                <div className="flex justify-between gap-2 text-xs"><span className="truncate" title={s.name}>{s.name}</span><span className="tabular text-muted">{pct(s[metric])}</span></div>
+                                <div className="flex justify-between gap-2 text-sm"><span className="truncate" title={s.name}>{s.name}</span><span className="tabular text-muted">{pct(s[metric])}</span></div>
                                 <Progress value={s[metric]} size="sm" tone={metric === 'mastery' ? 'mastery' : 'accent'} className="mt-1" label={`${o.name} ${s.name} ${metric}`} />
                               </li>
                             ))}
@@ -158,7 +158,7 @@ export function ComparePage(_: PageProps) {
                             {derived.specificPending[id].length === 0 ? <p className="text-xs text-muted">None</p> : (
                               <ul className="space-y-1">
                                 {derived.specificPending[id].slice(0, 8).map((t) => (
-                                  <li key={t.topicId} className="flex justify-between gap-2 text-xs"><span className="truncate">{t.name}</span><span className="tabular shrink-0 text-muted">{pct(t.effectiveWeight)}</span></li>
+                                  <li key={t.topicId} className="flex justify-between gap-2 text-sm"><span className="truncate">{t.name}</span><span className="tabular shrink-0 text-muted">{pct(t.effectiveWeight)}</span></li>
                                 ))}
                                 {derived.specificPending[id].length > 8 && <li className="text-2xs text-muted">+{derived.specificPending[id].length - 8} more</li>}
                               </ul>

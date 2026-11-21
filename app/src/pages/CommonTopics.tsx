@@ -4,7 +4,7 @@ import type { PageProps } from '../App';
 import { useApp, useAsync, useLocalPref } from '../lib/hooks';
 import { pct, subjectLabel } from '../lib/format';
 import type { TopicCard } from '../lib/types';
-import { Badge, Button, Card, EmptyState, ErrorState, Input, LoadingBlock, PageHeader, Progress, Select, cn } from '../components/ui';
+import { Badge, Button, Card, EmptyState, ErrorState, Input, LoadingBlock, PageHeader, Progress, ResponsiveTable, Select, cn } from '../components/ui';
 
 const SYNC: Record<string, { label: string; tone: 'accent' | 'neutral'; icon: typeof Link2; help: string }> = {
   full: { label: 'Fully shared', tone: 'accent', icon: Link2, help: 'Concept learning counts for every linked exam' },
@@ -39,7 +39,7 @@ export function CommonTopicsPage({ navigate }: PageProps) {
 
   return (
     <div className="space-y-4" data-testid="page-common">
-      <PageHeader title="Common topics" description="Master topics mapped across exams. Concept learning is shared; practice, mastery and exam-level requirements stay exam-specific." />
+      <PageHeader title="Common topics" description="Topics shared across exams. Learn once; practice and mastery stay exam-specific." />
       <Card className="p-3">
         <div className="mb-2 text-xs font-medium text-muted">Exams</div>
         <div className="flex flex-wrap gap-2" role="group" aria-label="Exams">
@@ -112,7 +112,7 @@ function CommonRow({ c, open, onToggle, conceptStatuses, onOpenTopic, selectedCo
             </span>
           </span>
         </button>
-        <span className="lg:hidden"><Badge tone={S.tone} icon={S.icon} title={S.help}>{S.label}</Badge></span>
+        <span className="col-span-2 lg:hidden"><Badge tone={S.tone} icon={S.icon} title={S.help}>{S.label}</Badge></span>
         <div className="col-span-2 flex flex-wrap gap-1 lg:col-span-1">
           {exams.length === selectedCount && selectedCount > 2
             ? <Badge tone="accent" title={exams.map(([id]) => store.examName(id)).join(', ')}>All {selectedCount} selected exams</Badge>
@@ -149,7 +149,7 @@ function CommonRow({ c, open, onToggle, conceptStatuses, onOpenTopic, selectedCo
             </label>
           </div>
           <div className="scroll-x rounded-lg border border-line bg-surface">
-            <table className="table-base min-w-[40rem]">
+            <ResponsiveTable className="table-base min-w-[40rem]">
               <thead><tr><th>Exam</th><th>Sync</th><th className="text-right">Exam completion</th><th className="text-right">Exam mastery</th><th className="text-right">Questions</th><th>Remaining practice</th><th /></tr></thead>
               <tbody>
                 {exams.map(([id, e]) => {
@@ -158,19 +158,19 @@ function CommonRow({ c, open, onToggle, conceptStatuses, onOpenTopic, selectedCo
                     <tr key={id}>
                       <td className="font-medium">{store.examName(id)}</td>
                       <td><Badge tone={M.tone} icon={M.icon}>{M.label}</Badge></td>
-                      <td className="tabular text-right">{pct(e.completion)}{e.completion !== e.ownCompletion && <span className="block text-2xs text-muted">own {pct(e.ownCompletion)}</span>}</td>
+                      <td className="tabular text-right"><span>{pct(e.completion)}{e.completion !== e.ownCompletion && <span className="block text-2xs text-muted">own {pct(e.ownCompletion)}</span>}</span></td>
                       <td className="tabular text-right">{pct(e.mastery)}</td>
-                      <td className="tabular text-right">{e.attempted}{e.accuracy !== null && <span className="block text-2xs text-muted">{pct(e.accuracy, 0)} acc.</span>}</td>
+                      <td className="tabular text-right"><span>{e.attempted}{e.accuracy !== null && <span className="block text-2xs text-muted">{pct(e.accuracy, 0)} acc.</span>}</span></td>
                       <td className="text-xs">
-                        {!e.targetsMet ? '–' : e.targetsMet.all ? <span className="text-good">All targets met</span>
-                          : e.targetsMet.gaps.map((g) => <div key={g.target} className="whitespace-nowrap text-ink2">{g.target}: {g.have ?? '–'} → {g.need}{g.target === 'speed' ? ' s' : g.target === 'accuracy' ? '%' : ''}</div>)}
+                        <div>{!e.targetsMet ? '–' : e.targetsMet.all ? <span className="text-good">All targets met</span>
+                          : e.targetsMet.gaps.map((g) => <div key={g.target} className="whitespace-nowrap text-ink2">{g.target}: {g.have ?? '–'} → {g.need}{g.target === 'speed' ? ' s' : g.target === 'accuracy' ? '%' : ''}</div>)}</div>
                       </td>
                       <td><Button size="sm" variant="ghost" onClick={() => onOpenTopic(id)}>Open</Button></td>
                     </tr>
                   );
                 })}
               </tbody>
-            </table>
+            </ResponsiveTable>
           </div>
         </div>
       )}

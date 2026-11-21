@@ -27,3 +27,5 @@ export const SUBJECT_LABEL: Record<string, string> = {
 };
 export const subjectLabel = (s: string) => SUBJECT_LABEL[s] ?? s.charAt(0).toUpperCase() + s.slice(1).replace(/-/g, ' ');
 export const titleCase = (s: string) => s.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+/** Engine reasons are stable data; only their internal build-phase wording is reworded for display. */
+export const reasonText = (s: string) => s.replace(/Phase-\d priority/g, 'weightage priority');
