@@ -3,7 +3,7 @@ import { Flame, CalendarPlus, EyeOff, HelpCircle, Undo2, ChevronDown, Trophy, Al
 import type { PageProps } from '../App';
 import { useApp, useAsync } from '../lib/hooks';
 import { planner as plannerApi } from '../lib/engines';
-import { pct, shortDate, addDays, isDate } from '../lib/format';
+import { pct, reasonText, shortDate, addDays, isDate } from '../lib/format';
 import type { PriorityClass, Recommendation } from '../lib/types';
 import { Badge, Button, Card, CardBody, CardHeader, ClassBadge, CLASS_META, EmptyState, ErrorState, Field, Input, LoadingBlock, Modal, PageHeader, Select, ACTION_LABEL, cn } from '../components/ui';
 import { TargetsGate } from '../components/TargetsGate';
@@ -124,7 +124,7 @@ function RecRow({ r, onAdd, onDismiss, onExplain }: { r: Recommendation; onAdd: 
             <span>mastery {pct(r.examMastery, 0)}</span>
           </div>
           <ul className="mt-2 space-y-0.5 text-sm text-ink2">
-            {r.reasons.slice(0, 4).map((x) => <li key={x} className="flex gap-1.5"><span className="text-muted">•</span>{x}</li>)}
+            {r.reasons.slice(0, 4).map((x) => <li key={x} className="flex gap-1.5"><span className="text-muted">•</span>{reasonText(x)}</li>)}
           </ul>
           <p className="mt-2 text-sm"><Badge tone="accent">{r.suggestedAction.label}</Badge> <span className="text-ink2">{r.suggestedAction.detail}</span></p>
         </div>
@@ -230,7 +230,7 @@ function ExplainModal({ topicId, onClose }: { topicId: string; onClose: () => vo
                   </tbody>
                 </table>
               </div>
-              <ul className="space-y-0.5 px-3 py-2 text-xs text-ink2">{x.reasons.map((r) => <li key={r}>• {r}</li>)}</ul>
+              <ul className="space-y-0.5 px-3 py-2 text-xs text-ink2">{x.reasons.map((r) => <li key={r}>• {reasonText(r)}</li>)}</ul>
             </div>
           ))}
           <p className="text-xs text-muted">Classes: Critical ≥ {ex.thresholds.Critical}, High ≥ {ex.thresholds.High}, Medium ≥ {ex.thresholds.Medium}. Weights and thresholds can be changed in Settings.</p>
