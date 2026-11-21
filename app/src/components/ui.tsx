@@ -17,7 +17,7 @@ export const Button = forwardRef<HTMLButtonElement, BtnProps>(function Button({ 
   }[variant];
   const s = size === 'sm' ? 'h-8 px-2.5 text-xs gap-1.5' : 'h-9 px-3.5 text-sm gap-2';
   return (
-    <button ref={ref} type="button" disabled={disabled || loading} className={cn('inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-xl font-medium transition-colors disabled:pointer-events-none disabled:opacity-50', v, s, className)} {...rest}>
+    <button ref={ref} type="button" disabled={disabled || loading} className={cn('inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-xl font-medium transition-[color,background-color,border-color,transform] duration-150 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50', v, s, className)} {...rest}>
       {loading ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : I ? <I className={size === 'sm' ? 'h-3.5 w-3.5' : 'h-4 w-4'} aria-hidden /> : null}
       {children}
     </button>
@@ -85,7 +85,7 @@ export function Progress({ value, tone = 'accent', className, label, size = 'md'
   const bar = { accent: 'bg-[#2a78d6] dark:bg-[#3987e5]', mastery: 'bg-[#eb6834] dark:bg-[#d95926]', good: 'bg-good', muted: 'bg-muted' }[tone];
   return (
     <div className={cn('w-full overflow-hidden rounded-full bg-subtle', size === 'sm' ? 'h-1.5' : 'h-2', className)} role="progressbar" aria-valuenow={Math.round(v)} aria-valuemin={0} aria-valuemax={100} aria-label={label}>
-      <div className={cn('h-full rounded-full transition-[width] duration-300', bar)} style={{ width: `${v}%` }} />
+      <div className={cn('h-full rounded-full transition-[width] duration-500 ease-out', bar)} style={{ width: `${v}%` }} />
     </div>
   );
 }
@@ -196,8 +196,8 @@ export function Modal({ open, onClose, title, children, footer, wide }: { open: 
   }, [open]);
   if (!open) return null;
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 p-0 sm:items-center sm:p-4" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div ref={ref} role="dialog" aria-modal="true" aria-label={title} className={cn('card max-h-[90dvh] w-full overflow-y-auto rounded-b-none shadow-float sm:rounded-2xl', wide ? 'sm:max-w-2xl' : 'sm:max-w-md')}>
+    <div className="fixed inset-0 z-50 flex animate-fade items-end justify-center bg-black/40 p-0 sm:items-center sm:p-4" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+      <div ref={ref} role="dialog" aria-modal="true" aria-label={title} className={cn('card max-h-[90dvh] w-full animate-sheet overflow-y-auto rounded-b-none shadow-float sm:animate-dialog sm:rounded-2xl', wide ? 'sm:max-w-2xl' : 'sm:max-w-md')}>
         <div className="flex items-center justify-between border-b border-line px-5 py-3">
           <h2 className="text-sm font-semibold">{title}</h2>
           <IconButton icon={X} label="Close" onClick={onClose} data-close />
@@ -242,9 +242,9 @@ export function InlineSheet({ open, onClose, title, breakpoint, children }: { op
   }, [active]);
   return (
     <div className={open ? m.open : m.closed}>
-      <div className={cn('absolute inset-0 bg-black/40', m.hide)} onClick={onClose} aria-hidden />
+      <div className={cn('absolute inset-0 animate-fade bg-black/40', m.hide)} onClick={onClose} aria-hidden />
       <div ref={ref} role={active ? 'dialog' : undefined} aria-modal={active || undefined} aria-label={active ? title : undefined}
-        className={cn('relative max-h-[85dvh] w-full overflow-y-auto rounded-t-2xl bg-surface p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] shadow-float', m.inline)}>
+        className={cn('relative max-h-[85dvh] w-full animate-sheet overflow-y-auto rounded-t-2xl bg-surface p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] shadow-float', m.inline)}>
         <div className={cn('mb-3 flex items-center justify-between', m.hide)}>
           <h2 className="text-base font-semibold">{title}</h2>
           <IconButton icon={X} label="Close" onClick={onClose} data-close />
@@ -259,8 +259,8 @@ export function InlineSheet({ open, onClose, title, breakpoint, children }: { op
 export function EmptyState({ icon: I, title, description, action, className }: { icon: Icon; title: string; description?: ReactNode; action?: ReactNode; className?: string }) {
   return (
     <div className={cn('flex flex-col items-center justify-center px-4 py-10 text-center', className)}>
-      <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-subtle"><I className="h-5 w-5 text-muted" aria-hidden /></div>
-      <p className="text-sm font-medium text-ink">{title}</p>
+      <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10 text-accent"><I className="h-6 w-6" aria-hidden /></div>
+      <p className="text-[15px] font-semibold text-ink">{title}</p>
       {description && <p className="mt-1 max-w-sm text-sm text-muted">{description}</p>}
       {action && <div className="mt-4">{action}</div>}
     </div>
@@ -270,7 +270,7 @@ export function ErrorState({ error, onRetry }: { error: Error | string; onRetry?
   return <EmptyState icon={AlertTriangle} title="Something went wrong" description={typeof error === 'string' ? error : error.message} action={onRetry && <Button onClick={onRetry}>Try again</Button>} />;
 }
 export const Spinner = ({ className }: { className?: string }) => <Loader2 className={cn('h-4 w-4 animate-spin text-muted', className)} aria-label="Loading" />;
-export const Skeleton = ({ className }: { className?: string }) => <div className={cn('animate-pulse rounded-md bg-subtle', className)} />;
+export const Skeleton = ({ className }: { className?: string }) => <div className={cn('skeleton animate-shimmer rounded-xl', className)} />;
 export function LoadingBlock({ label = 'Calculating…', rows = 3 }: { label?: string; rows?: number }) {
   return (
     <div className="space-y-2 p-4" aria-busy="true" aria-live="polite">

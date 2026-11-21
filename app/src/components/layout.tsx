@@ -68,8 +68,8 @@ export function Sidebar({ route, onNavigate, mobileOpen, onCloseMobile }: { rout
       </aside>
       {mobileOpen && (
         <div className="fixed inset-0 z-40 lg:hidden" role="dialog" aria-modal="true" aria-label="Navigation">
-          <div className="absolute inset-0 bg-black/40" onClick={onCloseMobile} />
-          <aside data-testid="mobile-sidebar" className="absolute inset-y-0 left-0 flex w-72 max-w-[85vw] flex-col rounded-r-2xl bg-surface pt-[env(safe-area-inset-top)] shadow-float">
+          <div className="absolute inset-0 animate-fade bg-black/40" onClick={onCloseMobile} />
+          <aside data-testid="mobile-sidebar" className="absolute inset-y-0 left-0 flex w-72 max-w-[85vw] animate-drawer flex-col rounded-r-2xl bg-surface pt-[env(safe-area-inset-top)] shadow-float">
             <div className="flex items-center justify-between pr-2"><Brand collapsed={false} /><IconButton icon={X} label="Close navigation" onClick={onCloseMobile} /></div>
             <div className="flex-1 overflow-y-auto py-2"><NavList route={route} onNavigate={(r) => { onNavigate(r); onCloseMobile(); }} collapsed={false} /></div>
           </aside>
@@ -232,7 +232,7 @@ export function Toasts() {
   return (
     <div className="pointer-events-none fixed bottom-[calc(4.5rem+env(safe-area-inset-bottom))] right-4 z-[60] lg:bottom-4 flex w-[min(24rem,calc(100vw-2rem))] flex-col gap-2" aria-live="polite">
       {store.toasts.map((t) => (
-        <div key={t.id} role={t.kind === 'error' ? 'alert' : 'status'} className="card pointer-events-auto flex items-start gap-2.5 px-3.5 py-3 text-sm shadow-float">
+        <div key={t.id} role={t.kind === 'error' ? 'alert' : 'status'} className="card pointer-events-auto flex animate-toast items-start gap-2.5 px-3.5 py-3 text-sm shadow-float">
           {t.kind === 'error' ? <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-critical" /> : t.kind === 'success' ? <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-good" /> : <Info className="mt-0.5 h-4 w-4 shrink-0 text-accent" />}
           <span className="min-w-0 flex-1 break-words text-ink2">{t.message}</span>
           {t.action && <button type="button" className="shrink-0 rounded-lg px-1.5 font-semibold text-accent hover:bg-accent/10" onClick={() => { store.dismissToast(t.id); void t.action!.run(); }}>{t.action.label}</button>}
