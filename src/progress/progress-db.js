@@ -67,7 +67,8 @@ export function normalizeDb(raw, now = new Date()) {
   const issues = [];
   for (const key of COLLECTIONS) {
     const c = raw?.[key];
-    if (!c || typeof c !== 'object') { if (raw && raw[key] !== undefined) issues.push(`${key}: invalid collection replaced with an empty one`); continue; }
+    // A collection that was never saved reads as null: that is normal, not a damaged record.
+    if (!c || typeof c !== 'object') { if (raw && raw[key] != null) issues.push(`${key}: invalid collection replaced with an empty one`); continue; }
     if (c.schemaVersion > SCHEMA_VERSION) issues.push(`${key}: schemaVersion ${c.schemaVersion} is newer than supported ${SCHEMA_VERSION}; loading read-compatible fields`);
     db[key] = { ...base[key], ...c, schemaVersion: SCHEMA_VERSION };
   }
