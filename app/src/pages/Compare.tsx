@@ -44,7 +44,7 @@ export function ComparePage(_: PageProps) {
 
   return (
     <div className="space-y-5" data-testid="page-compare">
-      <PageHeader title="Exam comparison" description="Each exam is calculated from its own progress and weightage; shared concept learning is counted where it applies." />
+      <PageHeader title="Exam comparison" description="Compare progress across exams, each using its own weightage." />
       <Card className="p-3">
         <div className="mb-2 text-xs font-medium text-muted">Exams to compare</div>
         <div className="flex flex-wrap gap-2" role="group" aria-label="Exams to compare">

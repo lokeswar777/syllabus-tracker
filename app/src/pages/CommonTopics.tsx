@@ -39,7 +39,7 @@ export function CommonTopicsPage({ navigate }: PageProps) {
 
   return (
     <div className="space-y-4" data-testid="page-common">
-      <PageHeader title="Common topics" description="Master topics mapped across exams. Concept learning is shared; practice, mastery and exam-level requirements stay exam-specific." />
+      <PageHeader title="Common topics" description="Topics shared across exams. Learn once; practice and mastery stay exam-specific." />
       <Card className="p-3">
         <div className="mb-2 text-xs font-medium text-muted">Exams</div>
         <div className="flex flex-wrap gap-2" role="group" aria-label="Exams">

@@ -49,7 +49,7 @@ function Revision({ navigate }: { navigate: PageProps['navigate'] }) {
 
   return (
     <div className="space-y-4" data-testid="page-revision">
-      <PageHeader title="Revision tracker" description="Spaced revision for every topic you have studied, per exam. A topic counts as revised only when you confirm it or log a revision session."
+      <PageHeader title="Revision tracker" description="Spaced revision for studied topics. A topic counts only after you confirm it or log a revision session."
         action={<Button icon={Settings2} onClick={() => navigate('settings', { section: 'time' })}>Intervals: {t?.intervalsDays.join(' / ') ?? '…'} days</Button>} />
       {!t ? <Card><LoadingBlock rows={6} /></Card> : (
         <>

@@ -172,7 +172,7 @@ function PriorityCard() {
   return (
     <Section id="priority">
       <Card>
-        <CardHeader title="Priority scoring" icon={SlidersHorizontal} description="Relative weights of the Phase 5 priority factors and the class thresholds (score 0–100)" />
+        <CardHeader title="Priority scoring" icon={SlidersHorizontal} description="How much each factor counts, and the score needed for each priority class (0–100)" />
         <CardBody>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             {Object.keys(w).map((k) => <Field key={k} label={W_LABEL[k] ?? k}><Input inputMode="decimal" value={w[k]} onChange={(e) => setW({ ...w, [k]: e.target.value.replace(/[^\d.]/g, '') })} /></Field>)}
@@ -202,7 +202,7 @@ function WeightageCard() {
   return (
     <Section id="weightage">
       <Card>
-        <CardHeader title={`Topic weightage: ${report.shortName}`} icon={Scale} description="Custom weights are relative within the section; the other topics are rescaled so the section still totals 100%. Defaults come from the Phase 2 weightage database." />
+        <CardHeader title={`Topic weightage: ${report.shortName}`} icon={Scale} description="Custom weights are relative within the section; the other topics are rescaled so the section still totals 100%. Defaults come from the built-in weightage data." />
         <CardBody>
           <Select value={cur.sec.key} onChange={(e) => { setKey(e.target.value); setDraft({}); }} aria-label="Section" className="mb-3 sm:w-96">
             {sections.map(({ st, sec }) => <option key={sec.key} value={sec.key}>{report.stages.length > 1 ? `${st.name}: ` : ''}{sec.name}</option>)}
@@ -297,7 +297,7 @@ function MasteryCard() {
           </div>
           <div className="mt-4 border-t border-line pt-3">
             <Checkbox checked={store.engine.db.progress.settings.sharedLearning !== false} onChange={(v) => store.run(() => store.engine.setSharedLearningEnabled(v), v ? 'Shared concept learning enabled' : 'Shared concept learning disabled: each exam is independent')}
-              label={<span className="inline-flex items-center gap-1.5"><Link2 className="h-3.5 w-3.5" /> Share concept learning between exams (Phase 4 synchronisation)</span>} />
+              label={<span className="inline-flex items-center gap-1.5"><Link2 className="h-3.5 w-3.5" /> Share concept learning between exams</span>} />
           </div>
           {errors && <pre className="mt-2 whitespace-pre-wrap text-xs text-critical">{errors}</pre>}
           <div className="mt-3 flex justify-end"><Button variant="primary" icon={Save} disabled={!!errors} onClick={() => save('Mastery settings saved')}>Save mastery settings</Button></div>

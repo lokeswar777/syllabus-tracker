@@ -91,7 +91,7 @@ export function PracticePage(_: PageProps) {
           </Card>
 
           <Card>
-            <CardHeader title="Topic-wise performance" icon={ListOrdered} description="Compared with this exam’s accuracy and speed targets (Phase 4 requirements)"
+            <CardHeader title="Topic-wise performance" icon={ListOrdered} description="Compared with this exam’s accuracy and speed targets"
               action={<Select value={sort} onChange={(e) => setSort(e.target.value as TopicSort)} className="h-8 w-44 text-xs" aria-label="Sort topics">
                 <option value="attempted">Most practised</option><option value="accuracy">Lowest accuracy</option><option value="time">Slowest</option><option value="name">Name</option>
               </Select>} />

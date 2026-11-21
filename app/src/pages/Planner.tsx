@@ -81,7 +81,7 @@ function Planner({ initialDate }: { initialDate: string | null }) {
 
   return (
     <div className="space-y-4" data-testid="page-planner">
-      <PageHeader title="Study planner" description="Plans are built from your smart priorities and available hours. Drag tasks to reorder or move them; nothing is marked complete automatically."
+      <PageHeader title="Study planner" description="Built from your priorities and available hours. Nothing is marked complete automatically."
         action={<Button variant="primary" icon={Wand2} loading={busy === 'week'} onClick={planWeek}>Plan this week</Button>} />
 
       <div className="space-y-3">

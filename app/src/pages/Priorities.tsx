@@ -29,7 +29,7 @@ function Priorities({ navigate }: { navigate: PageProps['navigate'] }) {
   const data = res.data;
   return (
     <div className="space-y-4" data-testid="page-priorities">
-      <PageHeader title="Smart priorities" description="Ranked by the Phase 5 priority engine across your target exams: weightage, completion, mastery, revision, accuracy, difficulty and time left."
+      <PageHeader title="Smart priorities" description="The most valuable topics to study next across your target exams."
         action={<Button icon={CalendarPlus} onClick={() => navigate('planner')}>Open study planner</Button>} />
       {!data ? <Card><LoadingBlock rows={8} /></Card> : (
         <>

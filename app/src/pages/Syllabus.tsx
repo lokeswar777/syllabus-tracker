@@ -97,7 +97,7 @@ export function SyllabusPage({ params }: PageProps) {
             <Select value={sort} onChange={(e) => setSort(e.target.value as Sort)} aria-label="Sort topics" data-testid="sort">
               <option value="syllabus">Syllabus order</option>
               <option value="weight">Weightage (highest first)</option>
-              <option value="priority">Priority (Phase 5 score)</option>
+              <option value="priority">Priority (highest first)</option>
               <option value="completion">Completion (lowest first)</option>
               <option value="mastery">Mastery (lowest first)</option>
             </Select>
@@ -188,8 +188,8 @@ const TopicRow = memo(function TopicRow({ ctx, topic: t, weightInSection, weight
           <span className="min-w-0">
             <span className="block truncate text-sm font-medium">{t.name}</span>
             <span className="mt-0.5 flex flex-wrap items-center gap-1">
-              {t.priority && <Badge tone={t.priority === 'Very High' ? 'accent' : 'neutral'} title="Phase 2 weightage class (from previous papers)">{t.priority} weightage</Badge>}
-              {row && !row.done && (row.classification === 'Critical' || row.classification === 'High') && <Badge tone={row.classification === 'Critical' ? 'critical' : 'serious'} title="Phase 5 preparation priority">{row.classification} priority</Badge>}
+              {t.priority && <Badge tone={t.priority === 'Very High' ? 'accent' : 'neutral'} title="Weightage class from the built-in weightage data">{t.priority} weightage</Badge>}
+              {row && !row.done && (row.classification === 'Critical' || row.classification === 'High') && <Badge tone={row.classification === 'Critical' ? 'critical' : 'serious'} title="Preparation priority">{row.classification} priority</Badge>}
               {sync && t.masterTopicId && (sync.syncMode === 'independent'
                 ? <Badge icon={Unlink} title="Progress for this topic is independent in each exam">Independent</Badge>
                 : <Badge tone="accent" icon={Link2} title={`Concept learning is shared across exams (${sync.syncMode} sync)`}>Shared concept</Badge>)}
