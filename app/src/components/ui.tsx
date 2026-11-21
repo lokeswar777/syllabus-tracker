@@ -90,6 +90,25 @@ export function Progress({ value, tone = 'accent', className, label, size = 'md'
   );
 }
 
+/** Circular progress with the value in the middle; colors come from the surrounding hero or card. */
+export function ProgressRing({ value, label, size = 104, stroke = 9, trackClassName = 'stroke-white/25', barClassName = 'stroke-white', caption }: { value: number; label: string; size?: number; stroke?: number; trackClassName?: string; barClassName?: string; caption?: string }) {
+  const v = Math.max(0, Math.min(100, value || 0));
+  const r = (size - stroke) / 2;
+  const c = 2 * Math.PI * r;
+  return (
+    <div className="relative shrink-0" style={{ width: size, height: size }} role="img" aria-label={`${label}: ${Math.round(v)}%`}>
+      <svg width={size} height={size} className="-rotate-90" aria-hidden>
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" strokeWidth={stroke} className={trackClassName} />
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" strokeWidth={stroke} strokeLinecap="round" strokeDasharray={c} strokeDashoffset={c * (1 - v / 100)} className={cn('transition-[stroke-dashoffset] duration-500', barClassName)} />
+      </svg>
+      <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <span className="tabular text-xl font-semibold leading-6">{Math.round(v)}%</span>
+        {caption && <span className="text-2xs opacity-90">{caption}</span>}
+      </div>
+    </div>
+  );
+}
+
 export function Stat({ label, value, sub, icon: I, testId }: { label: string; value: ReactNode; sub?: ReactNode; icon?: Icon; testId?: string }) {
   return (
     <Card className="p-4">

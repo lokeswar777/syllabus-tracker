@@ -20,6 +20,8 @@
   --serious: 214 104 60;
   --critical: 185 44 44;
   --critical-fill: 185 44 44;
+  --hero-from: 27 99 189;
+  --hero-to: 20 70 140;
 }
 :root.dark {
   color-scheme: dark;
@@ -38,6 +40,8 @@
   --serious: 236 131 90;
   --critical: 240 130 130;
   --critical-fill: 200 50 50;
+  --hero-from: 27 92 176;
+  --hero-to: 18 58 118;
 }
 
 @layer base {
@@ -53,6 +57,7 @@
 
 @layer components {
   .card { @apply min-w-0 rounded-xl border border-line bg-surface; }
+  .hero-card { background: linear-gradient(135deg, rgb(var(--hero-from)), rgb(var(--hero-to))); }
   .input {
     @apply h-9 w-full rounded-lg border border-line bg-surface px-3 text-sm text-ink placeholder:text-muted
       transition-colors hover:border-ink2/40 focus:border-accent disabled:opacity-50;

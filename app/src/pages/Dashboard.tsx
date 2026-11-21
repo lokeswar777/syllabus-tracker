@@ -4,8 +4,8 @@ import type { PageProps } from '../App';
 import { useApp, useAsync } from '../lib/hooks';
 import { useExam, WEAK_LABEL } from '../lib/useExam';
 import { historySeries, practiceTrend, scopedSessions, statusDistribution } from '../lib/selectors';
-import { num, pct, shortDate } from '../lib/format';
-import { Badge, Button, Card, CardBody, CardHeader, ClassBadge, EmptyState, PageHeader, Progress, RevisionBadge, Segmented, Stat, ACTION_LABEL, LoadingBlock } from '../components/ui';
+import { longDate, mins, num, pct, shortDate } from '../lib/format';
+import { Button, Card, CardBody, CardHeader, EmptyState, PageHeader, Progress, ProgressRing, RevisionBadge, Segmented, Stat, ACTION_LABEL, cn } from '../components/ui';
 import { CompletionDonut, CountBars, LegendChip, PercentTrend, VolumeBars } from '../components/charts';
 
 export function Dashboard({ navigate }: PageProps) {
@@ -25,11 +25,56 @@ export function Dashboard({ navigate }: PageProps) {
   const todayPlan = store.planner.getDailyPlan(today);
   const recs = useAsync(() => (hasTargets ? store.planner.getRecommendations({ limit: 6 }) : null), [store.engine.getVersion(), JSON.stringify(store.planner.settings), hasTargets]);
   const multiStage = report.stages.length > 1 && !report.scope.stageId;
+  const todayTasks = todayPlan?.tasks ?? [];
+  const pendingTasks = todayTasks.filter((t) => t.status === 'pending');
+  const doneCount = todayTasks.length - pendingTasks.length;
+  const pendingMinutes = pendingTasks.reduce((a, t) => a + t.minutes, 0);
+  const hasPlan = todayTasks.length > 0;
+  const heroItems = hasPlan
+    ? [...pendingTasks, ...todayTasks.filter((t) => t.status !== 'pending')].slice(0, 4).map((t) => ({ id: t.taskId, name: t.name, meta: ACTION_LABEL[t.action], done: t.status === 'completed' }))
+    : hasTargets
+      ? (recs.data?.recommendations ?? []).slice(0, 4).map((r) => ({ id: r.topicId, name: r.name, meta: `${r.classification} priority`, done: false }))
+      : analysis.priorities.filter((p) => !p.done).slice(0, 4).map((p) => ({ id: p.topicId, name: p.name, meta: `${p.classification} priority`, done: false }));
+  const heroTitle = pendingTasks.length ? `${pendingTasks.length} task${pendingTasks.length === 1 ? '' : 's'} left today`
+    : hasPlan ? 'Today’s plan is complete'
+      : revisionRows.length ? `${revisionRows.length} revision${revisionRows.length === 1 ? '' : 's'} due` : 'Pick up your next topic';
+  const heroSub = pendingTasks.length ? `${mins(pendingMinutes)} planned · ${doneCount} of ${todayTasks.length} done`
+    : hasPlan ? `${todayTasks.length} task${todayTasks.length === 1 ? '' : 's'} finished` : 'No plan for today yet';
+  const continueTo = pendingTasks.length ? 'planner' : revisionRows.length ? 'revision' : hasTargets ? 'priorities' : 'syllabus';
 
   return (
     <div className="space-y-5" data-testid="page-dashboard">
       <PageHeader title={`${report.shortName} dashboard`} description={<>{scopeLabel} · {report.trackName} · weighted by exam weightage</>}
         action={<Button icon={ListTodo} onClick={() => navigate('syllabus')}>Update progress</Button>} />
+
+      <section aria-label="Today" data-testid="today-hero" className="hero-card rounded-2xl p-5 text-white sm:p-6">
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center lg:gap-8">
+          <div className="flex items-center gap-4 sm:gap-6">
+            <ProgressRing value={hasPlan ? (doneCount / todayTasks.length) * 100 : s.syllabusCompletion} label={hasPlan ? 'Today’s tasks done' : 'Syllabus completion'} caption={hasPlan ? 'today' : 'syllabus'} />
+            <div className="min-w-0">
+              <p className="text-xs font-medium text-white/90">{longDate(today)}</p>
+              <h2 className="mt-0.5 text-xl font-semibold tracking-tight sm:text-2xl">{heroTitle}</h2>
+              <p className="mt-0.5 text-sm text-white/90">{heroSub}{revisionRows.length > 0 && (pendingTasks.length > 0 || hasPlan) ? ` · ${revisionRows.length} revision${revisionRows.length === 1 ? '' : 's'} due` : ''}</p>
+              <button type="button" onClick={() => navigate(continueTo)} className="mt-3 inline-flex h-10 items-center gap-2 rounded-lg bg-white px-4 text-sm font-semibold text-[rgb(var(--hero-to))] transition-colors hover:bg-white/90">
+                Continue studying <ArrowRight className="h-4 w-4" aria-hidden />
+              </button>
+            </div>
+          </div>
+          <div className="min-w-0">
+            <h3 className="mb-2 text-xs font-medium text-white/90">{hasPlan ? 'Today’s priorities' : 'Recommended next'}</h3>
+            {heroItems.length === 0 ? <p className="text-sm text-white/90">{hasTargets && recs.loading ? 'Finding your next topics…' : 'Nothing to recommend right now.'}</p> : (
+              <ul className="grid gap-1.5 sm:grid-cols-2" data-testid="today-priorities">
+                {heroItems.map((t) => (
+                  <li key={t.id} className="min-w-0 rounded-lg bg-white/10 px-3 py-2">
+                    <div className={cn('truncate text-sm font-medium', t.done && 'line-through opacity-80')} title={t.name}>{t.name}</div>
+                    <div className="truncate text-2xs text-white/90">{t.meta}</div>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      </section>
 
       <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-5">
         <Stat label="Syllabus completion" value={pct(s.syllabusCompletion)} testId="stat-completion" icon={BookOpenCheck}
@@ -102,7 +147,7 @@ export function Dashboard({ navigate }: PageProps) {
         </Card>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         <Card>
           <CardHeader title="High-weightage incomplete" icon={Target} />
           <CardBody>
@@ -140,33 +185,6 @@ export function Dashboard({ navigate }: PageProps) {
               <ul className="space-y-2" data-testid="pending-revisions">
                 {revisionRows.slice(0, 6).map((r) => (
                   <li key={r.topicId} className="flex items-center justify-between gap-2 text-sm"><span className="truncate">{r.name}</span><RevisionBadge rev={r.revision} /></li>
-                ))}
-              </ul>
-            )}
-          </CardBody>
-        </Card>
-        <Card>
-          <CardHeader title="Today's priorities" icon={CalendarCheck} action={<Button size="sm" variant="ghost" onClick={() => navigate(todayPlan ? 'planner' : 'priorities')}>{todayPlan ? 'Plan' : 'All'} <ArrowRight className="h-3 w-3" /></Button>} />
-          <CardBody>
-            {todayPlan && todayPlan.tasks.length > 0 ? (
-              <ul className="space-y-2" data-testid="today-priorities">
-                {todayPlan.tasks.slice(0, 6).map((t) => (
-                  <li key={t.taskId} className="flex items-center justify-between gap-2 text-sm">
-                    <span className={t.status === 'completed' ? 'truncate text-muted line-through' : 'truncate'}>{t.name}</span>
-                    <Badge>{ACTION_LABEL[t.action]}</Badge>
-                  </li>
-                ))}
-              </ul>
-            ) : hasTargets ? (recs.loading ? <LoadingBlock rows={4} /> : (
-              <ul className="space-y-2" data-testid="today-priorities">
-                {(recs.data?.recommendations ?? []).map((r) => (
-                  <li key={r.topicId} className="flex items-center justify-between gap-2 text-sm"><span className="truncate">{r.name}</span><ClassBadge value={r.classification} /></li>
-                ))}
-              </ul>
-            )) : (
-              <ul className="space-y-2" data-testid="today-priorities">
-                {analysis.priorities.filter((p) => !p.done).slice(0, 6).map((p) => (
-                  <li key={p.topicId} className="flex items-center justify-between gap-2 text-sm"><span className="truncate">{p.name}</span><ClassBadge value={p.classification} /></li>
                 ))}
               </ul>
             )}
