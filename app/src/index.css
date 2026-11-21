@@ -71,6 +71,15 @@
 .recharts-legend-item-text { color: rgb(var(--ink2)) !important; font-size: 12px; }
 .recharts-tooltip-cursor { fill: rgb(var(--subtle)); }
 
+/* Touch and small screens: controls are at least 44px (min-* wins over compact h-* utilities). */
+@media (max-width: 1023.98px), (pointer: coarse) {
+  button, select, a[href], input:not([type='checkbox']):not([type='radio']):not([type='file']) { min-height: 2.75rem; }
+  button, a[href] { min-width: 2.75rem; }
+  button.tap-narrow { min-width: 0; }
+  summary { padding-block: 0.875rem; }
+  .tap-row { min-height: 2.75rem; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }

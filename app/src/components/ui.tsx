@@ -120,7 +120,7 @@ export function Field({ label, hint, children, className }: { label: string; hin
 }
 export function Checkbox({ checked, onChange, label, className }: { checked: boolean; onChange: (v: boolean) => void; label: ReactNode; className?: string }) {
   return (
-    <label className={cn('inline-flex cursor-pointer select-none items-center gap-2 text-sm text-ink2', className)}>
+    <label className={cn('tap-row inline-flex cursor-pointer select-none items-center gap-2 text-sm text-ink2', className)}>
       <input type="checkbox" className="h-4 w-4 cursor-pointer rounded border-line accent-[rgb(var(--accent))]" checked={checked} onChange={(e) => onChange(e.target.checked)} />
       {label}
     </label>
