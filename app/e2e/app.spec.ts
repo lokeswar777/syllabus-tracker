@@ -102,6 +102,33 @@ test('syllabus: search, filters, inline edit, and persistence after reload', asy
   await expect(page.getByTestId('stat-completed')).toHaveText('1');
 });
 
+test('syllabus keeps topic names readable at laptop width', async ({ page, isMobile }) => {
+  test.skip(isMobile, 'laptop viewport');
+  await page.setViewportSize({ width: 1024, height: 768 });
+  await page.goto('./');
+  await page.getByRole('button', { name: /^SSC CGL/ }).click();
+  await page.goto('./#/syllabus');
+  const topic = page.getByTestId('topic-reasoning.analogy').first().getByRole('button', { name: /Analogy/ });
+  await expect(topic).toBeVisible();
+  expect((await topic.boundingBox())!.width).toBeGreaterThan(200);
+  expect(await noHorizontalScroll(page)).toBe(true);
+});
+
+test('phone layout: bottom navigation, one-row header and 44px controls', async ({ page, isMobile }) => {
+  test.skip(!isMobile, 'phone viewport');
+  await page.goto('./');
+  await seedThroughEngines(page);
+  await page.goto('./#/planner');
+  const nav = page.getByTestId('bottom-nav');
+  await expect(nav).toBeVisible();
+  await nav.getByRole('link', { name: 'Revision' }).click();
+  await expect(page.getByTestId('page-revision')).toBeVisible();
+  expect((await page.locator('header').boundingBox())!.height).toBeLessThan(72);
+  const small = await page.evaluate(() => [...document.querySelectorAll('main button, header button, header select, nav a, nav button')]
+    .filter((el) => { const r = el.getBoundingClientRect(); return r.width > 0 && (r.height < 44 || r.width < 44); }).length);
+  expect(small).toBe(0);
+});
+
 test('planner: generate, drag a task to another day, complete it manually', async ({ page, isMobile }) => {
   test.skip(isMobile, 'HTML5 drag-and-drop needs a mouse; mobile uses the “Move to…” menu (covered below)');
   await page.goto('./');
