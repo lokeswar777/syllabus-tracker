@@ -128,7 +128,7 @@ export function SyllabusPage({ params }: PageProps) {
                         </button>
                         {!collapsed && (
                           <div className="border-t border-line">
-                            <div className="hidden grid-cols-[minmax(0,1fr)_4.5rem_4.5rem_8rem_4.5rem_10rem_7rem] gap-3 px-5 py-2 text-2xs font-medium uppercase tracking-wide text-muted lg:grid">
+                            <div className="hidden grid-cols-[minmax(0,1fr)_4.5rem_4.5rem_8rem_4.5rem_10rem_7rem] gap-3 px-5 py-2 text-2xs font-medium uppercase tracking-wide text-muted xl:grid">
                               <span>Topic</span><span className="text-right">In section</span><span className="text-right">Of exam</span><span>Completion</span><span className="text-right">Mastery</span><span>Status</span><span>Revision</span>
                             </div>
                             <ul>
@@ -167,7 +167,7 @@ const TopicRow = memo(function TopicRow({ ctx, topic: t, weightInSection, weight
   const sync = t.sharedLearning;
   return (
     <li className="border-b border-line/70 last:border-b-0" data-testid={`topic-${t.topicId}`}>
-      <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-2 px-4 py-2.5 sm:px-5 lg:grid-cols-[minmax(0,1fr)_4.5rem_4.5rem_8rem_4.5rem_10rem_7rem]">
+      <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-2 px-4 py-2.5 sm:px-5 xl:grid-cols-[minmax(0,1fr)_4.5rem_4.5rem_8rem_4.5rem_10rem_7rem]">
         <button type="button" onClick={onToggle} aria-expanded={open} className="flex min-w-0 items-center gap-2 text-left">
           <ChevronRight className={cn('h-3.5 w-3.5 shrink-0 text-muted transition-transform', open && 'rotate-90')} aria-hidden />
           <span className="min-w-0">
@@ -182,22 +182,22 @@ const TopicRow = memo(function TopicRow({ ctx, topic: t, weightInSection, weight
             </span>
           </span>
         </button>
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex items-center gap-2 xl:hidden">
           <span className="tabular text-xs text-muted">{pct(t.completion, 0)}</span>
         </div>
-        <span className="tabular hidden text-right text-xs lg:block" title="Weight within its section">{gate ? '–' : pct(weightInSection)}</span>
-        <span className="tabular hidden text-right text-xs text-muted lg:block" title="Effective weight in the whole exam">{gate ? '–' : pct(weightInExam, 2)}</span>
-        <div className="col-span-2 flex items-center gap-2 lg:col-span-1">
+        <span className="tabular hidden text-right text-xs xl:block" title="Weight within its section">{gate ? '–' : pct(weightInSection)}</span>
+        <span className="tabular hidden text-right text-xs text-muted xl:block" title="Effective weight in the whole exam">{gate ? '–' : pct(weightInExam, 2)}</span>
+        <div className="col-span-2 flex items-center gap-2 xl:col-span-1">
           <Progress value={t.completion} size="sm" label={`${t.name} completion`} />
-          <span className="tabular shrink-0 whitespace-nowrap text-right text-2xs text-muted lg:hidden">mastery {pct(t.mastery, 0)}</span>
+          <span className="tabular shrink-0 whitespace-nowrap text-right text-2xs text-muted xl:hidden">mastery {pct(t.mastery, 0)}</span>
         </div>
-        <span className="tabular hidden text-right text-xs lg:block" title={`Mastery level: ${t.masteryLevel}`}>{pct(t.mastery, 0)}</span>
-        <div className="col-span-2 grid grid-cols-2 gap-2 lg:col-span-1 lg:block">
+        <span className="tabular hidden text-right text-xs xl:block" title={`Mastery level: ${t.masteryLevel}`}>{pct(t.mastery, 0)}</span>
+        <div className="col-span-2 grid grid-cols-2 gap-2 xl:col-span-1 xl:block">
           <StatusSelect value={t.status ?? 'not-started'} statuses={ctx.statuses} label={`Status of ${t.name}`}
             onChange={(v) => store.run(() => store.engine.setStatus(t.topicId, v))} />
-          <div className="flex items-center lg:hidden"><RevisionBadge rev={row?.revision} compact /></div>
+          <div className="flex items-center xl:hidden"><RevisionBadge rev={row?.revision} compact /></div>
         </div>
-        <div className="hidden lg:block"><RevisionBadge rev={row?.revision} compact /></div>
+        <div className="hidden xl:block"><RevisionBadge rev={row?.revision} compact /></div>
       </div>
       {open && <TopicDetail ctx={ctx} t={t} />}
     </li>
