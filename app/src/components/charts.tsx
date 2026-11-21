@@ -20,7 +20,7 @@ export function usePalette() {
     axis: dark ? '#383835' : '#c3c2b7',
     ink: dark ? '#f0efec' : '#0b0b0b',
     ink2: dark ? '#c3c2b7' : '#52514e',
-    muted: '#898781',
+    muted: dark ? '#a3a19a' : '#6b6964',
     surface: dark ? '#1a1a19' : '#fcfcfb',
     seq: dark ? ['#184f95', '#256abf', '#3987e5', '#6da7ec', '#9ec5f4'] : ['#cde2fb', '#9ec5f4', '#6da7ec', '#3987e5', '#1c5cab'],
   };

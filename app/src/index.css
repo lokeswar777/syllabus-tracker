@@ -11,13 +11,15 @@
   --line: 228 227 221;
   --ink: 17 17 16;
   --ink2: 82 81 78;
-  --muted: 128 126 120;
-  --accent: 42 120 214;
+  --muted: 107 105 100;
+  --accent: 27 99 189;
+  --accent-fill: 27 99 189;
   --accent-ink: 255 255 255;
-  --good: 12 133 12;
+  --good: 10 115 10;
   --warn: 196 133 0;
   --serious: 214 104 60;
-  --critical: 208 59 59;
+  --critical: 185 44 44;
+  --critical-fill: 185 44 44;
 }
 :root.dark {
   color-scheme: dark;
@@ -27,13 +29,15 @@
   --line: 48 48 45;
   --ink: 240 239 236;
   --ink2: 195 194 183;
-  --muted: 137 135 129;
-  --accent: 57 135 229;
+  --muted: 163 161 154;
+  --accent: 110 168 240;
+  --accent-fill: 31 111 208;
   --accent-ink: 255 255 255;
-  --good: 12 163 12;
+  --good: 74 200 74;
   --warn: 250 178 25;
   --serious: 236 131 90;
-  --critical: 230 103 103;
+  --critical: 240 130 130;
+  --critical-fill: 200 50 50;
 }
 
 @layer base {

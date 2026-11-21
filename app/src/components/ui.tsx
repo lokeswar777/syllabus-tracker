@@ -9,10 +9,10 @@ type Icon = LucideIcon;
 type BtnProps = ButtonHTMLAttributes<HTMLButtonElement> & { variant?: 'primary' | 'secondary' | 'ghost' | 'danger'; size?: 'sm' | 'md'; icon?: Icon; loading?: boolean };
 export const Button = forwardRef<HTMLButtonElement, BtnProps>(function Button({ variant = 'secondary', size = 'md', icon: I, loading, className, children, disabled, ...rest }, ref) {
   const v = {
-    primary: 'bg-accent text-accent-ink hover:bg-accent/90 border border-transparent',
+    primary: 'bg-accent-fill text-accent-ink hover:bg-accent-fill/90 border border-transparent',
     secondary: 'bg-surface text-ink border border-line hover:bg-subtle',
     ghost: 'text-ink2 hover:bg-subtle hover:text-ink border border-transparent',
-    danger: 'bg-critical text-white hover:bg-critical/90 border border-transparent',
+    danger: 'bg-critical-fill text-white hover:bg-critical-fill/90 border border-transparent',
   }[variant];
   const s = size === 'sm' ? 'h-8 px-2.5 text-xs gap-1.5' : 'h-9 px-3.5 text-sm gap-2';
   return (

@@ -40,7 +40,7 @@ function NavList({ route, onNavigate, collapsed }: { route: Route; onNavigate: (
 function Brand({ collapsed }: { collapsed: boolean }) {
   return (
     <div className={cn('flex h-14 items-center gap-2.5 px-4', collapsed && 'justify-center px-0')}>
-      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-accent text-accent-ink"><GraduationCap className="h-4 w-4" aria-hidden /></div>
+      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-accent-fill text-accent-ink"><GraduationCap className="h-4 w-4" aria-hidden /></div>
       {!collapsed && <div className="min-w-0 leading-tight"><div className="truncate text-sm font-semibold">Syllabus Tracker</div><div className="truncate text-2xs text-muted">SSC & Banking</div></div>}
     </div>
   );

@@ -182,7 +182,7 @@ function MonthCalendar({ selected, onSelect, today }: { selected: string; onSele
           return (
             <button key={d} type="button" onClick={() => onSelect(d)} title={exam ? `${exam} exam` : n ? `${n} tasks` : undefined} aria-label={`${longDate(d)}${n ? `, ${n} tasks` : ''}${exam ? `, ${exam} exam` : ''}`}
               className={cn('relative flex h-9 flex-col items-center justify-center rounded-md text-xs transition-colors hover:bg-subtle',
-                d === selected && 'bg-accent text-accent-ink hover:bg-accent', d === today && d !== selected && 'font-semibold text-accent', exam && d !== selected && 'ring-1 ring-critical/60')}>
+                d === selected && 'bg-accent-fill text-accent-ink hover:bg-accent-fill', d === today && d !== selected && 'font-semibold text-accent', exam && d !== selected && 'ring-1 ring-critical/60')}>
               {Number(d.slice(8))}
               {n > 0 && <span className={cn('absolute bottom-1 h-1 w-1 rounded-full', d === selected ? 'bg-accent-ink' : allDone ? 'bg-good' : 'bg-accent')} />}
             </button>
