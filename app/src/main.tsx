@@ -6,6 +6,7 @@ import { createFetchLoader } from './lib/loader';
 import { progress } from './lib/engines';
 import type { StorageAdapter } from './lib/engines';
 import { IndexedDBStorage, migrateFromLocalStorage } from './lib/idb';
+import { CloudAccount, isCloudConfigured, openAccountDatabase, readAccountPointer } from './lib/account';
 import '@fontsource-variable/inter/wght.css';
 import './index.css';
 
@@ -40,8 +41,11 @@ async function openStorage(): Promise<{ storage: StorageAdapter; kind: Kind; not
 }
 
 const root = createRoot(document.getElementById('root')!);
-const { storage, kind, notes } = await openStorage();
-const store = new AppStore({ loader: createFetchLoader(), storage, storageKind: kind });
+const { storage: guest, kind, notes } = await openStorage();
+const cloudReady = isCloudConfigured() && kind === 'indexeddb';
+const accountDb = cloudReady ? await openAccountDatabase(readAccountPointer()).catch(() => null) : null;
+const store = new AppStore({ loader: createFetchLoader(), storage: accountDb ?? guest, storageKind: kind });
+if (cloudReady) store.account = new CloudAccount({ store, guest: guest as IndexedDBStorage, activeDb: accountDb });
 (window as unknown as { __store?: AppStore }).__store = store; // for debugging and end-to-end tests
 root.render(
   <StrictMode>
@@ -50,6 +54,7 @@ root.render(
 );
 await store.init();
 for (const n of notes) store.toast(kind === 'indexeddb' ? 'info' : 'error', n);
+void store.account?.init();
 
 // Save before the page goes away; warn when something is not on disk yet.
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') void store.flush().catch(() => {}); });

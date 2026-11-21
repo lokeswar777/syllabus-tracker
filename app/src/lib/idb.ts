@@ -21,9 +21,14 @@ export const IDB_VERSION = 1;
 const STORES = { collections: 'collections', snapshots: 'snapshots', meta: 'meta' } as const;
 
 export interface Snapshot { id: string; createdAt: string; reason: SnapshotReason; collections: Record<string, unknown>; bytes: number }
-export type SnapshotReason = 'daily' | 'manual' | 'before-import' | 'before-restore' | 'before-reset' | 'migration';
+export type SnapshotReason = 'daily' | 'manual' | 'before-import' | 'before-restore' | 'before-reset' | 'before-sync' | 'migration';
 export type SnapshotInfo = Omit<Snapshot, 'collections'> & { keys: string[] };
 export type SaveListener = (state: 'saving' | 'saved' | 'error', error?: Error) => void;
+/** A collection coming from the cloud. `expect` is the local change marker it may replace (null = no local change). */
+export interface RemoteRow { key: string; data: unknown; version: number; dirty: boolean; expect: string | null }
+const SYNC_DIRTY = 'syncDirty:';
+const SYNC_VERSION = 'syncVersion:';
+const newToken = () => `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
 
 const req = <T>(r: IDBRequest<T>) => new Promise<T>((res, rej) => { r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); });
 const done = (tx: IDBTransaction) => new Promise<void>((res, rej) => {
@@ -42,9 +47,21 @@ export function openDatabase(factory: IDBFactory = indexedDB, name = IDB_NAME): 
       if (!db.objectStoreNames.contains(STORES.snapshots)) db.createObjectStore(STORES.snapshots, { keyPath: 'id' }).createIndex('createdAt', 'createdAt');
       if (!db.objectStoreNames.contains(STORES.meta)) db.createObjectStore(STORES.meta, { keyPath: 'key' });
     };
-    open.onsuccess = () => resolve(open.result);
+    open.onsuccess = () => {
+      open.result.onversionchange = () => open.result.close(); // lets another tab delete this database on sign-out
+      resolve(open.result);
+    };
     open.onerror = () => reject(open.error ?? new Error('IndexedDB could not be opened'));
     open.onblocked = () => reject(new Error('IndexedDB upgrade blocked by another open tab: close other tabs of the tracker and reload'));
+  });
+}
+
+export function deleteDatabase(name: string, factory: IDBFactory = indexedDB): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const r = factory.deleteDatabase(name);
+    r.onsuccess = () => resolve();
+    r.onerror = () => reject(r.error);
+    r.onblocked = () => resolve(); // completes as soon as the other tab closes its connection
   });
 }
 
@@ -55,6 +72,9 @@ export class IndexedDBStorage implements StorageAdapter {
   private pending = new Map<string, unknown>();
   private batch: Promise<void> | null = null;
   private listeners = new Set<SaveListener>();
+  private commitListeners = new Set<(keys: string[]) => void>();
+  private revisions = new Map<string, string>();
+  private syncTracking = false;
   issues: string[] = [];
   writes = 0; // number of committed transactions (diagnostics / tests)
 
@@ -70,10 +90,11 @@ export class IndexedDBStorage implements StorageAdapter {
   private async preload() {
     const tx = this.idb.transaction([STORES.collections, STORES.meta], 'readwrite');
     const all = await req(tx.objectStore(STORES.collections).getAll());
-    for (const rec of all as { key: string; data: unknown }[]) {
+    for (const rec of all as { key: string; data: unknown; savedAt?: string; rev?: string }[]) {
       if (rec && typeof rec.key === 'string' && 'data' in rec && (rec.data === null || typeof rec.data === 'object')) {
         this.cache.set(rec.key, rec.data);
         this.lastWritten.set(rec.key, rec.data);
+        this.revisions.set(rec.key, rec.rev ?? rec.savedAt ?? '');
       } else if (rec && typeof rec.key === 'string') {
         // keep the unreadable record for recovery instead of discarding it
         tx.objectStore(STORES.meta).put({ key: `quarantine:${rec.key}:${this.clock().toISOString()}`, value: rec });
@@ -117,16 +138,26 @@ export class IndexedDBStorage implements StorageAdapter {
     const entries = [...this.pending.entries()];
     try {
       if (entries.length) {
-        const tx = this.idb.transaction(STORES.collections, 'readwrite');
+        const tx = this.idb.transaction(this.syncTracking ? [STORES.collections, STORES.meta] : [STORES.collections], 'readwrite');
         const store = tx.objectStore(STORES.collections);
         const savedAt = this.clock().toISOString();
+        const revs = new Map<string, string>();
         for (const [key, data] of entries) {
+          const rev = newToken();
+          revs.set(key, rev);
           if (data === null || data === undefined) store.delete(key);
-          else store.put({ key, data, savedAt, schema: (data as { schemaVersion?: number }).schemaVersion ?? null });
+          else store.put({ key, data, savedAt, rev, schema: (data as { schemaVersion?: number }).schemaVersion ?? null });
+          // Saved in the same transaction, so a crash can never leave an edit that sync does not know about.
+          if (this.syncTracking) tx.objectStore(STORES.meta).put({ key: SYNC_DIRTY + key, value: rev });
         }
         await done(tx);
         this.writes++;
-        for (const [k, v] of entries) { if (this.pending.get(k) === v) this.pending.delete(k); this.lastWritten.set(k, v); }
+        for (const [k, v] of entries) {
+          if (this.pending.get(k) === v) this.pending.delete(k);
+          this.lastWritten.set(k, v);
+          if (v === null || v === undefined) this.revisions.delete(k); else this.revisions.set(k, revs.get(k)!);
+        }
+        for (const l of this.commitListeners) l(entries.map(([k]) => k));
       }
     } catch (e) {
       this.batch = null;
@@ -143,6 +174,92 @@ export class IndexedDBStorage implements StorageAdapter {
   retry() { return this.pending.size ? this.schedule() : Promise.resolve(); }
   /** Resolves when everything written so far is on disk (rejects if the last attempt failed). */
   flush() { return this.batch ?? (this.pending.size ? this.schedule() : Promise.resolve()); }
+
+  // ───────── cloud sync bookkeeping ─────────
+  enableSyncTracking() { this.syncTracking = true; }
+  onCommit(l: (keys: string[]) => void) { this.commitListeners.add(l); return () => { this.commitListeners.delete(l); }; }
+
+  /** Last version seen from the cloud per collection, and collections changed here since then. */
+  async syncState() {
+    const tx = this.idb.transaction(STORES.meta, 'readonly');
+    const all = (await req(tx.objectStore(STORES.meta).getAll())) as { key: string; value: unknown }[];
+    const versions: Record<string, number> = {};
+    const dirty: Record<string, string> = {};
+    for (const r of all) {
+      if (r.key.startsWith(SYNC_VERSION)) versions[r.key.slice(SYNC_VERSION.length)] = r.value as number;
+      else if (r.key.startsWith(SYNC_DIRTY)) dirty[r.key.slice(SYNC_DIRTY.length)] = r.value as string;
+    }
+    return { versions, dirty };
+  }
+
+  /** Records a successful upload. A collection edited again since it was read stays marked as changed. */
+  async markSynced(rows: { key: string; version: number; token: string }[]) {
+    const tx = this.idb.transaction(STORES.meta, 'readwrite');
+    const meta = tx.objectStore(STORES.meta);
+    for (const r of rows) {
+      meta.put({ key: SYNC_VERSION + r.key, value: r.version });
+      const mark = meta.get(SYNC_DIRTY + r.key);
+      mark.onsuccess = () => { if (mark.result?.value === r.token) meta.delete(SYNC_DIRTY + r.key); };
+    }
+    await done(tx);
+  }
+
+  /** Saves cloud data atomically, skipping any collection edited locally after it was read. Returns the applied keys. */
+  async applyRemote(rows: RemoteRow[]) {
+    if (!rows.length) return [];
+    const tx = this.idb.transaction([STORES.collections, STORES.meta], 'readwrite');
+    const store = tx.objectStore(STORES.collections);
+    const meta = tx.objectStore(STORES.meta);
+    const savedAt = this.clock().toISOString();
+    const applied: (RemoteRow & { rev: string })[] = [];
+    for (const row of rows) {
+      if (this.pending.has(row.key)) continue;
+      const mark = meta.get(SYNC_DIRTY + row.key);
+      mark.onsuccess = () => {
+        if ((mark.result?.value ?? null) !== row.expect) return;
+        const rev = newToken();
+        if (row.data === null || row.data === undefined) store.delete(row.key);
+        else store.put({ key: row.key, data: row.data, savedAt, rev, schema: (row.data as { schemaVersion?: number }).schemaVersion ?? null });
+        meta.put({ key: SYNC_VERSION + row.key, value: row.version });
+        if (row.dirty) meta.put({ key: SYNC_DIRTY + row.key, value: rev });
+        else meta.delete(SYNC_DIRTY + row.key);
+        applied.push({ ...row, rev });
+      };
+    }
+    await done(tx);
+    for (const row of applied) {
+      if (this.pending.has(row.key)) continue;
+      if (row.data === null || row.data === undefined) { this.cache.delete(row.key); this.lastWritten.delete(row.key); this.revisions.delete(row.key); }
+      else { this.cache.set(row.key, row.data); this.lastWritten.set(row.key, row.data); this.revisions.set(row.key, row.rev); }
+    }
+    return applied.map((r) => r.key);
+  }
+
+  /** Picks up what another tab saved. Returns the collections that changed. */
+  async refreshFromDisk() {
+    const tx = this.idb.transaction(STORES.collections, 'readonly');
+    const all = (await req(tx.objectStore(STORES.collections).getAll())) as { key: string; data: unknown; savedAt?: string; rev?: string }[];
+    const changed: string[] = [];
+    const seen = new Set<string>();
+    for (const rec of all) {
+      seen.add(rec.key);
+      if (this.pending.has(rec.key)) continue;
+      const rev = rec.rev ?? rec.savedAt ?? '';
+      if (this.revisions.get(rec.key) === rev) continue;
+      this.cache.set(rec.key, rec.data);
+      this.lastWritten.set(rec.key, rec.data);
+      this.revisions.set(rec.key, rev);
+      changed.push(rec.key);
+    }
+    for (const [key, value] of [...this.cache]) {
+      if (seen.has(key) || this.pending.has(key) || value === null || value === undefined) continue;
+      this.cache.delete(key);
+      this.lastWritten.delete(key);
+      this.revisions.delete(key);
+      changed.push(key);
+    }
+    return changed;
+  }
 
   // ───────── snapshots (local restore points) ─────────
   async createSnapshot(reason: SnapshotReason, keys?: string[]): Promise<SnapshotInfo | null> {

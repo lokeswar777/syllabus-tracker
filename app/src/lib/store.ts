@@ -13,7 +13,8 @@
 import { progress, planner as plannerApi, COLLECTIONS, PLANNER_KEY } from './engines';
 import type { Engine, Loader, Planner, PlannerConfig, ProgressConfig, StorageAdapter } from './engines';
 import type { ExamInfo, HistoryData, HistoryPoint, Report } from './types';
-import { BACKUP_FORMAT, buildBackup, mergeCollections, validateBackup, type MergeReport, type ValidationResult } from './backup';
+import { BACKUP_FORMAT, BACKUP_FORMAT_VERSION, BACKUP_KEYS, buildBackup, mergeCollections, validateBackup, type MergeReport, type ValidationResult } from './backup';
+import type { CloudAccount } from './account';
 import { buildCsv, type CsvKind } from './csv';
 import type { IndexedDBStorage, SnapshotInfo, SnapshotReason } from './idb';
 
@@ -52,6 +53,8 @@ export class AppStore {
   history: HistoryData = emptyHistory();
   engine!: Engine;
   planner!: Planner;
+  /** Present only when cloud sync is configured. */
+  account: CloudAccount | null = null;
 
   private listeners = new Set<() => void>();
   private uiListeners = new Set<() => void>();
@@ -62,9 +65,16 @@ export class AppStore {
   private unsubscribe: (() => void) | null = null;
   private pending = 0;
   private syllabusIds = new Map<string, Set<string>>();
+  private offStorageSave: (() => void) | null = null;
 
   constructor(private deps: StoreDeps) {
-    if (hasSnapshots(deps.storage)) deps.storage.onSave((state, err) => this.onStorageSave(state, err));
+    this.watchStorage();
+  }
+
+  private watchStorage() {
+    this.offStorageSave?.();
+    const s = this.deps.storage;
+    this.offStorageSave = hasSnapshots(s) ? s.onSave((state, err) => this.onStorageSave(state, err)) : null;
   }
 
   get storage() { return this.deps.storage; }
@@ -89,24 +99,9 @@ export class AppStore {
     this.error = null;
     this.emit();
     try {
-      const { loader, storage } = this.deps;
-      this.defaults = (this.deps.defaults ?? (await loader.loadDefaults?.())) as StoreDeps['defaults'] ?? null;
-      if (!this.defaults) throw new Error('default configuration could not be loaded');
-      const stored = (await storage.read(CONFIG_KEY)) as ProgressConfig | null;
-      let config = this.defaults.progress;
-      this.customConfig = false;
-      if (stored) {
-        try { progress.compileConfig(stored); config = stored; this.customConfig = true; } catch (e) { this.toast('error', `Saved scoring settings were invalid and have been ignored: ${(e as Error).message}`); }
-      }
-      this.unsubscribe?.();
-      this.engine = await new progress.ProgressEngine({ loader, storage, config, clock: this.deps.clock }).init();
-      this.exams = await loader.listExams();
-      this.planner = await new plannerApi.StudyPlanner({ engine: this.engine, storage, config: this.defaults.planner, clock: this.deps.clock }).init();
-      const h = (await storage.read(HISTORY_KEY)) as HistoryData | null;
-      this.history = h && h.kind === 'history' && h.exams ? h : emptyHistory();
-      const issues = [...((storage as { issues?: string[] }).issues ?? []), ...this.engine.loadIssues, ...this.planner.loadIssues];
+      this.useData(await this.loadData(false));
+      const issues = [...((this.deps.storage as { issues?: string[] }).issues ?? []), ...this.engine.loadIssues, ...this.planner.loadIssues];
       for (const issue of issues) this.toast('info', issue);
-      this.unsubscribe = this.engine.subscribe(() => this.changed());
       this.status = 'ready';
       this.emit();
       void this.dailySnapshot();
@@ -116,6 +111,60 @@ export class AppStore {
       this.emit();
     }
     return this;
+  }
+
+  /** Builds engines from storage without touching the ones on screen. */
+  private async loadData(quiet: boolean) {
+    const { loader, storage } = this.deps;
+    this.defaults = (this.deps.defaults ?? this.defaults ?? (await loader.loadDefaults?.())) as StoreDeps['defaults'] ?? null;
+    if (!this.defaults) throw new Error('default configuration could not be loaded');
+    const stored = (await storage.read(CONFIG_KEY)) as ProgressConfig | null;
+    let config = this.defaults.progress;
+    let customConfig = false;
+    if (stored) {
+      try { progress.compileConfig(stored); config = stored; customConfig = true; } catch (e) { if (!quiet) this.toast('error', `Saved scoring settings were invalid and have been ignored: ${(e as Error).message}`); }
+    }
+    const engine = await new progress.ProgressEngine({ loader, storage, config, clock: this.deps.clock }).init();
+    const exams = await loader.listExams();
+    const planner = await new plannerApi.StudyPlanner({ engine, storage, config: this.defaults.planner, clock: this.deps.clock }).init();
+    const h = (await storage.read(HISTORY_KEY)) as HistoryData | null;
+    return { engine, exams, planner, customConfig, history: h && h.kind === 'history' && h.exams ? h : emptyHistory() };
+  }
+  private useData(d: Awaited<ReturnType<AppStore['loadData']>>) {
+    this.unsubscribe?.();
+    this.engine = d.engine;
+    this.exams = d.exams;
+    this.planner = d.planner;
+    this.customConfig = d.customConfig;
+    this.history = d.history;
+    this.unsubscribe = this.engine.subscribe(() => this.changed());
+  }
+
+  /** Shows data that changed in storage (from sync) without a loading screen, keeping open pages and forms. */
+  async reload() {
+    if (this.status !== 'ready') return this.init();
+    let data: Awaited<ReturnType<AppStore['loadData']>> | null = null;
+    for (let attempt = 0; attempt < 5; attempt++) {
+      await this.flush();
+      const before = this.version;
+      data = await this.loadData(true);
+      if (before === this.version) break; // nothing was edited while loading
+    }
+    this.useData(data!);
+    this.emit();
+    return this;
+  }
+
+  /** Moves the app to another account's (or the guest) database. */
+  async switchStorage(storage: StorageAdapter, kind: NonNullable<StoreDeps['storageKind']>) {
+    await this.flush().catch(() => {});
+    this.deps = { ...this.deps, storage, storageKind: kind };
+    this.watchStorage();
+    this.saveState = 'saved';
+    this.saveError = null;
+    this.pending = 0;
+    this.emitUi();
+    return this.init();
   }
 
   /** Waits for every pending write (engine, planner, history). Rejects if the last write failed. */
@@ -243,6 +292,7 @@ export class AppStore {
   }
 
   // ───────── backup (export / import) ─────────
+  readCollections() { return this.currentCollections(); }
   private async currentCollections() {
     await this.flush().catch(() => {});
     const out: Record<string, unknown> = {};
@@ -272,17 +322,27 @@ export class AppStore {
 
   /** Validates a backup and describes it next to the current data (nothing is written). */
   async previewImport(data: unknown): Promise<ValidationResult & { current: Awaited<ReturnType<typeof buildBackup>>['summary'] }> {
+    const result = await this.validateData(data);
+    const current = (await this.exportData()).summary;
+    return { ...result, current };
+  }
+  private async validateData(data: unknown) {
     const c = (data as { collections?: Record<string, { exams?: Record<string, unknown> } | null> })?.collections ?? {};
     const referenced = [...new Set([...Object.keys(c.progress?.exams ?? {}), ...Object.keys(c.practice?.exams ?? {})])];
     await this.syllabusNodeIds(referenced).catch(() => {});
-    const result = await validateBackup(data, {
+    return validateBackup(data, {
       knownExams: this.exams.map((e) => e.examId),
       nodeInExam: (examId, nodeId) => this.syllabusIds.get(examId)?.has(nodeId) ?? null,
       knownStatuses: this.engine.config.statuses.map((s) => s.id),
       validateConfig: (cfg) => progress.compileConfig(cfg as ProgressConfig),
     });
-    const current = (await this.exportData()).summary;
-    return { ...result, current };
+  }
+  /** Runs the backup checks on data from the cloud before it is saved. An account with no progress yet is valid. */
+  async validateCollections(collections: Record<string, unknown>) {
+    const clean = Object.fromEntries(BACKUP_KEYS.map((k) => [k, collections[k] ?? null]));
+    const result = await this.validateData({ format: BACKUP_FORMAT, formatVersion: BACKUP_FORMAT_VERSION, exportedAt: this.clock().toISOString(), collections: clean });
+    const errors = clean.progress === null ? result.errors.filter((e) => !e.startsWith('Required collection')) : result.errors;
+    return { ok: errors.length === 0, errors };
   }
 
   /**

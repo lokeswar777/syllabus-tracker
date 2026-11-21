@@ -24,6 +24,15 @@ export function useUi() {
   return store;
 }
 
+const noSubscribe = () => () => {};
+const noVersion = () => 0;
+/** The cloud account, or null when sync is not configured. Re-renders on sign-in and sync changes. */
+export function useAccount() {
+  const account = useStore().account;
+  useSyncExternalStore(account?.subscribe ?? noSubscribe, account?.getVersion ?? noVersion, account?.getVersion ?? noVersion);
+  return account;
+}
+
 /** Runs an async computation (e.g. planner.getRecommendations) whenever deps change; stale results are dropped. */
 export function useAsync<T>(fn: () => Promise<T> | T, deps: unknown[]) {
   const [state, setState] = useState<{ data: T | undefined; error: Error | null; loading: boolean }>({ data: undefined, error: null, loading: true });

@@ -4,7 +4,7 @@
  */
 import { useRef, useState } from 'react';
 import { Database, Download, Upload, Trash2, HardDrive, ShieldCheck, History, FileSpreadsheet, CloudOff, CheckCircle2, AlertTriangle, RotateCcw, Camera, Lock } from 'lucide-react';
-import { useApp, useAsync } from '../lib/hooks';
+import { useAccount, useApp, useAsync } from '../lib/hooks';
 import { CSV_KINDS, BOM, type CsvKind } from '../lib/csv';
 import { describeCounts, type ValidationResult, type BackupSummary } from '../lib/backup';
 import type { ImportMode } from '../lib/store';
@@ -12,7 +12,7 @@ import { Badge, Button, Card, CardBody, CardHeader, Field, Input, LoadingBlock, 
 
 const fmtBytes = (n: number | null) => (n === null ? '–' : n < 1024 ? `${n} B` : n < 1048576 ? `${(n / 1024).toFixed(0)} KB` : n < 1073741824 ? `${(n / 1048576).toFixed(1)} MB` : `${(n / 1073741824).toFixed(1)} GB`);
 const fmtTime = (iso: string | null | undefined) => (iso ? new Date(iso).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }) : '–');
-const REASON: Record<string, string> = { daily: 'Daily (automatic)', manual: 'Created by you', 'before-import': 'Before an import', 'before-restore': 'Before a restore', 'before-reset': 'Before reset', migration: 'Migration' };
+const REASON: Record<string, string> = { daily: 'Daily (automatic)', manual: 'Created by you', 'before-import': 'Before an import', 'before-restore': 'Before a restore', 'before-reset': 'Before reset', 'before-sync': 'Before combining devices', migration: 'Migration' };
 
 function download(name: string, text: string, type: string) {
   const url = URL.createObjectURL(new Blob([text], { type }));
@@ -40,9 +40,11 @@ export function DataManagement() {
 
 function StorageCard() {
   const { store } = useApp();
+  const account = useAccount();
   const [tick, setTick] = useState(0);
   const info = useAsync(() => store.storageInfo(), [tick]);
   const kind = store.storageKind;
+  const signedIn = account?.state === 'signed-in';
   return (
     <Card data-testid="storage-card">
       <CardHeader title="Where your data is stored" icon={HardDrive} />
@@ -54,8 +56,10 @@ function StorageCard() {
         </div>
         <p className="flex items-start gap-2 rounded-lg border border-line bg-subtle/50 p-3 text-xs text-ink2" data-testid="local-only-notice">
           <CloudOff className="mt-0.5 h-4 w-4 shrink-0 text-muted" />
-          <span><strong className="text-ink">No cloud sync is configured.</strong> Your preparation data stays in this browser on this device only; other browsers and devices do not see it.
-            To move to another device, export a backup here and import it there. Clearing this site’s data in the browser deletes it, so keep regular backups.</span>
+          {signedIn
+            ? <span><strong className="text-ink">Synced to your account.</strong> A copy stays in this browser for offline use, and signing in on another device brings your progress there.</span>
+            : <span><strong className="text-ink">{account ? 'You are not signed in.' : 'No cloud sync is configured.'}</strong> Your preparation data stays in this browser on this device only; other browsers and devices do not see it.
+              {account ? ' Sign in from Account & sync to keep it safe.' : ' To move to another device, export a backup here and import it there.'} Clearing this site’s data in the browser deletes it, so keep regular backups.</span>}
         </p>
         {kind === 'indexeddb' && info.data && !info.data.persisted && (
           <div className="flex flex-wrap items-center gap-2">
@@ -275,16 +279,17 @@ function IntegrityCard() {
 
 function ResetCard() {
   const { store } = useApp();
+  const signedIn = useAccount()?.state === 'signed-in';
   const [open, setOpen] = useState(false);
   const [text, setText] = useState('');
   return (
     <Card>
-      <CardHeader title="Reset" icon={Trash2} description="Deletes all progress, practice, plans and settings in this browser. The syllabus and weightage databases are not affected."
+      <CardHeader title="Reset" icon={Trash2} description={signedIn ? 'Deletes all progress, practice, plans and settings from this browser and your account on every device. The syllabus and weightage databases are not affected.' : 'Deletes all progress, practice, plans and settings in this browser. The syllabus and weightage databases are not affected.'}
         action={<Button size="sm" variant="ghost" className="text-critical hover:text-critical" onClick={() => setOpen(true)}>Reset all data…</Button>} />
       {open && (
         <Modal open onClose={() => setOpen(false)} title="Reset all data?"
           footer={<><Button onClick={() => setOpen(false)}>Cancel</Button><Button variant="danger" disabled={text !== 'RESET'} onClick={async () => { await store.run(() => store.resetAll(), 'All data was reset. A restore point of the previous data was kept.'); setOpen(false); }}>Reset everything</Button></>}>
-          <p className="text-sm text-ink2">{store.snapshotsSupported ? 'A restore point of your current data is created first.' : 'Export a backup first: this cannot be undone.'}</p>
+          <p className="text-sm text-ink2">{signedIn ? 'This also clears your account on every device. A restore point is kept only in this browser, so export a backup first if you may need this data.' : store.snapshotsSupported ? 'A restore point of your current data is created first.' : 'Export a backup first: this cannot be undone.'}</p>
           <Field label="Type RESET to confirm" className="mt-3"><Input value={text} onChange={(e) => setText(e.target.value)} /></Field>
         </Modal>
       )}

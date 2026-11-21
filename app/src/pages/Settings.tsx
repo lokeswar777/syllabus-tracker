@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Crosshair, Clock, Scale, Gauge, ListChecks, Palette, RotateCcw, SlidersHorizontal, Link2, Save } from 'lucide-react';
 import { DataManagement } from '../components/DataManagement';
+import { AccountCard } from '../components/Account';
 import type { PageProps } from '../App';
 import { useApp, useTheme } from '../lib/hooks';
 import { progress } from '../lib/engines';
@@ -17,8 +18,10 @@ const NAV = [
 const ActiveSection = createContext('targets');
 
 export function SettingsPage({ params }: PageProps) {
+  const { store } = useApp();
+  const nav = store.account ? [{ id: 'account', label: 'Account & sync' }, ...NAV] : NAV;
   const section = params.get('section');
-  const active = NAV.some((n) => n.id === section) ? section! : NAV[0].id;
+  const active = nav.some((n) => n.id === section) ? section! : nav[0].id;
   const tabs = useRef<HTMLElement>(null);
   useEffect(() => { if (section) document.getElementById(`settings-${section}`)?.scrollIntoView({ block: 'start' }); }, [section]);
   useEffect(() => {
@@ -31,7 +34,7 @@ export function SettingsPage({ params }: PageProps) {
       <PageHeader title="Settings" description="Every change is validated and saved immediately; calculations update everywhere." />
       <nav ref={tabs} className="sticky top-[calc(3.8125rem+env(safe-area-inset-top))] z-20 -mx-4 mb-3 overflow-x-auto bg-page/95 px-4 py-2 backdrop-blur sm:-mx-6 sm:px-6 lg:hidden" aria-label="Settings tabs">
         <ul className="flex w-max gap-1.5">
-          {NAV.map((n) => (
+          {nav.map((n) => (
             <li key={n.id}>
               <a href={`#/settings?section=${n.id}`} aria-current={n.id === active ? 'true' : undefined}
                 className={cn('flex items-center whitespace-nowrap rounded-lg border px-3 text-sm font-medium transition-colors', n.id === active ? 'border-accent/40 bg-accent/10 text-accent' : 'border-line bg-surface text-ink2')}>{n.label}</a>
@@ -42,11 +45,12 @@ export function SettingsPage({ params }: PageProps) {
       <div className="grid gap-6 lg:grid-cols-[12rem_minmax(0,1fr)]">
         <nav className="hidden lg:block" aria-label="Settings sections">
           <ul className="sticky top-20 space-y-0.5 text-sm">
-            {NAV.map((n) => <li key={n.id}><a href={`#/settings?section=${n.id}`} aria-current={n.id === active ? 'true' : undefined} className={cn('block rounded-md px-2 py-1.5 transition-colors hover:bg-subtle hover:text-ink', n.id === active ? 'bg-subtle font-medium text-ink' : 'text-ink2')}>{n.label}</a></li>)}
+            {nav.map((n) => <li key={n.id}><a href={`#/settings?section=${n.id}`} aria-current={n.id === active ? 'true' : undefined} className={cn('block rounded-md px-2 py-1.5 transition-colors hover:bg-subtle hover:text-ink', n.id === active ? 'bg-subtle font-medium text-ink' : 'text-ink2')}>{n.label}</a></li>)}
           </ul>
         </nav>
         <ActiveSection.Provider value={active}>
           <div className="min-w-0 space-y-5">
+            {store.account && <Section id="account"><AccountCard /></Section>}
             <TargetsCard />
             <TimeCard />
             <PriorityCard />

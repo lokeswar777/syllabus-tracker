@@ -4,6 +4,7 @@ import { StoreProvider, useApp, useRoute, type Route } from './lib/hooks';
 import type { AppStore } from './lib/store';
 import { BottomNav, Sidebar, Topbar, Toasts, useMobileNav } from './components/layout';
 import { Card, ErrorState } from './components/ui';
+import { GuestImportDialog } from './components/Account';
 import { LoadingBlock } from './components/ui';
 
 // Pages are loaded on demand (smaller first download; charts load with the pages that use them).
@@ -52,6 +53,7 @@ function Shell() {
         </main>
       </div>
       <BottomNav route={route} onNavigate={(r) => navigate(r)} onMore={nav.openNav} />
+      <GuestImportDialog />
       <Toasts />
     </div>
   );

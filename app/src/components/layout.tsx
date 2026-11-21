@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { useApp, useLocalPref, useTheme, useUi, type Route } from '../lib/hooks';
 import { Button, cn, IconButton, InlineSheet, Select } from './ui';
+import { AccountButton } from './Account';
 
 export const NAV: { route: Route; label: string; icon: typeof LayoutDashboard }[] = [
   { route: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -221,6 +222,7 @@ export function Topbar() {
         <div className="flex shrink-0 items-center gap-1 sm:gap-2">
           <SaveIndicator />
           <ThemeToggle />
+          <AccountButton />
         </div>
       </div>
     </header>

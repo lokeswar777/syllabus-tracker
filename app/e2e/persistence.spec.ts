@@ -288,7 +288,7 @@ test('restore points: create, then restore an earlier state', async ({ page }) =
 
 test('settings data page states clearly that data is local to this browser', async ({ page }) => {
   await page.goto('./#/settings?section=data');
-  await expect(page.getByTestId('local-only-notice')).toContainText('No cloud sync is configured');
+  await expect(page.getByTestId('local-only-notice')).toContainText(/No cloud sync is configured|You are not signed in/);
   await expect(page.getByTestId('storage-card')).toContainText('Browser database (IndexedDB)');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });
