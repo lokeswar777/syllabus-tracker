@@ -5,7 +5,7 @@ import { useApp } from '../lib/hooks';
 import { useExam } from '../lib/useExam';
 import { practiceBySection, practiceByTopic, practiceTotals, practiceTrend, scopedSessions, topicOf } from '../lib/selectors';
 import { num, pct, secs, shortDate } from '../lib/format';
-import { Badge, Button, Card, CardBody, CardHeader, EmptyState, FIVE_STAT_GRID, FIVE_STAT_SPANS, IconButton, PageHeader, Progress, ResponsiveTable, Segmented, Select, Stat, cn } from '../components/ui';
+import { Badge, Button, Card, CardBody, CardHeader, ConfirmDialog, EmptyState, FIVE_STAT_GRID, FIVE_STAT_SPANS, IconButton, PageHeader, Progress, ResponsiveTable, Segmented, Select, Stat, cn } from '../components/ui';
 import { PercentTrend, VolumeBars } from '../components/charts';
 import { PracticeForm } from '../components/PracticeForm';
 
@@ -27,6 +27,15 @@ export function PracticePage(_: PageProps) {
     return rows.sort(s);
   }, [report, sessions, sort]);
   const [showForm, setShowForm] = useState(false);
+  const [deleting, setDeleting] = useState<(typeof sessions)[number] | null>(null);
+  const removeSession = async (s: (typeof sessions)[number]) => {
+    const examId = ctx.examId;
+    setDeleting(null);
+    const done = await store.run(() => store.engine.deletePractice(s.id));
+    if (done === undefined) return;
+    // Undo puts the same session back, with its original id and values.
+    store.toast('success', 'Session deleted', { label: 'Undo', run: () => store.run(() => store.withExam(examId, () => store.engine.recordPractice(s.nodeId, { ...s })), 'Session restored') });
+  };
   const recent = [...sessions].sort((a, b) => b.date.localeCompare(a.date) || b.createdAt.localeCompare(a.createdAt)).slice(0, 15);
   const nameOf = (nodeId: string) => (nodeId === topicOf(nodeId) ? report.topics[nodeId]?.name : `${report.topics[topicOf(nodeId)]?.name} › ${report.subtopics[nodeId]?.name ?? nodeId}`) ?? nodeId;
   const fmtLabel = (d: string | number) => (by === 'week' ? `wk ${shortDate(String(d))}` : shortDate(String(d)));
@@ -124,13 +133,14 @@ export function PracticePage(_: PageProps) {
                   {s.stageId && <Badge>{report.stages.find((x) => x.stageId === s.stageId)?.name ?? s.stageId}</Badge>}
                   <span className="tabular text-xs">{s.correct}/{s.attempted} · {pct((s.correct / s.attempted) * 100, 0)}</span>
                   <span className="tabular w-14 text-right text-xs text-muted">{s.timeSeconds ? secs(s.timeSeconds / s.attempted) : '–'}</span>
-                  <IconButton icon={Trash2} label="Delete session" onClick={() => { if (window.confirm('Delete this practice session? Accuracy and mastery will be recalculated.')) void store.run(() => store.engine.deletePractice(s.id), 'Session deleted'); }} />
+                  <IconButton icon={Trash2} label="Delete session" onClick={() => setDeleting(s)} />
                 </li>
               ))}
             </ul>
           </Card>
         </>
       )}
+      {deleting && <ConfirmDialog title="Delete this practice session?" confirmLabel="Delete session" onClose={() => setDeleting(null)} onConfirm={() => void removeSession(deleting)}>Accuracy and mastery will be recalculated. You can undo this right after deleting.</ConfirmDialog>}
     </div>
   );
 }

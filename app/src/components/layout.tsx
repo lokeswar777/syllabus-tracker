@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   LayoutDashboard, ListTree, GitCompareArrows, Network, Flame, CalendarDays, RotateCcw, BarChart3, Settings as SettingsIcon,
-  PanelLeftClose, PanelLeftOpen, MoreHorizontal, X, Sun, Moon, Monitor, CheckCircle2, Loader2, AlertTriangle, GraduationCap, Info, SlidersHorizontal,
+  PanelLeftClose, PanelLeftOpen, MoreHorizontal, X, Sun, Moon, Monitor, CheckCircle2, Loader2, AlertTriangle, GraduationCap, Info, SlidersHorizontal, Check,
 } from 'lucide-react';
 import { useApp, useLocalPref, useTheme, useUi, type Route } from '../lib/hooks';
 import { Button, cn, IconButton, InlineSheet, Select } from './ui';
@@ -127,9 +127,33 @@ function SaveIndicator() {
 
 export function ThemeToggle() {
   const { pref, setPref } = useTheme();
-  const next = pref === 'light' ? 'dark' : pref === 'dark' ? 'system' : 'light';
-  const I = pref === 'light' ? Sun : pref === 'dark' ? Moon : Monitor;
-  return <IconButton icon={I} label={`Theme: ${pref} (switch to ${next})`} onClick={() => setPref(next)} />;
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: PointerEvent) => { if (!ref.current?.contains(e.target as Node)) setOpen(false); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false); };
+    document.addEventListener('pointerdown', onDown);
+    document.addEventListener('keydown', onKey);
+    return () => { document.removeEventListener('pointerdown', onDown); document.removeEventListener('keydown', onKey); };
+  }, [open]);
+  const options = [{ value: 'light', label: 'Light', icon: Sun }, { value: 'dark', label: 'Dark', icon: Moon }, { value: 'system', label: 'System', icon: Monitor }] as const;
+  const I = options.find((o) => o.value === pref)?.icon ?? Monitor;
+  return (
+    <div ref={ref} className="relative">
+      <IconButton icon={I} label={`Theme: ${pref}`} aria-haspopup="menu" aria-expanded={open} onClick={() => setOpen(!open)} />
+      {open && (
+        <div role="menu" aria-label="Theme" className="card absolute right-0 top-full z-50 mt-1.5 w-40 p-1 shadow-float">
+          {options.map(({ value, label, icon: O }) => (
+            <button key={value} type="button" role="menuitemradio" aria-checked={pref === value} onClick={() => { setPref(value); setOpen(false); }}
+              className={cn('flex h-9 w-full items-center gap-2 rounded-xl px-2.5 text-sm transition-colors hover:bg-subtle', pref === value ? 'font-medium text-accent' : 'text-ink2')}>
+              <O className="h-4 w-4" aria-hidden />{label}{pref === value && <Check className="ml-auto h-4 w-4" aria-hidden />}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }
 
 /** Exam selector + stage/track/choice selectors: everything on screen follows this selection. */
@@ -211,6 +235,7 @@ export function Toasts() {
         <div key={t.id} role={t.kind === 'error' ? 'alert' : 'status'} className="card pointer-events-auto flex items-start gap-2.5 px-3.5 py-3 text-sm shadow-float">
           {t.kind === 'error' ? <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-critical" /> : t.kind === 'success' ? <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-good" /> : <Info className="mt-0.5 h-4 w-4 shrink-0 text-accent" />}
           <span className="min-w-0 flex-1 break-words text-ink2">{t.message}</span>
+          {t.action && <button type="button" className="shrink-0 rounded-lg px-1.5 font-semibold text-accent hover:bg-accent/10" onClick={() => { store.dismissToast(t.id); void t.action!.run(); }}>{t.action.label}</button>}
           <button type="button" className="text-muted hover:text-ink" aria-label="Dismiss" onClick={() => store.dismissToast(t.id)}><X className="h-4 w-4" /></button>
         </div>
       ))}

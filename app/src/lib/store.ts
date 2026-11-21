@@ -25,7 +25,7 @@ export const EXPORT_FORMAT = BACKUP_FORMAT;
 export type Status = 'idle' | 'loading' | 'ready' | 'error';
 export type SaveState = 'saved' | 'saving' | 'error';
 export type ImportMode = 'replace' | 'merge';
-export interface Toast { id: number; kind: 'success' | 'error' | 'info'; message: string }
+export interface Toast { id: number; kind: 'success' | 'error' | 'info'; message: string; action?: { label: string; run: () => void | Promise<unknown> } }
 
 export interface StoreDeps {
   loader: Loader & { loadDefaults?(): Promise<{ progress: unknown; planner: unknown }> };
@@ -169,11 +169,11 @@ export class AppStore {
   }
 
   // ───────── notifications ─────────
-  toast(kind: Toast['kind'], message: string) {
-    const t = { id: ++this.toastSeq, kind, message };
+  toast(kind: Toast['kind'], message: string, action?: Toast['action']) {
+    const t: Toast = { id: ++this.toastSeq, kind, message, action };
     this.toasts = [...this.toasts.slice(-3), t];
     this.emitUi();
-    if (typeof window !== 'undefined') setTimeout(() => this.dismissToast(t.id), kind === 'error' ? 8000 : 4000);
+    if (typeof window !== 'undefined') setTimeout(() => this.dismissToast(t.id), kind === 'error' || action ? 8000 : 4000);
   }
   dismissToast(id: number) { this.toasts = this.toasts.filter((t) => t.id !== id); this.emitUi(); }
 

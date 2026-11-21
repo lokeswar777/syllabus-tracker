@@ -160,7 +160,7 @@ export function Field({ label, hint, children, className }: { label: string; hin
 export function Checkbox({ checked, onChange, label, className }: { checked: boolean; onChange: (v: boolean) => void; label: ReactNode; className?: string }) {
   return (
     <label className={cn('tap-row inline-flex cursor-pointer select-none items-center gap-2 text-sm text-ink2', className)}>
-      <input type="checkbox" className="h-4 w-4 cursor-pointer rounded border-line accent-[rgb(var(--accent))]" checked={checked} onChange={(e) => onChange(e.target.checked)} />
+      <input type="checkbox" className="h-4 w-4 cursor-pointer rounded border-line accent-[rgb(var(--accent-fill))]" checked={checked} onChange={(e) => onChange(e.target.checked)} />
       {label}
     </label>
   );
@@ -181,15 +181,19 @@ export function Segmented<T extends string>({ options, value, onChange, label }:
 // ───────── overlays & states ─────────
 export function Modal({ open, onClose, title, children, footer, wide }: { open: boolean; onClose: () => void; title: string; children: ReactNode; footer?: ReactNode; wide?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
+  const close = useRef(onClose);
+  close.current = onClose;
   useEffect(() => {
     if (!open) return;
     const prev = document.activeElement as HTMLElement | null;
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
     const first = ref.current?.querySelector<HTMLElement>('input, select, textarea, button:not([data-close])');
     first?.focus();
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close.current(); };
     document.addEventListener('keydown', onKey);
-    return () => { document.removeEventListener('keydown', onKey); prev?.focus?.(); };
-  }, [open, onClose]);
+    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = overflow; prev?.focus?.(); };
+  }, [open]);
   if (!open) return null;
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 p-0 sm:items-center sm:p-4" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
@@ -202,6 +206,14 @@ export function Modal({ open, onClose, title, children, footer, wide }: { open: 
         {footer && <div className="flex flex-wrap justify-end gap-2 border-t border-line px-5 py-3">{footer}</div>}
       </div>
     </div>
+  );
+}
+
+export function ConfirmDialog({ title, children, confirmLabel, onConfirm, onClose }: { title: string; children: ReactNode; confirmLabel: string; onConfirm: () => void; onClose: () => void }) {
+  return (
+    <Modal open onClose={onClose} title={title} footer={<><Button onClick={onClose}>Cancel</Button><Button variant="danger" onClick={onConfirm}>{confirmLabel}</Button></>}>
+      <p className="text-sm text-ink2">{children}</p>
+    </Modal>
   );
 }
 
