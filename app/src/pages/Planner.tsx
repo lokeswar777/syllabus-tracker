@@ -266,7 +266,7 @@ function DayDetail({ date, plan, today, busy, onGenerate, onComplete, onAdd }: {
                             <option value="">Move to…</option>
                             {Array.from({ length: 7 }, (_, k) => addDays(today, k)).filter((d) => d !== date).map((d) => <option key={d} value={d}>{dayName(d)} {shortDate(d)}</option>)}
                           </Select>
-                          <Button size="sm" variant="primary" icon={Check} onClick={() => onComplete(t)}>Complete</Button>
+                          <Button size="sm" variant="primary" icon={Check} className="flex-1 lg:flex-none" onClick={() => onComplete(t)}>Complete</Button>
                           <IconButton icon={X} label={`Remove ${t.name}`} onClick={() => store.run(() => store.planner.removeTask(date, t.taskId), 'Task removed')} />
                         </>
                       ) : <Button size="sm" variant="ghost" icon={RotateCcw} onClick={() => store.run(() => store.planner.reopenTask(date, t.taskId), 'Task reopened (progress already recorded is kept)')}>Reopen</Button>}

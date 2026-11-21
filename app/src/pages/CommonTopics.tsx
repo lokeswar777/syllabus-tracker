@@ -112,7 +112,7 @@ function CommonRow({ c, open, onToggle, conceptStatuses, onOpenTopic, selectedCo
             </span>
           </span>
         </button>
-        <span className="lg:hidden"><Badge tone={S.tone} icon={S.icon} title={S.help}>{S.label}</Badge></span>
+        <span className="col-span-2 lg:hidden"><Badge tone={S.tone} icon={S.icon} title={S.help}>{S.label}</Badge></span>
         <div className="col-span-2 flex flex-wrap gap-1 lg:col-span-1">
           {exams.length === selectedCount && selectedCount > 2
             ? <Badge tone="accent" title={exams.map(([id]) => store.examName(id)).join(', ')}>All {selectedCount} selected exams</Badge>

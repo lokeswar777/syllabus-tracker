@@ -86,9 +86,9 @@ export function Dashboard({ navigate }: PageProps) {
       </div>
 
       <div className="grid gap-4 lg:grid-cols-3">
-        <Card>
+        <Card className="flex flex-col">
           <CardHeader title="Overall completion" description={`${report.shortName} · ${scopeLabel}`} icon={Target} />
-          <CardBody>
+          <CardBody className="flex flex-1 flex-col justify-center">
             <CompletionDonut value={s.syllabusCompletion} label="syllabus covered" />
             <dl className="mt-4 grid grid-cols-2 gap-3 text-xs">
               <div><dt className="text-muted">Own progress</dt><dd className="tabular mt-0.5 font-medium">{pct(s.ownSyllabusCompletion)}</dd></div>
