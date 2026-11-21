@@ -1,6 +1,7 @@
 import { forwardRef, useEffect, useRef, type ButtonHTMLAttributes, type ReactNode, type SelectHTMLAttributes, type InputHTMLAttributes } from 'react';
 import { type LucideIcon, AlertOctagon, ArrowDownCircle, ArrowUpCircle, CircleDot, Loader2, X, Clock, CheckCircle2, CalendarClock, AlertTriangle, MinusCircle } from 'lucide-react';
 import type { PriorityClass, RevisionInfo } from '../lib/types';
+import { useMediaQuery } from '../lib/hooks';
 
 export const cn = (...c: (string | false | null | undefined)[]) => c.filter(Boolean).join(' ');
 type Icon = LucideIcon;
@@ -161,6 +162,45 @@ export function Modal({ open, onClose, title, children, footer, wide }: { open: 
         </div>
         <div className="px-5 py-4">{children}</div>
         {footer && <div className="flex flex-wrap justify-end gap-2 border-t border-line px-5 py-3">{footer}</div>}
+      </div>
+    </div>
+  );
+}
+
+const SHEET_BREAKPOINT = {
+  md: { closed: 'hidden md:contents', open: 'fixed inset-0 z-50 flex items-end md:contents', hide: 'md:hidden', inline: 'md:contents', query: '(max-width: 767.98px)' },
+  xl: { closed: 'hidden xl:contents', open: 'fixed inset-0 z-50 flex items-end xl:contents', hide: 'xl:hidden', inline: 'xl:contents', query: '(max-width: 1279.98px)' },
+};
+
+/** The same controls render inline from the breakpoint up, and as a bottom sheet below it. */
+export function InlineSheet({ open, onClose, title, breakpoint, children }: { open: boolean; onClose: () => void; title: string; breakpoint: keyof typeof SHEET_BREAKPOINT; children: ReactNode }) {
+  const m = SHEET_BREAKPOINT[breakpoint];
+  const isSheet = useMediaQuery(m.query);
+  const active = open && isSheet;
+  const ref = useRef<HTMLDivElement>(null);
+  const close = useRef(onClose);
+  close.current = onClose;
+  useEffect(() => {
+    if (!active) return;
+    const prev = document.activeElement as HTMLElement | null;
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    ref.current?.querySelector<HTMLElement>('select, input, textarea, button:not([data-close])')?.focus();
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close.current(); };
+    document.addEventListener('keydown', onKey);
+    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = overflow; prev?.focus?.(); };
+  }, [active]);
+  return (
+    <div className={open ? m.open : m.closed}>
+      <div className={cn('absolute inset-0 bg-black/40', m.hide)} onClick={onClose} aria-hidden />
+      <div ref={ref} role={active ? 'dialog' : undefined} aria-modal={active || undefined} aria-label={active ? title : undefined}
+        className={cn('relative max-h-[85dvh] w-full overflow-y-auto rounded-t-2xl bg-surface p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] shadow-xl', m.inline)}>
+        <div className={cn('mb-3 flex items-center justify-between', m.hide)}>
+          <h2 className="text-base font-semibold">{title}</h2>
+          <IconButton icon={X} label="Close" onClick={onClose} data-close />
+        </div>
+        <div className={cn('grid gap-3', m.inline)}>{children}</div>
+        <Button variant="primary" className={cn('mt-4 w-full', m.hide)} onClick={onClose}>Done</Button>
       </div>
     </div>
   );

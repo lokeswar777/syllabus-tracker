@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import {
   LayoutDashboard, ListTree, GitCompareArrows, Network, Flame, CalendarDays, RotateCcw, BarChart3, Settings as SettingsIcon,
-  PanelLeftClose, PanelLeftOpen, MoreHorizontal, X, Sun, Moon, Monitor, CheckCircle2, Loader2, AlertTriangle, GraduationCap, Info,
+  PanelLeftClose, PanelLeftOpen, MoreHorizontal, X, Sun, Moon, Monitor, CheckCircle2, Loader2, AlertTriangle, GraduationCap, Info, SlidersHorizontal,
 } from 'lucide-react';
 import { useApp, useLocalPref, useTheme, useUi, type Route } from '../lib/hooks';
-import { cn, IconButton, Select } from './ui';
+import { Button, cn, IconButton, InlineSheet, Select } from './ui';
 
 export const NAV: { route: Route; label: string; icon: typeof LayoutDashboard }[] = [
   { route: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -142,45 +142,59 @@ export function Topbar() {
   const ssc = store.exams.filter((e) => e.category === 'ssc');
   const bank = store.exams.filter((e) => e.category !== 'ssc');
   const choiceGroups = model ? Object.entries(model.choiceGroups as Record<string, { sectionId: string; name: string; active: boolean }[]>) : [];
+  const [optionsOpen, setOptionsOpen] = useState(false);
+  const stageLabel = stageId ? (model?.stages.find((s) => (s as { id: string }).id === stageId) as { name: string } | undefined)?.name ?? 'Stage' : 'All stages';
+  const optionCls = 'h-10 xl:w-auto xl:max-w-[17rem]';
   return (
-    <header className="sticky top-0 z-30 border-b border-line bg-surface/90 pt-[env(safe-area-inset-top)] backdrop-blur supports-[backdrop-filter]:bg-surface/75">
-      <div className="flex items-start gap-2 px-4 py-2.5 sm:items-center sm:px-6">
-        <div className="grid min-w-0 flex-1 grid-cols-2 gap-2 md:flex md:flex-wrap md:items-center">
+    <header className={cn('sticky top-0 border-b border-line pt-[env(safe-area-inset-top)]', optionsOpen ? 'z-50' : 'z-30')}>
+      {/* The blur sits on its own layer so the options sheet can be fixed to the viewport. */}
+      <div aria-hidden className="absolute inset-0 -z-10 bg-surface/90 backdrop-blur supports-[backdrop-filter]:bg-surface/75" />
+      <div className="flex items-center gap-2 px-4 py-2 sm:px-6">
+        <div className="flex min-w-0 flex-1 items-center gap-2">
           <label className="sr-only" htmlFor="exam-select">Exam</label>
           <Select id="exam-select" data-testid="exam-select" value={examId ?? ''} onChange={(e) => e.target.value && store.selectExam(e.target.value)}
-            className="col-span-2 h-10 border-ink2/30 text-[15px] font-semibold md:w-56">
+            className="h-10 min-w-0 flex-1 border-ink2/30 text-[15px] font-semibold sm:max-w-xs xl:w-56 xl:flex-none">
             {!examId && <option value="">Select an exam…</option>}
             <optgroup label="SSC">{ssc.map((e) => <option key={e.examId} value={e.examId}>{e.shortName}</option>)}</optgroup>
             <optgroup label="Banking">{bank.map((e) => <option key={e.examId} value={e.examId}>{e.shortName}</option>)}</optgroup>
           </Select>
           {model && (
             <>
-              <label className="sr-only" htmlFor="stage-select">Stage</label>
-              <Select id="stage-select" data-testid="stage-select" value={stageId} onChange={(e) => store.setStage(e.target.value || null)}
-                className={cn('h-9 text-xs md:h-10 md:w-auto md:max-w-[17rem] md:text-sm', model.tracks.length <= 1 && !choiceGroups.length && 'col-span-2')}>
-                <option value="">All stages</option>
-                {model.stages.map((s) => {
-                  const st = s as { id: string; name: string; gate?: boolean };
-                  return <option key={st.id} value={st.id}>{st.name}{st.gate ? ' (qualifying)' : ''}</option>;
-                })}
-              </Select>
-              {model.tracks.length > 1 && (
-                <>
-                  <label className="sr-only" htmlFor="track-select">Track</label>
-                  <Select id="track-select" value={model.trackId} onChange={(e) => store.setTrack(e.target.value)} className="h-9 text-xs md:h-10 md:w-auto md:max-w-[17rem] md:text-sm" title="Post track (optional papers)">
-                    {model.tracks.map((t) => <option key={t.trackId} value={t.trackId}>{t.name.length > 48 ? `${t.name.slice(0, 46)}…` : t.name}</option>)}
+              <Button icon={SlidersHorizontal} aria-label={`Exam options: ${stageLabel}`} aria-haspopup="dialog" className="h-10 xl:hidden" onClick={() => setOptionsOpen(true)}>
+                <span className="hidden max-w-[11rem] truncate sm:inline">{stageLabel}</span>
+              </Button>
+              <InlineSheet open={optionsOpen} onClose={() => setOptionsOpen(false)} title="Exam options" breakpoint="xl">
+                <div className="xl:contents">
+                  <label className="label xl:sr-only" htmlFor="stage-select">Stage</label>
+                  <Select id="stage-select" data-testid="stage-select" value={stageId} onChange={(e) => store.setStage(e.target.value || null)} className={optionCls}>
+                    <option value="">All stages</option>
+                    {model.stages.map((s) => {
+                      const st = s as { id: string; name: string; gate?: boolean };
+                      return <option key={st.id} value={st.id}>{st.name}{st.gate ? ' (qualifying)' : ''}</option>;
+                    })}
                   </Select>
-                </>
-              )}
-              {choiceGroups.map(([group, opts]) => (
-                <Select key={group} aria-label={`${group} choice`} value={opts.find((o) => o.active)?.sectionId ?? opts[0]?.sectionId} onChange={(e) => store.setChoice(group, e.target.value)} className="h-9 text-xs md:h-10 md:w-auto md:max-w-[12rem] md:text-sm">
-                  {opts.map((o) => <option key={o.sectionId} value={o.sectionId}>{o.name}</option>)}
-                </Select>
-              ))}
+                </div>
+                {model.tracks.length > 1 && (
+                  <div className="xl:contents">
+                    <label className="label xl:sr-only" htmlFor="track-select">Post track</label>
+                    <Select id="track-select" value={model.trackId} onChange={(e) => store.setTrack(e.target.value)} className={optionCls} title="Post track (optional papers)">
+                      {model.tracks.map((t) => <option key={t.trackId} value={t.trackId}>{t.name.length > 48 ? `${t.name.slice(0, 46)}…` : t.name}</option>)}
+                    </Select>
+                  </div>
+                )}
+                {choiceGroups.map(([group, opts]) => (
+                  <div key={group} className="xl:contents">
+                    <label className="label xl:sr-only" htmlFor={`choice-${group}`}>{group} choice</label>
+                    <Select id={`choice-${group}`} value={opts.find((o) => o.active)?.sectionId ?? opts[0]?.sectionId} onChange={(e) => store.setChoice(group, e.target.value)} className="h-10 xl:w-auto xl:max-w-[12rem]">
+                      {opts.map((o) => <option key={o.sectionId} value={o.sectionId}>{o.name}</option>)}
+                    </Select>
+                  </div>
+                ))}
+              </InlineSheet>
             </>
           )}
         </div>
-        <div className="mt-1 flex items-center gap-2 sm:mt-0">
+        <div className="flex shrink-0 items-center gap-1 sm:gap-2">
           <SaveIndicator />
           <ThemeToggle />
         </div>

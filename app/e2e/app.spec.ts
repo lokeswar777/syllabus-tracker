@@ -61,7 +61,7 @@ test('collapsible sidebar (desktop)', async ({ page, isMobile }) => {
   await page.getByRole('button', { name: 'Expand sidebar' }).click();
 });
 
-test('exam and stage switching recalculate everything without mixing progress', async ({ page }) => {
+test('exam and stage switching recalculate everything without mixing progress', async ({ page, isMobile }) => {
   await page.goto('./');
   await seedThroughEngines(page);
   await page.goto('./#/dashboard');
@@ -71,7 +71,9 @@ test('exam and stage switching recalculate everything without mixing progress', 
   await expect(page.getByRole('heading', { name: 'SBI PO dashboard' })).toBeVisible();
   const sbi = await engineSummary(page);
   await expect(page.getByTestId('stat-completion')).toHaveText(pctText(sbi.syllabusCompletion));
+  if (isMobile) await page.getByRole('button', { name: /Exam options/ }).click();
   await page.getByTestId('stage-select').selectOption('prelims');
+  if (isMobile) await page.getByRole('button', { name: 'Done' }).click();
   await expect.poll(() => page.evaluate(() => (window as unknown as Win).__store.report().scope.stageId)).toBe('prelims');
   const pre = await engineSummary(page);
   await expect(page.getByTestId('stat-completion')).toHaveText(pctText(pre.syllabusCompletion));
