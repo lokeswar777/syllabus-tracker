@@ -4,7 +4,7 @@
  * data ends, 2px lines, recessive grid, hover tooltips; one axis per chart; text stays in ink tokens.
  */
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LineChart, Line, PieChart, Pie, Cell } from 'recharts';
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import { useTheme } from '../lib/hooks';
 
 export function usePalette() {
@@ -22,6 +22,7 @@ export function usePalette() {
     ink2: dark ? '#c2c6d9' : '#42475c',
     muted: dark ? '#999fb8' : '#5c6278',
     surface: dark ? '#151827' : '#ffffff',
+    statusRamp: dark ? ['#256abf', '#5598e7', '#9ec5f4'] : ['#86b6ef', '#2a78d6', '#104281'],
     seq: dark ? ['#184f95', '#256abf', '#3987e5', '#6da7ec', '#9ec5f4'] : ['#cde2fb', '#9ec5f4', '#6da7ec', '#3987e5', '#1c5cab'],
   };
 }
@@ -85,20 +86,41 @@ export function CompletionMasteryBars({ data, height }: { data: { name: string; 
   );
 }
 
-/** Single-series vertical bars (counts). */
-export function CountBars({ data, height = 200, name = 'Topics', unit = '' }: { data: { label: string; count: number }[]; height?: number; name?: string; unit?: string }) {
+const STATUS_GROUPS = [
+  { key: 'not-started', label: 'Not started' },
+  { key: 'progress', label: 'In progress' },
+  { key: 'completed', label: 'Completed' },
+  { key: 'mastered', label: 'Mastered' },
+] as const;
+const statusGroup = (id: string) => (id === 'not-started' || id === 'completed' || id === 'mastered' ? id : 'progress');
+
+/** One stacked bar of topics by status, with a labelled legend so identity never relies on color. */
+export function StatusBreakdown({ data }: { data: { id: string; label: string; count: number }[] }) {
   const p = usePalette();
+  const [active, setActive] = useState<string | null>(null);
+  const colors: Record<string, string> = { 'not-started': p.axis, progress: p.statusRamp[0], completed: p.statusRamp[1], mastered: p.statusRamp[2] };
+  const total = data.reduce((a, d) => a + d.count, 0);
+  const groups = STATUS_GROUPS.map((g) => ({ ...g, count: data.filter((d) => statusGroup(d.id) === g.key).reduce((a, d) => a + d.count, 0) }));
+  const share = (n: number) => (total ? `${Number(((n / total) * 100).toFixed(1))}%` : '0%');
+  const inProgress = data.filter((d) => statusGroup(d.id) === 'progress' && d.count > 0);
   return (
-    <div style={{ height }} className="w-full">
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={data} margin={{ top: 8, right: 8, bottom: 0, left: -18 }}>
-          <CartesianGrid vertical={false} stroke={p.grid} />
-          <XAxis dataKey="label" tickLine={false} stroke={p.axis} interval={0} tick={{ fontSize: 12, fill: p.muted }} tickFormatter={(s: string) => (s.length > 10 ? `${s.slice(0, 9)}…` : s)} />
-          <YAxis allowDecimals={false} tickLine={false} axisLine={false} />
-          <Tooltip content={<ChartTooltip unit={unit} />} cursor={{ fill: p.track, opacity: 0.5 }} />
-          <Bar dataKey="count" name={name} fill={p.completion} radius={[4, 4, 0, 0]} maxBarSize={36} isAnimationActive={false} />
-        </BarChart>
-      </ResponsiveContainer>
+    <div data-testid="status-breakdown">
+      <div role="img" aria-label={`Topics by status: ${groups.map((g) => `${g.label} ${g.count}`).join(', ')}`} className="flex h-3.5 w-full gap-0.5 rounded bg-subtle">
+        {groups.filter((g) => g.count > 0).map((g) => (
+          <div key={g.key} title={`${g.label}: ${g.count} topics (${share(g.count)})`} onMouseEnter={() => setActive(g.key)} onMouseLeave={() => setActive(null)}
+            className="h-full min-w-1.5 transition-opacity first:rounded-l last:rounded-r" style={{ flexGrow: g.count, flexBasis: 0, background: colors[g.key], opacity: active && active !== g.key ? 0.45 : 1 }} />
+        ))}
+      </div>
+      <ul className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+        {groups.map((g) => (
+          <li key={g.key} onMouseEnter={() => setActive(g.key)} onMouseLeave={() => setActive(null)} className={`rounded-xl border px-3 py-2.5 transition-colors ${active === g.key ? 'border-line bg-subtle' : 'border-line/70'}`}>
+            <span className="flex items-center gap-1.5 text-xs text-ink2"><span className="h-2 w-2 shrink-0 rounded-sm" style={{ background: colors[g.key] }} aria-hidden />{g.label}</span>
+            <span className="tabular mt-1 block text-xl font-semibold text-ink">{g.count}</span>
+            <span className="tabular text-2xs text-muted">{share(g.count)}</span>
+          </li>
+        ))}
+      </ul>
+      {inProgress.length > 0 && <p className="mt-3 text-xs text-muted">In progress: {inProgress.map((d) => `${d.label} ${d.count}`).join(' · ')}</p>}
     </div>
   );
 }

@@ -6,7 +6,7 @@ import { useExam, WEAK_LABEL } from '../lib/useExam';
 import { historySeries, practiceTrend, scopedSessions, statusDistribution } from '../lib/selectors';
 import { longDate, mins, num, pct, shortDate } from '../lib/format';
 import { Button, Card, CardBody, CardHeader, EmptyState, FIVE_STAT_GRID, FIVE_STAT_SPANS, PageHeader, Progress, ProgressRing, RevisionBadge, Segmented, Stat, ACTION_LABEL, cn } from '../components/ui';
-import { CompletionDonut, CountBars, LegendChip, PercentTrend, VolumeBars } from '../components/charts';
+import { CompletionDonut, LegendChip, PercentTrend, StatusBreakdown, VolumeBars } from '../components/charts';
 
 export function Dashboard({ navigate }: PageProps) {
   const { store } = useApp();
@@ -129,8 +129,8 @@ export function Dashboard({ navigate }: PageProps) {
 
       <div className="grid gap-4 lg:grid-cols-2">
         <Card>
-          <CardHeader title="Topic completion distribution" description="In-scope topics by current status" icon={ListTodo} />
-          <CardBody><CountBars data={dist.map((d) => ({ label: d.label, count: d.count }))} /></CardBody>
+          <CardHeader title="Topic status" description="In-scope topics by current status" icon={ListTodo} />
+          <CardBody><StatusBreakdown data={dist} /></CardBody>
         </Card>
         <Card>
           <CardHeader title="Preparation trend" icon={TrendingUp}
