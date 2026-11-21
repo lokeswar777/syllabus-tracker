@@ -40,7 +40,7 @@ export function CardHeader({ title, description, action, icon: I }: { title: Rea
     <div className="flex flex-wrap items-start justify-between gap-3 px-4 pt-4 sm:px-5">
       <div className="min-w-0">
         <h3 className="flex items-center gap-2 text-sm font-semibold text-ink">{I && <I className="h-4 w-4 text-muted" aria-hidden />}{title}</h3>
-        {description && <p className="mt-0.5 text-xs text-muted">{description}</p>}
+        {description && <p className="mt-0.5 text-[13px] leading-5 text-muted">{description}</p>}
       </div>
       {action && <div className="flex shrink-0 items-center gap-2">{action}</div>}
     </div>
@@ -171,7 +171,7 @@ export function EmptyState({ icon: I, title, description, action, className }: {
     <div className={cn('flex flex-col items-center justify-center px-4 py-10 text-center', className)}>
       <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-subtle"><I className="h-5 w-5 text-muted" aria-hidden /></div>
       <p className="text-sm font-medium text-ink">{title}</p>
-      {description && <p className="mt-1 max-w-sm text-xs text-muted">{description}</p>}
+      {description && <p className="mt-1 max-w-sm text-sm text-muted">{description}</p>}
       {action && <div className="mt-4">{action}</div>}
     </div>
   );

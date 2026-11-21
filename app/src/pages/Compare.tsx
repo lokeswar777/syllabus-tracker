@@ -121,7 +121,7 @@ export function ComparePage(_: PageProps) {
                           <ul className="space-y-2">
                             {o.r.analytics.sectionWise.filter((s) => !s.gate && s.weightInScope > 0).map((s) => (
                               <li key={s.key}>
-                                <div className="flex justify-between gap-2 text-xs"><span className="truncate" title={s.name}>{s.name}</span><span className="tabular text-muted">{pct(s[metric])}</span></div>
+                                <div className="flex justify-between gap-2 text-sm"><span className="truncate" title={s.name}>{s.name}</span><span className="tabular text-muted">{pct(s[metric])}</span></div>
                                 <Progress value={s[metric]} size="sm" tone={metric === 'mastery' ? 'mastery' : 'accent'} className="mt-1" label={`${o.name} ${s.name} ${metric}`} />
                               </li>
                             ))}
@@ -158,7 +158,7 @@ export function ComparePage(_: PageProps) {
                             {derived.specificPending[id].length === 0 ? <p className="text-xs text-muted">None</p> : (
                               <ul className="space-y-1">
                                 {derived.specificPending[id].slice(0, 8).map((t) => (
-                                  <li key={t.topicId} className="flex justify-between gap-2 text-xs"><span className="truncate">{t.name}</span><span className="tabular shrink-0 text-muted">{pct(t.effectiveWeight)}</span></li>
+                                  <li key={t.topicId} className="flex justify-between gap-2 text-sm"><span className="truncate">{t.name}</span><span className="tabular shrink-0 text-muted">{pct(t.effectiveWeight)}</span></li>
                                 ))}
                                 {derived.specificPending[id].length > 8 && <li className="text-2xs text-muted">+{derived.specificPending[id].length - 8} more</li>}
                               </ul>

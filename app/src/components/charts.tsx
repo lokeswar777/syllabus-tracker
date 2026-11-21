@@ -74,7 +74,7 @@ export function CompletionMasteryBars({ data, height }: { data: { name: string; 
         <BarChart data={data} layout="vertical" margin={{ top: 4, right: 12, bottom: 4, left: 4 }} barGap={2} barCategoryGap="28%">
           <CartesianGrid horizontal={false} stroke={p.grid} strokeDasharray="0" />
           <XAxis type="number" domain={[0, 100]} tickFormatter={(v) => `${v}%`} stroke={p.axis} tickLine={false} />
-          <YAxis type="category" dataKey="name" width={128} tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: p.ink2 }} tickFormatter={(s: string) => (s.length > 20 ? `${s.slice(0, 19)}…` : s)} />
+          <YAxis type="category" dataKey="name" width={128} tickLine={false} axisLine={false} tick={{ fontSize: 12, fill: p.ink2 }} tickFormatter={(s: string) => (s.length > 20 ? `${s.slice(0, 19)}…` : s)} />
           <Tooltip content={<ChartTooltip />} cursor={{ fill: p.track, opacity: 0.5 }} />
           <Legend verticalAlign="top" align="right" height={24} iconType="square" iconSize={8} />
           <Bar dataKey="completion" name="Syllabus completion" fill={p.completion} radius={[0, 4, 4, 0]} maxBarSize={12} isAnimationActive={false} />
@@ -93,7 +93,7 @@ export function CountBars({ data, height = 200, name = 'Topics', unit = '' }: { 
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} margin={{ top: 8, right: 8, bottom: 0, left: -18 }}>
           <CartesianGrid vertical={false} stroke={p.grid} />
-          <XAxis dataKey="label" tickLine={false} stroke={p.axis} interval={0} tick={{ fontSize: 10, fill: p.muted }} tickFormatter={(s: string) => (s.length > 10 ? `${s.slice(0, 9)}…` : s)} />
+          <XAxis dataKey="label" tickLine={false} stroke={p.axis} interval={0} tick={{ fontSize: 12, fill: p.muted }} tickFormatter={(s: string) => (s.length > 10 ? `${s.slice(0, 9)}…` : s)} />
           <YAxis allowDecimals={false} tickLine={false} axisLine={false} />
           <Tooltip content={<ChartTooltip unit={unit} />} cursor={{ fill: p.track, opacity: 0.5 }} />
           <Bar dataKey="count" name={name} fill={p.completion} radius={[4, 4, 0, 0]} maxBarSize={36} isAnimationActive={false} />

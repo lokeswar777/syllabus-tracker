@@ -22,7 +22,7 @@ export default {
         critical: 'rgb(var(--critical) / <alpha-value>)',
         'critical-fill': 'rgb(var(--critical-fill) / <alpha-value>)',
       },
-      fontSize: { '2xs': ['0.6875rem', '1rem'] },
+      fontSize: { '2xs': ['0.75rem', '1rem'] },
     },
   },
   plugins: [],

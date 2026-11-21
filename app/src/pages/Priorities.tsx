@@ -123,10 +123,10 @@ function RecRow({ r, onAdd, onDismiss, onExplain }: { r: Recommendation; onAdd: 
             <span>completion {pct(r.syllabusCompletion, 0)}</span>
             <span>mastery {pct(r.examMastery, 0)}</span>
           </div>
-          <ul className="mt-2 space-y-0.5 text-xs text-ink2">
+          <ul className="mt-2 space-y-0.5 text-sm text-ink2">
             {r.reasons.slice(0, 4).map((x) => <li key={x} className="flex gap-1.5"><span className="text-muted">•</span>{x}</li>)}
           </ul>
-          <p className="mt-2 text-xs"><Badge tone="accent">{r.suggestedAction.label}</Badge> <span className="text-ink2">{r.suggestedAction.detail}</span></p>
+          <p className="mt-2 text-sm"><Badge tone="accent">{r.suggestedAction.label}</Badge> <span className="text-ink2">{r.suggestedAction.detail}</span></p>
         </div>
         <div className="flex w-full flex-wrap gap-1.5 sm:w-auto sm:flex-col sm:items-end">
           <Button size="sm" variant="primary" icon={CalendarPlus} onClick={onAdd}>Add to plan</Button>

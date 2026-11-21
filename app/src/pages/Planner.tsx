@@ -245,7 +245,7 @@ function DayDetail({ date, plan, today, busy, onGenerate, onComplete, onAdd }: {
                         <span>{t.examIds.map((e) => store.examName(e)).join(' + ')}</span>
                         {t.section && <span className="truncate">{t.section}</span>}
                       </div>
-                      {t.detail && <p className="mt-1 text-xs text-ink2">{t.detail}</p>}
+                      {t.detail && <p className="mt-1 text-sm text-ink2">{t.detail}</p>}
                       {t.status === 'completed' && t.progressUpdates && <p className="mt-1 text-2xs text-muted">{t.progressUpdates.length ? `Progress updated via ${t.progressUpdates.map((u) => u.via.replace('engine.', '')).join(', ')}` : 'Marked done without changing progress'}{t.note ? ` · “${t.note}”` : ''}</p>}
                     </div>
                     <div className="flex flex-wrap items-center gap-1.5">

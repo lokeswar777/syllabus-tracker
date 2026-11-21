@@ -67,7 +67,7 @@
 }
 
 /* Recharts: keep chart text in the ink tokens */
-.recharts-cartesian-axis-tick-value { fill: rgb(var(--muted)); font-size: 11px; }
+.recharts-cartesian-axis-tick-value { fill: rgb(var(--muted)); font-size: 12px; }
 .recharts-legend-item-text { color: rgb(var(--ink2)) !important; font-size: 12px; }
 .recharts-tooltip-cursor { fill: rgb(var(--subtle)); }
 
