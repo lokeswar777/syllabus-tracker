@@ -1,4 +1,4 @@
-import { useMemo, useState, type DragEvent } from 'react';
+import { useEffect, useMemo, useRef, useState, type DragEvent } from 'react';
 import { CalendarDays, ChevronLeft, ChevronRight, Sparkles, Plus, Check, X, RotateCcw, GripVertical, Clock, ArrowUp, ArrowDown, Target, Wand2 } from 'lucide-react';
 import type { PageProps } from '../App';
 import { useApp, useAsync } from '../lib/hooks';
@@ -27,6 +27,13 @@ function Planner({ initialDate }: { initialDate: string | null }) {
   const week = Array.from({ length: 7 }, (_, i) => addDays(weekStart(selected), i));
   const plans = store.planner.data.plans;
   const plan = (d: string) => plans[d] ?? null;
+  const boardRef = useRef<HTMLDivElement>(null);
+  // Below the seven-column layout the week is a swipeable strip: keep the selected day in view.
+  useEffect(() => {
+    const board = boardRef.current;
+    const day = board?.querySelector<HTMLElement>('[data-selected="true"]');
+    if (board && day && board.scrollWidth > board.clientWidth) board.scrollLeft = day.offsetLeft - (board.clientWidth - day.offsetWidth) / 2;
+  }, [selected]);
 
   const weekStats = useMemo(() => {
     const ps = week.map(plan).filter(Boolean) as DailyPlan[];
@@ -74,7 +81,7 @@ function Planner({ initialDate }: { initialDate: string | null }) {
 
   return (
     <div className="space-y-4" data-testid="page-planner">
-      <PageHeader title="Study planner" description="Plans are built from your smart priorities and available hours. Drag tasks to reorder or move them; nothing is marked complete automatically."
+      <PageHeader title="Study planner" description="Built from your priorities and available hours. Nothing is marked complete automatically."
         action={<Button variant="primary" icon={Wand2} loading={busy === 'week'} onClick={planWeek}>Plan this week</Button>} />
 
       <div className="space-y-3">
@@ -86,19 +93,23 @@ function Planner({ initialDate }: { initialDate: string | null }) {
               <span className="ml-2 text-sm font-medium">{shortDate(week[0])} – {shortDate(week[6])}</span>
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-7" data-testid="week-board">
+          <div ref={boardRef} className="relative -mx-4 flex snap-x gap-2 overflow-x-auto px-4 py-1 sm:-mx-6 sm:px-6 xl:mx-0 xl:grid xl:grid-cols-7 xl:overflow-visible xl:px-0 xl:py-0" data-testid="week-board">
             {week.map((d) => {
               const p = plan(d);
               const past = d < today;
               return (
-                <div key={d} onDragOver={(e) => e.preventDefault()} onDrop={(e) => onDrop(e, d, null)} data-testid={`day-${d}`}
-                  className={cn('card flex min-h-[4.5rem] flex-col p-2 xl:min-h-[11rem]', d === selected && 'ring-1 ring-accent/50', past && 'opacity-70')}>
-                  <button type="button" onClick={() => setSelected(d)} className="mb-1.5 flex items-baseline justify-between px-1 text-left">
-                    <span className={cn('text-xs font-semibold', d === today && 'text-accent')}>{dayName(d)} {shortDate(d)}</span>
-                    {p && <span className="tabular text-2xs text-muted">{mins(p.plannedMinutes)}</span>}
+                <div key={d} onDragOver={(e) => e.preventDefault()} onDrop={(e) => onDrop(e, d, null)} data-testid={`day-${d}`} data-selected={d === selected}
+                  className={cn('card flex w-[4.5rem] shrink-0 snap-center flex-col p-1 xl:min-h-[11rem] xl:w-auto xl:p-2', d === selected && 'ring-2 ring-accent/60 xl:ring-1', past && 'opacity-70')}>
+                  <button type="button" onClick={() => setSelected(d)} aria-pressed={d === selected} aria-label={`${longDate(d)}${p ? `, ${p.tasks.length} task${p.tasks.length === 1 ? '' : 's'}` : ''}`}
+                    className="flex min-h-[4.25rem] w-full flex-col items-center justify-center rounded-lg px-1 xl:mb-1.5 xl:min-h-0 xl:flex-row xl:items-baseline xl:justify-between xl:text-left">
+                    <span className="text-2xs font-medium text-muted xl:hidden">{dayName(d)}</span>
+                    <span className={cn('tabular text-lg font-semibold leading-6 xl:hidden', d === today && 'text-accent')}>{Number(d.slice(8))}</span>
+                    <span className="tabular min-h-4 text-2xs text-muted xl:hidden">{p ? `${p.tasks.length} task${p.tasks.length === 1 ? '' : 's'}` : ''}</span>
+                    <span className={cn('hidden text-xs font-semibold xl:inline', d === today && 'text-accent')}>{dayName(d)} {shortDate(d)}</span>
+                    {p && <span className="tabular hidden text-2xs text-muted xl:inline">{mins(p.plannedMinutes)}</span>}
                   </button>
-                  {p && <Progress value={p.budgetMinutes ? (p.plannedMinutes / p.budgetMinutes) * 100 : 0} size="sm" className="mb-2" label={`Planned time ${d}`} />}
-                  <ul className="flex-1 space-y-1.5">
+                  {p && <Progress value={p.budgetMinutes ? (p.plannedMinutes / p.budgetMinutes) * 100 : 0} size="sm" className="mb-2 hidden xl:block" label={`Planned time ${d}`} />}
+                  <ul className="hidden flex-1 space-y-1.5 xl:block">
                     {(p?.tasks ?? []).map((t, i) => (
                       <li key={t.taskId} draggable={t.status !== 'completed'} onDragOver={(e) => e.preventDefault()} onDrop={(e) => onDrop(e, d, i)}
                         onDragStart={(e) => { const v = JSON.stringify({ taskId: t.taskId, from: d }); e.dataTransfer.setData('application/x-task', v); e.dataTransfer.setData('text/plain', v); e.dataTransfer.effectAllowed = 'move'; }}
@@ -111,7 +122,7 @@ function Planner({ initialDate }: { initialDate: string | null }) {
                       </li>
                     ))}
                   </ul>
-                  {!p && !past && <Button size="sm" variant="ghost" icon={Sparkles} loading={busy === d} onClick={() => generate(d)} className="mt-1">Generate</Button>}
+                  {!p && !past && <Button size="sm" variant="ghost" icon={Sparkles} loading={busy === d} onClick={() => generate(d)} className="mt-1 hidden xl:inline-flex">Generate</Button>}
                 </div>
               );
             })}
@@ -181,8 +192,8 @@ function MonthCalendar({ selected, onSelect, today }: { selected: string; onSele
           const exam = examDates.get(d);
           return (
             <button key={d} type="button" onClick={() => onSelect(d)} title={exam ? `${exam} exam` : n ? `${n} tasks` : undefined} aria-label={`${longDate(d)}${n ? `, ${n} tasks` : ''}${exam ? `, ${exam} exam` : ''}`}
-              className={cn('relative flex h-9 flex-col items-center justify-center rounded-md text-xs transition-colors hover:bg-subtle',
-                d === selected && 'bg-accent text-accent-ink hover:bg-accent', d === today && d !== selected && 'font-semibold text-accent', exam && d !== selected && 'ring-1 ring-critical/60')}>
+              className={cn('tap-narrow relative flex h-9 flex-col items-center justify-center rounded-md text-xs transition-colors hover:bg-subtle',
+                d === selected && 'bg-accent-fill text-accent-ink hover:bg-accent-fill', d === today && d !== selected && 'font-semibold text-accent', exam && d !== selected && 'ring-1 ring-critical/60')}>
               {Number(d.slice(8))}
               {n > 0 && <span className={cn('absolute bottom-1 h-1 w-1 rounded-full', d === selected ? 'bg-accent-ink' : allDone ? 'bg-good' : 'bg-accent')} />}
             </button>
@@ -228,11 +239,11 @@ function DayDetail({ date, plan, today, busy, onGenerate, onComplete, onAdd }: {
               {tasks.map((t, i) => (
                 <li key={t.taskId} className={cn('rounded-lg border border-line p-3', t.status === 'completed' && 'bg-subtle/50')} data-testid={`task-${i}`}>
                   <div className="flex flex-wrap items-start gap-3">
-                    <div className="flex flex-col">
+                    <div className="order-2 flex lg:order-none lg:flex-col">
                       <IconButton icon={ArrowUp} label="Move up" disabled={i === 0} onClick={() => move(i, -1)} className="h-6 w-6" />
                       <IconButton icon={ArrowDown} label="Move down" disabled={i === tasks.length - 1} onClick={() => move(i, 1)} className="h-6 w-6" />
                     </div>
-                    <div className="min-w-0 flex-1">
+                    <div className="order-1 min-w-0 basis-full lg:order-none lg:flex-1 lg:basis-0">
                       <div className="flex flex-wrap items-center gap-2">
                         <span className={cn('text-sm font-medium', t.status === 'completed' && 'text-muted line-through')}>{t.name}</span>
                         <Badge tone="accent">{ACTION_LABEL[t.action]}</Badge>
@@ -245,17 +256,17 @@ function DayDetail({ date, plan, today, busy, onGenerate, onComplete, onAdd }: {
                         <span>{t.examIds.map((e) => store.examName(e)).join(' + ')}</span>
                         {t.section && <span className="truncate">{t.section}</span>}
                       </div>
-                      {t.detail && <p className="mt-1 text-xs text-ink2">{t.detail}</p>}
+                      {t.detail && <p className="mt-1 text-sm text-ink2">{t.detail}</p>}
                       {t.status === 'completed' && t.progressUpdates && <p className="mt-1 text-2xs text-muted">{t.progressUpdates.length ? `Progress updated via ${t.progressUpdates.map((u) => u.via.replace('engine.', '')).join(', ')}` : 'Marked done without changing progress'}{t.note ? ` · “${t.note}”` : ''}</p>}
                     </div>
-                    <div className="flex flex-wrap items-center gap-1.5">
+                    <div className="order-3 flex min-w-0 flex-1 flex-wrap items-center justify-end gap-1.5 lg:order-none lg:flex-none">
                       {t.status === 'pending' ? (
                         <>
-                          <Select className="h-8 w-32 text-xs" value="" aria-label={`Move ${t.name} to another day`} onChange={(e) => e.target.value && store.run(() => store.planner.moveTask(date, t.taskId, e.target.value), `Moved to ${shortDate(e.target.value)}`)}>
+                          <Select className="h-8 min-w-[7.5rem] flex-1 text-xs lg:w-32 lg:flex-none" value="" aria-label={`Move ${t.name} to another day`} onChange={(e) => e.target.value && store.run(() => store.planner.moveTask(date, t.taskId, e.target.value), `Moved to ${shortDate(e.target.value)}`)}>
                             <option value="">Move to…</option>
                             {Array.from({ length: 7 }, (_, k) => addDays(today, k)).filter((d) => d !== date).map((d) => <option key={d} value={d}>{dayName(d)} {shortDate(d)}</option>)}
                           </Select>
-                          <Button size="sm" variant="primary" icon={Check} onClick={() => onComplete(t)}>Complete</Button>
+                          <Button size="sm" variant="primary" icon={Check} className="flex-1 lg:flex-none" onClick={() => onComplete(t)}>Complete</Button>
                           <IconButton icon={X} label={`Remove ${t.name}`} onClick={() => store.run(() => store.planner.removeTask(date, t.taskId), 'Task removed')} />
                         </>
                       ) : <Button size="sm" variant="ghost" icon={RotateCcw} onClick={() => store.run(() => store.planner.reopenTask(date, t.taskId), 'Task reopened (progress already recorded is kept)')}>Reopen</Button>}

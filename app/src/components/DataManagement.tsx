@@ -135,7 +135,7 @@ function BackupCard() {
   const v = preview?.v;
   return (
     <Card data-testid="backup-card">
-      <CardHeader title="Backup and restore" icon={Database} description="A complete JSON backup: exam progress, topic and subtopic records, mastery inputs, practice and revision history, notes, study plans, targets, custom weights, scoring settings, shared-concept records and sync preferences, with schema version, export time and checksum." />
+      <CardHeader title="Backup and restore" icon={Database} description="A complete, checksum-verified JSON backup of your progress, practice, notes, plans and settings." />
       <CardBody className="flex flex-wrap gap-2">
         <Button variant="primary" icon={Download} onClick={doExport} loading={exporting} data-testid="export">Export backup (JSON)</Button>
         <Button icon={Upload} onClick={() => fileRef.current?.click()} data-testid="import-button">Import backup…</Button>

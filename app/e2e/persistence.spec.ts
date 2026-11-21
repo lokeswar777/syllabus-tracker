@@ -98,6 +98,27 @@ test('practice and revisions recorded in the UI survive reload and update master
   await expect(page.getByTestId('revision-history')).toContainText('Percentage');
 });
 
+test('deleting a practice session asks first, and Undo restores the same session', async ({ page }) => {
+  await page.goto('./');
+  await seedThroughEngines(page);
+  await page.goto('./#/practice');
+  const sessions = () => store(page, (s) => [...s.engine.getExamSessions('ssc-cgl')].map(({ createdAt, ...rest }: { createdAt: string; id: string }) => rest).sort((a: { id: string }, b: { id: string }) => a.id.localeCompare(b.id))); // eslint-disable-line @typescript-eslint/no-unused-vars
+  const before = await sessions();
+  await page.getByTestId('recent-sessions').getByRole('button', { name: 'Delete session' }).first().click();
+  await page.getByRole('dialog').getByRole('button', { name: 'Cancel' }).click();
+  expect(await sessions()).toEqual(before);
+  await page.getByTestId('recent-sessions').getByRole('button', { name: 'Delete session' }).first().click();
+  await page.getByRole('dialog').getByRole('button', { name: 'Delete session' }).click();
+  await expect.poll(async () => (await sessions()).length).toBe(before.length - 1);
+  await page.getByRole('button', { name: 'Undo' }).click();
+  await expect.poll(async () => (await sessions()).length).toBe(before.length);
+  expect(await sessions()).toEqual(before);
+  await saved(page);
+  await page.reload();
+  await ready(page);
+  expect(await sessions()).toEqual(before);
+});
+
 test('custom weightage edits persist and change the calculation', async ({ page }) => {
   await page.goto('./');
   await chooseExam(page, 'SSC CGL');
