@@ -81,7 +81,7 @@ test('exam and stage switching recalculate everything without mixing progress', 
   await expect(page.getByTestId('stat-completion')).toHaveText(pctText(cgl.syllabusCompletion));
 });
 
-test('syllabus: search, filters, inline edit, and persistence after reload', async ({ page }) => {
+test('syllabus: search, filters, inline edit, and persistence after reload', async ({ page, isMobile }) => {
   await page.goto('./');
   await page.getByRole('button', { name: /^SSC CGL/ }).click();
   await page.goto('./#/syllabus');
@@ -91,7 +91,9 @@ test('syllabus: search, filters, inline edit, and persistence after reload', asy
   await row.getByLabel('Status of Boats & Streams').selectOption('completed');
   await expect(page.getByTestId('save-state')).toContainText('Saved');
   await page.getByTestId('syllabus-search').fill('');
+  if (isMobile) await page.getByRole('button', { name: /^Filters/ }).click();
   await page.getByTestId('filter-status').selectOption('completed');
+  if (isMobile) await page.getByRole('button', { name: 'Done' }).click();
   await expect(page.getByTestId('visible-count')).toContainText('1 of');
   await page.reload();
   await page.getByTestId('syllabus-search').fill('Boats');
