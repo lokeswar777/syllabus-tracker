@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import {
   LayoutDashboard, ListTree, GitCompareArrows, Network, Flame, CalendarDays, RotateCcw, BarChart3, Settings as SettingsIcon,
-  PanelLeftClose, PanelLeftOpen, Menu, X, Sun, Moon, Monitor, CheckCircle2, Loader2, AlertTriangle, GraduationCap, Info,
+  PanelLeftClose, PanelLeftOpen, MoreHorizontal, X, Sun, Moon, Monitor, CheckCircle2, Loader2, AlertTriangle, GraduationCap, Info,
 } from 'lucide-react';
 import { useApp, useLocalPref, useTheme, useUi, type Route } from '../lib/hooks';
 import { cn, IconButton, Select } from './ui';
@@ -79,6 +79,33 @@ export function Sidebar({ route, onNavigate, mobileOpen, onCloseMobile }: { rout
   );
 }
 
+const BOTTOM_NAV: { route: Route; label: string; icon: typeof LayoutDashboard }[] = [
+  { route: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { route: 'syllabus', label: 'Syllabus', icon: ListTree },
+  { route: 'planner', label: 'Planner', icon: CalendarDays },
+  { route: 'revision', label: 'Revision', icon: RotateCcw },
+];
+
+/** Phone and tablet navigation: the four daily destinations, with everything else under More. */
+export function BottomNav({ route, onNavigate, onMore }: { route: Route; onNavigate: (r: Route) => void; onMore: () => void }) {
+  const inMore = !BOTTOM_NAV.some((n) => n.route === route);
+  const item = (active: boolean) => cn('flex h-14 w-full flex-col items-center justify-center gap-0.5 text-2xs font-medium transition-colors', active ? 'text-accent' : 'text-muted hover:text-ink');
+  return (
+    <nav aria-label="Quick navigation" data-testid="bottom-nav" className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-surface/95 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden">
+      <div className="mx-auto grid max-w-xl grid-cols-5">
+        {BOTTOM_NAV.map(({ route: r, label, icon: I }) => (
+          <a key={r} href={`#/${r}`} onClick={(e) => { e.preventDefault(); onNavigate(r); }} aria-current={r === route ? 'page' : undefined} className={item(r === route)}>
+            <I className="h-5 w-5" aria-hidden />{label}
+          </a>
+        ))}
+        <button type="button" onClick={onMore} aria-haspopup="dialog" aria-label="More: open navigation" className={item(inMore)}>
+          <MoreHorizontal className="h-5 w-5" aria-hidden />More
+        </button>
+      </div>
+    </nav>
+  );
+}
+
 function SaveIndicator() {
   const store = useUi();
   const s = store.saveState;
@@ -106,7 +133,7 @@ export function ThemeToggle() {
 }
 
 /** Exam selector + stage/track/choice selectors: everything on screen follows this selection. */
-export function Topbar({ onOpenMobile }: { onOpenMobile: () => void }) {
+export function Topbar() {
   const { store } = useApp();
   const examId = store.activeExamId;
   const model = examId ? store.engine.getModel() : null;
@@ -116,9 +143,8 @@ export function Topbar({ onOpenMobile }: { onOpenMobile: () => void }) {
   const bank = store.exams.filter((e) => e.category !== 'ssc');
   const choiceGroups = model ? Object.entries(model.choiceGroups as Record<string, { sectionId: string; name: string; active: boolean }[]>) : [];
   return (
-    <header className="sticky top-0 z-30 border-b border-line bg-surface/90 backdrop-blur supports-[backdrop-filter]:bg-surface/75">
+    <header className="sticky top-0 z-30 border-b border-line bg-surface/90 pt-[env(safe-area-inset-top)] backdrop-blur supports-[backdrop-filter]:bg-surface/75">
       <div className="flex items-start gap-2 px-4 py-2.5 sm:items-center sm:px-6">
-        <IconButton icon={Menu} label="Open navigation" onClick={onOpenMobile} className="mt-1 lg:hidden sm:mt-0" />
         <div className="grid min-w-0 flex-1 grid-cols-2 gap-2 md:flex md:flex-wrap md:items-center">
           <label className="sr-only" htmlFor="exam-select">Exam</label>
           <Select id="exam-select" data-testid="exam-select" value={examId ?? ''} onChange={(e) => e.target.value && store.selectExam(e.target.value)}
@@ -166,7 +192,7 @@ export function Topbar({ onOpenMobile }: { onOpenMobile: () => void }) {
 export function Toasts() {
   const store = useUi();
   return (
-    <div className="pointer-events-none fixed bottom-4 right-4 z-[60] flex w-[min(24rem,calc(100vw-2rem))] flex-col gap-2" aria-live="polite">
+    <div className="pointer-events-none fixed bottom-[calc(4.5rem+env(safe-area-inset-bottom))] right-4 z-[60] lg:bottom-4 flex w-[min(24rem,calc(100vw-2rem))] flex-col gap-2" aria-live="polite">
       {store.toasts.map((t) => (
         <div key={t.id} role={t.kind === 'error' ? 'alert' : 'status'} className="card pointer-events-auto flex items-start gap-2.5 px-3.5 py-3 text-sm shadow-lg">
           {t.kind === 'error' ? <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-critical" /> : t.kind === 'success' ? <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-good" /> : <Info className="mt-0.5 h-4 w-4 shrink-0 text-accent" />}

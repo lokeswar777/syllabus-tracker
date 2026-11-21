@@ -2,7 +2,7 @@ import { Component, lazy, Suspense, type ReactNode } from 'react';
 import { GraduationCap, Loader2, Database } from 'lucide-react';
 import { StoreProvider, useApp, useRoute, type Route } from './lib/hooks';
 import type { AppStore } from './lib/store';
-import { Sidebar, Topbar, Toasts, useMobileNav } from './components/layout';
+import { BottomNav, Sidebar, Topbar, Toasts, useMobileNav } from './components/layout';
 import { Card, ErrorState } from './components/ui';
 import { LoadingBlock } from './components/ui';
 
@@ -39,8 +39,8 @@ function Shell() {
     <div className="flex min-h-screen">
       <Sidebar route={route} onNavigate={(r) => navigate(r)} mobileOpen={nav.open} onCloseMobile={nav.closeNav} />
       <div className="flex min-w-0 flex-1 flex-col">
-        <Topbar onOpenMobile={nav.openNav} />
-        <main className="mx-auto w-full min-w-0 max-w-[1400px] flex-1 px-4 py-5 sm:px-6 sm:py-6" id="main">
+        <Topbar />
+        <main className="mx-auto w-full min-w-0 max-w-[1400px] flex-1 px-4 pb-[calc(5.5rem+env(safe-area-inset-bottom))] pt-5 sm:px-6 sm:pt-6 lg:pb-6" id="main">
           <PageBoundary key={route}>
             <Suspense fallback={<LoadingBlock label="Loading page…" rows={6} />}>
               {NEEDS_EXAM.includes(route) && !store.activeExamId ? <Welcome /> : <Page params={params} navigate={navigate} />}
@@ -48,6 +48,7 @@ function Shell() {
           </PageBoundary>
         </main>
       </div>
+      <BottomNav route={route} onNavigate={(r) => navigate(r)} onMore={nav.openNav} />
       <Toasts />
     </div>
   );
