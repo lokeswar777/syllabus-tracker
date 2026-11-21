@@ -80,6 +80,11 @@
   .tap-row { min-height: 2.75rem; }
 }
 
+/* iOS Safari zooms the page when a focused field is under 16px. */
+@media (max-width: 767.98px), (pointer: coarse) {
+  select, textarea, input:not([type='checkbox']):not([type='radio']):not([type='file']) { font-size: 1rem !important; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
