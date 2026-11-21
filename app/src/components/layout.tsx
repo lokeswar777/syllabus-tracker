@@ -25,8 +25,8 @@ function NavList({ route, onNavigate, collapsed }: { route: Route; onNavigate: (
         const active = r === route;
         return (
           <a key={r} href={`#/${r}`} onClick={(e) => { e.preventDefault(); onNavigate(r); }} aria-current={active ? 'page' : undefined} title={collapsed ? label : undefined}
-            className={cn('group flex h-9 items-center gap-3 rounded-lg px-2.5 text-sm transition-colors',
-              active ? 'bg-subtle font-medium text-ink' : 'text-ink2 hover:bg-subtle/70 hover:text-ink', collapsed && 'justify-center px-0')}>
+            className={cn('group flex h-10 items-center gap-3 rounded-xl px-3 text-sm transition-colors',
+              active ? 'bg-accent/10 font-semibold text-accent' : 'text-ink2 hover:bg-subtle hover:text-ink', collapsed && 'justify-center px-0')}>
             <I className={cn('h-4 w-4 shrink-0', active ? 'text-accent' : 'text-muted group-hover:text-ink2')} aria-hidden />
             {!collapsed && <span className="truncate">{label}</span>}
             {collapsed && <span className="sr-only">{label}</span>}
@@ -40,7 +40,7 @@ function NavList({ route, onNavigate, collapsed }: { route: Route; onNavigate: (
 function Brand({ collapsed }: { collapsed: boolean }) {
   return (
     <div className={cn('flex h-14 items-center gap-2.5 px-4', collapsed && 'justify-center px-0')}>
-      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-accent-fill text-accent-ink"><GraduationCap className="h-4 w-4" aria-hidden /></div>
+      <div className="hero-card flex h-8 w-8 shrink-0 items-center justify-center rounded-xl text-white"><GraduationCap className="h-[1.125rem] w-[1.125rem]" aria-hidden /></div>
       {!collapsed && <div className="min-w-0 leading-tight"><div className="truncate text-sm font-semibold">Syllabus Tracker</div><div className="truncate text-2xs text-muted">SSC & Banking</div></div>}
     </div>
   );
@@ -56,7 +56,7 @@ export function Sidebar({ route, onNavigate, mobileOpen, onCloseMobile }: { rout
   }, [mobileOpen, onCloseMobile]);
   return (
     <>
-      <aside data-testid="sidebar" className={cn('sticky top-0 hidden h-screen shrink-0 flex-col border-r border-line bg-surface transition-[width] duration-200 lg:flex', collapsed ? 'w-16' : 'w-60')}>
+      <aside data-testid="sidebar" className={cn('sticky top-0 hidden h-[100dvh] shrink-0 flex-col border-r border-line/70 bg-surface transition-[width] duration-200 lg:flex', collapsed ? 'w-16' : 'w-60')}>
         <Brand collapsed={collapsed} />
         <div className="flex-1 overflow-y-auto py-2"><NavList route={route} onNavigate={onNavigate} collapsed={collapsed} /></div>
         <div className={cn('border-t border-line p-2', collapsed && 'flex justify-center')}>
@@ -69,7 +69,7 @@ export function Sidebar({ route, onNavigate, mobileOpen, onCloseMobile }: { rout
       {mobileOpen && (
         <div className="fixed inset-0 z-40 lg:hidden" role="dialog" aria-modal="true" aria-label="Navigation">
           <div className="absolute inset-0 bg-black/40" onClick={onCloseMobile} />
-          <aside data-testid="mobile-sidebar" className="absolute inset-y-0 left-0 flex w-64 flex-col border-r border-line bg-surface shadow-xl">
+          <aside data-testid="mobile-sidebar" className="absolute inset-y-0 left-0 flex w-72 max-w-[85vw] flex-col rounded-r-2xl bg-surface pt-[env(safe-area-inset-top)] shadow-float">
             <div className="flex items-center justify-between pr-2"><Brand collapsed={false} /><IconButton icon={X} label="Close navigation" onClick={onCloseMobile} /></div>
             <div className="flex-1 overflow-y-auto py-2"><NavList route={route} onNavigate={(r) => { onNavigate(r); onCloseMobile(); }} collapsed={false} /></div>
           </aside>
@@ -91,7 +91,7 @@ export function BottomNav({ route, onNavigate, onMore }: { route: Route; onNavig
   const inMore = !BOTTOM_NAV.some((n) => n.route === route);
   const item = (active: boolean) => cn('flex h-14 w-full flex-col items-center justify-center gap-0.5 text-2xs font-medium transition-colors', active ? 'text-accent' : 'text-muted hover:text-ink');
   return (
-    <nav aria-label="Quick navigation" data-testid="bottom-nav" className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-surface/95 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden">
+    <nav aria-label="Quick navigation" data-testid="bottom-nav" className="fixed inset-x-0 bottom-0 z-30 border-t border-line/70 bg-surface/95 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden">
       <div className="mx-auto grid max-w-xl grid-cols-5">
         {BOTTOM_NAV.map(({ route: r, label, icon: I }) => (
           <a key={r} href={`#/${r}`} onClick={(e) => { e.preventDefault(); onNavigate(r); }} aria-current={r === route ? 'page' : undefined} className={item(r === route)}>
@@ -146,7 +146,7 @@ export function Topbar() {
   const stageLabel = stageId ? (model?.stages.find((s) => (s as { id: string }).id === stageId) as { name: string } | undefined)?.name ?? 'Stage' : 'All stages';
   const optionCls = 'h-10 xl:w-auto xl:max-w-[17rem]';
   return (
-    <header className={cn('sticky top-0 border-b border-line pt-[env(safe-area-inset-top)]', optionsOpen ? 'z-50' : 'z-30')}>
+    <header className={cn('sticky top-0 border-b border-line/70 pt-[env(safe-area-inset-top)]', optionsOpen ? 'z-50' : 'z-30')}>
       {/* The blur sits on its own layer so the options sheet can be fixed to the viewport. */}
       <div aria-hidden className="absolute inset-0 -z-10 bg-surface/90 backdrop-blur supports-[backdrop-filter]:bg-surface/75" />
       <div className="flex items-center gap-2 px-4 py-2 sm:px-6">
@@ -208,7 +208,7 @@ export function Toasts() {
   return (
     <div className="pointer-events-none fixed bottom-[calc(4.5rem+env(safe-area-inset-bottom))] right-4 z-[60] lg:bottom-4 flex w-[min(24rem,calc(100vw-2rem))] flex-col gap-2" aria-live="polite">
       {store.toasts.map((t) => (
-        <div key={t.id} role={t.kind === 'error' ? 'alert' : 'status'} className="card pointer-events-auto flex items-start gap-2.5 px-3.5 py-3 text-sm shadow-lg">
+        <div key={t.id} role={t.kind === 'error' ? 'alert' : 'status'} className="card pointer-events-auto flex items-start gap-2.5 px-3.5 py-3 text-sm shadow-float">
           {t.kind === 'error' ? <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-critical" /> : t.kind === 'success' ? <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-good" /> : <Info className="mt-0.5 h-4 w-4 shrink-0 text-accent" />}
           <span className="min-w-0 flex-1 break-words text-ink2">{t.message}</span>
           <button type="button" className="text-muted hover:text-ink" aria-label="Dismiss" onClick={() => store.dismissToast(t.id)}><X className="h-4 w-4" /></button>

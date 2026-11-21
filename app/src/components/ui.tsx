@@ -17,7 +17,7 @@ export const Button = forwardRef<HTMLButtonElement, BtnProps>(function Button({ 
   }[variant];
   const s = size === 'sm' ? 'h-8 px-2.5 text-xs gap-1.5' : 'h-9 px-3.5 text-sm gap-2';
   return (
-    <button ref={ref} type="button" disabled={disabled || loading} className={cn('inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-lg font-medium transition-colors disabled:pointer-events-none disabled:opacity-50', v, s, className)} {...rest}>
+    <button ref={ref} type="button" disabled={disabled || loading} className={cn('inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-xl font-medium transition-colors disabled:pointer-events-none disabled:opacity-50', v, s, className)} {...rest}>
       {loading ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : I ? <I className={size === 'sm' ? 'h-3.5 w-3.5' : 'h-4 w-4'} aria-hidden /> : null}
       {children}
     </button>
@@ -26,7 +26,7 @@ export const Button = forwardRef<HTMLButtonElement, BtnProps>(function Button({ 
 
 export function IconButton({ icon: I, label, className, ...rest }: ButtonHTMLAttributes<HTMLButtonElement> & { icon: Icon; label: string }) {
   return (
-    <button type="button" aria-label={label} title={label} className={cn('inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-ink2 transition-colors hover:bg-subtle hover:text-ink disabled:opacity-40', className)} {...rest}>
+    <button type="button" aria-label={label} title={label} className={cn('inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl text-ink2 transition-colors hover:bg-subtle hover:text-ink disabled:opacity-40', className)} {...rest}>
       <I className="h-4 w-4" aria-hidden />
     </button>
   );
@@ -162,10 +162,10 @@ export function Checkbox({ checked, onChange, label, className }: { checked: boo
 }
 export function Segmented<T extends string>({ options, value, onChange, label }: { options: { value: T; label: ReactNode }[]; value: T; onChange: (v: T) => void; label: string }) {
   return (
-    <div role="radiogroup" aria-label={label} className="inline-flex rounded-lg border border-line bg-subtle p-0.5">
+    <div role="radiogroup" aria-label={label} className="inline-flex rounded-xl border border-line/70 bg-subtle p-0.5">
       {options.map((o) => (
         <button key={o.value} type="button" role="radio" aria-checked={value === o.value} onClick={() => onChange(o.value)}
-          className={cn('h-7 rounded-md px-2.5 text-xs font-medium transition-colors', value === o.value ? 'bg-surface text-ink shadow-sm' : 'text-muted hover:text-ink')}>
+          className={cn('h-7 rounded-[0.625rem] px-2.5 text-xs font-medium transition-colors', value === o.value ? 'bg-surface text-ink shadow-sm' : 'text-muted hover:text-ink')}>
           {o.label}
         </button>
       ))}
@@ -188,7 +188,7 @@ export function Modal({ open, onClose, title, children, footer, wide }: { open: 
   if (!open) return null;
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 p-0 sm:items-center sm:p-4" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div ref={ref} role="dialog" aria-modal="true" aria-label={title} className={cn('card max-h-[90vh] w-full overflow-y-auto rounded-b-none shadow-xl sm:rounded-xl', wide ? 'sm:max-w-2xl' : 'sm:max-w-md')}>
+      <div ref={ref} role="dialog" aria-modal="true" aria-label={title} className={cn('card max-h-[90dvh] w-full overflow-y-auto rounded-b-none shadow-float sm:rounded-2xl', wide ? 'sm:max-w-2xl' : 'sm:max-w-md')}>
         <div className="flex items-center justify-between border-b border-line px-5 py-3">
           <h2 className="text-sm font-semibold">{title}</h2>
           <IconButton icon={X} label="Close" onClick={onClose} data-close />
@@ -227,7 +227,7 @@ export function InlineSheet({ open, onClose, title, breakpoint, children }: { op
     <div className={open ? m.open : m.closed}>
       <div className={cn('absolute inset-0 bg-black/40', m.hide)} onClick={onClose} aria-hidden />
       <div ref={ref} role={active ? 'dialog' : undefined} aria-modal={active || undefined} aria-label={active ? title : undefined}
-        className={cn('relative max-h-[85dvh] w-full overflow-y-auto rounded-t-2xl bg-surface p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] shadow-xl', m.inline)}>
+        className={cn('relative max-h-[85dvh] w-full overflow-y-auto rounded-t-2xl bg-surface p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] shadow-float', m.inline)}>
         <div className={cn('mb-3 flex items-center justify-between', m.hide)}>
           <h2 className="text-base font-semibold">{title}</h2>
           <IconButton icon={X} label="Close" onClick={onClose} data-close />

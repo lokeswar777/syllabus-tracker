@@ -81,7 +81,7 @@ export function Welcome() {
   return (
     <div className="mx-auto max-w-3xl py-6" data-testid="welcome">
       <div className="mb-6 flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-fill text-accent-ink"><GraduationCap className="h-5 w-5" /></div>
+        <div className="flex h-10 w-10 items-center justify-center rounded-2xl hero-card text-white"><GraduationCap className="h-5 w-5" /></div>
         <div>
           <h1 className="text-xl font-semibold tracking-tight">Choose your exam</h1>
           <p className="text-sm text-muted">Each exam keeps its own progress. Concepts you learn are shared across exams that test them.</p>

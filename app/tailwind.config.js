@@ -4,7 +4,8 @@ export default {
   darkMode: ['class'],
   theme: {
     extend: {
-      fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', '"Segoe UI"', 'sans-serif'] },
+      fontFamily: { sans: ['"Inter Variable"', 'system-ui', '-apple-system', '"Segoe UI"', 'sans-serif'] },
+      boxShadow: { card: 'var(--shadow-card)', float: 'var(--shadow-float)' },
       colors: {
         page: 'rgb(var(--page) / <alpha-value>)',
         surface: 'rgb(var(--surface) / <alpha-value>)',
